@@ -369,11 +369,14 @@ public class RadiationSystemChunksNT {
     private static BlockPos[] blocksByPocket = null;
 
     /**
+     * Deprecated: Rewrite for async to be attempted
+     * <p>
      * Divides a 16x16x16 sub chunk into pockets that are separated by radiation-resistant blocks.
      * These pockets are also linked to other pockets in neighboring chunks
      * @param chunk - the chunk to rebuild
      * @param yIndex - the Y index of the sub chunk to rebuild
      */
+    @Deprecated(since = "N/A", forRemoval = true)
     private static void rebuildChunkPockets(LevelChunk chunk, int yIndex) {
 
         BlockPos subChunkPos = new BlockPos(
