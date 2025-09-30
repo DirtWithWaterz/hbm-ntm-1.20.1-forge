@@ -35,6 +35,7 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -141,7 +142,7 @@ public class ContaminationUtil {
                     radResistantBlocks.add(new Vec2(((RadResistantBlock)radBlock).μ, ((RadResistantBlock)radBlock).thickness));
                 }
                 else
-                    res += block.getExplosionResistance();
+                    res += block.getExplosionResistance(block.defaultBlockState(), pLevel, stepPos, null);
             }
             boolean isLiving = e instanceof LivingEntity;
 
