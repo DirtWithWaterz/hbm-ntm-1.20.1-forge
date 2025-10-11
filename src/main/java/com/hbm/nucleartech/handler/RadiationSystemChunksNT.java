@@ -3,6 +3,7 @@ package com.hbm.nucleartech.handler;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.interfaces.IRadResistantBlock;
@@ -376,7 +377,7 @@ public class RadiationSystemChunksNT {
      * @param chunk - the chunk to rebuild
      * @param yIndex - the Y index of the sub chunk to rebuild
      */
-    @Deprecated(since = "N/A", forRemoval = true)
+    @Deprecated(since = "N/A")
     private static void rebuildChunkPockets(LevelChunk chunk, int yIndex) {
 
         BlockPos subChunkPos = new BlockPos(
@@ -482,9 +483,9 @@ public class RadiationSystemChunksNT {
         subChunk.blocksByPocket = pockets.size() == 1 ? null : blocksByPocket;
 
 //        if (pockets.size() == 1) {
-//            //System.err.println("[Debug] There was only a single pocket for subchunk at " + new BlockPos(chunk.getPos().x, yIndex, chunk.getPos().z));
+//            System.err.println("[Debug] There was only a single pocket for subchunk at " + new BlockPos(chunk.getPos().x, yIndex, chunk.getPos().z));
 //        } else {
-//            //System.out.println("[Debug] There was " + pockets.size() + " pockets for subchunk at " + new BlockPos(chunk.getPos().x, yIndex, chunk.getPos().z));
+//            System.out.println("[Debug] There was " + pockets.size() + " pockets for subchunk at " + new BlockPos(chunk.getPos().x, yIndex, chunk.getPos().z));
 //        }
 
         if(subChunk.pocketsByBlock != null)
@@ -497,8 +498,7 @@ public class RadiationSystemChunksNT {
         // Finally, put the newly built sub chunk into the chunk
         st.instance.setForYLevel(ChunkStorageCompat.getWorldYFromIndex(yIndex), subChunk);
 
-        //System.out.println("[Debug] Finished rebuild of chunk at " + new BlockPos(chunk.getPos().x, yIndex, chunk.getPos().z));
-
+//        System.out.println("[Debug] Finished rebuild of chunk at " + new BlockPos(chunk.getPos().x, yIndex, chunk.getPos().z) + ", pockets created: " + pockets.size());
     }
 
     private static void doEmptyChunk(LevelChunk chunk, BlockPos subChunkPos, BlockPos pos, RadPocket pocket, Direction facing) {
@@ -1398,13 +1398,64 @@ public class RadiationSystemChunksNT {
             if(e.getLevel().isClientSide())
                 return;
 
-            try {
+            LevelChunk chunk = (LevelChunk)e.getChunk();
 
-                Objects.requireNonNull(e.getLevel().getServer()).execute(new InitializeChunkTask((ServerLevel)e.getLevel(), (LevelChunk)e.getChunk()));
+            if(getChunkStorage(chunk).instance.wasInitialized()) {
+
+//                        HBM.LOGGER.error("chunk at [{}, {}] already initialized.", chunk.getPos().x, chunk.getPos().z);
+                return;
             }
-            catch(Exception ex) {
 
-                HBM.LOGGER.error("failed to execute initialize chunk task: ", ex);
+            ServerLevel level = (ServerLevel)e.getLevel();
+
+            if(level.getServer().isDedicatedServer()) {
+
+                try {
+
+                    level.getServer().execute(new InitializeChunkTask(level, chunk));
+                }
+                catch(Exception ex) {
+
+                    HBM.LOGGER.error("failed to execute initialize chunk task: ", ex);
+                }
+            }
+            else {
+
+                BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
+
+                int baseX = chunk.getPos().getMinBlockX();
+                int baseZ = chunk.getPos().getMinBlockZ();
+
+                LevelChunkSection[] sections = chunk.getSections();
+                for(int i = 0; i < sections.length; i++) {
+
+                    LevelChunkSection section = sections[i];
+
+                    if(section == null || section.hasOnlyAir()) continue;
+
+                    int sectionBaseY = (i << 4) -64;
+
+                    for(int lx = 0; lx < 16; lx++) {
+
+                        int wx = baseX + lx;
+                        for(int ly = 0; ly < 16; ly++) {
+
+                            int wy = sectionBaseY + ly;
+                            for(int lz = 0; lz < 16; lz++) {
+
+                                int wz = baseZ + lz;
+
+                                if(section.getBlockState(lx, ly, lz).getBlock() instanceof HazardBlock hb) {
+
+                                    mPos.set(wx, wy, wz);
+                                    hb.onGenerated(level, mPos);
+                                }
+                            }
+                        }
+                    }
+                }
+                getChunkStorage(chunk).instance.setInitialized();
+//                    HBM.LOGGER.debug("chunk at [{}, {}] has been initialized.", chunk.getPos().x, chunk.getPos().z);
             }
         }
 
@@ -1423,12 +1474,6 @@ public class RadiationSystemChunksNT {
             public void run() {
 
                 try {
-
-                    if(getChunkStorage(chunk).instance.wasInitialized()) {
-
-//                        HBM.LOGGER.error("chunk at [{}, {}] already initialized.", chunk.getPos().x, chunk.getPos().z);
-                        return;
-                    }
 
                     BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
 

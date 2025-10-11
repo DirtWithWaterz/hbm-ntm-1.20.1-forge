@@ -30,10 +30,10 @@ public class RadiationWorldHandler {
         if (pockets.isEmpty()) return;
 
         List<RadiationSystemChunksNT.RadPocket> theChosenONESSSSS = choosePocketsFromList(pockets, world, MAX_CHUNKS_PER_TICK);
-        String str = "";
-        for(RadiationSystemChunksNT.RadPocket p : theChosenONESSSSS)
-            str = str.concat(p.parent.parentChunk.chunk.getPos().toString() + "\n");
-        System.err.println("================\n" + str + "================");
+//        String str = "";
+//        for(RadiationSystemChunksNT.RadPocket p : theChosenONESSSSS)
+//            str = str.concat(p.parent.parentChunk.chunk.getPos().toString() + " idx: " + p.index + ", other pockets in subchunk: " + (p.parent.pockets.length - 1) + "\n");
+//        System.err.println("================\n" + str + "================");
         if(theChosenONESSSSS.isEmpty()) return;
 
         // Process multiple pockets in parallel

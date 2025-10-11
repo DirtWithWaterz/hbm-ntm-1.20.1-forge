@@ -1,5 +1,5 @@
 {
-  "feature": "hbm:ore_uranium",
+  "feature": "hbm:ore_lignite",
   "placement": [
     {
       "type": "minecraft:count",
@@ -13,7 +13,7 @@
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": {
-          "absolute": 40
+          "absolute": 34
         },
         "min_inclusive": {
           "absolute": -64

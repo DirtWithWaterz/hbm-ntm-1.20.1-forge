@@ -44,6 +44,14 @@ public class HBMPlacedFeatures {
                 HBMOrePlacement.commonOrePlacement(9,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(45))));
 
+        register(context, ORE_URANIUM_PLACED_KEY, configuredFeatures.getOrThrow(HBMConfiguredFeatures.OVERWORLD_ORE_URANIUM_KEY),
+                HBMOrePlacement.commonOrePlacement(9,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(40))));
+
+        register(context, ORE_THORIUM_PLACED_KEY, configuredFeatures.getOrThrow(HBMConfiguredFeatures.OVERWORLD_ORE_THORIUM_KEY),
+                HBMOrePlacement.commonOrePlacement(3,
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(200))));
+
         register(context, ORE_SULFUR_PLACED_KEY, configuredFeatures.getOrThrow(HBMConfiguredFeatures.OVERWORLD_ORE_SULFUR_KEY),
                 HBMOrePlacement.commonOrePlacement(9,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(34))));

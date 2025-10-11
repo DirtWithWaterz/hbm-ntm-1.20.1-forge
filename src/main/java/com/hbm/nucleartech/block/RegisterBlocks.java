@@ -718,18 +718,11 @@ public class RegisterBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
-    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
-    }
     public static final RegistryObject<Block> BRICK_FIRE = registerBlock("brick_fire",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
-
-
 
     public static final RegistryObject<Block> BRICK_FORGOTTEN = registerBlock("brick_forgotten",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
@@ -778,13 +771,17 @@ public class RegisterBlocks {
                     .strength(5.0f, 3.0f)
             ));
 
-
-
     public static final RegistryObject<Block> BRICK_OBSIDIAN = registerBlock("brick_obsidian",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
+    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
+
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn);
+        return toReturn;
+    }
 
     private static <T extends Block>RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
 
