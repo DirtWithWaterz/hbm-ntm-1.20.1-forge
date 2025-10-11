@@ -175,6 +175,8 @@ public class GeigerCounterItem extends Item {
                         break;
                     }
                 }
+                if(mc.player.getItemInHand(InteractionHand.OFF_HAND).getItem() == RegisterItems.GEIGER_COUNTER.get())
+                    hasItem = true;
 
                 if(hasItem) {
 
