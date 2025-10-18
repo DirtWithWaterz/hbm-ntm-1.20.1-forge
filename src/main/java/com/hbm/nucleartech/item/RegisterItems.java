@@ -24,6 +24,9 @@ public class RegisterItems {
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> TITANIUM_PLATE = ITEMS.register("titanium_plate",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
             () -> new Item(new Item.Properties()));
 

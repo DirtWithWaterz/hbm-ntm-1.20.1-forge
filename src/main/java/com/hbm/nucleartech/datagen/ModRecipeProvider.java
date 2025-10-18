@@ -46,6 +46,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
 
         platePressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get());
+        platePressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get());
 
         List<Pair<ItemLike, MetaData>> results;
 
