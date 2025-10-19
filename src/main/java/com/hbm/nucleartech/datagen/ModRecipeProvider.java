@@ -201,8 +201,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('C', RegisterItems.COPPER_COIL.get())
                 .define('P', RegisterItems.IRON_PLATE.get())
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
-                        + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.SHREDDER.get()) + "_from_"
+                        + getItemName(Items.FURNACE) + "_and_" + getItemName(RegisterItems.MOTOR.get())+getItemName(RegisterItems.COPPER_COIL.get())+(RegisterItems.IRON_PLATE));
 
         /*
         New stuff
