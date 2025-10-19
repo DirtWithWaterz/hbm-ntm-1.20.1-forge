@@ -45,6 +45,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
 
+        //=============================plate recipes===================================================================
         platePressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get());
         platePressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get());
         platePressing(consumer, RegisterItems.STEEL_INGOT.get(), RegisterItems.STEEL_PLATE.get());
@@ -54,7 +55,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //wirepressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get()); "wire pressing"
 
         List<Pair<ItemLike, MetaData>> results;
-
+//=======================================shredder==================================================================
         results = List.of(
                 Pair.of(RegisterItems.RAW_THORIUM.get(), new MetaData(1, 1, 100)),
                 Pair.of(Items.CLAY_BALL, new MetaData(0, 2, 100)),
@@ -80,7 +81,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 100))
         );
         itemShredding(consumer, RegisterItems.THORIUM_INGOT.get(), results, FloatingLong.create(2.083E1), 80);
-
+//=================================general crafting===================================================================
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.TITANIUM_BLOCK.get())
                 .pattern("TTT")
                 .pattern("TTT")
@@ -123,17 +124,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_PILE_ROD.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get()));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.BURNER_PRESS.get())
-                .pattern("IFI")
-                .pattern("IBI")
-                .pattern("IFI")
-                .define('F', Items.FURNACE)
-                .define('I', Items.IRON_INGOT)
-                .define('B', Items.IRON_BLOCK)
-                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
-                        + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
-
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 9)
                 .requires(RegisterBlocks.TITANIUM_BLOCK.get())
@@ -164,6 +154,42 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(RegisterItems.URANIUM_BILLET.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_BILLET.get()), has(RegisterItems.URANIUM_BILLET.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
+        //=====================================machine parts crafting===================================================
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.MOTOR.get())
+                .pattern("ICI")
+                .pattern("RCR")
+                .pattern("ICI")
+                .define('I', RegisterItems.IRON_PLATE.get())
+                .define('C', RegisterItems.COPPER_COIL.get())
+                .define('R', Items.REDSTONE)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
+                        + getItemName(RegisterItems.COPPER_COIL.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get())+getItemName(Items.REDSTONE));
+        //=====================================machine crafting=========================================================
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.BURNER_PRESS.get())
+                .pattern("IFI")
+                .pattern("IBI")
+                .pattern("IFI")
+                .define('F', Items.FURNACE)
+                .define('I', Items.IRON_INGOT)
+                .define('B', Items.IRON_BLOCK)
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
+                        + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.SHREDDER.get())
+                .pattern("IFI")
+                .pattern("IBI")
+                .pattern("IFI")
+                .define('F', Items.FURNACE)
+                .define('F', RegisterItems.MOTOR.get())
+                .define('I', Items.IRON_INGOT)
+                .define('B', RegisterItems.IRON_PLATE.get())
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
+                        + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
 
         /*
         New stuff

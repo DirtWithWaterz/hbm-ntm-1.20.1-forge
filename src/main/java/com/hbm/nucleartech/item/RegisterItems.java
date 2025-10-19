@@ -20,7 +20,7 @@ public class RegisterItems {
 
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, HBM.MOD_ID);
-
+//=======================================plates=========================================================
     public static final RegistryObject<Item> IRON_PLATE = ITEMS.register("iron_plate",
             () -> new Item(new Item.Properties()));
 
@@ -38,8 +38,15 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
             () -> new Item(new Item.Properties()));
+    //======================================MACHINE PARTS======================================================
 
+    public static final RegistryObject<Item> MOTOR = ITEMS.register("motor",
+            () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> COPPER_COIL = ITEMS.register("copper_coil",
+            () -> new Item(new Item.Properties()));
+
+//========================================general==============================================================
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -81,30 +88,6 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> THORIUM_INGOT = ITEMS.register("thorium_ingot",
             () -> new HazardItem(0.1, new Item.Properties()));
-
-    public static final RegistryObject<Item> ALUMINUM_BLADE = ITEMS.register("aluminum_blade",
-            () -> new BladeItem(new Item.Properties().durability(24), 1));
-
-    public static final RegistryObject<Item> GOLD_BLADE = ITEMS.register("gold_blade",
-            () -> new BladeItem(new Item.Properties().durability(32), 2));
-
-    public static final RegistryObject<Item> IRON_BLADE = ITEMS.register("iron_blade",
-            () -> new BladeItem(new Item.Properties().durability(64), 3));
-
-    public static final RegistryObject<Item> STEEL_BLADE = ITEMS.register("steel_blade",
-            () -> new BladeItem(new Item.Properties().durability(128), 4));
-
-    public static final RegistryObject<Item> TITANIUM_BLADE = ITEMS.register("titanium_blade",
-            () -> new BladeItem(new Item.Properties().durability(96), 5));
-
-    public static final RegistryObject<Item> ADVANCED_BLADE = ITEMS.register("advanced_blade",
-            () -> new BladeItem(new Item.Properties().durability(256), 6));
-
-    public static final RegistryObject<Item> CMB_BLADE = ITEMS.register("cmb_blade",
-            () -> new BladeItem(new Item.Properties().durability(1024), 7));
-
-    public static final RegistryObject<Item> SCHRABIDIUM_BLADE = ITEMS.register("schrabidium_blade",
-            () -> new BladeItem(new Item.Properties().durability(4096), 8));
 
     public static final RegistryObject<Item> DESH_BLADE = ITEMS.register("desh_blade",
             () -> new BladeItem(new Item.Properties().stacksTo(1), 9));
@@ -198,6 +181,32 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> RAW_COLTAN = ITEMS.register("raw_coltan",
             () -> new Item(new Item.Properties()));
+
+    //===========================================blades=============================================================
+    public static final RegistryObject<Item> ALUMINUM_BLADE = ITEMS.register("aluminum_blade",
+            () -> new BladeItem(new Item.Properties().durability(24), 1));
+
+    public static final RegistryObject<Item> GOLD_BLADE = ITEMS.register("gold_blade",
+            () -> new BladeItem(new Item.Properties().durability(32), 2));
+
+    public static final RegistryObject<Item> IRON_BLADE = ITEMS.register("iron_blade",
+            () -> new BladeItem(new Item.Properties().durability(64), 3));
+
+    public static final RegistryObject<Item> STEEL_BLADE = ITEMS.register("steel_blade",
+            () -> new BladeItem(new Item.Properties().durability(128), 4));
+
+    public static final RegistryObject<Item> TITANIUM_BLADE = ITEMS.register("titanium_blade",
+            () -> new BladeItem(new Item.Properties().durability(96), 5));
+
+    public static final RegistryObject<Item> ADVANCED_BLADE = ITEMS.register("advanced_blade",
+            () -> new BladeItem(new Item.Properties().durability(256), 6));
+
+    public static final RegistryObject<Item> CMB_BLADE = ITEMS.register("cmb_blade",
+            () -> new BladeItem(new Item.Properties().durability(1024), 7));
+
+    public static final RegistryObject<Item> SCHRABIDIUM_BLADE = ITEMS.register("schrabidium_blade",
+            () -> new BladeItem(new Item.Properties().durability(4096), 8));
+
 
 //    ====================================== CELLS ======================================
 
