@@ -27,6 +27,15 @@ public class RegisterItems {
     public static final RegistryObject<Item> TITANIUM_PLATE = ITEMS.register("titanium_plate",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> GOLD_PLATE = ITEMS.register("gold_plate",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> COPPER_PLATE = ITEMS.register("copper_plate",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -133,6 +142,9 @@ public class RegisterItems {
             () -> new HazardItem(0, 0, 0, 0, 2, new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_LEAD = ITEMS.register("raw_lead",
+            () -> new HazardItem(0, 0, 0, 0, 1, new Item.Properties()));
+
+    public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget",
             () -> new HazardItem(0, 0, 0, 0, 1, new Item.Properties()));
 
     public static final RegistryObject<Item> LIGNITE_INGOT = ITEMS.register("lignite_ingot",

@@ -57,6 +57,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 2))
         );
         itemShredding(consumer, RegisterItems.THORIUM_SHALE.get(), results, FloatingLong.create(1.39E1), 60);
+        results = List.of(
+                Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(1, 1, 100)),
+                Pair.of(RegisterItems.LEAD_NUGGET.get(), new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 2))
+        );
+        itemShredding(consumer, RegisterItems.RAW_URANIUM.get(), results, FloatingLong.create(1.39E1), 60);
+        results = List.of(
+                Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(1, 1, 100)),
+                Pair.of(RegisterItems.LEAD_NUGGET.get(), new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 2))
+        );
+        itemShredding(consumer, Items.RAW_IRON ,results, FloatingLong.create(1.39E1), 60);
+
 
         results = List.of(
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 100))
@@ -71,11 +84,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(RegisterItems.TITANIUM_INGOT.get()), has(RegisterItems.TITANIUM_INGOT.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.TITANIUM_BLOCK.get()) + "_from_" + getItemName(RegisterItems.TITANIUM_INGOT.get()));
 
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.URANIUM_BLOCK.get())
                 .pattern("UUU")
                 .pattern("UUU")
                 .pattern("UUU")
                 .define('U', RegisterItems.URANIUM_INGOT.get())
+                .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.URANIUM_BLOCK.get()) + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.SULFUR_STORAGE_BLOCK.get())
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', RegisterItems.SULFUR_INGOT.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.URANIUM_BLOCK.get()) + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
 
@@ -95,6 +117,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('P', RegisterItems.IRON_PLATE.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_PILE_ROD.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get()));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.BURNER_PRESS.get())
+                .pattern("IFI")
+                .pattern("IBI")
+                .pattern("IFI")
+                .define('F', Items.FURNACE)
+                .define('I', Items.IRON_INGOT)
+                .define('B', Items.IRON_BLOCK)
+                .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
+                        + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
 
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 9)
