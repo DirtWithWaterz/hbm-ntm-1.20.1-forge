@@ -297,7 +297,7 @@ public class RegisterBlocks {
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
                     .strength(8.0f, 3.0f),
                     UniformInt.of(2, 5),
-                    0.0035
+                    0.00
             ));
 
     public static final RegistryObject<Block> CINNABAR_ORE = registerHazardBlock(0.003, "cinnabar_ore",

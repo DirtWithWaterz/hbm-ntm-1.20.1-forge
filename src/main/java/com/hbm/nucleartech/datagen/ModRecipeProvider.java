@@ -47,6 +47,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         platePressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get());
         platePressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get());
+        platePressing(consumer, RegisterItems.STEEL_INGOT.get(), RegisterItems.STEEL_PLATE.get());
+        platePressing(consumer, Items.COPPER_INGOT, RegisterItems.COPPER_PLATE.get());
+        platePressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get());
+
+        //wirepressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get()); "wire pressing"
 
         List<Pair<ItemLike, MetaData>> results;
 
@@ -125,7 +130,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('F', Items.FURNACE)
                 .define('I', Items.IRON_INGOT)
                 .define('B', Items.IRON_BLOCK)
-                .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
                         + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
 

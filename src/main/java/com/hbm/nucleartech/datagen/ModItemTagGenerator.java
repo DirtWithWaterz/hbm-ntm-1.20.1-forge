@@ -31,7 +31,11 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
     public static class SharedTagLists {
         public static final List<Item> PLATE_STAMPS = List.of(
-                RegisterItems.IRON_PLATE_STAMP.get()
+                RegisterItems.IRON_PLATE_STAMP.get(),
+                RegisterItems.STEEL_PLATE_STAMP.get(),
+                RegisterItems.ADV_PLATE_STAMP.get(),
+                RegisterItems.CMD_PLATE_STAMP.get(),
+                RegisterItems.DESH_PLATE_STAMP.get()
         );
         public static final List<Item> SHREDDER_BLADES = List.of(
                 RegisterItems.ALUMINUM_BLADE.get(),

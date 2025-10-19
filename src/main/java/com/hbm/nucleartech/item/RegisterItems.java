@@ -36,6 +36,10 @@ public class RegisterItems {
     public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
+            () -> new Item(new Item.Properties()));
+
+
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -414,7 +418,7 @@ public class RegisterItems {
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.legs_only));
     public static final RegistryObject<Item> HAZMAT_BOOTS_GREY = ITEMS.register("hazmat_boots_grey",
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.boots_only));
-
+    //    ====================================== machines ======================================
     public static final RegistryObject<Item> BURNER_PRESS = ITEMS.register("burner_press",
             () -> new BurnerPressItem(RegisterBlocks.BURNER_PRESS.get(), new Item.Properties()));
 
@@ -423,6 +427,19 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> IRON_PLATE_STAMP = ITEMS.register("iron_plate_stamp",
             () -> new StampItem(new Item.Properties().durability(64)));
+
+    public static final RegistryObject<Item> STEEL_PLATE_STAMP = ITEMS.register("steel_plate_stamp",
+            () -> new StampItem(new Item.Properties().durability(128)));
+
+    public static final RegistryObject<Item> ADV_PLATE_STAMP = ITEMS.register("advance_plate_stamp",
+            () -> new StampItem(new Item.Properties().durability(256)));
+
+    public static final RegistryObject<Item> CMD_PLATE_STAMP = ITEMS.register("cmd_plate_stamp",
+            () -> new StampItem(new Item.Properties().durability(512)));
+
+    public static final RegistryObject<Item> DESH_PLATE_STAMP = ITEMS.register("desh_plate_stamp",
+            () -> new StampItem(new Item.Properties().durability(1)));
+
 
     public static void register(IEventBus eventBus) {
 
