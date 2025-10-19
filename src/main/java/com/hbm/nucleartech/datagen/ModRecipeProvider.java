@@ -193,13 +193,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.SHREDDER.get())
-                .pattern("IFI")
-                .pattern("IBI")
-                .pattern("IFI")
+                .pattern("PCP")
+                .pattern("MFM")
+                .pattern("PCP")
                 .define('F', Items.FURNACE)
-                .define('F', RegisterItems.MOTOR.get())
-                .define('I', Items.IRON_INGOT)
-                .define('B', RegisterItems.IRON_PLATE.get())
+                .define('M', RegisterItems.MOTOR.get())
+                .define('C', RegisterItems.COPPER_COIL.get())
+                .define('P', RegisterItems.IRON_PLATE.get())
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
                         + getItemName(Items.FURNACE) + "_and_" + getItemName(Items.IRON_BLOCK)+getItemName(Items.IRON_INGOT));
