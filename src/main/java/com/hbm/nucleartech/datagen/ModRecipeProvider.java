@@ -45,6 +45,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
 
+
+
         //=============================plate recipes===================================================================
         platePressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get());
         platePressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get());
@@ -165,6 +167,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.BURNER_PRESS.get()) + "_from_"
                         + getItemName(RegisterItems.COPPER_COIL.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get())+getItemName(Items.REDSTONE));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.COPPER_COIL.get())
+                .pattern("CCC")
+                .pattern("CPC")
+                .pattern("CCC")
+                .define('C', RegisterItems.COPPER_WIRE.get())
+                .define('P', RegisterItems.IRON_PLATE.get())
+                .unlockedBy(getHasName(RegisterItems.COPPER_WIRE.get()), has(RegisterItems.COPPER_WIRE.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.COPPER_COIL.get()) + "_from_" +
+                        getItemName(RegisterItems.IRON_PLATE.get()) + "_and_" + getItemName(RegisterItems.COPPER_WIRE.get()));
+
         //=====================================machine crafting=========================================================
 
 

@@ -36,7 +36,8 @@ public class RegisterItems {
     public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
+    //=============================================WIRE========================================================
+    public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire",
             () -> new Item(new Item.Properties()));
     //======================================MACHINE PARTS======================================================
 
@@ -48,6 +49,9 @@ public class RegisterItems {
 
 //========================================general==============================================================
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
