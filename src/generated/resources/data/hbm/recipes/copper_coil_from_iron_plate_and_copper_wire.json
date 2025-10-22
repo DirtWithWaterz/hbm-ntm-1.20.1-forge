@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "hbm:copper_wire"
+    },
+    "P": {
+      "item": "hbm:iron_plate"
+    }
+  },
+  "pattern": [
+    "CCC",
+    "CPC",
+    "CCC"
+  ],
+  "result": {
+    "item": "hbm:copper_coil"
+  },
+  "show_notification": true
+}

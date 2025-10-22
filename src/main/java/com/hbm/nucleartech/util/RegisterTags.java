@@ -21,6 +21,8 @@ public class RegisterTags {
     public static class Items {
 
         public static final TagKey<Item> PLATE_STAMPS = tag("plate_stamps");
+        public static final TagKey<Item> WIRE_STAMPS = tag("wire_stamp");
+        public static final TagKey<Item> DESH = tag("desh");
         public static final TagKey<Item> SHREDDER_BLADES = tag("shredder_blades");
 
         private static TagKey<Item> tag(String name) {

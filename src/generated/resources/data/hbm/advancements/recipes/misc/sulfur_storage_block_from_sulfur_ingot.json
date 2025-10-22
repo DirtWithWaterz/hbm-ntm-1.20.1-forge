@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sulfur_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hbm:sulfur_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hbm:sulfur_storage_block_from_sulfur_ingot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sulfur_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hbm:sulfur_storage_block_from_sulfur_ingot"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,15 @@
+{
+  "type": "hbm:press",
+  "ingredients": [
+    {
+      "item": "hbm:obsidian_wire_stamp"
+    },
+    {
+      "item": "hbm:titanium_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "hbm:titanium_plate"
+  }
+}

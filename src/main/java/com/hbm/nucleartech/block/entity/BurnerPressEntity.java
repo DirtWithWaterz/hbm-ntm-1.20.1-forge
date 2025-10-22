@@ -1,17 +1,21 @@
 package com.hbm.nucleartech.block.entity;
 
+import com.hbm.nucleartech.datagen.ModItemTagGenerator;
+import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.network.HbmPacketHandler;
 import com.hbm.nucleartech.network.packet.ClientboundBurnerPressPacket;
 import com.hbm.nucleartech.recipe.PressRecipe;
 import com.hbm.nucleartech.screen.BurnerPressMenu;
 import com.hbm.nucleartech.sound.RegisterSounds;
+import com.hbm.nucleartech.util.RegisterTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -45,6 +49,8 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.RenderUtils;
 
 import java.util.Optional;
+
+import static com.hbm.nucleartech.compat.jei.categories.ShredderCategory.getItemsFromTag;
 
 public class BurnerPressEntity extends BlockEntity implements GeoBlockEntity, MenuProvider {
 
@@ -435,6 +441,10 @@ public class BurnerPressEntity extends BlockEntity implements GeoBlockEntity, Me
     private void damageStamp(BlockPos pos) {
 
         ItemStack stack = this.itemHandler.getStackInSlot(STAMP_SLOT);
+
+        for(ItemStack item : getItemsFromTag(RegisterTags.Items.DESH))
+            if(stack.equals(item))
+                return;
 
         stack.hurt(1, level.random, null);
 

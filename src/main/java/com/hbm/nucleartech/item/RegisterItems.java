@@ -47,7 +47,7 @@ public class RegisterItems {
     public static final RegistryObject<Item> COPPER_COIL = ITEMS.register("copper_coil",
             () -> new Item(new Item.Properties()));
 
-//========================================general==============================================================
+    //========================================general==============================================================
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -405,6 +405,8 @@ public class RegisterItems {
     public static final RegistryObject<Item> GAS_MASK_FILTER_RADON = ITEMS.register("gas_mask_filter_radon",
             () -> new FilterItem(new Item.Properties(), 32000));
 
+    //========================================hazmat==============================================
+
     public static final RegistryObject<Item> HAZMAT_HELMET = ITEMS.register("hazmat_helmet",
             () -> new HazmatHeadItem(new Item.Properties(), HbmArmorMaterials.HAZMAT));
     public static final RegistryObject<Item> HAZMAT_CHESTPLATE = ITEMS.register("hazmat_chestplate",
@@ -431,28 +433,46 @@ public class RegisterItems {
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.legs_only));
     public static final RegistryObject<Item> HAZMAT_BOOTS_GREY = ITEMS.register("hazmat_boots_grey",
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.boots_only));
+
     //    ====================================== machines ======================================
+
     public static final RegistryObject<Item> BURNER_PRESS = ITEMS.register("burner_press",
             () -> new BurnerPressItem(RegisterBlocks.BURNER_PRESS.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> SHREDDER = ITEMS.register("shredder",
             () -> new ShredderItem(RegisterBlocks.SHREDDER.get(), new Item.Properties()));
 
+    //    ====================================== stamps ======================================
+
+    public static final RegistryObject<Item> STONE_PLATE_STAMP = ITEMS.register("stone_plate_stamp",
+            () -> new StampItem(new Item.Properties().durability(32)));
     public static final RegistryObject<Item> IRON_PLATE_STAMP = ITEMS.register("iron_plate_stamp",
             () -> new StampItem(new Item.Properties().durability(64)));
-
     public static final RegistryObject<Item> STEEL_PLATE_STAMP = ITEMS.register("steel_plate_stamp",
             () -> new StampItem(new Item.Properties().durability(128)));
-
-    public static final RegistryObject<Item> ADV_PLATE_STAMP = ITEMS.register("advance_plate_stamp",
+    public static final RegistryObject<Item> TITANIUM_PLATE_STAMP = ITEMS.register("titanium_plate_stamp",
             () -> new StampItem(new Item.Properties().durability(256)));
-
-    public static final RegistryObject<Item> CMD_PLATE_STAMP = ITEMS.register("cmd_plate_stamp",
+    public static final RegistryObject<Item> OBSIDIAN_PLATE_STAMP = ITEMS.register("obsidian_plate_stamp",
             () -> new StampItem(new Item.Properties().durability(512)));
-
     public static final RegistryObject<Item> DESH_PLATE_STAMP = ITEMS.register("desh_plate_stamp",
-            () -> new StampItem(new Item.Properties().durability(1)));
+            () -> new StampItem(new Item.Properties()));
+    public static final RegistryObject<Item> SCHRABIDIUM_PLATE_STAMP = ITEMS.register("schrabidium_plate_stamp",
+            () -> new StampItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> STONE_WIRE_STAMP = ITEMS.register("stone_wire_stamp",
+            () -> new StampItem(new Item.Properties().durability(32)));
+    public static final RegistryObject<Item> IRON_WIRE_STAMP = ITEMS.register("iron_wire_stamp",
+            () -> new StampItem(new Item.Properties().durability(64)));
+    public static final RegistryObject<Item> STEEL_WIRE_STAMP = ITEMS.register("steel_wire_stamp",
+            () -> new StampItem(new Item.Properties().durability(128)));
+    public static final RegistryObject<Item> TITANIUM_WIRE_STAMP = ITEMS.register("titanium_wire_stamp",
+            () -> new StampItem(new Item.Properties().durability(256)));
+    public static final RegistryObject<Item> OBSIDIAN_WIRE_STAMP = ITEMS.register("obsidian_wire_stamp",
+            () -> new StampItem(new Item.Properties().durability(512)));
+    public static final RegistryObject<Item> DESH_WIRE_STAMP = ITEMS.register("desh_wire_stamp",
+            () -> new StampItem(new Item.Properties()));
+    public static final RegistryObject<Item> SCHRABIDIUM_WIRE_STAMP = ITEMS.register("schrabidium_wire_stamp",
+            () -> new StampItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
 

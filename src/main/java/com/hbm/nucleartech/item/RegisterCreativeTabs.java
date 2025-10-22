@@ -101,7 +101,30 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.HAZMAT_BOOTS_GREY.get());
 
                         output.accept(RegisterItems.IRON_PLATE_STAMP.get());
+                        output.accept(RegisterItems.STEEL_PLATE_STAMP.get());
+                        output.accept(RegisterItems.STONE_PLATE_STAMP.get());
+                        output.accept(RegisterItems.TITANIUM_PLATE_STAMP.get());
+                        output.accept(RegisterItems.OBSIDIAN_PLATE_STAMP.get());
+                        output.accept(RegisterItems.DESH_PLATE_STAMP.get());
+                        output.accept(RegisterItems.SCHRABIDIUM_PLATE_STAMP.get());
+
+                        output.accept(RegisterItems.IRON_WIRE_STAMP.get());
+                        output.accept(RegisterItems.STEEL_WIRE_STAMP.get());
+                        output.accept(RegisterItems.STONE_WIRE_STAMP.get());
+                        output.accept(RegisterItems.TITANIUM_WIRE_STAMP.get());
+                        output.accept(RegisterItems.OBSIDIAN_WIRE_STAMP.get());
+                        output.accept(RegisterItems.DESH_WIRE_STAMP.get());
+                        output.accept(RegisterItems.SCHRABIDIUM_WIRE_STAMP.get());
+
                         output.accept(RegisterItems.IRON_PLATE.get());
+                        output.accept(RegisterItems.STEEL_PLATE.get());
+                        output.accept(RegisterItems.COPPER_PLATE.get());
+                        output.accept(RegisterItems.GOLD_PLATE.get());
+                        output.accept(RegisterItems.TITANIUM_PLATE.get());
+
+                        output.accept(RegisterItems.COPPER_WIRE.get());
+                        output.accept(RegisterItems.COPPER_COIL.get());
+                        output.accept(RegisterItems.MOTOR.get());
                     })
                     .build());
 

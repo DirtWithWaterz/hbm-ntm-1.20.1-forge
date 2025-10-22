@@ -152,7 +152,7 @@ public class ShredderEntity extends BaseHbmBlockEntity implements GeoBlockEntity
     public int rightMaxDur = 0;
 
     public ShredderEntity(BlockPos pPos, BlockState pBlockState) {
-        super(RegisterBlockEntities.SHREDDER_ENTITY.get(), pPos, pBlockState, FloatingLong.create(5.0E3), FloatingLong.create(1.0E2).multiply(WattHourStorage.MCSECOND_TO_TICK), FloatingLong.create(1.0E3).multiply(WattHourStorage.MCSECOND_TO_TICK), FloatingLong.ZERO);
+        super(RegisterBlockEntities.SHREDDER_ENTITY.get(), pPos, pBlockState, FloatingLong.create(2.0E2), FloatingLong.create(1.0E2).multiply(WattHourStorage.MCSECOND_TO_TICK), FloatingLong.create(1.0E3).multiply(WattHourStorage.MCSECOND_TO_TICK), FloatingLong.ZERO);
 
         SingletonGeoAnimatable.registerSyncedAnimatable(this);
 

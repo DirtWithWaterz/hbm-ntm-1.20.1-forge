@@ -25,6 +25,10 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         tag(RegisterTags.Items.PLATE_STAMPS)
                 .add(SharedTagLists.PLATE_STAMPS.toArray(new Item[0]));
+        tag(RegisterTags.Items.WIRE_STAMPS)
+                .add(SharedTagLists.WIRE_STAMPS.toArray(new Item[0]));
+        tag(RegisterTags.Items.DESH)
+                .add(SharedTagLists.DESH.toArray(new Item[0]));
         tag(RegisterTags.Items.SHREDDER_BLADES)
                 .add(SharedTagLists.SHREDDER_BLADES.toArray(new Item[0]));
     }
@@ -33,9 +37,23 @@ public class ModItemTagGenerator extends ItemTagsProvider {
         public static final List<Item> PLATE_STAMPS = List.of(
                 RegisterItems.IRON_PLATE_STAMP.get(),
                 RegisterItems.STEEL_PLATE_STAMP.get(),
-                RegisterItems.ADV_PLATE_STAMP.get(),
-                RegisterItems.CMD_PLATE_STAMP.get(),
-                RegisterItems.DESH_PLATE_STAMP.get()
+                RegisterItems.TITANIUM_PLATE_STAMP.get(),
+                RegisterItems.OBSIDIAN_PLATE_STAMP.get(),
+                RegisterItems.DESH_PLATE_STAMP.get(),
+                RegisterItems.SCHRABIDIUM_PLATE_STAMP.get()
+        );
+        public static final List<Item> WIRE_STAMPS = List.of(
+                RegisterItems.IRON_WIRE_STAMP.get(),
+                RegisterItems.STEEL_WIRE_STAMP.get(),
+                RegisterItems.TITANIUM_WIRE_STAMP.get(),
+                RegisterItems.OBSIDIAN_WIRE_STAMP.get(),
+                RegisterItems.DESH_WIRE_STAMP.get(),
+                RegisterItems.SCHRABIDIUM_WIRE_STAMP.get()
+        );
+        public static final List<Item> DESH = List.of(
+                RegisterItems.DESH_WIRE_STAMP.get(),
+                RegisterItems.DESH_PLATE_STAMP.get(),
+                RegisterItems.DESH_BLADE.get()
         );
         public static final List<Item> SHREDDER_BLADES = List.of(
                 RegisterItems.ALUMINUM_BLADE.get(),

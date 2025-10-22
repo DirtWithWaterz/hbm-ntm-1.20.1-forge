@@ -1,0 +1,15 @@
+{
+  "type": "hbm:press",
+  "ingredients": [
+    {
+      "item": "hbm:steel_wire_stamp"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "hbm:gold_plate"
+  }
+}

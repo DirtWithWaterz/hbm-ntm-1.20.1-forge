@@ -20,6 +20,15 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
 
         simpleItem(RegisterItems.IRON_PLATE);
+        simpleItem(RegisterItems.TITANIUM_PLATE);
+        simpleItem(RegisterItems.GOLD_PLATE);
+        simpleItem(RegisterItems.COPPER_PLATE);
+        simpleItem(RegisterItems.STEEL_PLATE);
+
+        simpleItem(RegisterItems.COPPER_WIRE);
+
+        simpleItem(RegisterItems.MOTOR);
+        simpleItem(RegisterItems.COPPER_COIL);
 
         simpleItem(RegisterItems.URANIUM_INGOT);
         simpleItem(RegisterItems.BERYLLIUM_INGOT);
@@ -171,7 +180,21 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.HAZMAT_LEGGINGS_GREY);
         simpleItem(RegisterItems.HAZMAT_BOOTS_GREY);
 
+        simpleItem(RegisterItems.STONE_PLATE_STAMP);
         simpleItem(RegisterItems.IRON_PLATE_STAMP);
+        simpleItem(RegisterItems.STEEL_PLATE_STAMP);
+        simpleItem(RegisterItems.TITANIUM_PLATE_STAMP);
+        simpleItem(RegisterItems.OBSIDIAN_PLATE_STAMP);
+        simpleItem(RegisterItems.DESH_PLATE_STAMP);
+        simpleItem(RegisterItems.SCHRABIDIUM_PLATE_STAMP);
+
+        simpleItem(RegisterItems.STONE_WIRE_STAMP);
+        simpleItem(RegisterItems.IRON_WIRE_STAMP);
+        simpleItem(RegisterItems.STEEL_WIRE_STAMP);
+        simpleItem(RegisterItems.TITANIUM_WIRE_STAMP);
+        simpleItem(RegisterItems.OBSIDIAN_WIRE_STAMP);
+        simpleItem(RegisterItems.DESH_WIRE_STAMP);
+        simpleItem(RegisterItems.SCHRABIDIUM_WIRE_STAMP);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "IFI",
+    "IBI",
+    "IFI"
+  ],
+  "result": {
+    "item": "hbm:burner_press"
+  },
+  "show_notification": true
+}

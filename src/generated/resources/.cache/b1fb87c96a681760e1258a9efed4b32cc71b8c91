@@ -1,3 +1,5 @@
-// 1.20.1	2025-08-19T02:12:15.707393	Tags for minecraft:item mod id hbm
-aac76d7bbca846ea16ec1af44093478980091f64 data/hbm/tags/items/plate_stamps.json
+// 1.20.1	2025-10-21T18:24:33.0038921	Tags for minecraft:item mod id hbm
+163ca0ef138145060f239e1f37d4257bcb9a61de data/hbm/tags/items/desh.json
+4c3ad42f377e8197aa1b7ab71244358ee327f9c8 data/hbm/tags/items/plate_stamps.json
 440cefbaaf3c09997c3dd86b9e3a01983019acdd data/hbm/tags/items/shredder_blades.json
+f3eb1ddcc00580b2fcbd81baea7f7f2d6db34b5f data/hbm/tags/items/wire_stamp.json

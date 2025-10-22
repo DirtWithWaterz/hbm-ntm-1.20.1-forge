@@ -8,12 +8,10 @@ import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.recipe.RegisterRecipes;
 import com.hbm.nucleartech.util.FloatingLong;
 import it.unimi.dsi.fastutil.Pair;
-import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -22,7 +20,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -48,11 +45,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //=============================plate recipes===================================================================
-        platePressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get());
-        platePressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get());
-        platePressing(consumer, RegisterItems.STEEL_INGOT.get(), RegisterItems.STEEL_PLATE.get());
-        platePressing(consumer, Items.COPPER_INGOT, RegisterItems.COPPER_PLATE.get());
-        platePressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get());
+        Pressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get());
+        Pressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get());
+        Pressing(consumer, RegisterItems.STEEL_INGOT.get(), RegisterItems.STEEL_PLATE.get());
+        Pressing(consumer, Items.COPPER_INGOT, RegisterItems.COPPER_PLATE.get());
+        Pressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get());
 
         //wirepressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get()); "wire pressing"
 
@@ -106,8 +103,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SSS")
                 .pattern("SSS")
                 .define('S', RegisterItems.SULFUR_INGOT.get())
-                .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.URANIUM_BLOCK.get()) + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
+                .unlockedBy(getHasName(RegisterItems.SULFUR_INGOT.get()), has(RegisterItems.SULFUR_INGOT.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.SULFUR_STORAGE_BLOCK.get()) + "_from_" + getItemName(RegisterItems.SULFUR_INGOT.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get())
                 .pattern("NNN")
@@ -196,13 +193,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("PCP")
                 .pattern("MFM")
                 .pattern("PCP")
-                .define('F', Items.FURNACE)
+                .define('F', RegisterItems.ADVANCED_BATTERY.get())
                 .define('M', RegisterItems.MOTOR.get())
                 .define('C', RegisterItems.COPPER_COIL.get())
                 .define('P', RegisterItems.IRON_PLATE.get())
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.SHREDDER.get()) + "_from_"
-                        + getItemName(Items.FURNACE) + "_and_" + getItemName(RegisterItems.MOTOR.get())+getItemName(RegisterItems.COPPER_COIL.get())+(RegisterItems.IRON_PLATE));
+                        + getItemName(RegisterItems.ADVANCED_BATTERY.get()) + "_and_" + getItemName(RegisterItems.MOTOR.get()) + "_and_" + getItemName(RegisterItems.COPPER_COIL.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get()));
 
         /*
         New stuff
@@ -358,9 +355,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    protected static void platePressing(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pInput, ItemLike pResult) {
+    protected static void Pressing(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pInput, ItemLike pResult) {
 
         for(ItemLike item : ModItemTagGenerator.SharedTagLists.PLATE_STAMPS) {
+
+            pFinishedRecipeConsumer.accept(
+                    new PressRecipeBuilder(
+                            pInput,
+                            item,
+                            pResult
+                    )
+            );
+        }
+        for(ItemLike item : ModItemTagGenerator.SharedTagLists.WIRE_STAMPS) {
 
             pFinishedRecipeConsumer.accept(
                     new PressRecipeBuilder(
