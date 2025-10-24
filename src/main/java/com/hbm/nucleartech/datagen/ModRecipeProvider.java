@@ -54,6 +54,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         Pressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get().getDefaultInstance(), ModItemTagGenerator.SharedTagLists.PLATE_STAMPS);
 
         Pressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get().getDefaultInstance().copyWithCount(8), ModItemTagGenerator.SharedTagLists.WIRE_STAMPS);
+        Pressing(consumer,RegisterItems.GOLD_PLATE.get(),RegisterItems.GOLD_WIRE.get().getDefaultInstance().copyWithCount(8), ModItemTagGenerator.SharedTagLists.WIRE_STAMPS);
+
 
         List<Pair<ItemLike, MetaData>> results;
 //=======================================shredder==================================================================
@@ -155,6 +157,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(RegisterItems.URANIUM_BILLET.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_BILLET.get()), has(RegisterItems.URANIUM_BILLET.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
+       //============================================tools==============================================================
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.HAND_DRILL_DESH.get())
+                .pattern("D  ")
+                .pattern("DSS")
+                .pattern("  S")
+                .define('D', RegisterItems.DESH_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.DESH_INGOT.get()) + "_from_"
+                        + getItemName(RegisterItems.DESH_INGOT.get()) + "_and_"+getItemName(Items.STICK));
+
         //=====================================machine parts crafting===================================================
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.MOTOR.get())
                 .pattern("ICI")
