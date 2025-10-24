@@ -7,11 +7,13 @@ import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.recipe.RegisterRecipes;
 import com.hbm.nucleartech.util.FloatingLong;
+import com.hbm.nucleartech.util.RegisterTags;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -45,13 +47,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //=============================plate recipes===================================================================
-        Pressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get());
-        Pressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get());
-        Pressing(consumer, RegisterItems.STEEL_INGOT.get(), RegisterItems.STEEL_PLATE.get());
-        Pressing(consumer, Items.COPPER_INGOT, RegisterItems.COPPER_PLATE.get());
-        Pressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get());
+        Pressing(consumer, Items.IRON_INGOT, RegisterItems.IRON_PLATE.get().getDefaultInstance(), ModItemTagGenerator.SharedTagLists.PLATE_STAMPS);
+        Pressing(consumer, RegisterItems.TITANIUM_INGOT.get(), RegisterItems.TITANIUM_PLATE.get().getDefaultInstance(), ModItemTagGenerator.SharedTagLists.PLATE_STAMPS);
+        Pressing(consumer, RegisterItems.STEEL_INGOT.get(), RegisterItems.STEEL_PLATE.get().getDefaultInstance(), ModItemTagGenerator.SharedTagLists.PLATE_STAMPS);
+        Pressing(consumer, Items.COPPER_INGOT, RegisterItems.COPPER_PLATE.get().getDefaultInstance(), ModItemTagGenerator.SharedTagLists.PLATE_STAMPS);
+        Pressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get().getDefaultInstance(), ModItemTagGenerator.SharedTagLists.PLATE_STAMPS);
 
-        //wirepressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get()); "wire pressing"
+        Pressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get().getDefaultInstance().copyWithCount(8), ModItemTagGenerator.SharedTagLists.WIRE_STAMPS);
 
         List<Pair<ItemLike, MetaData>> results;
 //=======================================shredder==================================================================
@@ -355,19 +357,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    protected static void Pressing(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pInput, ItemLike pResult) {
+    protected static void Pressing(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pInput, ItemStack pResult, List<Item> pStamps) {
 
-        for(ItemLike item : ModItemTagGenerator.SharedTagLists.PLATE_STAMPS) {
-
-            pFinishedRecipeConsumer.accept(
-                    new PressRecipeBuilder(
-                            pInput,
-                            item,
-                            pResult
-                    )
-            );
-        }
-        for(ItemLike item : ModItemTagGenerator.SharedTagLists.WIRE_STAMPS) {
+        for(ItemLike item : pStamps) {
 
             pFinishedRecipeConsumer.accept(
                     new PressRecipeBuilder(
@@ -379,7 +371,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    public record PressRecipeBuilder(ItemLike input, ItemLike stamp, ItemLike result) implements FinishedRecipe {
+    public record PressRecipeBuilder(ItemLike input, ItemLike stamp, ItemStack result) implements FinishedRecipe {
 
         @Override
         public void serializeRecipeData(JsonObject json) {
@@ -395,15 +387,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             json.add("ingredients", jsonIngredients);
 
             JsonObject jsonResult = new JsonObject();
-            jsonResult.addProperty("count", 1);
-            jsonResult.addProperty("item", getItemId(result.asItem()));
+            jsonResult.addProperty("count", result.getCount());
+            jsonResult.addProperty("item", getItemId(result.getItem().asItem()));
 
             json.add("result", jsonResult);
         }
 
         @Override
         public ResourceLocation getId() {
-            return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, getItemName(result) + "_from_" + getItemName(input) + "_with_" + getItemName(stamp) + "_press");
+            return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, getItemName(result.getItem()) + "_from_" + getItemName(input) + "_with_" + getItemName(stamp) + "_press");
         }
 
         @Override

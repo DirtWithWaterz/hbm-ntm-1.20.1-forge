@@ -126,32 +126,32 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.INFINITE_FUSION_CORE);
         simpleItem(RegisterItems.MAKESHIFT_ENERGY_CORE);
 
-        simpleItem(RegisterItems.GENERIC_BATTERY_EMPTY);
-        simpleItem(RegisterItems.ADVANCED_4_CELL_EMPTY);
-        simpleItem(RegisterItems.ADVANCED_12_CELL_EMPTY);
-        simpleItem(RegisterItems.ADVANCED_CELL_EMPTY);
-        simpleItem(RegisterItems.ADVANCED_BATTERY_EMPTY);
-        simpleItem(RegisterItems.LITHIUM_3_CELL_EMPTY);
-        simpleItem(RegisterItems.LITHIUM_6_CELL_EMPTY);
-        simpleItem(RegisterItems.LITHIUM_BATTERY_EMPTY);
-        simpleItem(RegisterItems.LITHIUM_CELL_EMPTY);
-        simpleItem(RegisterItems.REDSTONE_6_CELL_EMPTY);
-        simpleItem(RegisterItems.REDSTONE_24_CELL_EMPTY);
-        simpleItem(RegisterItems.REDSTONE_CELL_EMPTY);
-        simpleItem(RegisterItems.SCHRABIDIUM_2_CELL_EMPTY);
-        simpleItem(RegisterItems.SCHRABIDIUM_4_CELL_EMPTY);
-        simpleItem(RegisterItems.SCHRABIDIUM_CELL_EMPTY);
-        simpleItem(RegisterItems.SCHRABIDIUM_BATTERY_EMPTY);
-        simpleItem(RegisterItems.SPARK_6_CELL_EMPTY);
-        simpleItem(RegisterItems.SPARK_BATTERY_EMPTY);
-        simpleItem(RegisterItems.SPARK_CAR_BATTERY_EMPTY);
-        simpleItem(RegisterItems.SPARK_100_CELL_EMPTY);
-        simpleItem(RegisterItems.TRIXITE_BATTERY_EMPTY);
-        simpleItem(RegisterItems.SPARK_1000_CELL_EMPTY);
-        simpleItem(RegisterItems.SPARK_2500_CELL_EMPTY);
-        simpleItem(RegisterItems.SPARK_10000_CELL_EMPTY);
-        simpleItem(RegisterItems.SPARK_POWER_CELL_EMPTY);
-        simpleItem(RegisterItems.ELECTRONIUM_CUBE_EMPTY);
+        simpleItem(RegisterItems.GENERIC_BATTERY_FULL);
+        simpleItem(RegisterItems.ADVANCED_4_CELL_FULL);
+        simpleItem(RegisterItems.ADVANCED_12_CELL_FULL);
+        simpleItem(RegisterItems.ADVANCED_CELL_FULL);
+        simpleItem(RegisterItems.ADVANCED_BATTERY_FULL);
+        simpleItem(RegisterItems.LITHIUM_3_CELL_FULL);
+        simpleItem(RegisterItems.LITHIUM_6_CELL_FULL);
+        simpleItem(RegisterItems.LITHIUM_BATTERY_FULL);
+        simpleItem(RegisterItems.LITHIUM_CELL_FULL);
+        simpleItem(RegisterItems.REDSTONE_6_CELL_FULL);
+        simpleItem(RegisterItems.REDSTONE_24_CELL_FULL);
+        simpleItem(RegisterItems.REDSTONE_CELL_FULL);
+        simpleItem(RegisterItems.SCHRABIDIUM_2_CELL_FULL);
+        simpleItem(RegisterItems.SCHRABIDIUM_4_CELL_FULL);
+        simpleItem(RegisterItems.SCHRABIDIUM_CELL_FULL);
+        simpleItem(RegisterItems.SCHRABIDIUM_BATTERY_FULL);
+        simpleItem(RegisterItems.SPARK_6_CELL_FULL);
+        simpleItem(RegisterItems.SPARK_BATTERY_FULL);
+        simpleItem(RegisterItems.SPARK_CAR_BATTERY_FULL);
+        simpleItem(RegisterItems.SPARK_100_CELL_FULL);
+        simpleItem(RegisterItems.TRIXITE_BATTERY_FULL);
+        simpleItem(RegisterItems.SPARK_1000_CELL_FULL);
+        simpleItem(RegisterItems.SPARK_2500_CELL_FULL);
+        simpleItem(RegisterItems.SPARK_10000_CELL_FULL);
+        simpleItem(RegisterItems.SPARK_POWER_CELL_FULL);
+        simpleItem(RegisterItems.ELECTRONIUM_CUBE_FULL);
 
         simpleItem(RegisterItems.REACHER);
         simpleItem(RegisterItems.GEIGER_COUNTER);
@@ -201,6 +201,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.tryParse("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "item/" + item.getId().getPath().replace("_empty", "")));
+                ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "item/" + item.getId().getPath().replace("_full", "")));
     }
 }

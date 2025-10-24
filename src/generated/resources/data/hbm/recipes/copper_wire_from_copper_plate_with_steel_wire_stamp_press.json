@@ -5,11 +5,11 @@
       "item": "hbm:steel_wire_stamp"
     },
     {
-      "item": "minecraft:iron_ingot"
+      "item": "hbm:copper_plate"
     }
   ],
   "result": {
-    "count": 1,
-    "item": "hbm:iron_plate"
+    "count": 8,
+    "item": "hbm:copper_wire"
   }
 }

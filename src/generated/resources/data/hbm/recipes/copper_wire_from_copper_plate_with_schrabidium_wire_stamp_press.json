@@ -5,11 +5,11 @@
       "item": "hbm:schrabidium_wire_stamp"
     },
     {
-      "item": "hbm:steel_ingot"
+      "item": "hbm:copper_plate"
     }
   ],
   "result": {
-    "count": 1,
-    "item": "hbm:steel_plate"
+    "count": 8,
+    "item": "hbm:copper_wire"
   }
 }

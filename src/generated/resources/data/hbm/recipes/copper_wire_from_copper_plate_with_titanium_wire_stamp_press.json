@@ -5,11 +5,11 @@
       "item": "hbm:titanium_wire_stamp"
     },
     {
-      "item": "hbm:titanium_ingot"
+      "item": "hbm:copper_plate"
     }
   ],
   "result": {
-    "count": 1,
-    "item": "hbm:titanium_plate"
+    "count": 8,
+    "item": "hbm:copper_wire"
   }
 }
