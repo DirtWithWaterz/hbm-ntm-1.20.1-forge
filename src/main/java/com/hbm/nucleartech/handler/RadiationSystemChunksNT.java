@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.HBM;
+import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.interfaces.IRadResistantBlock;
 import com.hbm.nucleartech.item.custom.GeigerCounterItem;
@@ -28,6 +29,7 @@ import com.hbm.nucleartech.handler.RadiationSystemChunksNT.ChunkStorageCompat.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
+import net.minecraft.world.level.chunk.PalettedContainer;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.*;
@@ -54,6 +56,7 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Predicate;
 
 import static com.hbm.nucleartech.handler.RadiationSystemNT.getAabb;
 
@@ -1421,11 +1424,6 @@ public class RadiationSystemChunksNT {
             }
             else {
 
-                BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
-
-                int baseX = chunk.getPos().getMinBlockX();
-                int baseZ = chunk.getPos().getMinBlockZ();
-
                 LevelChunkSection[] sections = chunk.getSections();
                 for(int i = 0; i < sections.length; i++) {
 
@@ -1433,22 +1431,29 @@ public class RadiationSystemChunksNT {
 
                     if(section == null || section.hasOnlyAir()) continue;
 
-                    int sectionBaseY = (i << 4) -64;
+                    if(section.getStates().data.palette.maybeHas(Predicate.isEqual(RegisterBlocks.URANIUM_ORE.get().defaultBlockState()))) {
 
-                    for(int lx = 0; lx < 16; lx++) {
+                        BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
 
-                        int wx = baseX + lx;
-                        for(int ly = 0; ly < 16; ly++) {
+                        int baseX = chunk.getPos().getMinBlockX();
+                        int baseZ = chunk.getPos().getMinBlockZ();
 
-                            int wy = sectionBaseY + ly;
-                            for(int lz = 0; lz < 16; lz++) {
+                        int sectionBaseY = (i << 4) -64;
+                        for(int lx = 0; lx < 16; lx++) {
 
-                                int wz = baseZ + lz;
+                            int wx = baseX + lx;
+                            for(int ly = 0; ly < 16; ly++) {
 
-                                if(section.getBlockState(lx, ly, lz).getBlock() instanceof HazardBlock hb) {
+                                int wy = sectionBaseY + ly;
+                                for(int lz = 0; lz < 16; lz++) {
 
-                                    mPos.set(wx, wy, wz);
-                                    hb.onGenerated(level, mPos);
+                                    int wz = baseZ + lz;
+
+                                    if(section.getStates().get(lx, ly, lz).getBlock() instanceof HazardBlock hb) {
+
+                                        mPos.set(wx, wy, wz);
+                                        hb.onGenerated(level, mPos);
+                                    }
                                 }
                             }
                         }
@@ -1475,11 +1480,6 @@ public class RadiationSystemChunksNT {
 
                 try {
 
-                    BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
-
-                    int baseX = chunk.getPos().getMinBlockX();
-                    int baseZ = chunk.getPos().getMinBlockZ();
-
                     LevelChunkSection[] sections = chunk.getSections();
                     for(int i = 0; i < sections.length; i++) {
 
@@ -1487,22 +1487,29 @@ public class RadiationSystemChunksNT {
 
                         if(section == null || section.hasOnlyAir()) continue;
 
-                        int sectionBaseY = (i << 4) -64;
+                        if(section.getStates().data.palette.maybeHas(Predicate.isEqual(RegisterBlocks.URANIUM_ORE.get().defaultBlockState()))) {
 
-                        for(int lx = 0; lx < 16; lx++) {
+                            BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
 
-                            int wx = baseX + lx;
-                            for(int ly = 0; ly < 16; ly++) {
+                            int baseX = chunk.getPos().getMinBlockX();
+                            int baseZ = chunk.getPos().getMinBlockZ();
 
-                                int wy = sectionBaseY + ly;
-                                for(int lz = 0; lz < 16; lz++) {
+                            int sectionBaseY = (i << 4) -64;
+                            for(int lx = 0; lx < 16; lx++) {
 
-                                    int wz = baseZ + lz;
+                                int wx = baseX + lx;
+                                for(int ly = 0; ly < 16; ly++) {
 
-                                    if(section.getBlockState(lx, ly, lz).getBlock() instanceof HazardBlock hb) {
+                                    int wy = sectionBaseY + ly;
+                                    for(int lz = 0; lz < 16; lz++) {
 
-                                        mPos.set(wx, wy, wz);
-                                        hb.onGenerated(level, mPos);
+                                        int wz = baseZ + lz;
+
+                                        if(section.getStates().get(lx, ly, lz).getBlock() instanceof HazardBlock hb) {
+
+                                            mPos.set(wx, wy, wz);
+                                            hb.onGenerated(level, mPos);
+                                        }
                                     }
                                 }
                             }
