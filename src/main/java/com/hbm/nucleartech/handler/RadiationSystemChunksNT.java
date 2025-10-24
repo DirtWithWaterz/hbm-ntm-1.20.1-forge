@@ -57,7 +57,10 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
+import static com.hbm.nucleartech.HBM.HAZARD_STATES;
+import static com.hbm.nucleartech.block.RegisterBlocks.HAZARD_BLOCKS;
 import static com.hbm.nucleartech.handler.RadiationSystemNT.getAabb;
 
 /**
@@ -1431,7 +1434,7 @@ public class RadiationSystemChunksNT {
 
                     if(section == null || section.hasOnlyAir()) continue;
 
-                    if(section.getStates().data.palette.maybeHas(Predicate.isEqual(RegisterBlocks.URANIUM_ORE.get().defaultBlockState()))) {
+                    if(section.getStates().data.palette.maybeHas(HAZARD_STATES::contains)) {
 
                         BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
 
@@ -1487,7 +1490,7 @@ public class RadiationSystemChunksNT {
 
                         if(section == null || section.hasOnlyAir()) continue;
 
-                        if(section.getStates().data.palette.maybeHas(Predicate.isEqual(RegisterBlocks.URANIUM_ORE.get().defaultBlockState()))) {
+                        if(section.getStates().data.palette.maybeHas(HAZARD_STATES::contains)) {
 
                             BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
 

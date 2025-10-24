@@ -29,6 +29,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -49,9 +50,13 @@ import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
 import java.io.File;
+import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
+import static com.hbm.nucleartech.block.RegisterBlocks.HAZARD_BLOCKS;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(HBM.MOD_ID)
@@ -112,6 +117,8 @@ public class HBM
         messageID++;
     }
 
+    public static Set<BlockState> HAZARD_STATES = null;
+
     private void commonSetup(final FMLCommonSetupEvent event) {
 
         configDir = FMLPaths.CONFIGDIR.get().toFile();
@@ -125,6 +132,16 @@ public class HBM
         ArmorUtil.register();
 
         GeigerCounterItem.initSoundMap();
+
+        HAZARD_STATES = Set.of(
+                RegisterBlocks.URANIUM_ORE.get().defaultBlockState(),
+                RegisterBlocks.DEEPSLATE_URANIUM_ORE.get().defaultBlockState(),
+                RegisterBlocks.RED_THORIUM_ORE.get().defaultBlockState(),
+                RegisterBlocks.ORANGE_THORIUM_ORE.get().defaultBlockState(),
+                RegisterBlocks.YELLOW_THORIUM_ORE.get().defaultBlockState(),
+                RegisterBlocks.WHITE_THORIUM_ORE.get().defaultBlockState(),
+                RegisterBlocks.LIGHT_GRAY_THORIUM_ORE.get().defaultBlockState(),
+                RegisterBlocks.BROWN_THORIUM_ORE.get().defaultBlockState());
     }
 
     // Add the example block item to the building blocks tab
