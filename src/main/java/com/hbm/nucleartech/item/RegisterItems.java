@@ -9,12 +9,16 @@ import com.hbm.nucleartech.item.custom.*;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.item.special.CustomLoreItem;
 import com.hbm.nucleartech.util.FloatingLong;
+import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class RegisterItems {
 
@@ -59,7 +63,6 @@ public class RegisterItems {
     public static final RegistryObject<Item> DESH_INGOT = ITEMS.register("desh_ingot",
             () -> new Item(new Item.Properties()));
 
-
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -67,6 +70,12 @@ public class RegisterItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_TITANIUM = ITEMS.register("raw_titanium",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TITANIUM_POWDER = ITEMS.register("titanium_powder",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot",

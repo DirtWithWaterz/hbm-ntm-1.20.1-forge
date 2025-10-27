@@ -28,8 +28,12 @@ import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
-    private static final List<ItemLike> TITANIUM_SMELTABLES = List.of(RegisterBlocks.TITANIUM_ORE.get(), RegisterBlocks.DEEPSLATE_TITANIUM_ORE.get(), RegisterItems.RAW_TITANIUM.get());
-    private static final List<ItemLike> URANIUM_SMELTABLES = List.of(RegisterBlocks.URANIUM_ORE.get(), RegisterBlocks.DEEPSLATE_URANIUM_ORE.get(), RegisterItems.RAW_URANIUM.get(), RegisterItems.URANIUM_CRYSTAL.get());
+    private static final List<ItemLike> TITANIUM_SMELTABLES = List.of(RegisterBlocks.TITANIUM_ORE.get()
+            , RegisterBlocks.DEEPSLATE_TITANIUM_ORE.get(), RegisterItems.RAW_TITANIUM.get());
+    private static final List<ItemLike> URANIUM_SMELTABLES = List.of(RegisterBlocks.URANIUM_ORE.get()
+            , RegisterBlocks.DEEPSLATE_URANIUM_ORE.get(), RegisterItems.RAW_URANIUM.get(), RegisterItems.URANIUM_CRYSTAL.get());
+    private static final List<ItemLike> ALUMINIUM_SMELTABLES = List.of(RegisterBlocks.ALUMINIUM_ORE.get()
+            , RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINIUM.get());
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
@@ -44,8 +48,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
 
-        //oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 200, "ingot_titanium");
-        //oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 100, "ingot_titanium");
+        oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 200, "ingot_titanium");
+        oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 100, "ingot_titanium");
 
         oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
@@ -68,7 +72,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         results = List.of(
                 Pair.of(RegisterItems.RAW_THORIUM.get(), new MetaData(1, 1, 100)),
                 Pair.of(Items.CLAY_BALL, new MetaData(0, 2, 100)),
-                Pair.of(Items.GOLD_NUGGET, new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.LEAD_NUGGET.get(), new MetaData(1, 1, 5)),
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 2))
         );
         itemShredding(consumer, RegisterItems.THORIUM_SHALE.get(), results, FloatingLong.create(1.39E1), 60);
@@ -79,9 +83,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         );
         itemShredding(consumer, RegisterItems.RAW_URANIUM.get(), results, FloatingLong.create(1.39E1), 60);
         results = List.of(
-                Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(1, 1, 100)),
-                Pair.of(RegisterItems.LEAD_NUGGET.get(), new MetaData(1, 1, 5)),
-                Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 2))
+                Pair.of(RegisterItems.IRON_POWDER.get(), new MetaData(2, 2, 100)),
+                Pair.of(Items.GOLD_NUGGET, new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.TITANIUM_POWDER.get(), new MetaData(1, 1, 2))
         );
         itemShredding(consumer, Items.RAW_IRON ,results, FloatingLong.create(1.39E1), 60);
 
