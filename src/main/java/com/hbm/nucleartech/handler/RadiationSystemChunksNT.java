@@ -1414,7 +1414,7 @@ public class RadiationSystemChunksNT {
 
             ServerLevel level = (ServerLevel)e.getLevel();
 
-            if(level.getServer().isDedicatedServer()) {
+//            if(level.getServer().isDedicatedServer()) {
 
                 try {
 
@@ -1424,47 +1424,47 @@ public class RadiationSystemChunksNT {
 
                     HBM.LOGGER.error("failed to execute initialize chunk task: ", ex);
                 }
-            }
-            else {
-
-                LevelChunkSection[] sections = chunk.getSections();
-                for(int i = 0; i < sections.length; i++) {
-
-                    LevelChunkSection section = sections[i];
-
-                    if(section == null || section.hasOnlyAir()) continue;
-
-                    if(section.getStates().data.palette.maybeHas(HAZARD_STATES::contains)) {
-
-                        BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
-
-                        int baseX = chunk.getPos().getMinBlockX();
-                        int baseZ = chunk.getPos().getMinBlockZ();
-
-                        int sectionBaseY = (i << 4) -64;
-                        for(int lx = 0; lx < 16; lx++) {
-
-                            int wx = baseX + lx;
-                            for(int ly = 0; ly < 16; ly++) {
-
-                                int wy = sectionBaseY + ly;
-                                for(int lz = 0; lz < 16; lz++) {
-
-                                    int wz = baseZ + lz;
-
-                                    if(section.getStates().get(lx, ly, lz).getBlock() instanceof HazardBlock hb) {
-
-                                        mPos.set(wx, wy, wz);
-                                        hb.onGenerated(level, mPos);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                getChunkStorage(chunk).instance.setInitialized();
+//            }
+//            else {
+//
+//                LevelChunkSection[] sections = chunk.getSections();
+//                for(int i = 0; i < sections.length; i++) {
+//
+//                    LevelChunkSection section = sections[i];
+//
+//                    if(section == null || section.hasOnlyAir()) continue;
+//
+//                    if(section.getStates().data.palette.maybeHas(HAZARD_STATES::contains)) {
+//
+//                        BlockPos.MutableBlockPos mPos = new BlockPos.MutableBlockPos();
+//
+//                        int baseX = chunk.getPos().getMinBlockX();
+//                        int baseZ = chunk.getPos().getMinBlockZ();
+//
+//                        int sectionBaseY = (i << 4) -64;
+//                        for(int lx = 0; lx < 16; lx++) {
+//
+//                            int wx = baseX + lx;
+//                            for(int ly = 0; ly < 16; ly++) {
+//
+//                                int wy = sectionBaseY + ly;
+//                                for(int lz = 0; lz < 16; lz++) {
+//
+//                                    int wz = baseZ + lz;
+//
+//                                    if(section.getStates().get(lx, ly, lz).getBlock() instanceof HazardBlock hb) {
+//
+//                                        mPos.set(wx, wy, wz);
+//                                        hb.onGenerated(level, mPos);
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//                getChunkStorage(chunk).instance.setInitialized();
 //                    HBM.LOGGER.debug("chunk at [{}, {}] has been initialized.", chunk.getPos().x, chunk.getPos().z);
-            }
+//            }
         }
 
         private static class InitializeChunkTask implements Runnable {
