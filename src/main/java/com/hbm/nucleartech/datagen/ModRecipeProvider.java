@@ -44,6 +44,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
 
+        //oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 200, "ingot_titanium");
+        //oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 100, "ingot_titanium");
+
+        oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
+        oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
+
 
 
         //=============================plate recipes===================================================================
@@ -157,8 +163,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(RegisterItems.URANIUM_BILLET.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_BILLET.get()), has(RegisterItems.URANIUM_BILLET.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
-       //============================================tools==============================================================
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.HAND_DRILL_DESH.get())
+//============================================tools==============================================================
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.DESH_BLADE.get())//HAND_DRILL_DESH
                 .pattern("D  ")
                 .pattern("DSS")
                 .pattern("  S")
