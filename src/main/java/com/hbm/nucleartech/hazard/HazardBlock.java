@@ -78,7 +78,7 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
         switch(extEffect) {
             case RADFOG:
-                break;
+                sPart(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), pRandom);
             case SCHRAB:
                 break;
             case FLAMES:

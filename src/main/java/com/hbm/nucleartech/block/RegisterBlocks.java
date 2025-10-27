@@ -5,6 +5,9 @@ import com.hbm.nucleartech.block.custom.*;
 import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.hazard.HazardBlockItem;
 import com.hbm.nucleartech.item.RegisterItems;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -32,7 +35,7 @@ public class RegisterBlocks {
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f),
                     4500
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> TITANIUM_BLOCK = registerBlock("titanium_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
@@ -131,8 +134,8 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> RAD_RESISTANT_BLOCK = registerBlock("rad_resistant_block",
             () -> new RadResistantBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f)
-                    , 1f, 0.085f, 1f
-            )); // has values of lead ^^ ~100% resistance (water is 1f, 0.085f. Lead is 11.34f, 0.07f)
+                    , 99.99f, 1f
+            )); // has values of lead ^^ ~100% resistance (water is 79. Lead is 99.99)
 
     public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
@@ -195,32 +198,33 @@ public class RegisterBlocks {
             ));
 
     public static final RegistryObject<Block> LEAD_ORE = registerBlock("lead_ore",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
-                    .strength(6.0f, 4.0f)
+            () -> new RadResistantBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
+                    .strength(6.0f, 4.0f),
+                    80, 1
             ));
 
     public static final RegistryObject<Block> DEEPSLATE_LEAD_ORE = registerBlock("deepslate_lead_ore",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
-                    .strength(9.0f, 5.0f)
+            () -> new RadResistantBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
+                    .strength(9.0f, 5.0f),
+                    90, 1
+            ));
+
+    public static final RegistryObject<Block> COAL_AIR = registerBlock("coal_air",
+            () -> new CoalAirBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_AIR).randomTicks()));
+
+    public static final RegistryObject<Block> LIGNITE_ORE = registerBlock("lignite_ore",
+            () -> new BlackLungerBlock(BlockBehaviour.Properties.copy(Blocks.COAL_ORE),
+                    UniformInt.of(1, 3)
+            ));
+
+    public static final RegistryObject<Block> DEEPSLATE_LIGNITE_ORE = registerBlock("deepslate_lignite_ore",
+            () -> new BlackLungerBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_COAL_ORE),
+                    UniformInt.of(2, 3)
             ));
 
     /*
     Needs values done.
      */
-
-    public static final RegistryObject<Block> LIGNITE_ORE = registerHazardBlock(0.003, "lignite_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
-            ));
-
-    public static final RegistryObject<Block> DEEPSLATE_LIGNITE_ORE = registerHazardBlock(0.0035, "deepslate_lignite_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
-            ));
 
     public static final RegistryObject<Block> ASBESTOS_ORE = registerHazardBlock(0.003, "asbestos_ore",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)

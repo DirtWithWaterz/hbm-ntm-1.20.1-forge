@@ -10,20 +10,14 @@ import net.minecraft.world.level.block.state.BlockState;
 @SuppressWarnings("NonAsciiCharacters")
 public class RadResistantBlock extends Block implements IRadResistantBlock {
 
-    float μM;
-    float ρ;
-
-    public float μ;
+    public float density;
 
     public float thickness; // in meters (each pixel is 1/16th of a meter)
 
-    public RadResistantBlock(Properties pProperties, float ρ, float μM, float thickness) {
+    public RadResistantBlock(Properties pProperties, float density, float thickness) {
         super(pProperties);
 
-        this.ρ = ρ;
-        this.μM = μM;
-
-        this.μ = μM * ρ * 100F;
+        this.density = density;
 
         this.thickness = thickness;
     }
@@ -39,9 +33,8 @@ public class RadResistantBlock extends Block implements IRadResistantBlock {
     @Override
     public int getResistance() {
 
-        int result = Math.round(100f - ((100f * (float) Math.exp(-μ*thickness)) * 1000f));
-//        System.out.println(result);
-        return result;
+        //        System.out.println(result);
+        return Math.round(density*thickness);
     }
 
     @Override
