@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 6.7,
+  "group": "ingot_titanium",
+  "ingredient": {
+    "item": "hbm:deepslate_aluminum_ore"
+  },
+  "result": "hbm:aluminum_ingot"
+}
