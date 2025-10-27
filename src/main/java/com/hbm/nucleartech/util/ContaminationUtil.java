@@ -24,6 +24,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.animal.horse.SkeletonHorse;
@@ -47,7 +48,6 @@ import java.util.List;
 
 import static com.hbm.nucleartech.handler.RadiationSystemChunksNT.getPocket;
 
-@SuppressWarnings("NonAsciiCharacters")
 public class ContaminationUtil {
 
     private static final String NTM_NEUTRON_NBT_KEY = "ntm_neutron";
@@ -139,7 +139,7 @@ public class ContaminationUtil {
                 if (block instanceof IRadResistantBlock radBlock) {
 
 //                    System.out.println("[Debug] Found a rad resistant block in-between " + e.getName().getString() + " and " + pLevel.getBlockState(new BlockPos((int)x, (int)y-1, (int)z)).getBlock().getName().getString() + "; Shielding entity from radiation");
-                    radResistantBlocks.add(new Vec2(((RadResistantBlock)radBlock).μ, ((RadResistantBlock)radBlock).thickness));
+                    radResistantBlocks.add(new Vec2(((RadResistantBlock)radBlock).density, ((RadResistantBlock)radBlock).thickness));
                 }
                 else
                     res += block.getExplosionResistance(block.defaultBlockState(), pLevel, stepPos, null);
@@ -156,8 +156,8 @@ public class ContaminationUtil {
 
                 for(Vec2 vec2 : radResistantBlocks) {
 
-                    double exp = Math.exp(-vec2.x * vec2.y);
-                    eRads = (eRads * (float)exp) * 1000f;
+                    double exp = (1 - (vec2.x / 100)) * vec2.y;
+                    eRads = (eRads * (float)exp);
 //                    System.err.println("[Debug] eRads: " + eRads + ", exponent: " + (float)exp);
                 }
 //                if(pLevel.getBlockState(worldPosition).getBlock() instanceof HazardBlock && e instanceof Player)
@@ -326,6 +326,24 @@ public class ContaminationUtil {
 //                HbmCapabilities.getData(entity).setValue(Type.NEUTRON, amount);
                 if(entity instanceof Player)
                     HbmCapabilities.getData(entity).syncLivingVariables(entity);
+                return true;
+
+            case COAL:
+
+                if(amount >= 0) {
+
+                    if(!ArmorRegistry.hasProtection(entity, EquipmentSlot.HEAD, ArmorRegistry.HazardClass.PARTICLE_COARSE))
+                        HbmCapabilities.getData(entity).addValue(Type.BLACKLUNG, amount);
+                    else
+                        ArmorUtil.damageGasMaskFilter(entity, 1);
+                }
+                else
+                    HbmCapabilities.getData(entity).addValue(Type.BLACKLUNG, amount);
+
+
+                if(entity instanceof Player)
+                    HbmCapabilities.getData(entity).syncLivingVariables(entity);
+
                 return true;
 
             default:

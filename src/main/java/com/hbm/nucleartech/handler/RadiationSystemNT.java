@@ -43,6 +43,7 @@ import org.jetbrains.annotations.NotNull;
 import java.sql.SQLWarning;
 import java.util.*;
 
+import static com.hbm.nucleartech.capability.entity.LivingEntityCapability.maxBlacklung;
 import static com.hbm.nucleartech.util.ContaminationUtil.getPlayerNeutronRads;
 
 
@@ -120,6 +121,62 @@ public class RadiationSystemNT {
 
                                         if (player.isCreative() || player.isSpectator())
                                             continue;
+
+                                    }
+
+                                    int blacklung = (int)HbmCapabilities.getData(entity).getValue(Type.BLACKLUNG);
+
+//                                    if(blacklung > 0)
+//                                        System.out.println("[Debug] Blacklung = " + blacklung);
+
+                                    if(blacklung < maxBlacklung*0.25) {
+
+                                        ContaminationUtil.contaminate(entity, ContaminationUtil.HazardType.COAL, ContaminationUtil.ContaminationType.CREATIVE, -1);
+
+                                    }
+                                    else {
+
+                                        // cough at random
+
+//                                        if(world.random.nextInt(100) == 0)
+//                                            System.out.println("[Debug] yippee blacklung cough!!");
+
+                                        if(blacklung > maxBlacklung*0.5) {
+
+                                            // cough soot particles at random
+
+                                            if (world.random.nextInt(300) == 0)
+                                                entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10 * 20, 2, true, false));
+                                        }
+                                        if(blacklung > maxBlacklung*0.75) {
+
+                                            // cough bloody soot particles at random
+
+                                            if (world.random.nextInt(300) == 0)
+                                                entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10 * 20, 3, true, false));
+                                            if (world.random.nextInt(300) == 0)
+                                                entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 8 * 20, 2, true, false));
+                                        }
+                                        if(blacklung > maxBlacklung*0.9) {
+
+                                            // cough bloody soot particles at random
+
+                                            if (world.random.nextInt(300) == 0)
+                                                entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10 * 20, 3, true, false));
+                                            if (world.random.nextInt(300) == 0)
+                                                entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 10 * 20, 3, true, false));
+                                        }
+                                        if(blacklung > maxBlacklung) {
+
+                                            // cough bloody soot particles at random
+
+                                            entity.hurt(RegisterDamageSources.BLACKLUNG, 1000f);
+
+                                            if (world.random.nextInt(300) == 0)
+                                                entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10 * 20, 3, true, false));
+                                            if (world.random.nextInt(300) == 0)
+                                                entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 10 * 20, 3, true, false));
+                                        }
                                     }
 
                                     double eRad = (double) HbmCapabilities.getData(entity).getValue(Type.RADIATION);
