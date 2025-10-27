@@ -55,60 +55,52 @@ public class RegisterBlocks {
                     .strength(8.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> URANIUM_ORE = registerHazardBlock(0.003, "uranium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
+    public static final RegistryObject<Block> URANIUM_ORE = registerBlock("uranium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
                     .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.0035
+                    UniformInt.of(2, 4)
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_URANIUM_ORE = registerHazardBlock(0.0035, "deepslate_uranium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
+    public static final RegistryObject<Block> DEEPSLATE_URANIUM_ORE = registerBlock("deepslate_uranium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
                     .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.0035
+                    UniformInt.of(2, 5)
             ));
 
-    public static final RegistryObject<Block> RED_THORIUM_ORE = registerHazardBlock(0.1, "red_thorium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+    public static final RegistryObject<Block> RED_THORIUM_ORE = registerBlock("red_thorium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(3.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.001
+                    UniformInt.of(2, 4)
             ));
 
-    public static final RegistryObject<Block> ORANGE_THORIUM_ORE = registerHazardBlock(0.1, "orange_thorium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+    public static final RegistryObject<Block> ORANGE_THORIUM_ORE = registerBlock("orange_thorium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(3.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.001
+                    UniformInt.of(2, 4)
             ));
 
-    public static final RegistryObject<Block> YELLOW_THORIUM_ORE = registerHazardBlock(0.1, "yellow_thorium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+    public static final RegistryObject<Block> YELLOW_THORIUM_ORE = registerBlock("yellow_thorium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(3.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.001
+                    UniformInt.of(2, 4)
             ));
 
-    public static final RegistryObject<Block> WHITE_THORIUM_ORE = registerHazardBlock(0.1, "white_thorium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+    public static final RegistryObject<Block> WHITE_THORIUM_ORE = registerBlock("white_thorium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(3.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.001
+                    UniformInt.of(2, 4)
             ));
 
-    public static final RegistryObject<Block> LIGHT_GRAY_THORIUM_ORE = registerHazardBlock(0.1, "light_gray_thorium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+    public static final RegistryObject<Block> LIGHT_GRAY_THORIUM_ORE = registerBlock("light_gray_thorium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(3.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.001
+                    UniformInt.of(2, 4)
             ));
 
-    public static final RegistryObject<Block> BROWN_THORIUM_ORE = registerHazardBlock(0.1, "brown_thorium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
+    public static final RegistryObject<Block> BROWN_THORIUM_ORE = registerBlock("brown_thorium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(3.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.001
+                    UniformInt.of(2, 4)
             ));
 
     public static final RegistryObject<Block> RADIATION_DECONTAMINATOR = registerBlock("radiation_decontaminator",

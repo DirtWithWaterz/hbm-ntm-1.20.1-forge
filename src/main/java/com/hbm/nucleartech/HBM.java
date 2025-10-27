@@ -117,8 +117,6 @@ public class HBM
         messageID++;
     }
 
-    public static Set<BlockState> HAZARD_STATES = null;
-
     private void commonSetup(final FMLCommonSetupEvent event) {
 
         configDir = FMLPaths.CONFIGDIR.get().toFile();
@@ -132,16 +130,6 @@ public class HBM
         ArmorUtil.register();
 
         GeigerCounterItem.initSoundMap();
-
-        HAZARD_STATES = Set.of(
-                RegisterBlocks.URANIUM_ORE.get().defaultBlockState(),
-                RegisterBlocks.DEEPSLATE_URANIUM_ORE.get().defaultBlockState(),
-                RegisterBlocks.RED_THORIUM_ORE.get().defaultBlockState(),
-                RegisterBlocks.ORANGE_THORIUM_ORE.get().defaultBlockState(),
-                RegisterBlocks.YELLOW_THORIUM_ORE.get().defaultBlockState(),
-                RegisterBlocks.WHITE_THORIUM_ORE.get().defaultBlockState(),
-                RegisterBlocks.LIGHT_GRAY_THORIUM_ORE.get().defaultBlockState(),
-                RegisterBlocks.BROWN_THORIUM_ORE.get().defaultBlockState());
     }
 
     // Add the example block item to the building blocks tab
