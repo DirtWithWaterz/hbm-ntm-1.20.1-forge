@@ -9,12 +9,16 @@ import com.hbm.nucleartech.item.custom.*;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.item.special.CustomLoreItem;
 import com.hbm.nucleartech.util.FloatingLong;
+import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class RegisterItems {
 
@@ -41,6 +45,9 @@ public class RegisterItems {
     //=============================================WIRE========================================================
     public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLD_WIRE = ITEMS.register("gold_wire",
+            () -> new Item(new Item.Properties()));
     //======================================MACHINE PARTS======================================================
 
     public static final RegistryObject<Item> MOTOR = ITEMS.register("motor",
@@ -53,6 +60,9 @@ public class RegisterItems {
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DESH_INGOT = ITEMS.register("desh_ingot",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -60,6 +70,12 @@ public class RegisterItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_TITANIUM = ITEMS.register("raw_titanium",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TITANIUM_POWDER = ITEMS.register("titanium_powder",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot",
@@ -393,7 +409,7 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> M65_MASK = ITEMS.register("m65_mask",
             () -> new M65Item(new Item.Properties(), ArmorMaterials.IRON));
-
+ //============================================filters==================================================================
     public static final RegistryObject<Item> GAS_MASK_FILTER_MONO = ITEMS.register("gas_mask_filter_mono",
             () -> new FilterItem(new Item.Properties(), 12000));
 
@@ -434,6 +450,7 @@ public class RegisterItems {
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.legs_only));
     public static final RegistryObject<Item> HAZMAT_BOOTS_GREY = ITEMS.register("hazmat_boots_grey",
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.boots_only));
+    //    ========================================tools=========================================
 
     //    ====================================== machines ======================================
 
