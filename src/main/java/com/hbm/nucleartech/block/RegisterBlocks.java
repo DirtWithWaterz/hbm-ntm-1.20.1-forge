@@ -213,12 +213,12 @@ public class RegisterBlocks {
             () -> new CoalAirBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_AIR).randomTicks()));
 
     public static final RegistryObject<Block> LIGNITE_ORE = registerBlock("lignite_ore",
-            () -> new BlackLungerBlock(BlockBehaviour.Properties.copy(Blocks.COAL_ORE),
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.COAL_ORE),
                     UniformInt.of(1, 3)
             ));
 
     public static final RegistryObject<Block> DEEPSLATE_LIGNITE_ORE = registerBlock("deepslate_lignite_ore",
-            () -> new BlackLungerBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_COAL_ORE),
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_COAL_ORE),
                     UniformInt.of(2, 3)
             ));
 

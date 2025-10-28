@@ -63,7 +63,7 @@ public class RadiationSystemNT {
     /**
      * @deprecated "When implementing max health related changes, update entity capability: Type.OLD_MAX_HEALTH. (20 + whatever modifications) p.s. this makes the mod incompatible with other mods that add max health, add compatibilities later. Other data that must be updated later is in onPlayerRespawnedSyncPlayerCapability() in HbmCapabilities.java"
      */
-    @Deprecated(forRemoval = true, since = "1.8.21")
+    @Deprecated(since = "1.8.21")
     private static void updateEntityContamination(Level world, boolean updateData) {
 
 //        System.err.println("updating contamination");

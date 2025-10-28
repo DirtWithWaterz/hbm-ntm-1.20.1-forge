@@ -12,7 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = HBM.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public final class VanillaIntercepts {
+public final class InterceptUtil {
 
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
@@ -20,7 +20,11 @@ public final class VanillaIntercepts {
         if (event.getLevel().isClientSide()) return; // server only
 
         BlockState state = event.getLevel().getBlockState(event.getPos());
-        if (state.is(Blocks.COAL_ORE) || state.is(Blocks.DEEPSLATE_COAL_ORE)) {
+        if (
+                state.is(Blocks.COAL_ORE)
+                || state.is(Blocks.DEEPSLATE_COAL_ORE)
+                || state.is(RegisterBlocks.LIGNITE_ORE.get())
+                || state.is(RegisterBlocks.DEEPSLATE_LIGNITE_ORE.get())) {
             ServerLevel server = (ServerLevel) event.getLevel();
             BlockPos pos = event.getPos();
 
