@@ -30,7 +30,7 @@
       }
     },
     {
-      "item": "hbm:thorium_powder",
+      "item": "hbm:uranium_powder",
       "metadata": {
         "chance": 2,
         "max_amount": 1,
