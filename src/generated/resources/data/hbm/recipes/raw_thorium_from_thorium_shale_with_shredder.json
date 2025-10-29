@@ -22,7 +22,7 @@
       }
     },
     {
-      "item": "minecraft:gold_nugget",
+      "item": "hbm:lead_nugget",
       "metadata": {
         "chance": 5,
         "max_amount": 1,

@@ -78,6 +78,9 @@ public class RegisterItems {
     public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> GOLD_POWDER = ITEMS.register("gold_powder",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot",
             () -> new HazardItem(0.35, new Item.Properties()));
 

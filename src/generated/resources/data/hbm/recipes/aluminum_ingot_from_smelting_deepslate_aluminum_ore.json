@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 6.7,
-  "group": "ingot_titanium",
+  "group": "ingot_aluminium",
   "ingredient": {
     "item": "hbm:deepslate_aluminum_ore"
   },
