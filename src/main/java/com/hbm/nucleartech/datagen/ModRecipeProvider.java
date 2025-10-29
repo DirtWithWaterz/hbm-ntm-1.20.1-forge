@@ -80,8 +80,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         itemShredding(consumer, RegisterItems.THORIUM_SHALE.get(), results, FloatingLong.create(1.39E1), 60);
 
         results = List.of(
-                Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(1, 1, 100)),
-                Pair.of(RegisterItems.LEAD_NUGGET.get(), new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(2, 2, 100)),
+                Pair.of(RegisterItems.LEAD_NUGGET.get(), new MetaData(1, 7, 5)),
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 2))
         );
         itemShredding(consumer, RegisterItems.RAW_URANIUM.get(), results, FloatingLong.create(1.39E1), 60);
@@ -92,6 +92,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Pair.of(RegisterItems.TITANIUM_POWDER.get(), new MetaData(1, 1, 2))
         );
         itemShredding(consumer, Items.RAW_IRON ,results, FloatingLong.create(1.39E1), 60);
+
+        results = List.of(
+                Pair.of(RegisterItems.IRON_POWDER.get(), new MetaData(1, 1, 2)),
+                Pair.of(Items.GOLD_NUGGET, new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.TITANIUM_POWDER.get(), new MetaData(2, 2, 100))
+        );
+        itemShredding(consumer, RegisterItems.RAW_TITANIUM .get() ,results, FloatingLong.create(1.39E1), 60);
 
         results = List.of(
          Pair.of(RegisterItems.IRON_POWDER.get(), new MetaData(1, 1, 100)));
@@ -110,11 +117,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         itemShredding(consumer, RegisterItems.THORIUM_INGOT.get(), results, FloatingLong.create(2.083E1), 80);
 
         results = List.of(
-                Pair.of(RegisterItems.SULFUR_INGOT.get(), new MetaData(2, 5, 100)));
+                Pair.of(RegisterItems.SULFUR_DUST.get(), new MetaData(2, 5, 100)));
         itemShredding(consumer, RegisterItems.RAW_SULFUR.get(), results, FloatingLong.create(2.083E1), 80);
 
         results = List.of(
-                Pair.of(RegisterItems.NITER_INGOT.get(), new MetaData(3, 6, 100)));
+                Pair.of(RegisterItems.NITER_DUST.get(), new MetaData(3, 6, 100)));
         itemShredding(consumer, RegisterItems.RAW_NITER.get(), results, FloatingLong.create(2.083E1), 80);
 //=================================general crafting===================================================================
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.TITANIUM_BLOCK.get())
@@ -138,9 +145,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SSS")
                 .pattern("SSS")
                 .pattern("SSS")
-                .define('S', RegisterItems.SULFUR_INGOT.get())
-                .unlockedBy(getHasName(RegisterItems.SULFUR_INGOT.get()), has(RegisterItems.SULFUR_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.SULFUR_STORAGE_BLOCK.get()) + "_from_" + getItemName(RegisterItems.SULFUR_INGOT.get()));
+                .define('S', RegisterItems.SULFUR_DUST.get())
+                .unlockedBy(getHasName(RegisterItems.SULFUR_DUST.get()), has(RegisterItems.SULFUR_DUST.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.SULFUR_STORAGE_BLOCK.get()) + "_from_" + getItemName(RegisterItems.SULFUR_DUST.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get())
                 .pattern("NNN")

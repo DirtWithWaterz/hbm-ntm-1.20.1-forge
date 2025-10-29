@@ -117,13 +117,13 @@ public class RegisterItems {
     public static final RegistryObject<Item> DESH_BLADE = ITEMS.register("desh_blade",
             () -> new BladeItem(new Item.Properties().stacksTo(1), 9));
 
-    public static final RegistryObject<Item> SULFUR_INGOT = ITEMS.register("sulfur_ingot",
+    public static final RegistryObject<Item> SULFUR_DUST = ITEMS.register("sulfur_dust",
             () -> new Item(new Item.Properties())); // Not a thing
 
     public static final RegistryObject<Item> RAW_SULFUR = ITEMS.register("raw_sulfur",
             () -> new Item(new Item.Properties())); // Not a thing
 
-    public static final RegistryObject<Item> NITER_INGOT = ITEMS.register("niter_ingot",
+    public static final RegistryObject<Item> NITER_DUST = ITEMS.register("niter_dust",
             () -> new Item(new Item.Properties())); // Not a thing
 
     public static final RegistryObject<Item> RAW_NITER = ITEMS.register("raw_niter",
