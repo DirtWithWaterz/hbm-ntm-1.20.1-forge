@@ -1,6 +1,6 @@
 package com.hbm.nucleartech.block.custom;
 
-import com.hbm.nucleartech.handler.RadiationSystemChunksNT;
+import com.hbm.nucleartech.handler.HbmRadiationSystem;
 import com.hbm.nucleartech.interfaces.IRadResistantBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -42,7 +42,7 @@ public class RadResistantBlock extends Block implements IRadResistantBlock {
         super.onPlace(pState, pLevel, pPos, pOldState, pMovedByPiston);
 
 //        System.out.println("[Debug] " + pState.getBlock().getName() + " placed at " + pPos + ", marking position for rebuild");
-        RadiationSystemChunksNT.RadiationEventHandlers.markChunkForRebuild(pLevel, pPos);
+        HbmRadiationSystem.RadiationEventHandlers.markChunkForRebuild(pLevel, pPos);
     }
 
     @Override
@@ -50,6 +50,6 @@ public class RadResistantBlock extends Block implements IRadResistantBlock {
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
 
 //        System.out.println("[Debug] " + pState.getBlock().getName() + " removed at " + pPos + ", marking position for rebuild");
-        RadiationSystemChunksNT.RadiationEventHandlers.markChunkForRebuild(pLevel, pPos);
+        HbmRadiationSystem.RadiationEventHandlers.markChunkForRebuild(pLevel, pPos);
     }
 }

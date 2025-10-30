@@ -1,12 +1,9 @@
 package com.hbm.nucleartech.handler;
 
-import com.hbm.nucleartech.block.RegisterBlocks;
-import com.hbm.nucleartech.handler.RadiationSystemChunksNT.ChunkStorageCompat;
-import net.minecraft.core.BlockPos;
+import com.hbm.nucleartech.handler.HbmRadiationSystem.ChunkStorageCompat;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.chunk.LevelChunkSection;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,14 +19,14 @@ public class RadiationWorldHandler {
     public static void handleWorldDestruction(Level level) {
         if (!(level instanceof ServerLevel world)) return;
 
-        Collection<RadiationSystemChunksNT.RadPocket> active = RadiationSystemChunksNT.getActivePockets();
+        Collection<HbmRadiationSystem.RadPocket> active = HbmRadiationSystem.getActivePockets();
         if (active.isEmpty()) return;
 
         int threshold = 5;
-        List<RadiationSystemChunksNT.RadPocket> pockets = getPocketsAboveThreshold(active, world, threshold);
+        List<HbmRadiationSystem.RadPocket> pockets = getPocketsAboveThreshold(active, world, threshold);
         if (pockets.isEmpty()) return;
 
-        List<RadiationSystemChunksNT.RadPocket> theChosenONESSSSS = choosePocketsFromList(pockets, world, MAX_CHUNKS_PER_TICK);
+        List<HbmRadiationSystem.RadPocket> theChosenONESSSSS = choosePocketsFromList(pockets, world, MAX_CHUNKS_PER_TICK);
 //        String str = "";
 //        for(RadiationSystemChunksNT.RadPocket p : theChosenONESSSSS)
 //            str = str.concat(p.parent.parentChunk.chunk.getPos().toString() + " idx: " + p.index + ", other pockets in subchunk: " + (p.parent.pockets.length - 1) + "\n");
@@ -38,10 +35,10 @@ public class RadiationWorldHandler {
 
         // Process multiple pockets in parallel
         int processed = 0;
-        for (RadiationSystemChunksNT.RadPocket pocket : theChosenONESSSSS) {
+        for (HbmRadiationSystem.RadPocket pocket : theChosenONESSSSS) {
             if (processed >= MAX_CHUNKS_PER_TICK) break;
             
-            RadiationSystemChunksNT.SubChunkRadiationStorage sc = pocket.parent;
+            HbmRadiationSystem.SubChunkRadiationStorage sc = pocket.parent;
             if (sc == null || sc.parentChunk == null || sc.parentChunk.chunk == null) continue;
 
             // Queue the chunk section for async processing
@@ -55,9 +52,9 @@ public class RadiationWorldHandler {
         }
     }
 
-    private static List<RadiationSystemChunksNT.RadPocket> choosePocketsFromList(List<RadiationSystemChunksNT.RadPocket> pockets, ServerLevel world, int i) {
+    private static List<HbmRadiationSystem.RadPocket> choosePocketsFromList(List<HbmRadiationSystem.RadPocket> pockets, ServerLevel world, int i) {
 
-        List<RadiationSystemChunksNT.RadPocket> list = new ArrayList<>();
+        List<HbmRadiationSystem.RadPocket> list = new ArrayList<>();
 
         for(int j = 0; j < i; j++)
             list.add(pockets.get(world.random.nextInt(pockets.size())));
@@ -66,16 +63,16 @@ public class RadiationWorldHandler {
     }
 
     // Get all pockets above the threshold
-    private static List<RadiationSystemChunksNT.RadPocket> getPocketsAboveThreshold(
-            Collection<RadiationSystemChunksNT.RadPocket> pockets, ServerLevel world, int threshold) {
+    private static List<HbmRadiationSystem.RadPocket> getPocketsAboveThreshold(
+            Collection<HbmRadiationSystem.RadPocket> pockets, ServerLevel world, int threshold) {
         
         if (pockets == null || pockets.isEmpty()) return List.of();
 
         // Snapshot to avoid concurrent modification
-        List<RadiationSystemChunksNT.RadPocket> snapshot = new ArrayList<>(pockets);
-        List<RadiationSystemChunksNT.RadPocket> result = new ArrayList<>(Math.min(snapshot.size(), 16));
+        List<HbmRadiationSystem.RadPocket> snapshot = new ArrayList<>(pockets);
+        List<HbmRadiationSystem.RadPocket> result = new ArrayList<>(Math.min(snapshot.size(), 16));
 
-        for (RadiationSystemChunksNT.RadPocket pocket : snapshot) {
+        for (HbmRadiationSystem.RadPocket pocket : snapshot) {
             if (pocket == null) continue;
             if (Float.isNaN(pocket.radiation)) continue; // Skip invalid radiation values
             
@@ -92,7 +89,7 @@ public class RadiationWorldHandler {
         if (result.size() > 1) {
             for (int i = result.size() - 1; i > 0; i--) {
                 int index = random.nextInt(i + 1);
-                RadiationSystemChunksNT.RadPocket temp = result.get(index);
+                HbmRadiationSystem.RadPocket temp = result.get(index);
                 result.set(index, result.get(i));
                 result.set(i, temp);
             }

@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.hbm.nucleartech.HBM;
-import com.hbm.nucleartech.datagen.ModRecipeProvider.MetaData;
+import com.hbm.nucleartech.datagen.HbmRecipeProvider.MetaData;
 import com.hbm.nucleartech.util.FloatingLong;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.core.NonNullList;

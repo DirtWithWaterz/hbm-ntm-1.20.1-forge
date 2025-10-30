@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "": {
-      "model": "hbm:block/niter_storage_block"
-    }
-  }
-}

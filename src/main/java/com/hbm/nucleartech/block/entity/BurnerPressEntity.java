@@ -1,7 +1,5 @@
 package com.hbm.nucleartech.block.entity;
 
-import com.hbm.nucleartech.datagen.ModItemTagGenerator;
-import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.network.HbmPacketHandler;
 import com.hbm.nucleartech.network.packet.ClientboundBurnerPressPacket;
@@ -15,7 +13,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;

@@ -2,8 +2,7 @@ package com.hbm.nucleartech.compat.jei.categories;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
-import com.hbm.nucleartech.block.entity.ShredderEntity;
-import com.hbm.nucleartech.datagen.ModRecipeProvider.MetaData;
+import com.hbm.nucleartech.datagen.HbmRecipeProvider.MetaData;
 import com.hbm.nucleartech.recipe.ShredderRecipe;
 import com.hbm.nucleartech.screen.ShredderScreen;
 import com.hbm.nucleartech.util.FloatingLong;

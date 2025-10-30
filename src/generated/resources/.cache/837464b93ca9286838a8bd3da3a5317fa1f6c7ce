@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-23T16:26:52.7186144	Item Models: hbm
+// 1.20.1	2025-10-29T17:27:10.17132	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -11,7 +11,7 @@ de9be1a16585597602cd938a3d8bede58b088bae assets/hbm/models/item/advanced_cell_fu
 8cda5f3fe556a6eb46e2900cd44f49481001fc7d assets/hbm/models/item/aluminum_blade.json
 2861883a5c19e801f67447647928b48e1d256efc assets/hbm/models/item/aluminum_ingot.json
 85df3ee699ffd75aeb467ebb1701545e82f6f87c assets/hbm/models/item/americium_sc_battery.json
-7cf7ef346e0191b7125d80bf92a8d82b5edde9a0 assets/hbm/models/item/asbestos_ingot.json
+a219959b38ff8570e860a41ccc9d004cb47c1b0c assets/hbm/models/item/asbestos_sheet.json
 10ca5510c6091556f4099525d977c6fee0a163fb assets/hbm/models/item/australium_ingot.json
 8d20caf5e6ead72d2e1e303c9856e8151922ee7f assets/hbm/models/item/beryllium_ingot.json
 2218830244d28a9497e5426c4e1c43b0a2fe5c1f assets/hbm/models/item/cinnabar_ingot.json
@@ -69,7 +69,7 @@ a7350811a589a3f0e790c7a6376d74c870e5c4d6 assets/hbm/models/item/lithium_battery_
 3db2718b760a733d82a1e69535ca192d6ee63edd assets/hbm/models/item/m65_mask.json
 ece003392b1a953bb8e149bdc9ad692913d4f113 assets/hbm/models/item/makeshift_energy_core.json
 125d18f9a433f9422472f8359ed35808e7d09cbb assets/hbm/models/item/motor.json
-6813958918f9ea60ecd6d8dff3b4518f937f883b assets/hbm/models/item/niter_ingot.json
+bd057e444f64ead511973b5105bcca5dfd42eb22 assets/hbm/models/item/niter.json
 50606ab319c5b65969f8f53a54aea1ba859b9f92 assets/hbm/models/item/obsidian_plate_stamp.json
 c7cb4d2f4110604bc39b2bd493112bebd558be66 assets/hbm/models/item/obsidian_wire_stamp.json
 81b773380f28d7ce53b9c9a7fa045b0845298106 assets/hbm/models/item/placeholder.json
@@ -79,7 +79,6 @@ f159989998320575602f22e185aef9b0a7cf5583 assets/hbm/models/item/potatos_battery.
 729111e069ea06922dd953816df5cccac9ea29b3 assets/hbm/models/item/potato_battery.json
 f359d4801011c30f90c04fae238f37eaffbed8d5 assets/hbm/models/item/rare_earth_ingot.json
 c69e280b6af479551af158665b2b91195070ea19 assets/hbm/models/item/raw_aluminum.json
-3f80ed857ace782c4437339941bb5d1e65f37a2d assets/hbm/models/item/raw_asbestos.json
 47b05a1eecc6d8af1d230bcd7eeebcb2152590c7 assets/hbm/models/item/raw_australium.json
 4462c4c8686127fa982b0553956b3c2b22aaa0f3 assets/hbm/models/item/raw_beryllium.json
 4b54559f6c90035dc22a6d75a0b301d9575e9364 assets/hbm/models/item/raw_cinnabar.json
@@ -88,10 +87,7 @@ ae68f0293d501c1b82d85a608619b4ad8b0dd82e assets/hbm/models/item/raw_coltan.json
 5f135f44f7625901232511a915ec6100d7750871 assets/hbm/models/item/raw_fluorite.json
 c8322c9b224e66133425cbcd2b8654481e6955e4 assets/hbm/models/item/raw_lead.json
 14ebdca4d85b8b35c87bed0a714fcc2ee94b6142 assets/hbm/models/item/raw_lignite.json
-60bb55311fa03e95e67e2b5ec386370f635febaa assets/hbm/models/item/raw_niter.json
-dbf0fbc7bf0dde2a23acaf91af930c8528d107a3 assets/hbm/models/item/raw_rare_earth.json
 c6b853328ec48baf408c8cd1b29b0417c756b0d0 assets/hbm/models/item/raw_schrabidium.json
-6563d4e467d05401e55361537552b5df3bf32371 assets/hbm/models/item/raw_sulfur.json
 530ea18fb07b0a65d71003dbe250b9985320b15d assets/hbm/models/item/raw_thorium.json
 1df28891bf55b2db353d0fe14acdde3f23721d2b assets/hbm/models/item/raw_titanium.json
 269b03be9a5400e9023a779df058a8f45853b0c4 assets/hbm/models/item/raw_tungsten.json
@@ -137,7 +133,7 @@ be61b1de2617d96d57ec5623b3bcf32cee368d3b assets/hbm/models/item/steel_plate_stam
 66df4f1c088d3de60d34e62c4a3e222a0386728f assets/hbm/models/item/steel_wire_stamp.json
 d76cf30a6b8172065c2ff3f4a8964b9f255811f7 assets/hbm/models/item/stone_plate_stamp.json
 17bde881a585c308602173d2c8c9eefb91442480 assets/hbm/models/item/stone_wire_stamp.json
-45eb52f53fb91d9780d58200bf97a2f79399441a assets/hbm/models/item/sulfur_ingot.json
+a2a9de285d2fafa874e85947aaaaf2bfa599d7b4 assets/hbm/models/item/sulfur.json
 f962a05dc8fc6587645177318b1f512a397a997c assets/hbm/models/item/technetium_sc_battery.json
 15426e84e06f3d6f326b1fce8b94484fca7366e8 assets/hbm/models/item/thorium_ingot.json
 bc4bec7e88d56b3d3ac7a61efe1c20456688bd0e assets/hbm/models/item/thorium_powder.json

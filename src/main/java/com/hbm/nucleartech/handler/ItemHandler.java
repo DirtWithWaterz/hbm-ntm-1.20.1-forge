@@ -169,7 +169,7 @@ public class ItemHandler {
 
                 LevelChunk chunk = level.getChunkAt(p.getOnPos());
 
-                AABB aabb = RadiationSystemNT.getAabb(level, chunk.getPos());
+                AABB aabb = HbmContaminationSystem.getAabb(level, chunk.getPos());
 
                 List<ItemEntity> items = level.getEntitiesOfClass(ItemEntity.class, aabb);
 

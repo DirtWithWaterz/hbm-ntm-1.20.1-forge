@@ -3,8 +3,7 @@ package com.hbm.nucleartech.util;
 import com.hbm.nucleartech.block.custom.RadResistantBlock;
 import com.hbm.nucleartech.damagesource.RegisterDamageSources;
 import com.hbm.nucleartech.handler.HazmatRegistry;
-import com.hbm.nucleartech.handler.RadiationSystemChunksNT;
-import com.hbm.nucleartech.hazard.HazardBlock;
+import com.hbm.nucleartech.handler.HbmRadiationSystem;
 import com.hbm.nucleartech.hazard.HazardBlockItem;
 import com.hbm.nucleartech.hazard.HazardItem;
 import com.hbm.nucleartech.hazard.HazardSystem;
@@ -18,7 +17,6 @@ import com.hbm.nucleartech.render.amlfrom1710.Vec3;
 import com.hbm.nucleartech.saveddata.RadiationSavedData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -36,17 +34,15 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.hbm.nucleartech.handler.RadiationSystemChunksNT.getPocket;
+import static com.hbm.nucleartech.handler.HbmRadiationSystem.getPocket;
 
 public class ContaminationUtil {
 
@@ -104,9 +100,9 @@ public class ContaminationUtil {
             return;
         }
 
-        List<RadiationSystemChunksNT.RadPocket> pockets = new ArrayList<>();
+        List<HbmRadiationSystem.RadPocket> pockets = new ArrayList<>();
 
-        RadiationSystemChunksNT.RadPocket ppppppp = getPocket(pLevel, worldPosition);
+        HbmRadiationSystem.RadPocket ppppppp = getPocket(pLevel, worldPosition);
 
         RadiationSavedData.incrementRad(pLevel, worldPosition, rad3d, rad3d);
 
@@ -167,7 +163,7 @@ public class ContaminationUtil {
 
                 BlockPos dPos = e.getOnPos().offset(0,1,0);
 
-                RadiationSystemChunksNT.RadPocket decidedPocket = RadiationSystemChunksNT.getPocket(pLevel, dPos);
+                HbmRadiationSystem.RadPocket decidedPocket = HbmRadiationSystem.getPocket(pLevel, dPos);
 
                 if(!pockets.contains(decidedPocket)) {
 
@@ -258,7 +254,7 @@ public class ContaminationUtil {
                 }
             }
         }
-        RadiationSystemChunksNT.RadPocket ePoc = getPocket(level, entity.getOnPos().offset(0, 1, 0));
+        HbmRadiationSystem.RadPocket ePoc = getPocket(level, entity.getOnPos().offset(0, 1, 0));
 
         env = env + (double)ePoc.radiation;
 
@@ -339,6 +335,26 @@ public class ContaminationUtil {
                 }
                 else
                     HbmCapabilities.getData(entity).addValue(Type.BLACKLUNG, amount);
+
+
+                if(entity instanceof Player)
+                    HbmCapabilities.getData(entity).syncLivingVariables(entity);
+
+                return true;
+
+            case ASBESTOS:
+
+//                System.out.println(HbmCapabilities.getData(entity).getValue(Type.ASBESTOS));
+
+                if(amount >= 0) {
+
+                    if(!ArmorRegistry.hasProtection(entity, EquipmentSlot.HEAD, ArmorRegistry.HazardClass.PARTICLE_FINE))
+                        HbmCapabilities.getData(entity).addValue(Type.ASBESTOS, amount);
+                    else
+                        ArmorUtil.damageGasMaskFilter(entity, 1);
+                }
+                else
+                    HbmCapabilities.getData(entity).addValue(Type.ASBESTOS, amount);
 
 
                 if(entity instanceof Player)

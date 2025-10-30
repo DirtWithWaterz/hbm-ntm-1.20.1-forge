@@ -1,21 +1,9 @@
 package com.hbm.nucleartech.saveddata;
 
-import com.hbm.nucleartech.config.GeneralConfig;
-import com.hbm.nucleartech.handler.RadiationSystemChunksNT;
-import com.hbm.nucleartech.handler.RadiationSystemNT;
+import com.hbm.nucleartech.handler.HbmRadiationSystem;
+import com.hbm.nucleartech.handler.HbmContaminationSystem;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.chunk.LevelChunk;
-import net.minecraft.world.level.saveddata.SavedData;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Properties;
 
 public class RadiationSavedData {
 
@@ -49,7 +37,7 @@ public class RadiationSavedData {
     public void jettisonData() {
         if(true){ // if GeneralConfig.advancedRadiation
 
-//            RadiationSystemNT.jettisonData(worldObj);
+//            HbmContaminationSystem.jettisonData(worldObj);
             return;
         }
 //        contamination.clear();
@@ -72,7 +60,7 @@ public class RadiationSavedData {
 
     public void setRadForCoord(BlockPos pos, float radiation) {
         if(true){ // if GeneralConfig.advancedRadiation
-            RadiationSystemChunksNT.setRadForCoord(worldObj, pos, radiation);
+            HbmRadiationSystem.setRadForCoord(worldObj, pos, radiation);
 //            return;
         }
 //        ChunkPos cPos = new ChunkPos(pos);
@@ -102,7 +90,7 @@ public class RadiationSavedData {
 
     public float getRadForCoord(BlockPos pos) {
 //        if(true) { // if GeneralConfig.advancedRadiation
-            return RadiationSystemChunksNT.getRadForCoord(worldObj, pos);
+            return HbmRadiationSystem.getRadForCoord(worldObj, pos);
 //        }
 //        RadiationSaveStructure rad = contamination.get(new ChunkPos(pos));
 //        if(rad != null)
@@ -255,7 +243,7 @@ public class RadiationSavedData {
     public static void incrementRad(ServerLevel worldObj, BlockPos pos, float rad, float maxRad) {
         if(true){ // if GeneralConfig.advancedRadiation
 //            System.out.println("[Debug] Increment Rad called with size: " + rad);
-            RadiationSystemChunksNT.incrementRad(worldObj, pos, rad, maxRad);
+            HbmRadiationSystem.incrementRad(worldObj, pos, rad, maxRad);
 //            return;
         }
 //        RadiationSavedData data = getData(worldObj);
@@ -272,7 +260,7 @@ public class RadiationSavedData {
 
     public static void decrementRad(ServerLevel pLevel, BlockPos pos, float rad) {
         if(true) { // if GeneralConfig.advancedRadiation
-            RadiationSystemChunksNT.decrementRad(pLevel, pos, rad);
+            HbmRadiationSystem.decrementRad(pLevel, pos, rad);
 //            return;
         }
 //        RadiationSavedData data = getData(pLevel);

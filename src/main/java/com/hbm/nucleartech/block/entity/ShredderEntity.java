@@ -4,7 +4,7 @@ import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.custom.base.BaseHbmBlockEntity;
 import com.hbm.nucleartech.capability.HbmCapabilities;
 import com.hbm.nucleartech.capability.energy.WattHourStorage;
-import com.hbm.nucleartech.datagen.ModRecipeProvider.MetaData;
+import com.hbm.nucleartech.datagen.HbmRecipeProvider.MetaData;
 import com.hbm.nucleartech.interfaces.IEnergyItem;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.BatteryItem;
@@ -58,7 +58,6 @@ import software.bernie.geckolib.core.object.PlayState;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static com.hbm.nucleartech.capability.energy.WattHourStorage.translateWattHours;
 

@@ -9,15 +9,15 @@
       "item": "hbm:uranium_powder",
       "metadata": {
         "chance": 100,
-        "max_amount": 1,
-        "min_amount": 1
+        "max_amount": 2,
+        "min_amount": 2
       }
     },
     {
       "item": "hbm:lead_nugget",
       "metadata": {
         "chance": 5,
-        "max_amount": 1,
+        "max_amount": 7,
         "min_amount": 1
       }
     },

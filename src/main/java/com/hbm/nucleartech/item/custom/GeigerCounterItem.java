@@ -2,7 +2,7 @@ package com.hbm.nucleartech.item.custom;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.capability.HbmCapabilities;
-import com.hbm.nucleartech.handler.RadiationSystemChunksNT;
+import com.hbm.nucleartech.handler.HbmRadiationSystem;
 import com.hbm.nucleartech.interfaces.IEntityCapabilityBase;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.sound.RegisterSounds;
@@ -33,8 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.hbm.nucleartech.handler.RadiationSystemChunksNT.RadiationEventHandlers.FRAMES;
-import static com.hbm.nucleartech.handler.RadiationSystemChunksNT.RadiationEventHandlers.FRAME_COUNT;
+import static com.hbm.nucleartech.handler.HbmRadiationSystem.RadiationEventHandlers.FRAMES;
+import static com.hbm.nucleartech.handler.HbmRadiationSystem.RadiationEventHandlers.FRAME_COUNT;
 
 public class GeigerCounterItem extends Item {
 
@@ -124,7 +124,7 @@ public class GeigerCounterItem extends Item {
 
     public static int check(Level level, int x, int y, int z) {
 
-        return (int)Math.ceil(RadiationSystemChunksNT.getRadForCoord(level, new BlockPos(x,y,z)));
+        return (int)Math.ceil(HbmRadiationSystem.getRadForCoord(level, new BlockPos(x,y,z)));
     }
 
     public static float getRad(LivingEntity pEntity) {

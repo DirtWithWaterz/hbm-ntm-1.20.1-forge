@@ -4,15 +4,12 @@ import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraftforge.common.util.NonNullSupplier;
 
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AsyncChunkProcessor {
     private static final int QUEUE_CAPACITY = 16; // Maximum number of chunks to queue (original)
@@ -60,10 +57,10 @@ public class AsyncChunkProcessor {
         final ServerLevel world;
         final LevelChunk chunk;
         final int sectionY;
-        final RadiationSystemChunksNT.RadPocket pocket;
+        final HbmRadiationSystem.RadPocket pocket;
         final LevelChunkSection section;
 
-        ProcessChunkTask(ServerLevel world, LevelChunk chunk, int sectionY, RadiationSystemChunksNT.RadPocket pocket) {
+        ProcessChunkTask(ServerLevel world, LevelChunk chunk, int sectionY, HbmRadiationSystem.RadPocket pocket) {
             this.world = world;
             this.chunk = chunk;
             this.sectionY = sectionY;
@@ -128,7 +125,7 @@ public class AsyncChunkProcessor {
         }
     }
 
-    public static void queueChunkForProcessing(ServerLevel world, LevelChunk chunk, int sectionY, RadiationSystemChunksNT.RadPocket pocket) {
+    public static void queueChunkForProcessing(ServerLevel world, LevelChunk chunk, int sectionY, HbmRadiationSystem.RadPocket pocket) {
         if (chunk == null || world == null || pocket == null) return;
 
         net.minecraft.world.level.ChunkPos chunkPos = new net.minecraft.world.level.ChunkPos(chunk.getPos().x, chunk.getPos().z);

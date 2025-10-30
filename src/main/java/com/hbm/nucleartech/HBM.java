@@ -9,7 +9,7 @@ import com.hbm.nucleartech.block.entity.client.ShredderRenderer;
 import com.hbm.nucleartech.entity.HbmEntities;
 import com.hbm.nucleartech.entity.client.NuclearCreeperRenderer;
 import com.hbm.nucleartech.handler.HazmatRegistry;
-import com.hbm.nucleartech.handler.RadiationSystemNT;
+import com.hbm.nucleartech.handler.HbmContaminationSystem;
 import com.hbm.nucleartech.item.RegisterCreativeTabs;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.GeigerCounterItem;
@@ -143,7 +143,7 @@ public class HBM
     public void onServerStarting(ServerStartingEvent event) {
 
         AdvancementManager.init(event.getServer());
-        RadiationSystemNT.init(event.getServer());
+        HbmContaminationSystem.init(event.getServer());
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

@@ -9,16 +9,12 @@ import com.hbm.nucleartech.item.custom.*;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.item.special.CustomLoreItem;
 import com.hbm.nucleartech.util.FloatingLong;
-import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.List;
 
 public class RegisterItems {
 
@@ -117,17 +113,11 @@ public class RegisterItems {
     public static final RegistryObject<Item> DESH_BLADE = ITEMS.register("desh_blade",
             () -> new BladeItem(new Item.Properties().stacksTo(1), 9));
 
-    public static final RegistryObject<Item> SULFUR_DUST = ITEMS.register("sulfur_dust",
-            () -> new Item(new Item.Properties())); // Not a thing
+    public static final RegistryObject<Item> SULFUR = ITEMS.register("sulfur",
+            () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> RAW_SULFUR = ITEMS.register("raw_sulfur",
-            () -> new Item(new Item.Properties())); // Not a thing
-
-    public static final RegistryObject<Item> NITER_DUST = ITEMS.register("niter_dust",
-            () -> new Item(new Item.Properties())); // Not a thing
-
-    public static final RegistryObject<Item> RAW_NITER = ITEMS.register("raw_niter",
-            () -> new Item(new Item.Properties())); // Not a thing
+    public static final RegistryObject<Item> NITER = ITEMS.register("niter",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> TUNGSTEN_INGOT = ITEMS.register("tungsten_ingot",
             () -> new Item(new Item.Properties()));
@@ -165,11 +155,8 @@ public class RegisterItems {
     public static final RegistryObject<Item> RAW_LIGNITE = ITEMS.register("raw_lignite",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ASBESTOS_INGOT = ITEMS.register("asbestos_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_ASBESTOS = ITEMS.register("raw_asbestos",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ASBESTOS_SHEET = ITEMS.register("asbestos_sheet",
+            () -> new HazardItem(0, 0, 0, 0, 0, 1, new Item.Properties()));
 
     public static final RegistryObject<Item> SCHRABIDIUM_INGOT = ITEMS.register("schrabidium_ingot",
             () -> new Item(new Item.Properties()));
@@ -184,9 +171,6 @@ public class RegisterItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RARE_EARTH_INGOT = ITEMS.register("rare_earth_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_RARE_EARTH = ITEMS.register("raw_rare_earth",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
