@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>ModRecipeProvider.java</title>
+<title>HbmRecipeProvider.java</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 .s0 { color: #cf8e6d;}
@@ -15,7 +15,7 @@
 <table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
 <tr><td><center>
 <font face="Arial, Helvetica" color="#000000">
-ModRecipeProvider.java</font>
+HbmRecipeProvider.java</font>
 </center></td></tr></table>
 <pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">hbm</span><span class="s2">.</span><span class="s1">nucleartech</span><span class="s2">.</span><span class="s1">datagen</span><span class="s2">;</span>
 
@@ -46,12 +46,12 @@ ModRecipeProvider.java</font>
 <span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
 <span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">function</span><span class="s2">.</span><span class="s1">Consumer</span><span class="s2">;</span>
 
-<span class="s0">public class </span><span class="s1">ModRecipeProvider </span><span class="s0">extends </span><span class="s1">RecipeProvider </span><span class="s0">implements </span><span class="s1">IConditionBuilder </span><span class="s2">{</span>
+<span class="s0">public class </span><span class="s1">HbmRecipeProvider </span><span class="s0">extends </span><span class="s1">RecipeProvider </span><span class="s0">implements </span><span class="s1">IConditionBuilder </span><span class="s2">{</span>
 
     <span class="s0">private static final </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">ItemLike</span><span class="s2">&gt; </span><span class="s1">TITANIUM_SMELTABLES </span><span class="s2">= </span><span class="s1">List</span><span class="s2">.</span><span class="s1">of</span><span class="s2">(</span><span class="s1">RegisterBlocks</span><span class="s2">.</span><span class="s1">TITANIUM_ORE</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(), </span><span class="s1">RegisterBlocks</span><span class="s2">.</span><span class="s1">DEEPSLATE_TITANIUM_ORE</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(), </span><span class="s1">RegisterItems</span><span class="s2">.</span><span class="s1">RAW_TITANIUM</span><span class="s2">.</span><span class="s1">get</span><span class="s2">());</span>
     <span class="s0">private static final </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">ItemLike</span><span class="s2">&gt; </span><span class="s1">URANIUM_SMELTABLES </span><span class="s2">= </span><span class="s1">List</span><span class="s2">.</span><span class="s1">of</span><span class="s2">(</span><span class="s1">RegisterBlocks</span><span class="s2">.</span><span class="s1">URANIUM_ORE</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(), </span><span class="s1">RegisterBlocks</span><span class="s2">.</span><span class="s1">DEEPSLATE_URANIUM_ORE</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(), </span><span class="s1">RegisterItems</span><span class="s2">.</span><span class="s1">RAW_URANIUM</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(), </span><span class="s1">RegisterItems</span><span class="s2">.</span><span class="s1">URANIUM_CRYSTAL</span><span class="s2">.</span><span class="s1">get</span><span class="s2">());</span>
 
-    <span class="s0">public </span><span class="s1">ModRecipeProvider</span><span class="s2">(</span><span class="s1">PackOutput pOutput</span><span class="s2">) {</span>
+    <span class="s0">public </span><span class="s1">HbmRecipeProvider</span><span class="s2">(</span><span class="s1">PackOutput pOutput</span><span class="s2">) {</span>
         <span class="s0">super</span><span class="s2">(</span><span class="s1">pOutput</span><span class="s2">);</span>
     <span class="s2">}</span>
 
@@ -379,7 +379,7 @@ ModRecipeProvider.java</font>
 
     <span class="s0">protected static void </span><span class="s1">platePressing</span><span class="s2">(</span><span class="s1">Consumer</span><span class="s2">&lt;</span><span class="s1">FinishedRecipe</span><span class="s2">&gt; </span><span class="s1">pFinishedRecipeConsumer</span><span class="s2">, </span><span class="s1">ItemLike pInput</span><span class="s2">, </span><span class="s1">ItemLike pResult</span><span class="s2">) {</span>
 
-        <span class="s0">for</span><span class="s2">(</span><span class="s1">ItemLike item </span><span class="s2">: </span><span class="s1">ModItemTagGenerator</span><span class="s2">.</span><span class="s1">SharedTagLists</span><span class="s2">.</span><span class="s1">PLATE_STAMPS</span><span class="s2">) {</span>
+        <span class="s0">for</span><span class="s2">(</span><span class="s1">ItemLike item </span><span class="s2">: </span><span class="s1">HbmItemTagGenerator</span><span class="s2">.</span><span class="s1">SharedTagLists</span><span class="s2">.</span><span class="s1">PLATE_STAMPS</span><span class="s2">) {</span>
 
             <span class="s1">pFinishedRecipeConsumer</span><span class="s2">.</span><span class="s1">accept</span><span class="s2">(</span>
                     <span class="s0">new </span><span class="s1">PressRecipeBuilder</span><span class="s2">(</span>
