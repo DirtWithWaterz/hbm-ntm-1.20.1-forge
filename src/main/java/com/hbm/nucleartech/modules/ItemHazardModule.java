@@ -165,6 +165,18 @@ public class ItemHazardModule {
                     entity.addEffect(new MobEffectInstance(MobEffects.HARM, 110, this.toxic-16, true, false));
             }
         }
+        if(this.coal * tempMod > 0) {
+
+            double blacklung = this.coal * tempMod * mod;
+
+            ContaminationUtil.contaminate(entity, HazardType.COAL, ContaminationType.CREATIVE, (float) blacklung);
+        }
+        if(this.asbestos * tempMod > 0) {
+
+            double meso = this.asbestos * tempMod * mod;
+
+            ContaminationUtil.contaminate(entity, HazardType.ASBESTOS, ContaminationType.CREATIVE, (float) meso);
+        }
     }
 
     public static double getNewValue(double radiation) {
@@ -224,6 +236,17 @@ public class ItemHazardModule {
         // Blinding
 
         // Hydro
+
+        // Asbestos
+        if(this.asbestos * tempMod > 0) {
+
+            list.add(Component.literal("[Asbestos]").withStyle(ChatFormatting.WHITE));
+        }
+        // Coal Dust
+        if(this.coal * tempMod > 0) {
+
+            list.add(Component.literal("[Coal Dust]").withStyle(ChatFormatting.DARK_GRAY));
+        }
     }
 
     public boolean onEntityItemUpdate(ItemEntity item) {

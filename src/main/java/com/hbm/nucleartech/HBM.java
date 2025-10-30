@@ -1,9 +1,7 @@
 package com.hbm.nucleartech;
 
 import com.hbm.nucleartech.block.RegisterBlocks;
-import com.hbm.nucleartech.block.custom.RadResistantBlock;
 import com.hbm.nucleartech.block.entity.RegisterBlockEntities;
-import com.hbm.nucleartech.block.entity.ShredderEntity;
 import com.hbm.nucleartech.block.entity.client.BurnerPressRenderer;
 import com.hbm.nucleartech.block.entity.client.ShredderRenderer;
 import com.hbm.nucleartech.entity.HbmEntities;
@@ -21,15 +19,16 @@ import com.hbm.nucleartech.screen.RegisterMenuTypes;
 import com.hbm.nucleartech.screen.ShredderScreen;
 import com.hbm.nucleartech.sound.RegisterSounds;
 import com.hbm.nucleartech.util.ArmorUtil;
+import com.hbm.nucleartech.util.InterceptUtil;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -50,11 +49,9 @@ import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
 import java.io.File;
-import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import static com.hbm.nucleartech.block.RegisterBlocks.HAZARD_BLOCKS;
 
@@ -73,6 +70,8 @@ public class HBM
     public HBM() {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        InterceptUtil.registerVanillaItemIntercepts(modEventBus);
 
         GeckoLib.initialize();
 
@@ -118,6 +117,11 @@ public class HBM
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+
+        event.enqueueWork(() -> {
+
+            net.minecraft.world.item.Items.COAL = InterceptUtil.COAL_REPLACEMENT.get();
+        });
 
         configDir = FMLPaths.CONFIGDIR.get().toFile();
         configHbmDir = new File(configDir.getAbsolutePath() + File.separatorChar + "hbmConfig");

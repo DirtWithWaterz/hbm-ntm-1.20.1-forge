@@ -2,17 +2,23 @@ package com.hbm.nucleartech.util;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
+import com.hbm.nucleartech.hazard.HazardItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
 
@@ -66,5 +72,18 @@ public final class InterceptUtil {
                 }
             });
         }
+    }
+
+    private static final DeferredRegister<Item> VANILLA_ITEMS =
+            DeferredRegister.create(ForgeRegistries.ITEMS, "minecraft");
+
+    public static final RegistryObject<Item> COAL_REPLACEMENT =
+            VANILLA_ITEMS.register("coal", () ->
+                    // instantiate your HazardItem here — copy properties you need
+                    new HazardItem(0, 0, 0, 0, 0, 0, 1, new Item.Properties().stacksTo(64))
+            );
+
+    public static void registerVanillaItemIntercepts(IEventBus modBus) {
+        VANILLA_ITEMS.register(modBus);
     }
 }

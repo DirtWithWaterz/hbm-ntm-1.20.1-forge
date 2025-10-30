@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-29T17:27:10.1773039	Loot Tables
+// 1.20.1	2025-10-29T20:47:09.7465513	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
 20e19a65676ca36db0f62fff896c635893679c68 data/hbm/loot_tables/blocks/asbestos_air.json
@@ -60,7 +60,7 @@ ca92eda5341b7e21bdb96887071fe98f3893e757 data/hbm/loot_tables/blocks/deepslate_a
 162122553327c386d0943d0813029e48acb1f0df data/hbm/loot_tables/blocks/deepslate_coltan_ore.json
 923490b12ed6ad69d08962c9a6078290e86fd4dd data/hbm/loot_tables/blocks/deepslate_fluorite_ore.json
 e35ee630d38c2aceb961518e2a5ac98ac85fa609 data/hbm/loot_tables/blocks/deepslate_lead_ore.json
-9d3ce6bf04363b41682614ebc4e71afe4422d1d5 data/hbm/loot_tables/blocks/deepslate_lignite_ore.json
+d617eaf077213707b68502dc0a40f67a2a1feae8 data/hbm/loot_tables/blocks/deepslate_lignite_ore.json
 11f5c4fa3217f56a2b9759f8c51a04de4b67cb00 data/hbm/loot_tables/blocks/deepslate_niter_ore.json
 5567999b27991a9008ee15560a0c2896d05dcf89 data/hbm/loot_tables/blocks/deepslate_rare_earth_ore.json
 7b9deb11fcef36c93b58c925a2608cb386326517 data/hbm/loot_tables/blocks/deepslate_schrabidium_ore.json
@@ -78,7 +78,7 @@ d87642ab2dabf21c5f7c92fba3e999d3034ea7c2 data/hbm/loot_tables/blocks/lead_block.
 ba5d085a55ccf82366ad1ffd67c9487e51dcd19a data/hbm/loot_tables/blocks/light_gray_concrete.json
 71ce894bb938ca1b1424a2707f2aba5628297014 data/hbm/loot_tables/blocks/light_gray_thorium_ore.json
 3ec38b6f355f03ee7866b85a3973d8de016e674c data/hbm/loot_tables/blocks/lignite_block.json
-838ede805a905f51a493a7b84c7842137c47cc7b data/hbm/loot_tables/blocks/lignite_ore.json
+9d9cc8f5023dd24608aed026beb54352ec36b469 data/hbm/loot_tables/blocks/lignite_ore.json
 fe046cc816b2f0a5b1b3434d04e304c376535dda data/hbm/loot_tables/blocks/lime_concrete.json
 b2717ef4ed14c4d03fdd3060440cc0de74ca4a2e data/hbm/loot_tables/blocks/magenta_concrete.json
 1944460f446f14f126719909cd012a65535ff726 data/hbm/loot_tables/blocks/niter_block.json

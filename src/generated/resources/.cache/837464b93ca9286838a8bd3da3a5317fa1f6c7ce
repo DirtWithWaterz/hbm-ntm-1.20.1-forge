@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-29T17:27:10.17132	Item Models: hbm
+// 1.20.1	2025-10-29T20:47:09.7415662	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -57,7 +57,7 @@ c86cd8fc966dd652bbc591f1fc8b31687f8817d7 assets/hbm/models/item/iron_plate.json
 6fca9addd2b73d01cc4522e2f1f7cd69e0d6a136 assets/hbm/models/item/iron_wire_stamp.json
 74e08b7c001d455cfe6d8b219a4e94ebe2a57932 assets/hbm/models/item/lead_ingot.json
 7032030a1eee2d7d048131dfd2cb971a3d5cba1f assets/hbm/models/item/lead_sc_battery.json
-a1a33fa009fb3d2eda7860ff4877751ff4d567d6 assets/hbm/models/item/lignite_ingot.json
+1d28d25428e9c3e08db4f11fe812fe5372b55684 assets/hbm/models/item/lignite.json
 df9e5d9529ab84d316e48a8844d49005723009fe assets/hbm/models/item/lithium_3_cell.json
 df9e5d9529ab84d316e48a8844d49005723009fe assets/hbm/models/item/lithium_3_cell_full.json
 7d64e0c55697fec173acd9538055ea45e9928be6 assets/hbm/models/item/lithium_6_cell.json
@@ -86,7 +86,6 @@ f537d701c68367835c7eb11978a609ced5c11bf1 assets/hbm/models/item/raw_cobalt.json
 ae68f0293d501c1b82d85a608619b4ad8b0dd82e assets/hbm/models/item/raw_coltan.json
 5f135f44f7625901232511a915ec6100d7750871 assets/hbm/models/item/raw_fluorite.json
 c8322c9b224e66133425cbcd2b8654481e6955e4 assets/hbm/models/item/raw_lead.json
-14ebdca4d85b8b35c87bed0a714fcc2ee94b6142 assets/hbm/models/item/raw_lignite.json
 c6b853328ec48baf408c8cd1b29b0417c756b0d0 assets/hbm/models/item/raw_schrabidium.json
 530ea18fb07b0a65d71003dbe250b9985320b15d assets/hbm/models/item/raw_thorium.json
 1df28891bf55b2db353d0fe14acdde3f23721d2b assets/hbm/models/item/raw_titanium.json

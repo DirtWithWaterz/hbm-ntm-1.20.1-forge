@@ -137,7 +137,7 @@
   "item.hbm.aluminum_ingot": "Aluminium Ingot",
   "item.hbm.fluorite_ingot": "Fluorite Ingot",
   "item.hbm.lead_ingot": "Lead Ingot",
-  "item.hbm.lignite_ingot": "Lignite Ingot",
+  "item.hbm.lignite": "Lignite",
   "item.hbm.asbestos_sheet": "Asbestos Sheet",
   "item.hbm.schrabidium_ingot": "Schrabidium Ingot",
   "item.hbm.australium_ingot": "Australium Ingot",
@@ -253,12 +253,10 @@
   "block.hbm.lignite_ore": "Lignite Ore",
   "block.hbm.deepslate_lignite_ore": "Deepslate Lignite Ore",
   "block.hbm.lignite_block": "Lignite Block",
-  "block.hbm.raw_lignite_block": "Raw Lignite Block",
 
   "block.hbm.asbestos_ore": "Asbestos Ore",
   "block.hbm.deepslate_asbestos_ore": "Deepslate Asbestos Ore",
   "block.hbm.asbestos_block": "Asbestos Block",
-  "block.hbm.raw_asbestos_block": "Raw Asbestos Block",
 
   "block.hbm.schrabidium_ore": "Schrabidium Ore",
   "block.hbm.deepslate_schrabidium_ore": "Deepslate Schrabidium Ore",

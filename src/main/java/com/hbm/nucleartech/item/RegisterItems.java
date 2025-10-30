@@ -149,11 +149,8 @@ public class RegisterItems {
     public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget",
             () -> new HazardItem(0, 0, 0, 0, 1, new Item.Properties()));
 
-    public static final RegistryObject<Item> LIGNITE_INGOT = ITEMS.register("lignite_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_LIGNITE = ITEMS.register("raw_lignite",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIGNITE = ITEMS.register("lignite",
+            () -> new HazardItem(0, 0, 0, 0, 0, 0, 1, new Item.Properties()));
 
     public static final RegistryObject<Item> ASBESTOS_SHEET = ITEMS.register("asbestos_sheet",
             () -> new HazardItem(0, 0, 0, 0, 0, 1, new Item.Properties()));

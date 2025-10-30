@@ -36,7 +36,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.ALUMINIUM_INGOT.get());
                         output.accept(RegisterItems.FLUORITE_INGOT.get());
                         output.accept(RegisterItems.LEAD_INGOT.get());
-                        output.accept(RegisterItems.LIGNITE_INGOT.get());
+                        output.accept(RegisterItems.LIGNITE.get());
                         output.accept(RegisterItems.ASBESTOS_SHEET.get());
                         output.accept(RegisterItems.SCHRABIDIUM_INGOT.get());
                         output.accept(RegisterItems.AUSTRALIUM_INGOT.get());
@@ -59,7 +59,6 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.RAW_FLUORITE.get());
                         output.accept(RegisterItems.RAW_BERYLLIUM.get());
                         output.accept(RegisterItems.RAW_LEAD.get());
-                        output.accept(RegisterItems.RAW_LIGNITE.get());
                         output.accept(RegisterItems.RAW_SCHRABIDIUM.get());
                         output.accept(RegisterItems.RAW_AUSTRALIUM.get());
                         output.accept(RegisterItems.RAW_COBALT.get());

@@ -39,7 +39,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.ALUMINIUM_INGOT);
         simpleItem(RegisterItems.FLUORITE_INGOT);
         simpleItem(RegisterItems.LEAD_INGOT);
-        simpleItem(RegisterItems.LIGNITE_INGOT);
+        simpleItem(RegisterItems.LIGNITE);
         simpleItem(RegisterItems.ASBESTOS_SHEET);
         simpleItem(RegisterItems.SCHRABIDIUM_INGOT);
         simpleItem(RegisterItems.AUSTRALIUM_INGOT);
@@ -55,7 +55,6 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.RAW_FLUORITE);
         simpleItem(RegisterItems.RAW_BERYLLIUM);
         simpleItem(RegisterItems.RAW_LEAD);
-        simpleItem(RegisterItems.RAW_LIGNITE);
         simpleItem(RegisterItems.RAW_SCHRABIDIUM);
         simpleItem(RegisterItems.RAW_AUSTRALIUM);
         simpleItem(RegisterItems.RAW_COBALT);
