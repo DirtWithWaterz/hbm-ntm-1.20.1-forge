@@ -194,9 +194,19 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("  S")
                 .define('D', RegisterItems.DESH_INGOT.get())
                 .define('S', Items.STICK)
-                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .unlockedBy(getHasName(RegisterItems.DESH_INGOT.get()), has(Items.STICK))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.DESH_INGOT.get()) + "_from_"
                         + getItemName(RegisterItems.DESH_INGOT.get()) + "_and_"+getItemName(Items.STICK));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.STEEL_BLADE.get())//HAND_DRILL_STEEL
+                .pattern("D  ")
+                .pattern("DSS")
+                .pattern("  S")
+                .define('D', RegisterItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(RegisterItems.STEEL_INGOT.get()), has(Items.STICK))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.STEEL_INGOT.get()) + "_from_"
+                        + getItemName(RegisterItems.STEEL_INGOT.get()) + "_and_"+getItemName(Items.STICK));
 
         //=====================================machine parts crafting===================================================
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.MOTOR.get())
@@ -225,8 +235,9 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.BURNER_PRESS.get())
                 .pattern("IFI")
+                .pattern("IPI")
                 .pattern("IBI")
-                .pattern("IFI")
+                .define('P', Items.PISTON)
                 .define('F', Items.FURNACE)
                 .define('I', Items.IRON_INGOT)
                 .define('B', Items.IRON_BLOCK)
