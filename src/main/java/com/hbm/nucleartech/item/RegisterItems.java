@@ -131,10 +131,7 @@ public class RegisterItems {
     public static final RegistryObject<Item> RAW_ALUMINIUM = ITEMS.register("raw_aluminum",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> FLUORITE_INGOT = ITEMS.register("fluorite_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_FLUORITE = ITEMS.register("raw_fluorite",
+    public static final RegistryObject<Item> FLUORITE = ITEMS.register("fluorite",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_BERYLLIUM = ITEMS.register("raw_beryllium",
@@ -167,19 +164,13 @@ public class RegisterItems {
     public static final RegistryObject<Item> RAW_AUSTRALIUM = ITEMS.register("raw_australium",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> RARE_EARTH_INGOT = ITEMS.register("rare_earth_ingot",
-            () -> new Item(new Item.Properties()));
-
     public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_COBALT = ITEMS.register("raw_cobalt",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> CINNABAR_INGOT = ITEMS.register("cinnabar_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_CINNABAR = ITEMS.register("raw_cinnabar",
+    public static final RegistryObject<Item> CINNABAR = ITEMS.register("cinnabar",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> COLTAN_INGOT = ITEMS.register("coltan_ingot",

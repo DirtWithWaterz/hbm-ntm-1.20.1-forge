@@ -37,28 +37,25 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.NITER);
         simpleItem(RegisterItems.TUNGSTEN_INGOT);
         simpleItem(RegisterItems.ALUMINIUM_INGOT);
-        simpleItem(RegisterItems.FLUORITE_INGOT);
+        simpleItem(RegisterItems.FLUORITE);
         simpleItem(RegisterItems.LEAD_INGOT);
         simpleItem(RegisterItems.LIGNITE);
         simpleItem(RegisterItems.ASBESTOS_SHEET);
         simpleItem(RegisterItems.SCHRABIDIUM_INGOT);
         simpleItem(RegisterItems.AUSTRALIUM_INGOT);
-        simpleItem(RegisterItems.RARE_EARTH_INGOT);
         simpleItem(RegisterItems.COBALT_INGOT);
-        simpleItem(RegisterItems.CINNABAR_INGOT);
+        simpleItem(RegisterItems.CINNABAR);
         simpleItem(RegisterItems.COLTAN_INGOT);
 
         simpleItem(RegisterItems.RAW_TITANIUM);
         simpleItem(RegisterItems.RAW_URANIUM);
         simpleItem(RegisterItems.RAW_TUNGSTEN);
         simpleItem(RegisterItems.RAW_ALUMINIUM);
-        simpleItem(RegisterItems.RAW_FLUORITE);
         simpleItem(RegisterItems.RAW_BERYLLIUM);
         simpleItem(RegisterItems.RAW_LEAD);
         simpleItem(RegisterItems.RAW_SCHRABIDIUM);
         simpleItem(RegisterItems.RAW_AUSTRALIUM);
         simpleItem(RegisterItems.RAW_COBALT);
-        simpleItem(RegisterItems.RAW_CINNABAR);
         simpleItem(RegisterItems.RAW_COLTAN);
 
         simpleItem(RegisterItems.URANIUM_PILE_ROD);

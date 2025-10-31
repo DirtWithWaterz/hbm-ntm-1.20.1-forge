@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Arrays;
 
-import static com.hbm.nucleartech.block.custom.SettledAsbestosBlock.FACING;
 import static net.minecraft.world.level.block.SnowLayerBlock.LAYERS;
 
 public class AsbestosAirBlock extends AirBlock {
@@ -58,13 +57,8 @@ public class AsbestosAirBlock extends AirBlock {
             pLevel.setBlock(rel, pState, 3);
             pLevel.setBlock(pPos, targetBefore, 3);
         }
-        else if(pRandom.nextInt(4) == 0) {
-
-            if(dir.equals(Direction.DOWN) && pLevel.getBlockState(rel).isSolid())
-                pLevel.setBlock(pPos, RegisterBlocks.SETTLED_ASBESTOS.get().defaultBlockState().setValue(FACING, NO_UP_OR_DOWN[pLevel.random.nextInt(NO_UP_OR_DOWN.length)]), 3);
-            else
-                pLevel.removeBlock(pPos, false);
-        }
+        else if(pRandom.nextInt(4) == 0)
+            pLevel.removeBlock(pPos, false);
     }
 
     @Override

@@ -231,9 +231,6 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> DEEPSLATE_ASBESTOS_ORE = registerBlock("deepslate_asbestos_ore",
             () -> new AsbestosBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)));
 
-    public static final RegistryObject<Block> SETTLED_ASBESTOS = registerAsbestosBlock(3, "settled_asbestos",
-            () -> new SettledAsbestosBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).noCollission().instabreak().noOcclusion()));
-
     /*
     Needs values done.
      */

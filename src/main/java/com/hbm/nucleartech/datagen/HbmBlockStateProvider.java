@@ -59,8 +59,6 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.ASBESTOS_ORE);
         blockWithItem(RegisterBlocks.DEEPSLATE_ASBESTOS_ORE);
 
-        carpetWithItem(RegisterBlocks.SETTLED_ASBESTOS);
-
         blockWithItem(RegisterBlocks.SCHRABIDIUM_ORE);
         blockWithItem(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE);
 

@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-29T17:27:10.1743113	Block States: hbm
+// 1.20.1	2025-10-30T18:26:40.2165278	Block States: hbm
 1efbf5ee60bf34c342853eaf098fe73788c85dfe assets/hbm/blockstates/aluminum_block.json
 7d3b3eedac85e1d6bf425cd672de4f47901f790f assets/hbm/blockstates/aluminum_ore.json
 f65c1c39acd53d979171efc21a7e3015ee0fe36a assets/hbm/blockstates/asbestos_block.json
@@ -104,7 +104,6 @@ ece86a63d09eb960d32d4d6540fe4f1a725c0768 assets/hbm/blockstates/red_concrete.jso
 3bca33e95111cca2c130e2f39304af0e0c245203 assets/hbm/blockstates/red_thorium_ore.json
 7f308374ce05c5fd3d844cfa0e2f301087e986d2 assets/hbm/blockstates/schrabidium_block.json
 597fa60da1cd8363064b60339d888de9b38f42ab assets/hbm/blockstates/schrabidium_ore.json
-f1c7ba509660bb5563020178e247e32bc0fa6cff assets/hbm/blockstates/settled_asbestos.json
 d0363b624f33b766246a96801197c3c1ca3637b5 assets/hbm/blockstates/sulfur_block.json
 a8066b14d90460bc721e71e64d1f3d0801287531 assets/hbm/blockstates/sulfur_ore.json
 c47d5036bb0831c2525e5bb3914865a04cd4d825 assets/hbm/blockstates/titanium_block.json
@@ -223,7 +222,6 @@ a59cd3c8ad20f03e67740b905de61c79d50db0e5 assets/hbm/models/block/raw_schrabidium
 b7f30528112cbf02dec0f825026fba394095c672 assets/hbm/models/block/red_thorium_ore.json
 cefe45d274de90632d59d13f152484a48d9bac66 assets/hbm/models/block/schrabidium_block.json
 951748dc9f63d2369316496096fa5e645cc80966 assets/hbm/models/block/schrabidium_ore.json
-c0326b6766183eb245e3152b03282195db74d062 assets/hbm/models/block/settled_asbestos.json
 bc11eb688781780ca1ec188cebb949b85cb318ab assets/hbm/models/block/sulfur_block.json
 92c459229a1ce162143b7b04fd1b70057d927519 assets/hbm/models/block/sulfur_ore.json
 d8930937d16a4b855c16a97ae513840b4ba07dec assets/hbm/models/block/titanium_block.json
@@ -342,7 +340,6 @@ a855665f6fbf966787775db54249a0d0673e12da assets/hbm/models/item/red_concrete.jso
 5a764fdcb397eee4c36f87150c2862c3b5e86b82 assets/hbm/models/item/red_thorium_ore.json
 5f778cefabb8976fcda71365bbb6c12bde21f031 assets/hbm/models/item/schrabidium_block.json
 26b63c5a0d05bf51122768db49119541cc2020c7 assets/hbm/models/item/schrabidium_ore.json
-4c3e24f42517fdeeeaef6d22b5288cfd80053e62 assets/hbm/models/item/settled_asbestos.json
 d589e3c59dca0697f8ef2dd3d2dc2681c5d1695e assets/hbm/models/item/sulfur_block.json
 1141861b7db9b973f7d0e921bb2306b7eddee412 assets/hbm/models/item/sulfur_ore.json
 fc1e1160cc5a375710b0c54a39fcce20b97489eb assets/hbm/models/item/titanium_block.json
