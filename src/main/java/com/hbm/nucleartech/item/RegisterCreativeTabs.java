@@ -115,6 +115,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.TITANIUM_PLATE.get());
 
                         output.accept(RegisterItems.COPPER_WIRE.get());
+                        output.accept(RegisterItems.GOLD_WIRE.get());
                         output.accept(RegisterItems.COPPER_COIL.get());
                         output.accept(RegisterItems.MOTOR.get());
                     })

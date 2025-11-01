@@ -26,6 +26,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.STEEL_PLATE);
 
         simpleItem(RegisterItems.COPPER_WIRE);
+        simpleItem(RegisterItems.GOLD_WIRE);
 
         simpleItem(RegisterItems.MOTOR);
         simpleItem(RegisterItems.COPPER_COIL);
