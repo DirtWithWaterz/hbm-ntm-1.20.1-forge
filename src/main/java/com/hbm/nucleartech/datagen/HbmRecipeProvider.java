@@ -35,7 +35,9 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
             , RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINIUM.get());
     private static final List<ItemLike> TUNGSTEN_SMELTABLES = List.of(RegisterBlocks.TUNGSTEN_ORE.get()
             , RegisterBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RegisterItems.RAW_TUNGSTEN.get());
-
+private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACACIA_WOOD,Items.BIRCH_WOOD,Items.CHERRY_WOOD
+        ,Items.DARK_OAK_WOOD,Items.JUNGLE_WOOD,Items.MANGROVE_WOOD,Items.OAK_WOOD,Items.SPRUCE_WOOD);
+    private static final List<ItemLike> BIOMASS_SMELTABLES_FOOD = List.of(Items.CARROT,Items.POTATO,Items.BEETROOT,Items.WHEAT);
     public HbmRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
@@ -110,6 +112,10 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
         results = List.of(
                 Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(1, 1, 100)));
         itemShredding(consumer, RegisterItems.URANIUM_INGOT.get(), results, FloatingLong.create(2.083E1), 80);
+
+        //results = List.of(
+           //     Pair.of(RegisterItems.BIOMASS.get(), new MetaData(1, 1, 100)));
+        //itemShredding(Consumer<BIOMASS_SMELTABLES_WOOD> FloatingLong.create(2.083E1), 80);
 
         results = List.of(
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 100)));
