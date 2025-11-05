@@ -114,7 +114,7 @@ private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACAC
         itemShredding(consumer, RegisterItems.URANIUM_INGOT.get(), results, FloatingLong.create(2.083E1), 80);
 
         //results = List.of(
-           //     Pair.of(RegisterItems.BIOMASS.get(), new MetaData(1, 1, 100)));
+           //     Pair.of(RegisterItems.BIOMASS.get(), new MetaData(, 1, 100)));
         //itemShredding(Consumer<BIOMASS_SMELTABLES_WOOD> FloatingLong.create(2.083E1), 80);
 
         results = List.of(
