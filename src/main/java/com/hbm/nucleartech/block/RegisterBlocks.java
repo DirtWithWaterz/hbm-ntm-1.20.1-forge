@@ -122,7 +122,7 @@ public class RegisterBlocks {
                     .noOcclusion()
                     .strength(5.0f, 4.0f)));
 
-    public static final RegistryObject<Block> BURNER_PRESS_PART = registerBlock("burner_press_part",
+    public static final RegistryObject<Block> BURNER_PRESS_PART = registerBlockWithoutItem("burner_press_part",
             () -> new BurnerPressPartBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .mapColor(MapColor.NONE)
                     .noOcclusion()
@@ -751,8 +751,11 @@ public class RegisterBlocks {
                     .strength(5.0f, 3.0f)
             ));
 
-    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
+    private static <T extends Block>RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
+    }
 
+    private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;
