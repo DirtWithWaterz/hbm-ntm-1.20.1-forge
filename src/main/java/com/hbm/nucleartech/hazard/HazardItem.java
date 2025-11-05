@@ -1,7 +1,9 @@
 package com.hbm.nucleartech.hazard;
 
+import com.hbm.nucleartech.datagen.HbmItemTagGenerator;
 import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.modules.ItemHazardModule;
+import com.hbm.nucleartech.util.RegisterTags;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -152,6 +154,39 @@ public class HazardItem extends Item implements IItemHazard {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+
+        if(pStack.is(RegisterTags.Items.PILE_RODS)) {
+
+            pTooltipComponents.add(Component.literal("§eUse on drilled graphite to insert"));
+            pTooltipComponents.add(Component.literal("§eUse screwdriver to extract"));
+
+            pTooltipComponents.add(Component.empty());
+
+            int val = HbmItemTagGenerator.SharedTagLists.ROD_MAP.get(pStack.getDisplayName().plainCopy().getString());
+
+            switch (val) {
+
+                case 1:
+
+                    pTooltipComponents.add(Component.literal("§a[Reactive Fuel]"));
+                    pTooltipComponents.add(Component.literal("§eUse hand drill to take core sample"));
+
+                    break;
+                case 2, 3:
+
+                    pTooltipComponents.add(Component.literal("§d[Neutron Source]"));
+
+                    break;
+                case 4:
+
+                    pTooltipComponents.add(Component.literal("§9[Neutron Absorber]"));
+                    pTooltipComponents.add(Component.literal("§eClick to toggle"));
+
+                    break;
+                default:
+                    break;
+            }
+        }
 
         this.module.addInformation(pStack, pTooltipComponents, pIsAdvanced);
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);

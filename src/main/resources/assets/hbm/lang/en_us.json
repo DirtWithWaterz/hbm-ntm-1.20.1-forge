@@ -230,6 +230,8 @@
   "block.hbm.tungsten_block": "Tungsten Block",
   "block.hbm.raw_tungsten_block": "Raw Tungsten Block",
 
+  "block.hbm.graphite_block": "Graphite Block",
+
   "block.hbm.aluminum_ore": "Aluminum Ore",
   "block.hbm.deepslate_aluminum_ore": "Deepslate Aluminum Ore",
   "block.hbm.aluminum_block": "Aluminum Block",
@@ -338,6 +340,15 @@
 
   "block.hbm.press": "Press",
   "block.hbm.burner_press": "Burner Press",
+
+  "item.hbm.screwdriver": "Screwdriver",
+  "item.hbm.hand_drill": "Hand Drill",
+
+  "item.hbm.plutonium_pile_rod": "Chicago Pile Plutonium Rod",
+  "item.hbm.radium_pile_rod": "Chicago Pile Ra226Be Neutron Source",
+  "item.hbm.boron_pile_rod": "Chicago Pile Control Rod",
+
+  "item.hbm.biomass": "Biomass",
 
   "item.hbm.thorium_shale": "Thorium Shale",
   "item.hbm.thorium_ingot": "Thorium Ingot",

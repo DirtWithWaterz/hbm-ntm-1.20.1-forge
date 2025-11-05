@@ -24,6 +24,8 @@ public class RegisterTags {
         public static final TagKey<Item> WIRE_STAMPS = tag("wire_stamp");
         public static final TagKey<Item> DESH = tag("desh");
         public static final TagKey<Item> SHREDDER_BLADES = tag("shredder_blades");
+        public static final TagKey<Item> PILE_RODS = tag("pile_rods");
+        public static final TagKey<Item> BIOMASS = tag("biomass");
 
         private static TagKey<Item> tag(String name) {
 

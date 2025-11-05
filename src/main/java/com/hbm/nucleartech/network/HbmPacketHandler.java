@@ -2,6 +2,7 @@ package com.hbm.nucleartech.network;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.network.packet.ClientboundBurnerPressPacket;
+import com.hbm.nucleartech.network.packet.ClientboundGraphiteBlockPacket;
 import com.hbm.nucleartech.network.packet.ClientboundShredderPacket;
 import com.hbm.nucleartech.network.packet.ClientboundSpawnDeconParticlePacket;
 import net.minecraft.resources.ResourceLocation;
@@ -41,6 +42,12 @@ public class HbmPacketHandler {
                 ClientboundShredderPacket::encode,
                 ClientboundShredderPacket::decode,
                 ClientboundShredderPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundGraphiteBlockPacket.class,
+                ClientboundGraphiteBlockPacket::encode,
+                ClientboundGraphiteBlockPacket::decode,
+                ClientboundGraphiteBlockPacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }

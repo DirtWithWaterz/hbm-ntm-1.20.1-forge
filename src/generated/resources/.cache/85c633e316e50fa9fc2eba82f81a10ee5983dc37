@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-30T18:26:40.2165278	Block States: hbm
+// 1.20.1	2025-11-03T20:23:06.0750335	Block States: hbm
 1efbf5ee60bf34c342853eaf098fe73788c85dfe assets/hbm/blockstates/aluminum_block.json
 7d3b3eedac85e1d6bf425cd672de4f47901f790f assets/hbm/blockstates/aluminum_ore.json
 f65c1c39acd53d979171efc21a7e3015ee0fe36a assets/hbm/blockstates/asbestos_block.json
@@ -9,6 +9,7 @@ c97591d040e58321e1efa7b240d85ccf7b8b0858 assets/hbm/blockstates/beryllium_block.
 3175ce83484637f59dcd4d650a9adf1d00438937 assets/hbm/blockstates/beryllium_ore.json
 391a5afe9d9b273f7ba599434eb62b599162bf21 assets/hbm/blockstates/black_concrete.json
 bd9c6e7ddd516e1e54c02a8d2834f97c846007bb assets/hbm/blockstates/blue_concrete.json
+b25bc2efb0a93edce67a07c9d17fbf9c40147249 assets/hbm/blockstates/boron_block.json
 2de3958fd3819423b63a2a73510e6e0ed652f51a assets/hbm/blockstates/brick_fire.json
 b64185bb2ed9562c2d7571cf62193fd85f3a7be6 assets/hbm/blockstates/brick_forgotten.json
 816ce85c9738bc627cd07593936a14469c834821 assets/hbm/blockstates/brick_jungle.json
@@ -127,6 +128,7 @@ fa44648a2efb582dc077a4c2895566de8c44b785 assets/hbm/models/block/asbestos_ore.js
 a3b76946d0a272f9809be717ed114f2f81757806 assets/hbm/models/block/beryllium_ore.json
 efae93e181422e215fbdb6908cb29c6e6f1615e2 assets/hbm/models/block/black_concrete.json
 fa3ee6486b036d40af2899eefea954f71975bf94 assets/hbm/models/block/blue_concrete.json
+0f73130fe7093924cc4893113759b570ec878e4c assets/hbm/models/block/boron_block.json
 28e6e6a8288c3a0a7301fbdc5dd1994288abf4d2 assets/hbm/models/block/brick_fire.json
 179e8285c475358f52502d9a980e676d8c37247d assets/hbm/models/block/brick_forgotten.json
 47fd8ccee3eec9f6e7195afa18341a1c0b3b6118 assets/hbm/models/block/brick_jungle.json
@@ -245,6 +247,7 @@ f1ca3ead92ce8064761e170c5da66928d5de51a4 assets/hbm/models/item/australium_block
 f53c26be18de4868a3d5a447332b7377333ed5ed assets/hbm/models/item/beryllium_ore.json
 8ad2bb46c79be972c8f6b465a11bd218315d6534 assets/hbm/models/item/black_concrete.json
 9c3db285eb1d25050732d942fd55f5b25d0bb842 assets/hbm/models/item/blue_concrete.json
+bed61df94cb6d9e06d80c0129326c4017d96d077 assets/hbm/models/item/boron_block.json
 e56c9f55a460ed52cadc77e032db879317b555c4 assets/hbm/models/item/brick_fire.json
 fcc7c43f4a8475fb5b3bd74176d45b4900304036 assets/hbm/models/item/brick_forgotten.json
 4f47cc70407011d921ec5770a2e063f4fa244576 assets/hbm/models/item/brick_jungle.json

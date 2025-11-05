@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-30T18:54:34.4408758	Loot Tables
+// 1.20.1	2025-11-03T20:23:06.0800191	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
 20e19a65676ca36db0f62fff896c635893679c68 data/hbm/loot_tables/blocks/asbestos_air.json
@@ -10,6 +10,7 @@ ea4b0cb91787e9322bf8cf6bd33e06f0db8aee62 data/hbm/loot_tables/blocks/asbestos_bl
 046e382059bdb767fdba86fcecf4f386046cdef8 data/hbm/loot_tables/blocks/beryllium_ore.json
 ece562dc48782a3867c51a623c6968c628d85cf4 data/hbm/loot_tables/blocks/black_concrete.json
 d61648bb03fd85c4ab739cd51a485264a25a275f data/hbm/loot_tables/blocks/blue_concrete.json
+3aa51acc340dd76e693a6d6d344c2e240f4f93c7 data/hbm/loot_tables/blocks/boron_block.json
 79e39441adef3d8c2f57f98c2fd979739bdf69ae data/hbm/loot_tables/blocks/brick_fire.json
 3197a20cfe12a3a8d4732c57d7a160fdcba5b915 data/hbm/loot_tables/blocks/brick_forgotten.json
 e6821b7add690e5f81f9f2c68432cd1879e0eefb data/hbm/loot_tables/blocks/brick_jungle.json
@@ -70,6 +71,7 @@ f812fc38e46255573f0c6781ec1e329dac6da646 data/hbm/loot_tables/blocks/deepslate_s
 3f81072f14d42a8a22544512637cc03d453f8a39 data/hbm/loot_tables/blocks/deepslate_uranium_ore.json
 40e260a19a519361a4421da2551587cbd26cedef data/hbm/loot_tables/blocks/fluorite_block.json
 f63c97f9803dba42ac981016e207e3a056957d80 data/hbm/loot_tables/blocks/fluorite_ore.json
+70f76caa13da93e2010bd51278279fbba22b2e0c data/hbm/loot_tables/blocks/graphite_block.json
 6c0a145654957e255bd8e0a4e475acefe8549b9d data/hbm/loot_tables/blocks/gray_concrete.json
 e9489fad3565a8e1f6fcca92e6f05189182cb9e3 data/hbm/loot_tables/blocks/green_concrete.json
 d87642ab2dabf21c5f7c92fba3e999d3034ea7c2 data/hbm/loot_tables/blocks/lead_block.json

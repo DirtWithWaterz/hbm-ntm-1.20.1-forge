@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.handler;
 
+import com.hbm.nucleartech.datagen.HbmItemTagGenerator;
 import com.hbm.nucleartech.hazard.HazardSystem;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.BatteryItem;
@@ -9,6 +10,7 @@ import com.hbm.nucleartech.util.ArmorRegistry;
 import com.hbm.nucleartech.util.ArmorRegistry.HazardClass;
 import com.hbm.nucleartech.util.ContaminationUtil;
 import com.hbm.nucleartech.util.I18nUtil;
+import com.hbm.nucleartech.util.RegisterTags;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -90,11 +92,6 @@ public class ItemHandler {
             }
         }
 
-//        System.err.println("[Debug] Adding neutron rad info...");
-
-        /// NEUTRON RADS ///
-        ContaminationUtil.addNeutronRadInfo(stack, event.getEntity(), list, event.getFlags());
-
         /// HAZARDS ///
 //        HazardSystem.addHazardInfo(stack, event.getEntityPlayer(), list, event.getFlags());
 
@@ -146,7 +143,7 @@ public class ItemHandler {
             list.add(Component.literal(ChatFormatting.GRAY + "Charge rate: " + BatteryItem.formatWattsCharge(stack)));
             list.add(Component.literal(ChatFormatting.GRAY + "Discharge rate: " + BatteryItem.formatWattsDischarge(stack)));
         }
-        if(stack.getItem() instanceof SelfChargingBatteryItem sc) {
+        else if(stack.getItem() instanceof SelfChargingBatteryItem sc) {
 
             if(stack.getItem().equals(RegisterItems.INFINITE_FUSION_CORE.get()) ||
             stack.getItem().equals(RegisterItems.CREATIVE_BATTERY.get()))
@@ -154,6 +151,16 @@ public class ItemHandler {
             else
                 list.add(Component.literal(ChatFormatting.YELLOW + "Discharge rate: " + sc.formatWattsDischarge()));
         }
+
+        /// SCREWDRIVER & HAND DRILL ///
+        else if(stack.is(RegisterItems.SCREWDRIVER.get())) {
+
+            list.add(Component.literal("Right clicking fuel pipes will toggle extraction mode"));
+            list.add(Component.literal("Could be used instead of a fuze..."));
+        }
+
+        /// NEUTRON RADS ///
+        ContaminationUtil.addNeutronRadInfo(stack, event.getEntity(), list, event.getFlags());
     }
 
     @SubscribeEvent

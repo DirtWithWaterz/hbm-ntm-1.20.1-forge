@@ -53,6 +53,10 @@ public class RegisterItems {
             () -> new Item(new Item.Properties()));
 
     //========================================general==============================================================
+
+    public static final RegistryObject<Item> BIOMASS = ITEMS.register("biomass",
+            () -> new CustomLoreItem(new Item.Properties()));
+
     public static final RegistryObject<Item> BERYLLIUM_INGOT = ITEMS.register("beryllium_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -97,6 +101,15 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> URANIUM_PILE_ROD = ITEMS.register("uranium_pile_rod",
             () -> new HazardItem(0.525, new Item.Properties()));
+
+    public static final RegistryObject<Item> PLUTONIUM_PILE_ROD = ITEMS.register("plutonium_pile_rod",
+            () -> new HazardItem(11.25, new Item.Properties()));
+
+    public static final RegistryObject<Item> RADIUM_PILE_ROD = ITEMS.register("radium_pile_rod",
+            () -> new HazardItem(11.25, new Item.Properties()));
+
+    public static final RegistryObject<Item> BORON_PILE_ROD = ITEMS.register("boron_pile_rod",
+            () -> new HazardItem(0, new Item.Properties()));
 
     public static final RegistryObject<Item> THORIUM_SHALE = ITEMS.register("thorium_shale",
             () -> new HazardItem(0.01, new Item.Properties()));
@@ -427,6 +440,12 @@ public class RegisterItems {
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.boots_only));
     //    ========================================tools=========================================
 
+    public static final RegistryObject<Item> HAND_DRILL = ITEMS.register("hand_drill",
+            () -> new Item(new Item.Properties().durability(100)));
+
+    public static final RegistryObject<Item> SCREWDRIVER = ITEMS.register("screwdriver",
+            () -> new Item(new Item.Properties().durability(100)));
+
     //    ====================================== machines ======================================
 
     public static final RegistryObject<Item> BURNER_PRESS = ITEMS.register("burner_press",
@@ -434,6 +453,9 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> SHREDDER = ITEMS.register("shredder",
             () -> new ShredderItem(RegisterBlocks.SHREDDER.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> GRAPHITE_BLOCK = ITEMS.register("graphite_block",
+            () -> new GraphiteBlockItem(RegisterBlocks.GRAPHITE_BLOCK.get(), new Item.Properties()));
 
     //    ====================================== stamps ======================================
 

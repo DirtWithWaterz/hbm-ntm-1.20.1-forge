@@ -22,6 +22,9 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(RegisterBlocks.TITANIUM_BLOCK.get(),
+                        RegisterBlocks.SHREDDER.get(),
+                        RegisterBlocks.GRAPHITE_BLOCK.get(),
+                        RegisterBlocks.BORON_BLOCK.get(),
                         RegisterBlocks.TITANIUM_ORE.get(),
                         RegisterBlocks.DEEPSLATE_TITANIUM_ORE.get(),
                         RegisterBlocks.URANIUM_BLOCK.get(),
@@ -85,6 +88,7 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
                         RegisterBlocks.RAW_CINNABAR_BLOCK.get(),
                         RegisterBlocks.RAW_COLTAN_BLOCK.get(),
                         RegisterBlocks.RADIATION_DECONTAMINATOR.get(),
+                        RegisterBlocks.SHREDDER.get(),
                         RegisterBlocks.BURNER_PRESS.get(),
                         RegisterBlocks.BURNER_PRESS_PART.get(),
                         RegisterBlocks.RED_THORIUM_ORE.get(),
@@ -142,6 +146,8 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(RegisterBlocks.TITANIUM_ORE.get(),
+                        RegisterBlocks.GRAPHITE_BLOCK.get(),
+                        RegisterBlocks.BORON_BLOCK.get(),
                         RegisterBlocks.DEEPSLATE_TITANIUM_ORE.get(),
                         RegisterBlocks.BURNER_PRESS.get(),
                         RegisterBlocks.BURNER_PRESS_PART.get(),

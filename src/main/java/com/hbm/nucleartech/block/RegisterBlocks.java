@@ -48,6 +48,11 @@ public class RegisterBlocks {
                     3.5
             ));
 
+    public static final RegistryObject<Block> BORON_BLOCK = registerBlock("boron_block",
+            () -> new RadResistantBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK),
+                    10.00f, 1
+            ));
+
     public static final RegistryObject<Block> TITANIUM_ORE = registerBlock("titanium_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
                     .strength(5.0f, 4.0f)
@@ -130,6 +135,9 @@ public class RegisterBlocks {
                     .noLootTable()
                     .pushReaction(PushReaction.BLOCK)
             ));
+
+    public static final RegistryObject<Block> GRAPHITE_BLOCK = BLOCKS.register("graphite_block",
+            () -> new GraphiteBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
 
     public static final RegistryObject<Block> RAD_RESISTANT_BLOCK = registerBlock("rad_resistant_block",
             () -> new RadResistantBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)

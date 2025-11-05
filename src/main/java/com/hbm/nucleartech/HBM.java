@@ -3,6 +3,7 @@ package com.hbm.nucleartech;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.block.entity.RegisterBlockEntities;
 import com.hbm.nucleartech.block.entity.client.BurnerPressRenderer;
+import com.hbm.nucleartech.block.entity.client.GraphiteBlockRenderer;
 import com.hbm.nucleartech.block.entity.client.ShredderRenderer;
 import com.hbm.nucleartech.entity.HbmEntities;
 import com.hbm.nucleartech.entity.client.NuclearCreeperRenderer;
@@ -27,8 +28,10 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -45,10 +48,13 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -160,6 +166,7 @@ public class HBM
             EntityRenderers.register(HbmEntities.NUCLEAR_CREEPER.get(), NuclearCreeperRenderer::new);
             BlockEntityRenderers.register(RegisterBlockEntities.BURNER_PRESS_ENTITY.get(), BurnerPressRenderer::new);
             BlockEntityRenderers.register(RegisterBlockEntities.SHREDDER_ENTITY.get(), ShredderRenderer::new);
+            BlockEntityRenderers.register(RegisterBlockEntities.GRAPHITE_BLOCK_ENTITY.get(), GraphiteBlockRenderer::new);
 
             MenuScreens.register(RegisterMenuTypes.BURNER_PRESS_MENU.get(), BurnerPressScreen::new);
             MenuScreens.register(RegisterMenuTypes.SHREDDER_MENU.get(), ShredderScreen::new);
@@ -171,5 +178,16 @@ public class HBM
     public static int random(int min, int max) {
 
         return RANDOM.nextInt(max - min + 1) + min;
+    }
+
+    public static List<Item> getItemsFromTag(TagKey<Item> tagKey) {
+        List<Item> items = new ArrayList<>();
+
+        // ForgeRegistries.ITEMS is wrapped with holders
+        for (Item holder : ForgeRegistries.ITEMS.tags().getTag(tagKey)) {
+            items.add(holder);
+        }
+
+        return items;
     }
 }

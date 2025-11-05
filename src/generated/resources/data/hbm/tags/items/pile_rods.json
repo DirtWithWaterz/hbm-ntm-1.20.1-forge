@@ -1,0 +1,8 @@
+{
+  "values": [
+    "hbm:uranium_pile_rod",
+    "hbm:plutonium_pile_rod",
+    "hbm:radium_pile_rod",
+    "hbm:boron_pile_rod"
+  ]
+}

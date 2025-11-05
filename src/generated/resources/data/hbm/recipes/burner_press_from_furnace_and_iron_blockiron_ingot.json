@@ -10,12 +10,15 @@
     },
     "I": {
       "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "minecraft:piston"
     }
   },
   "pattern": [
     "IFI",
-    "IBI",
-    "IFI"
+    "IPI",
+    "IBI"
   ],
   "result": {
     "item": "hbm:burner_press"

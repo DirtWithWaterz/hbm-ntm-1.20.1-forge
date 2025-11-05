@@ -104,6 +104,8 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.WHITE_CONCRETE.get());
         this.dropSelf(RegisterBlocks.YELLOW_CONCRETE.get());
 
+        this.dropSelf(RegisterBlocks.GRAPHITE_BLOCK.get());
+        this.dropSelf(RegisterBlocks.BORON_BLOCK.get());
 
         this.add(RegisterBlocks.TITANIUM_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.TITANIUM_ORE.get(), RegisterItems.RAW_TITANIUM.get()));

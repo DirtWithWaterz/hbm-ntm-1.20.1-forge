@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.item.special;
 
 import com.hbm.nucleartech.item.RegisterItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -27,6 +28,10 @@ public class CustomLoreItem extends Item {
 
             pTooltipComponents.add(Component.literal("Holding this in your main or off hand reduces radiation coming from items to their square-root."));
             pTooltipComponents.add(Component.literal("It's also useful for handling both very hot and very cold substances."));
+        }
+        if(this == RegisterItems.BIOMASS.get()) {
+
+            pTooltipComponents.add(Component.literal(ChatFormatting.GRAY + "...Michael?").withStyle(ChatFormatting.ITALIC));
         }
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);

@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.hbm.nucleartech.HBM.getItemsFromTag;
 import static com.hbm.nucleartech.capability.energy.WattHourStorage.translateWattHours;
 
 public class ShredderCategory implements IRecipeCategory<ShredderRecipe> {
@@ -159,9 +160,9 @@ public class ShredderCategory implements IRecipeCategory<ShredderRecipe> {
         // layout slots as before...
         builder.addSlot(RecipeIngredientRole.INPUT, 44 - XO, 35 - YO).addIngredients(recipe.getIngredients().get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 89 - XO, 17 - YO).addItemStacks(
-                getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES));
+                getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES).stream().map(Item::getDefaultInstance).toList());
         builder.addSlot(RecipeIngredientRole.INPUT, 89 - XO, 53 - YO).addItemStacks(
-                getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES));
+                getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES).stream().map(Item::getDefaultInstance).toList());
 
         List<ItemStack> results = new ArrayList<>();
         for (Pair<Item, MetaData> result : recipe.getResults())
@@ -200,17 +201,5 @@ public class ShredderCategory implements IRecipeCategory<ShredderRecipe> {
             animatedCache.put(id, Pair.of(progressArrow, energyBar));
             energyCache.put(id, recipe.getPowerConsumption());
         }
-    }
-
-    public static List<ItemStack> getItemsFromTag(TagKey<Item> tagKey) {
-
-        List<ItemStack> items = new ArrayList<>();
-
-        for (Item holder : ForgeRegistries.ITEMS.tags().getTag(tagKey).stream().toList()) {
-
-            items.add(holder.getDefaultInstance());
-        }
-
-        return items;
     }
 }

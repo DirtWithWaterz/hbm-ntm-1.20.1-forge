@@ -7,10 +7,12 @@ import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.recipe.RegisterRecipes;
 import com.hbm.nucleartech.util.FloatingLong;
+import com.hbm.nucleartech.util.RegisterTags;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -24,6 +26,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
+
+import static com.hbm.nucleartech.HBM.getItemsFromTag;
 
 public class HbmRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
@@ -113,9 +117,9 @@ private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACAC
                 Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(1, 1, 100)));
         itemShredding(consumer, RegisterItems.URANIUM_INGOT.get(), results, FloatingLong.create(2.083E1), 80);
 
-        //results = List.of(
-           //     Pair.of(RegisterItems.BIOMASS.get(), new MetaData(, 1, 100)));
-        //itemShredding(Consumer<BIOMASS_SMELTABLES_WOOD> FloatingLong.create(2.083E1), 80);
+        results = List.of(
+                Pair.of(RegisterItems.BIOMASS.get(), new MetaData(1, 1, 100)));
+        itemShredding(consumer, HbmItemTagGenerator.SharedTagLists.BIOMASS, results, FloatingLong.create(2.083E1), 80);
 
         results = List.of(
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 100)));
@@ -353,6 +357,23 @@ private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACAC
                         pTicks
                 )
         );
+    }
+
+    protected static void itemShredding(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<Item> pInput, List<Pair<ItemLike, MetaData>> pResults, FloatingLong pPowerConsumption, int pTicks) {
+
+        for(Item item : pInput) {
+
+            System.err.println(item.getDefaultInstance().getDisplayName().plainCopy().getString());
+
+            pFinishedRecipeConsumer.accept(
+                    new ShredderRecipeBuilder(
+                            item,
+                            pResults,
+                            pPowerConsumption,
+                            pTicks
+                    )
+            );
+        }
     }
 
     public record ShredderRecipeBuilder(ItemLike input, List<Pair<ItemLike, MetaData>> results, FloatingLong powerConsumption, int ticks) implements FinishedRecipe {

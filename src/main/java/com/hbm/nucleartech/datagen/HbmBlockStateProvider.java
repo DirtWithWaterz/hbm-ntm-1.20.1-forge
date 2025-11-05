@@ -26,6 +26,8 @@ public class HbmBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(RegisterBlocks.URANIUM_BLOCK);
 
+        blockWithItem(RegisterBlocks.BORON_BLOCK);
+
         blockWithItem(RegisterBlocks.TITANIUM_ORE);
         blockWithItem(RegisterBlocks.DEEPSLATE_TITANIUM_ORE);
 

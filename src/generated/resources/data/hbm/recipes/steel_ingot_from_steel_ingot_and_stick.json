@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "hbm:steel_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "D  ",
+    "DSS",
+    "  S"
+  ],
+  "result": {
+    "item": "hbm:steel_blade"
+  },
+  "show_notification": true
+}
