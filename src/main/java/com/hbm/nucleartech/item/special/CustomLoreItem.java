@@ -31,7 +31,7 @@ public class CustomLoreItem extends Item {
         }
         if(this == RegisterItems.BIOMASS.get()) {
 
-            pTooltipComponents.add(Component.literal(ChatFormatting.GRAY + "...Michael?").withStyle(ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.literal(ChatFormatting.DARK_GRAY + "§o...Michael?"));
         }
 
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
