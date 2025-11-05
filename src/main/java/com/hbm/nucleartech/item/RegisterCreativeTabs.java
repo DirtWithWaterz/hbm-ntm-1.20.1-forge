@@ -259,15 +259,12 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.DEEPSLATE_COLTAN_ORE.get());
 
                         output.accept(RegisterBlocks.SULFUR_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_SULFUR_BLOCK.get());
                         output.accept(RegisterBlocks.NITER_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_NITER_BLOCK.get());
                         output.accept(RegisterBlocks.TUNGSTEN_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_TUNGSTEN_BLOCK.get());
                         output.accept(RegisterBlocks.ALUMINIUM_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_ALUMINIUM_BLOCK.get());
                         output.accept(RegisterBlocks.FLUORITE_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_FLUORITE_BLOCK.get());
                         output.accept(RegisterBlocks.BERYLLIUM_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_BERYLLIUM_BLOCK.get());
                         output.accept(RegisterBlocks.LEAD_BLOCK.get());

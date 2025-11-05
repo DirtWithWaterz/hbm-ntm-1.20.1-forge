@@ -327,7 +327,6 @@ public class RegisterBlocks {
                     0.00
             ));
 
-
     public static final RegistryObject<Block> SULFUR_BLOCK = registerHazardBlock(0.003, "sulfur_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f),
@@ -335,24 +334,10 @@ public class RegisterBlocks {
                     0.00
             ));
 
-    public static final RegistryObject<Block> RAW_SULFUR_BLOCK = registerHazardBlock(0.0035, "raw_sulfur_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
-            ));
-
     public static final RegistryObject<Block> NITER_BLOCK = registerHazardBlock(0.003, "niter_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f),
                     UniformInt.of(2, 4),
-                    0.00
-            ));
-
-    public static final RegistryObject<Block> RAW_NITER_BLOCK = registerHazardBlock(0.0035, "raw_niter_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
                     0.00
             ));
 
@@ -388,13 +373,6 @@ public class RegisterBlocks {
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f),
                     UniformInt.of(2, 4),
-                    0.00
-            ));
-
-    public static final RegistryObject<Block> RAW_FLUORITE_BLOCK = registerHazardBlock(0.0035, "raw_fluorite_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
                     0.00
             ));
 
