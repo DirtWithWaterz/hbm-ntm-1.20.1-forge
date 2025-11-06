@@ -4,30 +4,19 @@ import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.network.HbmPacketHandler;
 import com.hbm.nucleartech.network.packet.ClientboundGraphiteBlockPacket;
+import com.hbm.nucleartech.network.packet.ClientboundSpawnNeutronParticlePacket;
 import com.hbm.nucleartech.render.amlfrom1710.Vec3;
-import com.hbm.nucleartech.util.RegisterTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Containers;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.PacketDistributor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.constant.DataTickets;
@@ -39,10 +28,6 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.RenderUtils;
-
-import java.util.Random;
-
-import static com.hbm.nucleartech.HBM.getItemsFromTag;
 
 public class GraphiteBlockEntity extends BlockEntity implements GeoBlockEntity {
 
@@ -381,6 +366,15 @@ public class GraphiteBlockEntity extends BlockEntity implements GeoBlockEntity {
                 }
             }
         }
+
+        Vec3 pos = new Vec3(worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5);
+        Vec3 vel = new Vec3(vec.xCoord, vec.yCoord, vec.zCoord);
+
+        ClientboundSpawnNeutronParticlePacket packet = new ClientboundSpawnNeutronParticlePacket(
+                pos.xCoord, pos.yCoord, pos.zCoord, vel.xCoord, vel.yCoord, vel.zCoord
+        );
+
+        HbmPacketHandler.INSTANCE.send(PacketDistributor.TRACKING_CHUNK.with(() -> pLevel.getChunkAt(pos.toBlockPos())), packet);
     }
 
     public void receiveNeutrons(int n) {

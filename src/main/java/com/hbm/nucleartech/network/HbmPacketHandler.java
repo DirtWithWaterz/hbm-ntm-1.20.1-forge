@@ -1,10 +1,7 @@
 package com.hbm.nucleartech.network;
 
 import com.hbm.nucleartech.HBM;
-import com.hbm.nucleartech.network.packet.ClientboundBurnerPressPacket;
-import com.hbm.nucleartech.network.packet.ClientboundGraphiteBlockPacket;
-import com.hbm.nucleartech.network.packet.ClientboundShredderPacket;
-import com.hbm.nucleartech.network.packet.ClientboundSpawnDeconParticlePacket;
+import com.hbm.nucleartech.network.packet.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -48,6 +45,18 @@ public class HbmPacketHandler {
                 ClientboundGraphiteBlockPacket::encode,
                 ClientboundGraphiteBlockPacket::decode,
                 ClientboundGraphiteBlockPacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundSpawnNeutronParticlePacket.class,
+                ClientboundSpawnNeutronParticlePacket::encode,
+                ClientboundSpawnNeutronParticlePacket::decode,
+                ClientboundSpawnNeutronParticlePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundSpawnRadFogParticlePacket.class,
+                ClientboundSpawnRadFogParticlePacket::encode,
+                ClientboundSpawnRadFogParticlePacket::decode,
+                ClientboundSpawnRadFogParticlePacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }
