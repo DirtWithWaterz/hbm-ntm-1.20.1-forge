@@ -18,6 +18,9 @@ public class RegisterParticles {
     public static final RegistryObject<SimpleParticleType> ASBESTOS_PARTICLE =
             PARTICLES.register("asbestos_particle", () -> new SimpleParticleType(true));
 
+    public static final RegistryObject<SimpleParticleType> NEUTRON_PARTICLE =
+            PARTICLES.register("neutron_particle", () -> new SimpleParticleType(true));
+
     public static void register(IEventBus eventBus) {
 
         PARTICLES.register(eventBus);
