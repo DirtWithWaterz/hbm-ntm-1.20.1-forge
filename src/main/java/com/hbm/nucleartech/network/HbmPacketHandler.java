@@ -52,11 +52,5 @@ public class HbmPacketHandler {
                 ClientboundSpawnNeutronParticlePacket::decode,
                 ClientboundSpawnNeutronParticlePacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT));
-        INSTANCE.registerMessage(packetId++,
-                ClientboundSpawnRadFogParticlePacket.class,
-                ClientboundSpawnRadFogParticlePacket::encode,
-                ClientboundSpawnRadFogParticlePacket::decode,
-                ClientboundSpawnRadFogParticlePacket::handle,
-                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }
