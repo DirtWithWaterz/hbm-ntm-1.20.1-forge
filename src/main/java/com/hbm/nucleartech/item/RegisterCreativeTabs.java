@@ -17,6 +17,8 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hbm.nucleartech.HBM.getItemsFromTag;
+
 public class RegisterCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
@@ -66,7 +68,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.THORIUM_INGOT.get());
                         output.accept(RegisterItems.THORIUM_POWDER.get());
 
-                        output.acceptAll(getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES));
+                        output.acceptAll(getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES).stream().map(Item::getDefaultInstance).toList());
 
                         output.accept(RegisterItems.GEIGER_COUNTER.get());
 
@@ -118,6 +120,10 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.GOLD_WIRE.get());
                         output.accept(RegisterItems.COPPER_COIL.get());
                         output.accept(RegisterItems.MOTOR.get());
+
+                        output.accept(RegisterItems.BORON_PILE_ROD.get());
+                        output.accept(RegisterItems.RADIUM_PILE_ROD.get());
+                        output.accept(RegisterItems.PLUTONIUM_PILE_ROD.get());
                     })
                     .build());
 
@@ -190,6 +196,9 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.AMERICIUM_SC_BATTERY.get());
                         output.accept(RegisterItems.MAKESHIFT_ENERGY_CORE.get());
                         output.accept(RegisterItems.INFINITE_FUSION_CORE.get());
+
+                        output.accept(RegisterItems.SCREWDRIVER.get());
+                        output.accept(RegisterItems.HAND_DRILL.get());
                     })
                     .build());
 
@@ -250,15 +259,12 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.DEEPSLATE_COLTAN_ORE.get());
 
                         output.accept(RegisterBlocks.SULFUR_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_SULFUR_BLOCK.get());
                         output.accept(RegisterBlocks.NITER_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_NITER_BLOCK.get());
                         output.accept(RegisterBlocks.TUNGSTEN_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_TUNGSTEN_BLOCK.get());
                         output.accept(RegisterBlocks.ALUMINIUM_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_ALUMINIUM_BLOCK.get());
                         output.accept(RegisterBlocks.FLUORITE_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_FLUORITE_BLOCK.get());
                         output.accept(RegisterBlocks.BERYLLIUM_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_BERYLLIUM_BLOCK.get());
                         output.accept(RegisterBlocks.LEAD_BLOCK.get());
@@ -323,6 +329,9 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.BRICK_LIGHT.get());
                         output.accept(RegisterBlocks.BRICK_LIGHT_ALT.get());
                         output.accept(RegisterBlocks.BRICK_OBSIDIAN.get());
+
+                        output.accept(RegisterBlocks.GRAPHITE_BLOCK.get());
+                        output.accept(RegisterBlocks.BORON_BLOCK.get());
                     })
                     .build());
 
@@ -339,16 +348,5 @@ public class RegisterCreativeTabs {
     public static void register(IEventBus eventBus) {
 
         CREATIVE_TABS.register(eventBus);
-    }
-
-    public static List<ItemStack> getItemsFromTag(TagKey<Item> tagKey) {
-        List<ItemStack> items = new ArrayList<>();
-
-        // ForgeRegistries.ITEMS is wrapped with holders
-        for (Item holder : ForgeRegistries.ITEMS.tags().getTag(tagKey)) {
-            items.add(holder.getDefaultInstance());
-        }
-
-        return items;
     }
 }

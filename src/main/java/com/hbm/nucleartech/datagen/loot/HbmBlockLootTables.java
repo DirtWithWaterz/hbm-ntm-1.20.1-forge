@@ -28,15 +28,12 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.RADIATION_DECONTAMINATOR.get());
 
         this.dropSelf(RegisterBlocks.SULFUR_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_SULFUR_BLOCK.get());
         this.dropSelf(RegisterBlocks.NITER_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_NITER_BLOCK.get());
         this.dropSelf(RegisterBlocks.TUNGSTEN_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_TUNGSTEN_BLOCK.get());
         this.dropSelf(RegisterBlocks.ALUMINIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_ALUMINIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.FLUORITE_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_FLUORITE_BLOCK.get());
         this.dropSelf(RegisterBlocks.BERYLLIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_BERYLLIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.LEAD_BLOCK.get());
@@ -104,6 +101,8 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.WHITE_CONCRETE.get());
         this.dropSelf(RegisterBlocks.YELLOW_CONCRETE.get());
 
+        this.dropSelf(RegisterBlocks.GRAPHITE_BLOCK.get());
+        this.dropSelf(RegisterBlocks.BORON_BLOCK.get());
 
         this.add(RegisterBlocks.TITANIUM_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.TITANIUM_ORE.get(), RegisterItems.RAW_TITANIUM.get()));

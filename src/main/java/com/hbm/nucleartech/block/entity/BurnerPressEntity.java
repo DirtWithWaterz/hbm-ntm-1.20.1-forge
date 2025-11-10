@@ -47,7 +47,7 @@ import software.bernie.geckolib.util.RenderUtils;
 
 import java.util.Optional;
 
-import static com.hbm.nucleartech.compat.jei.categories.ShredderCategory.getItemsFromTag;
+import static com.hbm.nucleartech.HBM.getItemsFromTag;
 
 public class BurnerPressEntity extends BlockEntity implements GeoBlockEntity, MenuProvider {
 
@@ -439,8 +439,8 @@ public class BurnerPressEntity extends BlockEntity implements GeoBlockEntity, Me
 
         ItemStack stack = this.itemHandler.getStackInSlot(STAMP_SLOT);
 
-        for(ItemStack item : getItemsFromTag(RegisterTags.Items.DESH))
-            if(stack.equals(item))
+        for(Item item : getItemsFromTag(RegisterTags.Items.DESH))
+            if(stack.is(item))
                 return;
 
         stack.hurt(1, level.random, null);

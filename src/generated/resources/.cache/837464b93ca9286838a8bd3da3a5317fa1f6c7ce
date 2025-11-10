@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-30T18:54:34.437883	Item Models: hbm
+// 1.20.1	2025-11-05T13:43:52.181452	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -14,6 +14,8 @@ de9be1a16585597602cd938a3d8bede58b088bae assets/hbm/models/item/advanced_cell_fu
 a219959b38ff8570e860a41ccc9d004cb47c1b0c assets/hbm/models/item/asbestos_sheet.json
 10ca5510c6091556f4099525d977c6fee0a163fb assets/hbm/models/item/australium_ingot.json
 8d20caf5e6ead72d2e1e303c9856e8151922ee7f assets/hbm/models/item/beryllium_ingot.json
+018aa89c5e59ed7bfd6bb169c126e2d5a2026aa8 assets/hbm/models/item/biomass.json
+2ed5e6e4e5c5dd13b0756db9bfe7abe34ed3b79f assets/hbm/models/item/boron_pile_rod.json
 44d88c6c85395d91adfdd5e976fd4717fb1bf7e8 assets/hbm/models/item/cinnabar.json
 22ebcb33344814acbfc16a2015ba28a5ce370199 assets/hbm/models/item/cmb_blade.json
 e32390666b418f6abcc618455adf7d3465ebe2b6 assets/hbm/models/item/cobalt_ingot.json
@@ -38,6 +40,8 @@ db006e9e0788f96e71733c7f55ca1b9fb6f98ff2 assets/hbm/models/item/gas_mask_filter_
 3e7ce2b9133bc7f32a9c997f7746a060a4f89c58 assets/hbm/models/item/gold_blade.json
 0327c6384bf49a99ce76c2090f38ce686e08d5b5 assets/hbm/models/item/gold_plate.json
 e3fcaafe0e83eba06263be9b889074883b43e594 assets/hbm/models/item/gold_sc_battery.json
+4d923486dd8dfabb2c442b584b4c13d5ad27c2d3 assets/hbm/models/item/gold_wire.json
+ebd75d2ffee0a4f8b1d0b5a0f108c37ac089f134 assets/hbm/models/item/hand_drill.json
 dee381047bb7477655cb3eabc4acbc281dd2aec9 assets/hbm/models/item/hazmat_boots.json
 b64233ed0fc67a1ee21adc142be911804d267c4c assets/hbm/models/item/hazmat_boots_grey.json
 888c6a57051dbf40cf5b4d75aafd3a7ea6f8f808 assets/hbm/models/item/hazmat_boots_red.json
@@ -73,10 +77,12 @@ bd057e444f64ead511973b5105bcca5dfd42eb22 assets/hbm/models/item/niter.json
 50606ab319c5b65969f8f53a54aea1ba859b9f92 assets/hbm/models/item/obsidian_plate_stamp.json
 c7cb4d2f4110604bc39b2bd493112bebd558be66 assets/hbm/models/item/obsidian_wire_stamp.json
 81b773380f28d7ce53b9c9a7fa045b0845298106 assets/hbm/models/item/placeholder.json
+2eb614268f5b06a10ce31bcc27defb3f213f397a assets/hbm/models/item/plutonium_pile_rod.json
 d9660332aa69265b327c5f1fe763e75d8730cdd8 assets/hbm/models/item/plutonium_sc_battery.json
 aa50b6f30958cce31818c319b72940fea8bd2e61 assets/hbm/models/item/polonium_sc_battery.json
 f159989998320575602f22e185aef9b0a7cf5583 assets/hbm/models/item/potatos_battery.json
 729111e069ea06922dd953816df5cccac9ea29b3 assets/hbm/models/item/potato_battery.json
+8528f71b3483a3410919a44d8a78fa559ee844f9 assets/hbm/models/item/radium_pile_rod.json
 c69e280b6af479551af158665b2b91195070ea19 assets/hbm/models/item/raw_aluminum.json
 47b05a1eecc6d8af1d230bcd7eeebcb2152590c7 assets/hbm/models/item/raw_australium.json
 4462c4c8686127fa982b0553956b3c2b22aaa0f3 assets/hbm/models/item/raw_beryllium.json
@@ -107,6 +113,7 @@ d073ab9155bf7fabffb336391aab1352121e37ae assets/hbm/models/item/schrabidium_batt
 344e9ea473216668c15925ee1d3fefa3b7c74066 assets/hbm/models/item/schrabidium_ingot.json
 7fda39dcbcf970588b3db5198f7ff8bb3ae5ce1e assets/hbm/models/item/schrabidium_plate_stamp.json
 1e20f4d3bf12f93e97e342bdb9b3dbac7dd6181d assets/hbm/models/item/schrabidium_wire_stamp.json
+331618a97031567791845e173df598908aafb2c7 assets/hbm/models/item/screwdriver.json
 7af05bc523e91cc873e7777f6f48be50fc4f906c assets/hbm/models/item/spark_10000_cell.json
 7af05bc523e91cc873e7777f6f48be50fc4f906c assets/hbm/models/item/spark_10000_cell_full.json
 0a73a9c55d59cd4304495f0a519041bbc0bbb4f9 assets/hbm/models/item/spark_1000_cell.json

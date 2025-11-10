@@ -7,10 +7,12 @@ import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.recipe.RegisterRecipes;
 import com.hbm.nucleartech.util.FloatingLong;
+import com.hbm.nucleartech.util.RegisterTags;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,6 +27,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static com.hbm.nucleartech.HBM.getItemsFromTag;
+
 public class HbmRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
     private static final List<ItemLike> TITANIUM_SMELTABLES = List.of(RegisterBlocks.TITANIUM_ORE.get()
@@ -35,7 +39,9 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
             , RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINIUM.get());
     private static final List<ItemLike> TUNGSTEN_SMELTABLES = List.of(RegisterBlocks.TUNGSTEN_ORE.get()
             , RegisterBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RegisterItems.RAW_TUNGSTEN.get());
-
+private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACACIA_WOOD,Items.BIRCH_WOOD,Items.CHERRY_WOOD
+        ,Items.DARK_OAK_WOOD,Items.JUNGLE_WOOD,Items.MANGROVE_WOOD,Items.OAK_WOOD,Items.SPRUCE_WOOD);
+    private static final List<ItemLike> BIOMASS_SMELTABLES_FOOD = List.of(Items.CARROT,Items.POTATO,Items.BEETROOT,Items.WHEAT);
     public HbmRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
@@ -110,6 +116,10 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
         results = List.of(
                 Pair.of(RegisterItems.URANIUM_POWDER.get(), new MetaData(1, 1, 100)));
         itemShredding(consumer, RegisterItems.URANIUM_INGOT.get(), results, FloatingLong.create(2.083E1), 80);
+
+        results = List.of(
+                Pair.of(RegisterItems.BIOMASS.get(), new MetaData(1, 1, 100)));
+        itemShredding(consumer, HbmItemTagGenerator.SharedTagLists.BIOMASS, results, FloatingLong.create(2.083E1), 80);
 
         results = List.of(
                 Pair.of(RegisterItems.THORIUM_POWDER.get(), new MetaData(1, 1, 100)));
@@ -194,9 +204,19 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("  S")
                 .define('D', RegisterItems.DESH_INGOT.get())
                 .define('S', Items.STICK)
-                .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                .unlockedBy(getHasName(RegisterItems.DESH_INGOT.get()), has(Items.STICK))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.DESH_INGOT.get()) + "_from_"
                         + getItemName(RegisterItems.DESH_INGOT.get()) + "_and_"+getItemName(Items.STICK));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.STEEL_BLADE.get())//HAND_DRILL_STEEL
+                .pattern("D  ")
+                .pattern("DSS")
+                .pattern("  S")
+                .define('D', RegisterItems.STEEL_INGOT.get())
+                .define('S', Items.STICK)
+                .unlockedBy(getHasName(RegisterItems.STEEL_INGOT.get()), has(Items.STICK))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.STEEL_INGOT.get()) + "_from_"
+                        + getItemName(RegisterItems.STEEL_INGOT.get()) + "_and_"+getItemName(Items.STICK));
 
         //=====================================machine parts crafting===================================================
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.MOTOR.get())
@@ -225,8 +245,9 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.BURNER_PRESS.get())
                 .pattern("IFI")
+                .pattern("IPI")
                 .pattern("IBI")
-                .pattern("IFI")
+                .define('P', Items.PISTON)
                 .define('F', Items.FURNACE)
                 .define('I', Items.IRON_INGOT)
                 .define('B', Items.IRON_BLOCK)
@@ -336,6 +357,23 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                         pTicks
                 )
         );
+    }
+
+    protected static void itemShredding(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<Item> pInput, List<Pair<ItemLike, MetaData>> pResults, FloatingLong pPowerConsumption, int pTicks) {
+
+        for(Item item : pInput) {
+
+            System.err.println(item.getDefaultInstance().getDisplayName().plainCopy().getString());
+
+            pFinishedRecipeConsumer.accept(
+                    new ShredderRecipeBuilder(
+                            item,
+                            pResults,
+                            pPowerConsumption,
+                            pTicks
+                    )
+            );
+        }
     }
 
     public record ShredderRecipeBuilder(ItemLike input, List<Pair<ItemLike, MetaData>> results, FloatingLong powerConsumption, int ticks) implements FinishedRecipe {

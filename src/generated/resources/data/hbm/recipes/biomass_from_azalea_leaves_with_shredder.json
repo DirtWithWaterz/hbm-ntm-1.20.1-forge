@@ -1,0 +1,18 @@
+{
+  "type": "hbm:shredder",
+  "ingredient": {
+    "item": "minecraft:azalea_leaves"
+  },
+  "power_consumption": "20.83E0",
+  "results": [
+    {
+      "item": "hbm:biomass",
+      "metadata": {
+        "chance": 100,
+        "max_amount": 1,
+        "min_amount": 1
+      }
+    }
+  ],
+  "ticks": 80
+}

@@ -22,7 +22,7 @@ public class AsbestosBlock extends Block {
     @Override
     public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
 
-        self().playerWillDestroy(level, pos, state, player);
+        playerWillDestroy(level, pos, state, player);
 
         for(Direction d : Direction.values()) {
 

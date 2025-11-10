@@ -7,12 +7,18 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+
+import static com.hbm.nucleartech.HBM.getItemsFromTag;
 
 public class HbmItemTagGenerator extends ItemTagsProvider {
     public HbmItemTagGenerator(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
@@ -31,6 +37,10 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                 .add(SharedTagLists.DESH.toArray(new Item[0]));
         tag(RegisterTags.Items.SHREDDER_BLADES)
                 .add(SharedTagLists.SHREDDER_BLADES.toArray(new Item[0]));
+        tag(RegisterTags.Items.PILE_RODS)
+                .add(SharedTagLists.PILE_RODS.toArray(new Item[0]));
+        tag(RegisterTags.Items.BIOMASS)
+                .add(SharedTagLists.BIOMASS.toArray(new Item[0]));
     }
 
     public static class SharedTagLists {
@@ -65,6 +75,74 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                 RegisterItems.CMB_BLADE.get(),
                 RegisterItems.SCHRABIDIUM_BLADE.get(),
                 RegisterItems.DESH_BLADE.get()
+        );
+        public static final List<Item> PILE_RODS = List.of(
+                RegisterItems.URANIUM_PILE_ROD.get(),
+                RegisterItems.PLUTONIUM_PILE_ROD.get(),
+                RegisterItems.RADIUM_PILE_ROD.get(),
+                RegisterItems.BORON_PILE_ROD.get()
+        );
+        public static final Map<String, Integer> ROD_MAP = Map.of(
+                HbmItemTagGenerator.SharedTagLists.PILE_RODS.get(0).getDefaultInstance().getDisplayName().plainCopy().getString(), 1,
+                HbmItemTagGenerator.SharedTagLists.PILE_RODS.get(1).getDefaultInstance().getDisplayName().plainCopy().getString(), 2,
+                HbmItemTagGenerator.SharedTagLists.PILE_RODS.get(2).getDefaultInstance().getDisplayName().plainCopy().getString(), 3,
+                HbmItemTagGenerator.SharedTagLists.PILE_RODS.get(3).getDefaultInstance().getDisplayName().plainCopy().getString(), 4
+        );
+
+        public static final List<Item> BIOMASS = List.of(
+                Blocks.ACACIA_LOG.asItem(),
+                Blocks.BIRCH_LOG.asItem(),
+                Blocks.CHERRY_LOG.asItem(),
+                Blocks.DARK_OAK_LOG.asItem(),
+                Blocks.JUNGLE_LOG.asItem(),
+                Blocks.MANGROVE_LOG.asItem(),
+                Blocks.OAK_LOG.asItem(),
+                Blocks.SPRUCE_LOG.asItem(),
+
+                Blocks.ACACIA_WOOD.asItem(),
+                Blocks.BIRCH_WOOD.asItem(),
+                Blocks.CHERRY_WOOD.asItem(),
+                Blocks.DARK_OAK_WOOD.asItem(),
+                Blocks.JUNGLE_WOOD.asItem(),
+                Blocks.MANGROVE_WOOD.asItem(),
+                Blocks.OAK_WOOD.asItem(),
+                Blocks.SPRUCE_WOOD.asItem(),
+
+                Items.CARROT,
+                Items.POTATO,
+                Items.BEETROOT,
+                Items.WHEAT,
+                Items.APPLE,
+                Items.SWEET_BERRIES,
+                Items.GLOW_BERRIES,
+
+                Items.MOSS_BLOCK,
+                Items.MOSS_CARPET,
+                Items.AZALEA,
+
+                Blocks.ACACIA_LEAVES.asItem(),
+                Blocks.BIRCH_LEAVES.asItem(),
+                Blocks.CHERRY_LEAVES.asItem(),
+                Blocks.DARK_OAK_LEAVES.asItem(),
+                Blocks.JUNGLE_LEAVES.asItem(),
+                Blocks.MANGROVE_LEAVES.asItem(),
+                Blocks.OAK_LEAVES.asItem(),
+                Blocks.SPRUCE_LEAVES.asItem(),
+                Blocks.AZALEA_LEAVES.asItem(),
+
+                Items.ACACIA_SAPLING,
+                Items.BIRCH_SAPLING,
+                Items.CHERRY_SAPLING,
+                Items.DARK_OAK_SAPLING,
+                Items.JUNGLE_SAPLING,
+                Items.MANGROVE_PROPAGULE,
+                Items.OAK_SAPLING,
+                Items.SPRUCE_SAPLING,
+
+                Items.GRASS,
+                Items.TALL_GRASS,
+                Items.SEAGRASS,
+                Items.SEA_PICKLE
         );
     }
 }

@@ -59,7 +59,16 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.RAW_COBALT);
         simpleItem(RegisterItems.RAW_COLTAN);
 
+        simpleItem(RegisterItems.BORON_PILE_ROD);
+        simpleItem(RegisterItems.PLUTONIUM_PILE_ROD);
+        simpleItem(RegisterItems.RADIUM_PILE_ROD);
         simpleItem(RegisterItems.URANIUM_PILE_ROD);
+
+        simpleItem(RegisterItems.HAND_DRILL);
+        simpleItem(RegisterItems.SCREWDRIVER);
+
+        simpleItem(RegisterItems.BIOMASS);
+
         simpleItem(RegisterItems.URANIUM_BILLET);
         simpleItem(RegisterItems.URANIUM_CRYSTAL);
         simpleItem(RegisterItems.URANIUM_NUGGET);

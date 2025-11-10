@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.client;
 
 import com.hbm.nucleartech.particle.AsbestosParticleProvider;
+import com.hbm.nucleartech.particle.NeutronParticleProvider;
 import com.hbm.nucleartech.particle.RegisterParticles;
 import com.hbm.nucleartech.particle.DeconParticleProvider;
 import net.minecraftforge.api.distmarker.Dist;
@@ -21,5 +22,6 @@ public class ClientSetup {
 
         event.registerSpriteSet(RegisterParticles.DECON_PARTICLE.get(), DeconParticleProvider::new);
         event.registerSpriteSet(RegisterParticles.ASBESTOS_PARTICLE.get(), AsbestosParticleProvider::new);
+        event.registerSpriteSet(RegisterParticles.NEUTRON_PARTICLE.get(), NeutronParticleProvider::new);
     }
 }

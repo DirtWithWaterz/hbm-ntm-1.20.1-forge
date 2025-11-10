@@ -3,15 +3,18 @@ package com.hbm.nucleartech.util;
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.hazard.HazardItem;
+import com.hbm.nucleartech.item.RegisterItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -85,5 +88,21 @@ public final class InterceptUtil {
 
     public static void registerVanillaItemIntercepts(IEventBus modBus) {
         VANILLA_ITEMS.register(modBus);
+    }
+
+    @SubscribeEvent
+    public static void onFuelBurnTime(FurnaceFuelBurnTimeEvent event) {
+        ItemStack stack = event.getItemStack();
+
+        // if it's your custom item
+        if (stack.getItem() == RegisterItems.BIOMASS.get()) {
+            // burn time in ticks (20 ticks = 1 second)
+            event.setBurnTime(800); // e.g. same as coal (80s)
+            // returning here prevents later handlers clobbering it
+            return;
+        }
+
+        // you can also test tags:
+        // if (stack.is(YourTags.Items.MY_FUEL_TAG)) event.setBurnTime(...);
     }
 }

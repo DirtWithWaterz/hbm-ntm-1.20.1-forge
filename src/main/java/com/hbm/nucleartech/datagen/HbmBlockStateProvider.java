@@ -26,6 +26,8 @@ public class HbmBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(RegisterBlocks.URANIUM_BLOCK);
 
+        blockWithItem(RegisterBlocks.BORON_BLOCK);
+
         blockWithItem(RegisterBlocks.TITANIUM_ORE);
         blockWithItem(RegisterBlocks.DEEPSLATE_TITANIUM_ORE);
 
@@ -78,10 +80,8 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.DEEPSLATE_COLTAN_ORE);
 
         blockWithItem(RegisterBlocks.SULFUR_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_SULFUR_BLOCK);
 
         blockWithItem(RegisterBlocks.NITER_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_NITER_BLOCK);
 
         blockWithItem(RegisterBlocks.TUNGSTEN_BLOCK);
         blockWithItem(RegisterBlocks.RAW_TUNGSTEN_BLOCK);
@@ -90,7 +90,6 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.RAW_ALUMINIUM_BLOCK);
 
         blockWithItem(RegisterBlocks.FLUORITE_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_FLUORITE_BLOCK);
 
         blockWithItem(RegisterBlocks.BERYLLIUM_BLOCK);
         blockWithItem(RegisterBlocks.RAW_BERYLLIUM_BLOCK);
