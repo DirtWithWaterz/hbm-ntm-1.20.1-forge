@@ -5,7 +5,7 @@ license="GNU General Public License V3.0"
 [[mods]] #mandatory
 modId="hbm" #mandatory
 version="${file.jarVersion}" #mandatory
-displayName="HBM's Nuclear Tech - Rewrite Edition" #mandatory
+displayName="HBM's Nuclear Tech - Muddy Edition" #mandatory
 authors="Mudz, TheRealM18, Alcater, Drillgon200, TheOriginalGolem, HBMMods/The Bobcat" #optional
 description='''
 A mod all about nuclear physics and even nuclear-er explosions, now coming to you in 1.20.1!!
