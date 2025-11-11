@@ -92,10 +92,6 @@ public class HBMPlacedFeatures {
                 HBMOrePlacement.commonOrePlacement(9,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(34))));
 
-        register(context, ORE_AUSTRALIUM_PLACED_KEY, configuredFeatures.getOrThrow(HBMConfiguredFeatures.OVERWORLD_ORE_AUSTRALIUM_KEY),
-                HBMOrePlacement.commonOrePlacement(9,
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(34))));
-
         register(context, ORE_RARE_EARTH_PLACED_KEY, configuredFeatures.getOrThrow(HBMConfiguredFeatures.OVERWORLD_ORE_RARE_EARTH_KEY),
                 HBMOrePlacement.commonOrePlacement(9,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(34))));

@@ -33,7 +33,6 @@ public class HBMConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ORE_LIGNITE_KEY = registerKey("ore_lignite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ORE_ASBESTOS_KEY = registerKey("ore_asbestos");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ORE_SCHRABIDIUM_KEY = registerKey("ore_schrabidium");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ORE_AUSTRALIUM_KEY = registerKey("ore_australium");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ORE_RARE_EARTH_KEY = registerKey("ore_rare_earth");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ORE_COBALT_KEY = registerKey("ore_cobalt");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_ORE_CINNABAR_KEY = registerKey("ore_cinnabar");
@@ -122,11 +121,6 @@ public class HBMConfiguredFeatures {
                 OreConfiguration.target(deepslateReplaceables, RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE.get().defaultBlockState())
         );
 
-        List<OreConfiguration.TargetBlockState> overworldAustralianOres = List.of(
-                OreConfiguration.target(stoneReplaceables, RegisterBlocks.AUSTRALIUM_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE.get().defaultBlockState())
-        );
-
         List<OreConfiguration.TargetBlockState> overworldRareEarthOres = List.of(
                 OreConfiguration.target(stoneReplaceables, RegisterBlocks.RARE_EARTH_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, RegisterBlocks.DEEPSLATE_RARE_EARTH_ORE.get().defaultBlockState())
@@ -163,7 +157,6 @@ public class HBMConfiguredFeatures {
         register(context, OVERWORLD_ORE_LIGNITE_KEY, Feature.ORE, new OreConfiguration(overworldLigniteOres, 12));
         register(context, OVERWORLD_ORE_ASBESTOS_KEY, Feature.ORE, new OreConfiguration(overworldAsbestosOres, 12));
         register(context, OVERWORLD_ORE_SCHRABIDIUM_KEY, Feature.ORE, new OreConfiguration(overworldSchrabidiumOres, 12));
-        register(context, OVERWORLD_ORE_AUSTRALIUM_KEY, Feature.ORE, new OreConfiguration(overworldAustralianOres, 12));
         register(context, OVERWORLD_ORE_RARE_EARTH_KEY, Feature.ORE, new OreConfiguration(overworldRareEarthOres, 12));
         register(context, OVERWORLD_ORE_COBALT_KEY, Feature.ORE, new OreConfiguration(overworldCobaltOres, 12));
         register(context, OVERWORLD_ORE_CINNABAR_KEY, Feature.ORE, new OreConfiguration(overworldCinnabarOres, 12));

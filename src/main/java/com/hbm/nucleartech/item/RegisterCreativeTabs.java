@@ -247,8 +247,6 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.DEEPSLATE_ASBESTOS_ORE.get());
                         output.accept(RegisterBlocks.SCHRABIDIUM_ORE.get());
                         output.accept(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE.get());
-                        output.accept(RegisterBlocks.AUSTRALIUM_ORE.get());
-                        output.accept(RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE.get());
                         output.accept(RegisterBlocks.RARE_EARTH_ORE.get());
                         output.accept(RegisterBlocks.DEEPSLATE_RARE_EARTH_ORE.get());
                         output.accept(RegisterBlocks.COBALT_ORE.get());
@@ -270,10 +268,8 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.LEAD_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_LEAD_BLOCK.get());
                         output.accept(RegisterBlocks.LIGNITE_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_LIGNITE_BLOCK.get());
                         output.accept(RegisterBlocks.ASBESTOS_BLOCK.get());
                         output.accept(RegisterBlocks.SCHRABIDIUM_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK.get());
                         output.accept(RegisterBlocks.AUSTRALIUM_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_AUSTRALIUM_BLOCK.get());
                         output.accept(RegisterBlocks.COBALT_BLOCK.get());

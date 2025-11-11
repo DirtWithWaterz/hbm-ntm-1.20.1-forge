@@ -239,202 +239,112 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> DEEPSLATE_ASBESTOS_ORE = registerBlock("deepslate_asbestos_ore",
             () -> new AsbestosBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)));
 
-    /*
-    Needs values done.
-     */
-
-    public static final RegistryObject<Block> SCHRABIDIUM_ORE = registerHazardBlock(0.003, "schrabidium_ore",
+    public static final RegistryObject<Block> SCHRABIDIUM_ORE = registerHazardBlock(15, "schrabidium_ore",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
                     .strength(5.0f, 4.0f),
                     UniformInt.of(2, 4),
-                    12.5
+                    15
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_SCHRABIDIUM_ORE = registerHazardBlock(0.0035, "deepslate_schrabidium_ore",
+    public static final RegistryObject<Block> DEEPSLATE_SCHRABIDIUM_ORE = registerHazardBlock(15, "deepslate_schrabidium_ore",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
                     .strength(8.0f, 3.0f),
                     UniformInt.of(2, 5),
                     15
             ));
 
-    public static final RegistryObject<Block> AUSTRALIUM_ORE = registerHazardBlock(0.003, "australium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> RARE_EARTH_ORE = registerBlock("rare_earth_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE)
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_AUSTRALIUM_ORE = registerHazardBlock(0.0035, "deepslate_australium_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> DEEPSLATE_RARE_EARTH_ORE = registerBlock("deepslate_rare_earth_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
             ));
 
-    public static final RegistryObject<Block> RARE_EARTH_ORE = registerHazardBlock(0.003, "rare_earth_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> COBALT_ORE = registerBlock("cobalt_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_RARE_EARTH_ORE = registerHazardBlock(0.0035, "deepslate_rare_earth_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> DEEPSLATE_COBALT_ORE = registerBlock("deepslate_cobalt_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE)
+                    .strength(5.5f, 3.0f),
+                    UniformInt.of(4, 9)
             ));
 
-    public static final RegistryObject<Block> COBALT_ORE = registerHazardBlock(0.003, "cobalt_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> CINNABAR_ORE = registerBlock("cinnabar_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.COAL_ORE)
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_COBALT_ORE = registerHazardBlock(0.0035, "deepslate_cobalt_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> DEEPSLATE_CINNABAR_ORE = registerBlock("deepslate_cinnabar_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_COAL_ORE)
             ));
 
-    public static final RegistryObject<Block> CINNABAR_ORE = registerHazardBlock(0.003, "cinnabar_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> COLTAN_ORE = registerBlock("coltan_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_CINNABAR_ORE = registerHazardBlock(0.0035, "deepslate_cinnabar_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> DEEPSLATE_COLTAN_ORE = registerBlock("deepslate_coltan_ore",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
             ));
 
-    public static final RegistryObject<Block> COLTAN_ORE = registerHazardBlock(0.003, "coltan_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> SULFUR_BLOCK = registerBlock("sulfur_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_COLTAN_ORE = registerHazardBlock(0.0035, "deepslate_coltan_ore",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> NITER_BLOCK = registerBlock("niter_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> SULFUR_BLOCK = registerHazardBlock(0.003, "sulfur_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> TUNGSTEN_BLOCK = registerBlock("tungsten_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)
             ));
 
-    public static final RegistryObject<Block> NITER_BLOCK = registerHazardBlock(0.003, "niter_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> RAW_TUNGSTEN_BLOCK = registerBlock("raw_tungsten_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ANCIENT_DEBRIS)
             ));
 
-    public static final RegistryObject<Block> TUNGSTEN_BLOCK = registerHazardBlock(0.003, "tungsten_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> ALUMINIUM_BLOCK = registerBlock("aluminum_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> RAW_TUNGSTEN_BLOCK = registerHazardBlock(0.0035, "raw_tungsten_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> RAW_ALUMINIUM_BLOCK = registerBlock("raw_aluminum_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> ALUMINIUM_BLOCK = registerHazardBlock(0.003, "aluminum_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> FLUORITE_BLOCK = registerBlock("fluorite_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
             ));
 
-    public static final RegistryObject<Block> RAW_ALUMINIUM_BLOCK = registerHazardBlock(0.0035, "raw_aluminum_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> BERYLLIUM_BLOCK = registerBlock("beryllium_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> FLUORITE_BLOCK = registerHazardBlock(0.003, "fluorite_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> RAW_BERYLLIUM_BLOCK = registerBlock("raw_beryllium_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> BERYLLIUM_BLOCK = registerHazardBlock(0.003, "beryllium_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> LEAD_BLOCK = registerBlock("lead_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> RAW_BERYLLIUM_BLOCK = registerHazardBlock(0.0035, "raw_beryllium_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .strength(8.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> LEAD_BLOCK = registerHazardBlock(0.003, "lead_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
-            ));
-
-    public static final RegistryObject<Block> RAW_LEAD_BLOCK = registerHazardBlock(0.0035, "raw_lead_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
-            ));
-
-    public static final RegistryObject<Block> LIGNITE_BLOCK = registerHazardBlock(0.003, "lignite_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
-            ));
-
-    public static final RegistryObject<Block> RAW_LIGNITE_BLOCK = registerHazardBlock(0.0035, "raw_lignite_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> LIGNITE_BLOCK = registerBlock("lignite_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.COAL_BLOCK)
             ));
 
     public static final RegistryObject<Block> ASBESTOS_BLOCK = registerAsbestosBlock(2, "asbestos_block",
             () -> new AsbestosBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f)
+                    .strength(3.0f, 2.0f)
             ));
 
-    public static final RegistryObject<Block> SCHRABIDIUM_BLOCK = registerHazardBlock(0.003, "schrabidium_block",
+    public static final RegistryObject<Block> SCHRABIDIUM_BLOCK = registerHazardBlock(150, "schrabidium_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    350.00
-            ));
-
-    public static final RegistryObject<Block> RAW_SCHRABIDIUM_BLOCK = registerHazardBlock(0.0035, "raw_schrabidium_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    175.00
+                    150.00
             ));
 
     public static final RegistryObject<Block> AUSTRALIUM_BLOCK = registerHazardBlock(0.003, "australium_block",
@@ -444,55 +354,35 @@ public class RegisterBlocks {
                     0.00
             ));
 
-    public static final RegistryObject<Block> RAW_AUSTRALIUM_BLOCK = registerHazardBlock(0.0035, "raw_australium_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> RAW_AUSTRALIUM_BLOCK = registerBlock("raw_australium_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> COBALT_BLOCK = registerHazardBlock(0.003, "cobalt_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> COBALT_BLOCK = registerBlock("cobalt_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .strength(5.0f, 4.0f)
             ));
 
-    public static final RegistryObject<Block> RAW_COBALT_BLOCK = registerHazardBlock(0.0035, "raw_cobalt_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> RAW_COBALT_BLOCK = registerBlock("raw_cobalt_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .strength(4.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> CINNABAR_BLOCK = registerHazardBlock(0.003, "cinnabar_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> CINNABAR_BLOCK = registerBlock("cinnabar_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.COAL_BLOCK)
             ));
 
-    public static final RegistryObject<Block> RAW_CINNABAR_BLOCK = registerHazardBlock(0.0035, "raw_cinnabar_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> RAW_CINNABAR_BLOCK = registerBlock("raw_cinnabar_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.COAL_BLOCK)
             ));
 
-    public static final RegistryObject<Block> COLTAN_BLOCK = registerHazardBlock(0.003, "coltan_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
+    public static final RegistryObject<Block> COLTAN_BLOCK = registerBlock("coltan_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
-    public static final RegistryObject<Block> RAW_COLTAN_BLOCK = registerHazardBlock(0.0035, "raw_coltan_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(8.0f, 3.0f),
-                    UniformInt.of(2, 5),
-                    0.00
+    public static final RegistryObject<Block> RAW_COLTAN_BLOCK = registerBlock("raw_coltan_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
-
 
     public static final RegistryObject<Block> CYAN_CONCRETE = registerBlock("cyan_concrete",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)

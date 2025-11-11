@@ -64,9 +64,6 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.SCHRABIDIUM_ORE);
         blockWithItem(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE);
 
-        blockWithItem(RegisterBlocks.AUSTRALIUM_ORE);
-        blockWithItem(RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE);
-
         blockWithItem(RegisterBlocks.RARE_EARTH_ORE);
         blockWithItem(RegisterBlocks.DEEPSLATE_RARE_EARTH_ORE);
 
@@ -98,12 +95,10 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.RAW_LEAD_BLOCK);
 
         blockWithItem(RegisterBlocks.LIGNITE_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_LIGNITE_BLOCK);
 
         blockWithItem(RegisterBlocks.ASBESTOS_BLOCK);
 
         blockWithItem(RegisterBlocks.SCHRABIDIUM_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK);
 
         blockWithItem(RegisterBlocks.AUSTRALIUM_BLOCK);
         blockWithItem(RegisterBlocks.RAW_AUSTRALIUM_BLOCK);

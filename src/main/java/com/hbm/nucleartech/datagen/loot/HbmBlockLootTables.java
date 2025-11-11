@@ -39,10 +39,8 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.LEAD_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_LEAD_BLOCK.get());
         this.dropSelf(RegisterBlocks.LIGNITE_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_LIGNITE_BLOCK.get());
         this.dropSelf(RegisterBlocks.ASBESTOS_BLOCK.get());
         this.dropSelf(RegisterBlocks.SCHRABIDIUM_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.AUSTRALIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_AUSTRALIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.COBALT_BLOCK.get());
@@ -163,11 +161,6 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
                 block -> createOreDrop(RegisterBlocks.SCHRABIDIUM_ORE.get(), RegisterItems.RAW_SCHRABIDIUM.get()));
         this.add(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE.get(), RegisterItems.RAW_SCHRABIDIUM.get()));
-
-        this.add(RegisterBlocks.AUSTRALIUM_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.AUSTRALIUM_ORE.get(), RegisterItems.RAW_AUSTRALIUM.get()));
-        this.add(RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE.get(), RegisterItems.RAW_AUSTRALIUM.get()));
 
         this.add(RegisterBlocks.RARE_EARTH_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.RARE_EARTH_ORE.get(), RegisterBlocks.RARE_EARTH_ORE.get().asItem()));

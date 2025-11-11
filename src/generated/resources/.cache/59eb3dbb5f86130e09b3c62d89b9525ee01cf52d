@@ -1,11 +1,10 @@
-// 1.20.1	2025-11-05T14:56:16.5686778	Loot Tables
+// 1.20.1	2025-11-11T14:52:49.2843455	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
 20e19a65676ca36db0f62fff896c635893679c68 data/hbm/loot_tables/blocks/asbestos_air.json
 ea4b0cb91787e9322bf8cf6bd33e06f0db8aee62 data/hbm/loot_tables/blocks/asbestos_block.json
 062a7c000a7dad4e70821241f79c1b9efd299034 data/hbm/loot_tables/blocks/asbestos_ore.json
 812eda1af21cd1d655ef1e2edb63bada8782c5b0 data/hbm/loot_tables/blocks/australium_block.json
-85b41c480d7a51522476a9ef539d352e3dd50a50 data/hbm/loot_tables/blocks/australium_ore.json
 46d278b862c77239a20475594d964933cef351e6 data/hbm/loot_tables/blocks/beryllium_block.json
 046e382059bdb767fdba86fcecf4f386046cdef8 data/hbm/loot_tables/blocks/beryllium_ore.json
 ece562dc48782a3867c51a623c6968c628d85cf4 data/hbm/loot_tables/blocks/black_concrete.json
@@ -54,7 +53,6 @@ c5b6feea5f22b983e6ec59358427752881e63a2a data/hbm/loot_tables/blocks/cyan_concre
 2eecc087c37c45f1aafaee113ade4024039203f9 data/hbm/loot_tables/blocks/dead_grass.json
 ca92eda5341b7e21bdb96887071fe98f3893e757 data/hbm/loot_tables/blocks/deepslate_aluminum_ore.json
 0dd040a435d13161157bf54354d2f3811c8a8dd7 data/hbm/loot_tables/blocks/deepslate_asbestos_ore.json
-510805a2ce797e6b9433dec0106942b5f5f34877 data/hbm/loot_tables/blocks/deepslate_australium_ore.json
 966e7b921ecef216e72e1d22bad55c9582988b0e data/hbm/loot_tables/blocks/deepslate_beryllium_ore.json
 8238017ec592951e9620f7cdd6f5d0ebcf6c84c0 data/hbm/loot_tables/blocks/deepslate_cinnabar_ore.json
 9f20c30f52f46398c1c064944349d5edd5219e69 data/hbm/loot_tables/blocks/deepslate_cobalt_ore.json
@@ -99,8 +97,6 @@ f5785c3a121ce218cfa84225e0093138b872b9e4 data/hbm/loot_tables/blocks/raw_cinnaba
 5d39b2cdffdfe2dc356f40cc4b3eecec3ce88318 data/hbm/loot_tables/blocks/raw_cobalt_block.json
 a5c3531f8eb4e5e3b1e8502ba1e2b326aa3598fd data/hbm/loot_tables/blocks/raw_coltan_block.json
 5477ef4b8a2ea9512e10337dc52ce356f3b66814 data/hbm/loot_tables/blocks/raw_lead_block.json
-523e8f1af5c497ef67b0e6e8553e562d0c356433 data/hbm/loot_tables/blocks/raw_lignite_block.json
-b09b2c9a4bcfb19c37ca83838fa02001666f2169 data/hbm/loot_tables/blocks/raw_schrabidium_block.json
 eb52bfbbf75d4f81587b3389ae89eaf8a1513fef data/hbm/loot_tables/blocks/raw_tungsten_block.json
 4b64b22d4668e8d00553e476c1a4e0d5bf929c91 data/hbm/loot_tables/blocks/red_concrete.json
 3a9811e388c50dd800162d899eed8f8d353bca33 data/hbm/loot_tables/blocks/red_thorium_ore.json
