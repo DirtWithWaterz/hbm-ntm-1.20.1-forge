@@ -186,6 +186,9 @@ public class RegisterItems {
     public static final RegistryObject<Item> COLTAN = ITEMS.register("coltan",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> GRAPHITE_INGOT = ITEMS.register("graphite_ingot",
+            () -> new Item(new Item.Properties()));
+
     //===========================================blades=============================================================
     public static final RegistryObject<Item> ALUMINUM_BLADE = ITEMS.register("aluminum_blade",
             () -> new BladeItem(new Item.Properties().durability(24), 1));
