@@ -1,10 +1,9 @@
-// 1.20.1	2025-10-08T17:30:36.6134879	Registries
+// 1.20.1	2025-11-11T14:52:49.2883354	Registries
 65a62a70583120345da897b4bde556df552f6b16 data/hbm/forge/biome_modifier/add_ore_thorium.json
 6812423d9cd8883108b96ff7afb91befb6eb996f data/hbm/forge/biome_modifier/add_ore_titanium.json
 df3a95cb51d484cc99341021fa019d400757f048 data/hbm/forge/biome_modifier/add_ore_uranium.json
 bde81a3644dbf73dc317215003a94a963bc52f40 data/hbm/worldgen/configured_feature/ore_aluminium.json
 72f2645bc10d4707063bf3817b029ea0a7e073a0 data/hbm/worldgen/configured_feature/ore_asbestos.json
-56b3b2ad51a85a5d2e485e09c10606c1747d014c data/hbm/worldgen/configured_feature/ore_australium.json
 4663751b8467acdd4b23385fdde9df9559fd90a7 data/hbm/worldgen/configured_feature/ore_beryllium.json
 8471736ee53fa7c81609d200fb0f3bc7aebfd8c7 data/hbm/worldgen/configured_feature/ore_cinnabar.json
 cd12c65753117ab0e588b3f69538530494c1f245 data/hbm/worldgen/configured_feature/ore_cobalt.json
@@ -22,7 +21,6 @@ ca03be18daa818810aeea625e8b5730c841c1a0a data/hbm/worldgen/configured_feature/or
 9e295f5e8a1bd7a6f423ee4e33b8f045f5ffe7d7 data/hbm/worldgen/configured_feature/ore_uranium.json
 6de1f69c2d033e38a742ab4c9e9a93a1589f9c0b data/hbm/worldgen/placed_feature/ore_aluminium_placed.json
 9bfbd2b1622be11b1a2d491c3db12ce8c3843537 data/hbm/worldgen/placed_feature/ore_asbestos_placed.json
-a0ba808fc5d52b072edfcf73692596a78d9c48e1 data/hbm/worldgen/placed_feature/ore_australium_placed.json
 c33d831ede06777ded33fddcc14d59bab97161c9 data/hbm/worldgen/placed_feature/ore_beryllium_placed.json
 6c8b99f998bb1befc5e7cd926734565db08e7391 data/hbm/worldgen/placed_feature/ore_cinnabar_placed.json
 b04dfe90903aebde87f67aa034c3a7fab5ac76b2 data/hbm/worldgen/placed_feature/ore_cobalt_placed.json

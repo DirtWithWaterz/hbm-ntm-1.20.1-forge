@@ -5,17 +5,12 @@ import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.util.RegisterTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.hbm.nucleartech.HBM.getItemsFromTag;
 
@@ -44,7 +39,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.AUSTRALIUM_INGOT.get());
                         output.accept(RegisterItems.COBALT_INGOT.get());
                         output.accept(RegisterItems.CINNABAR.get());
-                        output.accept(RegisterItems.COLTAN_INGOT.get());
+                        output.accept(RegisterItems.COLTAN.get());
 
                         output.accept(RegisterItems.URANIUM_POWDER.get());
                         output.accept(RegisterItems.URANIUM_NUGGET.get());
@@ -60,13 +55,13 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.RAW_BERYLLIUM.get());
                         output.accept(RegisterItems.RAW_LEAD.get());
                         output.accept(RegisterItems.RAW_SCHRABIDIUM.get());
-                        output.accept(RegisterItems.RAW_AUSTRALIUM.get());
                         output.accept(RegisterItems.RAW_COBALT.get());
-                        output.accept(RegisterItems.RAW_COLTAN.get());
 
                         output.accept(RegisterItems.THORIUM_SHALE.get());
                         output.accept(RegisterItems.THORIUM_INGOT.get());
                         output.accept(RegisterItems.THORIUM_POWDER.get());
+
+                        output.accept(RegisterItems.GRAPHITE_INGOT.get());
 
                         output.acceptAll(getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES).stream().map(Item::getDefaultInstance).toList());
 
@@ -247,8 +242,6 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.DEEPSLATE_ASBESTOS_ORE.get());
                         output.accept(RegisterBlocks.SCHRABIDIUM_ORE.get());
                         output.accept(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE.get());
-                        output.accept(RegisterBlocks.AUSTRALIUM_ORE.get());
-                        output.accept(RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE.get());
                         output.accept(RegisterBlocks.RARE_EARTH_ORE.get());
                         output.accept(RegisterBlocks.DEEPSLATE_RARE_EARTH_ORE.get());
                         output.accept(RegisterBlocks.COBALT_ORE.get());
@@ -270,18 +263,14 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.LEAD_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_LEAD_BLOCK.get());
                         output.accept(RegisterBlocks.LIGNITE_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_LIGNITE_BLOCK.get());
                         output.accept(RegisterBlocks.ASBESTOS_BLOCK.get());
                         output.accept(RegisterBlocks.SCHRABIDIUM_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK.get());
                         output.accept(RegisterBlocks.AUSTRALIUM_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_AUSTRALIUM_BLOCK.get());
                         output.accept(RegisterBlocks.COBALT_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_COBALT_BLOCK.get());
                         output.accept(RegisterBlocks.CINNABAR_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_CINNABAR_BLOCK.get());
                         output.accept(RegisterBlocks.COLTAN_BLOCK.get());
-                        output.accept(RegisterBlocks.RAW_COLTAN_BLOCK.get());
 
                         output.accept(RegisterBlocks.BLACK_CONCRETE.get());
                         output.accept(RegisterBlocks.BLUE_CONCRETE.get());

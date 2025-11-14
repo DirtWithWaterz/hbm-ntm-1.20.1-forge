@@ -141,10 +141,10 @@
   "item.hbm.asbestos_sheet": "Asbestos Sheet",
   "item.hbm.schrabidium_ingot": "Schrabidium Ingot",
   "item.hbm.australium_ingot": "Australium Ingot",
-  "item.hbm.rare_earth_ingot": "Rare Earth Ingot",
   "item.hbm.cobalt_ingot": "Cobalt Ingot",
-  "item.hbm.cinnabar_ingot": "Cinnabar Ingot",
-  "item.hbm.coltan_ingot": "Coltan Ingot",
+  "item.hbm.cinnabar": "Cinnabar",
+  "item.hbm.coltan": "Coltan",
+  "item.hbm.graphite_ingot": "Graphite Ingot",
 
   "item.hbm.raw_uranium": "Raw Uranium",
   "item.hbm.raw_titanium": "Raw Titanium",
@@ -153,11 +153,7 @@
   "item.hbm.raw_beryllium": "Raw Beryllium",
   "item.hbm.raw_lead": "Raw Lead",
   "item.hbm.raw_schrabidium": "Raw Schrabidium",
-  "item.hbm.raw_australium": "Raw Australium",
-  "item.hbm.raw_rare_earth": "Raw Rare Earth",
   "item.hbm.raw_cobalt": "Raw Cobalt",
-  "item.hbm.raw_cinnabar": "Raw Cinnabar",
-  "item.hbm.raw_coltan": "Raw Coltan",
 
   "item.hbm.uranium_powder": "Uranium Powder",
   "item.hbm.uranium_nugget": "Uranium Nugget",
@@ -222,7 +218,6 @@
   "block.hbm.niter_ore": "Niter Ore",
   "block.hbm.deepslate_niter_ore": "Deepslate Niter Ore",
   "block.hbm.niter_block": "Niter Block",
-  "block.hbm.raw_niter_block": "Raw Niter Block",
 
   "block.hbm.tungsten_ore": "Tungsten Ore",
   "block.hbm.deepslate_tungsten_ore": "Deepslate Tungsten Ore",
@@ -239,7 +234,6 @@
   "block.hbm.fluorite_ore": "Fluorite Ore",
   "block.hbm.deepslate_fluorite_ore": "Deepslate Fluorite Ore",
   "block.hbm.fluorite_block": "Fluorite Block",
-  "block.hbm.raw_fluorite_block": "Raw Fluorite Block",
 
   "block.hbm.beryllium_ore": "Beryllium Ore",
   "block.hbm.deepslate_beryllium_ore": "Deepslate Beryllium Ore",
@@ -264,14 +258,10 @@
   "block.hbm.schrabidium_block": "Schrabidium Block",
   "block.hbm.raw_schrabidium_block": "Raw Schrabidium Block",
 
-  "block.hbm.australium_ore": "Australium Ore",
-  "block.hbm.deepslate_australium_ore": "Deepslate Australium Ore",
   "block.hbm.australium_block": "Australium Block",
-  "block.hbm.raw_australium_block": "Raw Australium Block",
 
   "block.hbm.rare_earth_ore": "Rare Earth Ore",
   "block.hbm.deepslate_rare_earth_ore": "Deepslate Rare Earth Ore",
-  "block.hbm.raw_rare_earth_block": "Raw Rare Earth Block",
 
   "block.hbm.cobalt_ore": "Cobalt Ore",
   "block.hbm.deepslate_cobalt_ore": "Deepslate Cobalt Ore",
@@ -281,12 +271,10 @@
   "block.hbm.cinnabar_ore": "Cinnabar Ore",
   "block.hbm.deepslate_cinnabar_ore": "Deepslate Cinnabar Ore",
   "block.hbm.cinnabar_block": "Cinnabar Block",
-  "block.hbm.raw_cinnabar_block": "Raw Cinnabar Block",
 
   "block.hbm.coltan_ore": "Coltan Ore",
   "block.hbm.deepslate_coltan_ore": "Deepslate Coltan Ore",
   "block.hbm.coltan_block": "Coltan Block",
-  "block.hbm.raw_coltan_block": "Raw Coltan Block",
 
   "block.hbm.radiation_decontaminator": "Radiation Decontaminator",
 

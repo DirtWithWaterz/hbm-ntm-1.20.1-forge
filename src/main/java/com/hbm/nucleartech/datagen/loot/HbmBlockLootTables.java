@@ -39,18 +39,14 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.LEAD_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_LEAD_BLOCK.get());
         this.dropSelf(RegisterBlocks.LIGNITE_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_LIGNITE_BLOCK.get());
         this.dropSelf(RegisterBlocks.ASBESTOS_BLOCK.get());
         this.dropSelf(RegisterBlocks.SCHRABIDIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.AUSTRALIUM_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_AUSTRALIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.COBALT_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_COBALT_BLOCK.get());
         this.dropSelf(RegisterBlocks.CINNABAR_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_CINNABAR_BLOCK.get());
         this.dropSelf(RegisterBlocks.COLTAN_BLOCK.get());
-        this.dropSelf(RegisterBlocks.RAW_COLTAN_BLOCK.get());
 
         this.dropSelf(RegisterBlocks.JUNGLE_BRICK.get());
         this.dropSelf(RegisterBlocks.JUNGLE_BRICK_CIRCLE.get());
@@ -164,11 +160,6 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.add(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.DEEPSLATE_SCHRABIDIUM_ORE.get(), RegisterItems.RAW_SCHRABIDIUM.get()));
 
-        this.add(RegisterBlocks.AUSTRALIUM_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.AUSTRALIUM_ORE.get(), RegisterItems.RAW_AUSTRALIUM.get()));
-        this.add(RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.DEEPSLATE_AUSTRALIUM_ORE.get(), RegisterItems.RAW_AUSTRALIUM.get()));
-
         this.add(RegisterBlocks.RARE_EARTH_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.RARE_EARTH_ORE.get(), RegisterBlocks.RARE_EARTH_ORE.get().asItem()));
         this.add(RegisterBlocks.DEEPSLATE_RARE_EARTH_ORE.get(),
@@ -185,9 +176,9 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
                 block -> createOreDrop(RegisterBlocks.DEEPSLATE_CINNABAR_ORE.get(), RegisterItems.CINNABAR.get()));
 
         this.add(RegisterBlocks.COLTAN_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.COLTAN_ORE.get(), RegisterItems.RAW_COLTAN.get()));
+                block -> createOreDrop(RegisterBlocks.COLTAN_ORE.get(), RegisterItems.COLTAN.get()));
         this.add(RegisterBlocks.DEEPSLATE_COLTAN_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.DEEPSLATE_COLTAN_ORE.get(), RegisterItems.RAW_COLTAN.get()));
+                block -> createOreDrop(RegisterBlocks.DEEPSLATE_COLTAN_ORE.get(), RegisterItems.COLTAN.get()));
 
         this.add(RegisterBlocks.RED_THORIUM_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.RED_THORIUM_ORE.get(), RegisterItems.THORIUM_SHALE.get()));

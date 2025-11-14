@@ -166,15 +166,12 @@ public class RegisterItems {
             () -> new HazardItem(0, 0, 0, 0, 0, 1, new Item.Properties()));
 
     public static final RegistryObject<Item> SCHRABIDIUM_INGOT = ITEMS.register("schrabidium_ingot",
-            () -> new Item(new Item.Properties()));
+            () -> new HazardItem(15.0, new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_SCHRABIDIUM = ITEMS.register("raw_schrabidium",
-            () -> new Item(new Item.Properties()));
+            () -> new HazardItem(1.5, new Item.Properties()));
 
     public static final RegistryObject<Item> AUSTRALIUM_INGOT = ITEMS.register("australium_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_AUSTRALIUM = ITEMS.register("raw_australium",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
@@ -186,10 +183,10 @@ public class RegisterItems {
     public static final RegistryObject<Item> CINNABAR = ITEMS.register("cinnabar",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> COLTAN_INGOT = ITEMS.register("coltan_ingot",
+    public static final RegistryObject<Item> COLTAN = ITEMS.register("coltan",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> RAW_COLTAN = ITEMS.register("raw_coltan",
+    public static final RegistryObject<Item> GRAPHITE_INGOT = ITEMS.register("graphite_ingot",
             () -> new Item(new Item.Properties()));
 
     //===========================================blades=============================================================
