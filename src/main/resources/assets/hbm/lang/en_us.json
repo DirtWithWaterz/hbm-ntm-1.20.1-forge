@@ -143,7 +143,7 @@
   "item.hbm.australium_ingot": "Australium Ingot",
   "item.hbm.rare_earth_ingot": "Rare Earth Ingot",
   "item.hbm.cobalt_ingot": "Cobalt Ingot",
-  "item.hbm.cinnabar_ingot": "Cinnabar Ingot",
+  "item.hbm.cinnabar": "Cinnabar",
   "item.hbm.coltan_ingot": "Coltan Ingot",
 
   "item.hbm.raw_uranium": "Raw Uranium",
@@ -156,7 +156,6 @@
   "item.hbm.raw_australium": "Raw Australium",
   "item.hbm.raw_rare_earth": "Raw Rare Earth",
   "item.hbm.raw_cobalt": "Raw Cobalt",
-  "item.hbm.raw_cinnabar": "Raw Cinnabar",
   "item.hbm.raw_coltan": "Raw Coltan",
 
   "item.hbm.uranium_powder": "Uranium Powder",

@@ -347,14 +347,7 @@ public class RegisterBlocks {
                     150.00
             ));
 
-    public static final RegistryObject<Block> AUSTRALIUM_BLOCK = registerHazardBlock(0.003, "australium_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    UniformInt.of(2, 4),
-                    0.00
-            ));
-
-    public static final RegistryObject<Block> RAW_AUSTRALIUM_BLOCK = registerBlock("raw_australium_block",
+    public static final RegistryObject<Block> AUSTRALIUM_BLOCK = registerBlock("australium_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 
@@ -372,15 +365,7 @@ public class RegisterBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.COAL_BLOCK)
             ));
 
-    public static final RegistryObject<Block> RAW_CINNABAR_BLOCK = registerBlock("raw_cinnabar_block",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.COAL_BLOCK)
-            ));
-
     public static final RegistryObject<Block> COLTAN_BLOCK = registerBlock("coltan_block",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-            ));
-
-    public static final RegistryObject<Block> RAW_COLTAN_BLOCK = registerBlock("raw_coltan_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
             ));
 

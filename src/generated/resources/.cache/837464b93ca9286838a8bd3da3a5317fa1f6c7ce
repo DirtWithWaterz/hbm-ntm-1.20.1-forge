@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-05T13:43:52.181452	Item Models: hbm
+// 1.20.1	2025-11-13T23:00:13.2283571	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -19,7 +19,7 @@ a219959b38ff8570e860a41ccc9d004cb47c1b0c assets/hbm/models/item/asbestos_sheet.j
 44d88c6c85395d91adfdd5e976fd4717fb1bf7e8 assets/hbm/models/item/cinnabar.json
 22ebcb33344814acbfc16a2015ba28a5ce370199 assets/hbm/models/item/cmb_blade.json
 e32390666b418f6abcc618455adf7d3465ebe2b6 assets/hbm/models/item/cobalt_ingot.json
-9517580526a921b4938bdd0c9c540f9eaea80802 assets/hbm/models/item/coltan_ingot.json
+8666584d8dda52119c8677ffb53138f6f9c49928 assets/hbm/models/item/coltan.json
 6c4642c57e93ec15ac0880a8405c2bbccc961aa4 assets/hbm/models/item/copper_coil.json
 033ebfd23698778d3a7d1427a7c664e6b7d04bb4 assets/hbm/models/item/copper_plate.json
 5ecb87d457cc5a76931817ef3608755fd62f67f9 assets/hbm/models/item/copper_wire.json
@@ -84,10 +84,8 @@ f159989998320575602f22e185aef9b0a7cf5583 assets/hbm/models/item/potatos_battery.
 729111e069ea06922dd953816df5cccac9ea29b3 assets/hbm/models/item/potato_battery.json
 8528f71b3483a3410919a44d8a78fa559ee844f9 assets/hbm/models/item/radium_pile_rod.json
 c69e280b6af479551af158665b2b91195070ea19 assets/hbm/models/item/raw_aluminum.json
-47b05a1eecc6d8af1d230bcd7eeebcb2152590c7 assets/hbm/models/item/raw_australium.json
 4462c4c8686127fa982b0553956b3c2b22aaa0f3 assets/hbm/models/item/raw_beryllium.json
 f537d701c68367835c7eb11978a609ced5c11bf1 assets/hbm/models/item/raw_cobalt.json
-ae68f0293d501c1b82d85a608619b4ad8b0dd82e assets/hbm/models/item/raw_coltan.json
 c8322c9b224e66133425cbcd2b8654481e6955e4 assets/hbm/models/item/raw_lead.json
 c6b853328ec48baf408c8cd1b29b0417c756b0d0 assets/hbm/models/item/raw_schrabidium.json
 530ea18fb07b0a65d71003dbe250b9985320b15d assets/hbm/models/item/raw_thorium.json

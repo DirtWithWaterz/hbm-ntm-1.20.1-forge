@@ -101,16 +101,13 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.SCHRABIDIUM_BLOCK);
 
         blockWithItem(RegisterBlocks.AUSTRALIUM_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_AUSTRALIUM_BLOCK);
 
         blockWithItem(RegisterBlocks.COBALT_BLOCK);
         blockWithItem(RegisterBlocks.RAW_COBALT_BLOCK);
 
         blockWithItem(RegisterBlocks.CINNABAR_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_CINNABAR_BLOCK);
 
         blockWithItem(RegisterBlocks.COLTAN_BLOCK);
-        blockWithItem(RegisterBlocks.RAW_COLTAN_BLOCK);
 
 
         blockWithItem(RegisterBlocks.BLACK_CONCRETE);

@@ -46,7 +46,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.AUSTRALIUM_INGOT);
         simpleItem(RegisterItems.COBALT_INGOT);
         simpleItem(RegisterItems.CINNABAR);
-        simpleItem(RegisterItems.COLTAN_INGOT);
+        simpleItem(RegisterItems.COLTAN);
 
         simpleItem(RegisterItems.RAW_TITANIUM);
         simpleItem(RegisterItems.RAW_URANIUM);
@@ -55,9 +55,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.RAW_BERYLLIUM);
         simpleItem(RegisterItems.RAW_LEAD);
         simpleItem(RegisterItems.RAW_SCHRABIDIUM);
-        simpleItem(RegisterItems.RAW_AUSTRALIUM);
         simpleItem(RegisterItems.RAW_COBALT);
-        simpleItem(RegisterItems.RAW_COLTAN);
 
         simpleItem(RegisterItems.BORON_PILE_ROD);
         simpleItem(RegisterItems.PLUTONIUM_PILE_ROD);

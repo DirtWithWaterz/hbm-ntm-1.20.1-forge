@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-11T14:52:49.2803562	Block States: hbm
+// 1.20.1	2025-11-13T23:00:13.2313785	Block States: hbm
 1efbf5ee60bf34c342853eaf098fe73788c85dfe assets/hbm/blockstates/aluminum_block.json
 7d3b3eedac85e1d6bf425cd672de4f47901f790f assets/hbm/blockstates/aluminum_ore.json
 f65c1c39acd53d979171efc21a7e3015ee0fe36a assets/hbm/blockstates/asbestos_block.json
@@ -87,11 +87,8 @@ af241f9132aa75bf000349efdd8c29a4e2afeca3 assets/hbm/blockstates/pink_concrete.js
 421bd3d58b64156c2e20d790f6968f189c07e35e assets/hbm/blockstates/rad_resistant_block.json
 2b7a97df23f195a44898d586e93c2df2bed9730a assets/hbm/blockstates/rare_earth_ore.json
 936fb8ef18550e8606098da1ad6009b04808ac85 assets/hbm/blockstates/raw_aluminum_block.json
-8619d24d1912202125f2a9c53deb449cd50eb07a assets/hbm/blockstates/raw_australium_block.json
 f8891caf86e8951afb039b7ca4c55bde299ccdf1 assets/hbm/blockstates/raw_beryllium_block.json
-2c8fb12dfbde0da7dd6935e845eb15168dfb4d22 assets/hbm/blockstates/raw_cinnabar_block.json
 dcbd52c9a6778634c7c08d5ced992f353cc23119 assets/hbm/blockstates/raw_cobalt_block.json
-f25a12a3984f1f85d5a4a526daab89a3023a836e assets/hbm/blockstates/raw_coltan_block.json
 20eb9fadbc3498ee88ee8202e0091d83e06425a0 assets/hbm/blockstates/raw_lead_block.json
 eff0d2be89b04d651681363a9398c8b09d9e9e5c assets/hbm/blockstates/raw_tungsten_block.json
 ece86a63d09eb960d32d4d6540fe4f1a725c0768 assets/hbm/blockstates/red_concrete.json
@@ -199,11 +196,8 @@ f61e4cd0e358f598018a2cecbecfbaf1474af303 assets/hbm/models/block/radiation_decon
 f1e04d0ae5afa7874dce0e496344648cf50fa481 assets/hbm/models/block/rad_resistant_block.json
 549d3416ff19ef6e513a58566d35283b4418fd62 assets/hbm/models/block/rare_earth_ore.json
 95f37b65ed22634590eb77261936b435f0074be4 assets/hbm/models/block/raw_aluminum_block.json
-13a839e4acd6a43cfdd06ac2e018a12db33a0f2f assets/hbm/models/block/raw_australium_block.json
 2278a0fe6174c877ce17e92745473354ed99d998 assets/hbm/models/block/raw_beryllium_block.json
-4d920586c9740c644fa179ec43288818980c810a assets/hbm/models/block/raw_cinnabar_block.json
 8f3e6438432c19df4b0c0bb1ff416c1a5f7a4657 assets/hbm/models/block/raw_cobalt_block.json
-72c2ee7f3de8645c444a5a1dc7e1156d2cffdf4d assets/hbm/models/block/raw_coltan_block.json
 4d01573eebdb496e9bd97c580dde0821055825f3 assets/hbm/models/block/raw_lead_block.json
 9ed4b9ddb6ac9f2d351a605ae11e84e6a12097cc assets/hbm/models/block/raw_tungsten_block.json
 49c76d585cbb60ae8953dc53071ee77e986d5d7b assets/hbm/models/block/red_concrete.json
@@ -311,11 +305,8 @@ ac9cfd80b35f6102d92402687f6d308447f5f394 assets/hbm/models/item/radiation_decont
 ae42ce376f339d4389c638db08b56c6754559a5e assets/hbm/models/item/rad_resistant_block.json
 6119529207ca37a5f2ab4e5d59c060fc2bb9aef0 assets/hbm/models/item/rare_earth_ore.json
 f3ff8390ce7a7db9b0db342c8896700ab1b68530 assets/hbm/models/item/raw_aluminum_block.json
-50f5cf398797bda41385602bbe0c142acbd7d069 assets/hbm/models/item/raw_australium_block.json
 2b97320eced81e57564ec53f25d54a0f7ae9f6ad assets/hbm/models/item/raw_beryllium_block.json
-1c6b70063228e9a723b0c4388e1f2eb82fc0948c assets/hbm/models/item/raw_cinnabar_block.json
 2d6252f921578bd34a3e2da3f0b85b701c5c5271 assets/hbm/models/item/raw_cobalt_block.json
-62393a26d8a4a7bfb3ebcc79075334856eed9242 assets/hbm/models/item/raw_coltan_block.json
 4b7e23d40a6bf384c3666a312aa30097c8ed73e2 assets/hbm/models/item/raw_lead_block.json
 132deb8d2306deaa5b570c6082da138105a8300b assets/hbm/models/item/raw_tungsten_block.json
 a855665f6fbf966787775db54249a0d0673e12da assets/hbm/models/item/red_concrete.json
