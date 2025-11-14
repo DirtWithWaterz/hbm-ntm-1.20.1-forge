@@ -47,6 +47,7 @@
     "hbm:lignite_block",
     "hbm:asbestos_block",
     "hbm:schrabidium_block",
+    "hbm:raw_schrabidium_block",
     "hbm:australium_block",
     "hbm:cobalt_block",
     "hbm:cinnabar_block",

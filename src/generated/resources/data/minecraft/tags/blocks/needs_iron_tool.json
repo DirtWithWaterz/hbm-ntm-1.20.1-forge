@@ -30,6 +30,8 @@
     "hbm:deepslate_lignite_ore",
     "hbm:deepslate_asbestos_ore",
     "hbm:deepslate_schrabidium_ore",
+    "hbm:schrabidium_block",
+    "hbm:raw_schrabidium_block",
     "hbm:deepslate_rare_earth_ore",
     "hbm:deepslate_cobalt_ore",
     "hbm:deepslate_cinnabar_ore",

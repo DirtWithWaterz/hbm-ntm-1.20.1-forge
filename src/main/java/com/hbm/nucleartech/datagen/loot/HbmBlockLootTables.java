@@ -41,6 +41,7 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.LIGNITE_BLOCK.get());
         this.dropSelf(RegisterBlocks.ASBESTOS_BLOCK.get());
         this.dropSelf(RegisterBlocks.SCHRABIDIUM_BLOCK.get());
+        this.dropSelf(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.AUSTRALIUM_BLOCK.get());
         this.dropSelf(RegisterBlocks.COBALT_BLOCK.get());
         this.dropSelf(RegisterBlocks.RAW_COBALT_BLOCK.get());

@@ -341,10 +341,14 @@ public class RegisterBlocks {
                     .strength(3.0f, 2.0f)
             ));
 
-    public static final RegistryObject<Block> SCHRABIDIUM_BLOCK = registerHazardBlock(150, "schrabidium_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 4.0f),
-                    150.00
+    public static final RegistryObject<Block> SCHRABIDIUM_BLOCK = registerHazardBlock(135.00, "schrabidium_block",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK),
+                    135.00
+            ));
+
+    public static final RegistryObject<Block> RAW_SCHRABIDIUM_BLOCK = registerHazardBlock(13.50, "raw_schrabidium_block",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK),
+                    13.50
             ));
 
     public static final RegistryObject<Block> AUSTRALIUM_BLOCK = registerBlock("australium_block",

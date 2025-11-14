@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-13T23:00:13.233374	Loot Tables
+// 1.20.1	2025-11-14T03:31:48.8005711	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
 20e19a65676ca36db0f62fff896c635893679c68 data/hbm/loot_tables/blocks/asbestos_air.json
@@ -94,6 +94,7 @@ acfe5af9d308b9c39bf8542c14a873f022c4b8fe data/hbm/loot_tables/blocks/purple_conc
 209c197d098cd7a676086245bacdba9705ecdc6c data/hbm/loot_tables/blocks/raw_beryllium_block.json
 5d39b2cdffdfe2dc356f40cc4b3eecec3ce88318 data/hbm/loot_tables/blocks/raw_cobalt_block.json
 5477ef4b8a2ea9512e10337dc52ce356f3b66814 data/hbm/loot_tables/blocks/raw_lead_block.json
+b09b2c9a4bcfb19c37ca83838fa02001666f2169 data/hbm/loot_tables/blocks/raw_schrabidium_block.json
 eb52bfbbf75d4f81587b3389ae89eaf8a1513fef data/hbm/loot_tables/blocks/raw_tungsten_block.json
 4b64b22d4668e8d00553e476c1a4e0d5bf929c91 data/hbm/loot_tables/blocks/red_concrete.json
 3a9811e388c50dd800162d899eed8f8d353bca33 data/hbm/loot_tables/blocks/red_thorium_ore.json

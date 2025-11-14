@@ -263,6 +263,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.LIGNITE_BLOCK.get());
                         output.accept(RegisterBlocks.ASBESTOS_BLOCK.get());
                         output.accept(RegisterBlocks.SCHRABIDIUM_BLOCK.get());
+                        output.accept(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK.get());
                         output.accept(RegisterBlocks.AUSTRALIUM_BLOCK.get());
                         output.accept(RegisterBlocks.COBALT_BLOCK.get());
                         output.accept(RegisterBlocks.RAW_COBALT_BLOCK.get());

@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-13T23:00:13.2313785	Block States: hbm
+// 1.20.1	2025-11-14T03:31:48.7985767	Block States: hbm
 1efbf5ee60bf34c342853eaf098fe73788c85dfe assets/hbm/blockstates/aluminum_block.json
 7d3b3eedac85e1d6bf425cd672de4f47901f790f assets/hbm/blockstates/aluminum_ore.json
 f65c1c39acd53d979171efc21a7e3015ee0fe36a assets/hbm/blockstates/asbestos_block.json
@@ -90,6 +90,7 @@ af241f9132aa75bf000349efdd8c29a4e2afeca3 assets/hbm/blockstates/pink_concrete.js
 f8891caf86e8951afb039b7ca4c55bde299ccdf1 assets/hbm/blockstates/raw_beryllium_block.json
 dcbd52c9a6778634c7c08d5ced992f353cc23119 assets/hbm/blockstates/raw_cobalt_block.json
 20eb9fadbc3498ee88ee8202e0091d83e06425a0 assets/hbm/blockstates/raw_lead_block.json
+a6264c6464bef0d63a804c44373a44214c2075fb assets/hbm/blockstates/raw_schrabidium_block.json
 eff0d2be89b04d651681363a9398c8b09d9e9e5c assets/hbm/blockstates/raw_tungsten_block.json
 ece86a63d09eb960d32d4d6540fe4f1a725c0768 assets/hbm/blockstates/red_concrete.json
 3bca33e95111cca2c130e2f39304af0e0c245203 assets/hbm/blockstates/red_thorium_ore.json
@@ -199,6 +200,7 @@ f1e04d0ae5afa7874dce0e496344648cf50fa481 assets/hbm/models/block/rad_resistant_b
 2278a0fe6174c877ce17e92745473354ed99d998 assets/hbm/models/block/raw_beryllium_block.json
 8f3e6438432c19df4b0c0bb1ff416c1a5f7a4657 assets/hbm/models/block/raw_cobalt_block.json
 4d01573eebdb496e9bd97c580dde0821055825f3 assets/hbm/models/block/raw_lead_block.json
+a59cd3c8ad20f03e67740b905de61c79d50db0e5 assets/hbm/models/block/raw_schrabidium_block.json
 9ed4b9ddb6ac9f2d351a605ae11e84e6a12097cc assets/hbm/models/block/raw_tungsten_block.json
 49c76d585cbb60ae8953dc53071ee77e986d5d7b assets/hbm/models/block/red_concrete.json
 b7f30528112cbf02dec0f825026fba394095c672 assets/hbm/models/block/red_thorium_ore.json
@@ -308,6 +310,7 @@ f3ff8390ce7a7db9b0db342c8896700ab1b68530 assets/hbm/models/item/raw_aluminum_blo
 2b97320eced81e57564ec53f25d54a0f7ae9f6ad assets/hbm/models/item/raw_beryllium_block.json
 2d6252f921578bd34a3e2da3f0b85b701c5c5271 assets/hbm/models/item/raw_cobalt_block.json
 4b7e23d40a6bf384c3666a312aa30097c8ed73e2 assets/hbm/models/item/raw_lead_block.json
+99b1eeff768be025df7be294548e473b8eeb1516 assets/hbm/models/item/raw_schrabidium_block.json
 132deb8d2306deaa5b570c6082da138105a8300b assets/hbm/models/item/raw_tungsten_block.json
 a855665f6fbf966787775db54249a0d0673e12da assets/hbm/models/item/red_concrete.json
 5a764fdcb397eee4c36f87150c2862c3b5e86b82 assets/hbm/models/item/red_thorium_ore.json

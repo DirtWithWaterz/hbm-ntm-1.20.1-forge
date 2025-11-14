@@ -99,6 +99,7 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.ASBESTOS_BLOCK);
 
         blockWithItem(RegisterBlocks.SCHRABIDIUM_BLOCK);
+        blockWithItem(RegisterBlocks.RAW_SCHRABIDIUM_BLOCK);
 
         blockWithItem(RegisterBlocks.AUSTRALIUM_BLOCK);
 
