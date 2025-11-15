@@ -133,6 +133,14 @@ private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACAC
                 .unlockedBy(getHasName(RegisterItems.TITANIUM_INGOT.get()), has(RegisterItems.TITANIUM_INGOT.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.TITANIUM_BLOCK.get()) + "_from_" + getItemName(RegisterItems.TITANIUM_INGOT.get()));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.GRAPHITE_BLOCK.get())
+                .pattern("GGG")
+                .pattern("GGG")
+                .pattern("GGG")
+                .define('G', RegisterItems.GRAPHITE_INGOT.get())
+                .unlockedBy(getHasName(RegisterItems.GRAPHITE_INGOT.get()), has(RegisterItems.GRAPHITE_INGOT.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.GRAPHITE_BLOCK.get()) + "_from_" + getItemName(RegisterItems.GRAPHITE_INGOT.get()));
+
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.URANIUM_BLOCK.get())
                 .pattern("UUU")
@@ -172,6 +180,11 @@ private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACAC
                 .requires(RegisterBlocks.TITANIUM_BLOCK.get())
                 .unlockedBy(getHasName(RegisterBlocks.TITANIUM_BLOCK.get()), has(RegisterBlocks.TITANIUM_BLOCK.get()))
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.TITANIUM_INGOT.get()) + "_from_" + getItemName(RegisterBlocks.TITANIUM_BLOCK.get()));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.GRAPHITE_INGOT.get(), 9)
+                .requires(RegisterBlocks.GRAPHITE_BLOCK.get())
+                .unlockedBy(getHasName(RegisterBlocks.GRAPHITE_BLOCK.get()), has(RegisterBlocks.GRAPHITE_BLOCK.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.GRAPHITE_INGOT.get()) + "_from_" + getItemName(RegisterBlocks.GRAPHITE_BLOCK.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 9)
                 .requires(RegisterBlocks.URANIUM_BLOCK.get())
