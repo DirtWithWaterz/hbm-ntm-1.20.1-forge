@@ -63,6 +63,8 @@ public class RegisterCreativeTabs {
 
                         output.accept(RegisterItems.GRAPHITE_INGOT.get());
 
+                        output.accept(RegisterItems.DABLUFIUM_INGOT.get());
+
                         output.acceptAll(getItemsFromTag(RegisterTags.Items.SHREDDER_BLADES).stream().map(Item::getDefaultInstance).toList());
 
                         output.accept(RegisterItems.GEIGER_COUNTER.get());

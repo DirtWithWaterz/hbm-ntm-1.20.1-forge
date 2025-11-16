@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-14T04:14:05.0337762	Item Models: hbm
+// 1.20.1	2025-11-16T00:06:13.6779127	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -24,6 +24,7 @@ e32390666b418f6abcc618455adf7d3465ebe2b6 assets/hbm/models/item/cobalt_ingot.jso
 033ebfd23698778d3a7d1427a7c664e6b7d04bb4 assets/hbm/models/item/copper_plate.json
 5ecb87d457cc5a76931817ef3608755fd62f67f9 assets/hbm/models/item/copper_wire.json
 64c8d63422207f3b3b9e0b390c9c13f75e987807 assets/hbm/models/item/creative_battery.json
+dd97fed79198cd6ff198cfbc35a0969c7810847e assets/hbm/models/item/dablufium_ingot.json
 42c86365f616ab80cb19c29f17b668ce517d0128 assets/hbm/models/item/desh_blade.json
 a0f6172ab25b8cd03ca32de1b2d0d3113951354a assets/hbm/models/item/desh_plate_stamp.json
 7f84315542bed144b0a18368a5f0a158cef97a3d assets/hbm/models/item/desh_wire_stamp.json
