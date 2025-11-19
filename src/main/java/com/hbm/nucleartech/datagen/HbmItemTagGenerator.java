@@ -144,5 +144,20 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                 Items.SEAGRASS,
                 Items.SEA_PICKLE
         );
+        public static final List<Item> INGOTS = List.of(
+                RegisterItems.COBALT_INGOT.get(),
+                RegisterItems.THORIUM_INGOT.get(),
+                RegisterItems.TITANIUM_INGOT.get(),
+                RegisterItems.URANIUM_INGOT.get(),
+                RegisterItems.TUNGSTEN_INGOT.get(),
+                RegisterItems.BERYLLIUM_INGOT.get(),
+                RegisterItems.LEAD_INGOT.get(),
+                RegisterItems.SCHRABIDIUM_INGOT.get()
+
+
+
+
+
+                );
     }
 }
