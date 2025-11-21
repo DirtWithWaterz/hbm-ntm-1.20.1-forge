@@ -48,20 +48,20 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
-        oreSmelting(consumer, TITANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 0.7f, 200, "ingot_titanium");
-        oreBlasting(consumer, TITANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 0.7f, 100, "ingot_titanium");
+        oreSmelting(consumer, TITANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 0.7f, 200, "titanium_ingot");
+        oreBlasting(consumer, TITANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 0.7f, 100, "titanium_ingot");
 
-        oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
-        oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
+        oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "uranium_ingot");
+        oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "uranium_ingot");
 
-        oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 200, "ingot_aluminium");
-        oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 100, "ingot_aluminium");
+        oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 200, "aluminium_ingot");
+        oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 100, "aluminium_ingot");
 
-        oreSmelting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 200, "ingot_tungsten");
-        oreBlasting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "ingot_tungsten");
+        oreSmelting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 200, "tungsten_ingot");
+        oreBlasting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "tungsten_ingot");
 
-        oreSmelting(consumer, THORIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.THORIUM_INGOT.get(), 1.0f, 200, "ingot_tungsten");
-        oreBlasting(consumer, THORIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.THORIUM_INGOT.get(), 1.0f, 100, "ingot_tungsten");
+        oreSmelting(consumer, THORIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.THORIUM_INGOT.get(), 1.0f, 200, "thorium_ingot");
+        oreBlasting(consumer, THORIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.THORIUM_INGOT.get(), 1.0f, 100, "thorium_ingot");
 
 
 
