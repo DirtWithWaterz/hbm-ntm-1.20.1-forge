@@ -39,9 +39,8 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
             , RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINIUM.get());
     private static final List<ItemLike> TUNGSTEN_SMELTABLES = List.of(RegisterBlocks.TUNGSTEN_ORE.get()
             , RegisterBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RegisterItems.RAW_TUNGSTEN.get());
-private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACACIA_WOOD,Items.BIRCH_WOOD,Items.CHERRY_WOOD
-        ,Items.DARK_OAK_WOOD,Items.JUNGLE_WOOD,Items.MANGROVE_WOOD,Items.OAK_WOOD,Items.SPRUCE_WOOD);
-    private static final List<ItemLike> BIOMASS_SMELTABLES_FOOD = List.of(Items.CARROT,Items.POTATO,Items.BEETROOT,Items.WHEAT);
+    private static final List<ItemLike> THORIUM_SMELTABLES = List.of(RegisterItems.RAW_THORIUM.get());
+
     public HbmRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
@@ -55,11 +54,14 @@ private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACAC
         oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "ingot_uranium");
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "ingot_uranium");
 
-        oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 200, "ingot_aluminium");
-        oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 6.7f, 100, "ingot_aluminium");
+        oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 200, "ingot_aluminium");
+        oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 100, "ingot_aluminium");
 
         oreSmelting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 200, "ingot_tungsten");
         oreBlasting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "ingot_tungsten");
+
+        oreSmelting(consumer, THORIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.THORIUM_INGOT.get(), 1.0f, 200, "ingot_tungsten");
+        oreBlasting(consumer, THORIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.THORIUM_INGOT.get(), 1.0f, 100, "ingot_tungsten");
 
 
 
@@ -118,7 +120,7 @@ private static final List<ItemLike> BIOMASS_SMELTABLES_WOOD = List.of(Items.ACAC
         itemShredding(consumer, RegisterItems.URANIUM_INGOT.get(), results, FloatingLong.create(2.083E1), 80);
 
         results = List.of(
-                Pair.of(RegisterItems.BIOMASS.get(), new MetaData(1, 1, 100)));
+                Pair.of(RegisterItems.BIOMASS.get(), new MetaData(2, 7, 100)));
         itemShredding(consumer, HbmItemTagGenerator.SharedTagLists.BIOMASS, results, FloatingLong.create(2.083E1), 80);
 
         results = List.of(
