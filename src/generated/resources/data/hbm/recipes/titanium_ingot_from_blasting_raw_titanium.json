@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "group": "ingot_titanium",
+  "group": "titanium_ingot",
   "ingredient": {
     "item": "hbm:raw_titanium"
   },

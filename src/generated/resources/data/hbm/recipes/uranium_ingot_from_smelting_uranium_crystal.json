@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
-  "group": "ingot_uranium",
+  "group": "uranium_ingot",
   "ingredient": {
     "item": "hbm:uranium_crystal"
   },

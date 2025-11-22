@@ -9,8 +9,8 @@
       "item": "hbm:biomass",
       "metadata": {
         "chance": 100,
-        "max_amount": 1,
-        "min_amount": 1
+        "max_amount": 7,
+        "min_amount": 2
       }
     }
   ],

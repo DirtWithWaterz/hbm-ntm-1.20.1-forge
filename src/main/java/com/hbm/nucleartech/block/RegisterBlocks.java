@@ -618,10 +618,10 @@ public class RegisterBlocks {
 
 //    ================================== lamp oil, rope, BOMB? You want it Link, I've got it. So long as YOU have enough rubies. ==================================================
 
-    public static final RegistryObject<Block> LITTLE_BOY = registerBlock("little_boy",
-            () -> new NukeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(6.0f, 3.0f)
-            ));
+//    public static final RegistryObject<Block> LITTLE_BOY = registerBlock("little_boy",
+//            () -> new NukeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+//                    .strength(6.0f, 3.0f)
+//            ));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 

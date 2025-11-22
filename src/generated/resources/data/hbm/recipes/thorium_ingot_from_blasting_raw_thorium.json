@@ -3,9 +3,9 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "group": "tungsten_ingot",
+  "group": "thorium_ingot",
   "ingredient": {
-    "item": "hbm:tungsten_ore"
+    "item": "hbm:raw_thorium"
   },
-  "result": "hbm:tungsten_ingot"
+  "result": "hbm:thorium_ingot"
 }

@@ -1,4 +1,5 @@
-// 1.20.1	2025-11-05T12:16:46.9826707	Tags for minecraft:item mod id hbm
+// 1.20.1	2025-11-21T16:14:07.3896975	Tags for minecraft:item mod id hbm
+cb9b039efd1365c0c82903fc9e5751b92512d1bf data/forge/tags/items/ingots.json
 9aff6c773c207b21a57f8f32f320172c1e23b4b7 data/hbm/tags/items/biomass.json
 163ca0ef138145060f239e1f37d4257bcb9a61de data/hbm/tags/items/desh.json
 a697e8f511746b3f0bf2c48c673ebcdc38570cdd data/hbm/tags/items/pile_rods.json
