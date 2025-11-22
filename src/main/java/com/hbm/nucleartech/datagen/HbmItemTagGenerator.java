@@ -41,6 +41,12 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                 .add(SharedTagLists.PILE_RODS.toArray(new Item[0]));
         tag(RegisterTags.Items.BIOMASS)
                 .add(SharedTagLists.BIOMASS.toArray(new Item[0]));
+
+        tag(Tags.Items.INGOTS)
+                .add(
+                        RegisterItems.ALUMINIUM_INGOT.get(),
+                        RegisterItems.TITANIUM_INGOT.get()
+                );
     }
 
     public static class SharedTagLists {
