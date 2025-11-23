@@ -317,8 +317,8 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.BRICK_JUNGLE_MYSTIC.get());
                         output.accept(RegisterBlocks.BRICK_JUNGLE_OOZE.get());
                         output.accept(RegisterBlocks.BRICK_JUNGLE_TRAP.get());
-                        output.accept(RegisterBlocks.BRICK_LIGHT.get());
-                        output.accept(RegisterBlocks.BRICK_LIGHT_ALT.get());
+                        output.accept(RegisterBlocks.LIGHT_BRICK.get());
+                        output.accept(RegisterBlocks.LIGHT_BRICK_ALT.get());
                         output.accept(RegisterBlocks.BRICK_OBSIDIAN.get());
 
                         output.accept(RegisterBlocks.GRAPHITE_BLOCK.get());

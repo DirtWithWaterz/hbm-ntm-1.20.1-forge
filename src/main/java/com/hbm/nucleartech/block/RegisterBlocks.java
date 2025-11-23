@@ -5,9 +5,6 @@ import com.hbm.nucleartech.block.custom.*;
 import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.hazard.HazardBlockItem;
 import com.hbm.nucleartech.item.RegisterItems;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -599,14 +596,14 @@ public class RegisterBlocks {
 
 
 
-    public static final RegistryObject<Block> BRICK_LIGHT = registerBlock("brick_light",
+    public static final RegistryObject<Block> LIGHT_BRICK = registerBlock("light_brick",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
 
-    public static final RegistryObject<Block> BRICK_LIGHT_ALT = registerBlock("brick_light_alt",
+    public static final RegistryObject<Block> LIGHT_BRICK_ALT = registerBlock("light_brick_alt",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));

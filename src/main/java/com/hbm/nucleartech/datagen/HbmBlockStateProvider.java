@@ -154,8 +154,8 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.BRICK_JUNGLE_MYSTIC);
         blockWithItem(RegisterBlocks.BRICK_JUNGLE_OOZE);
         blockWithItem(RegisterBlocks.BRICK_JUNGLE_TRAP);
-        blockWithItem(RegisterBlocks.BRICK_LIGHT);
-        blockWithItem(RegisterBlocks.BRICK_LIGHT_ALT);
+        blockWithItem(RegisterBlocks.LIGHT_BRICK);
+        blockWithItem(RegisterBlocks.LIGHT_BRICK_ALT);
         blockWithItem(RegisterBlocks.BRICK_OBSIDIAN);
 
         blockWithItem(RegisterBlocks.RED_THORIUM_ORE);
