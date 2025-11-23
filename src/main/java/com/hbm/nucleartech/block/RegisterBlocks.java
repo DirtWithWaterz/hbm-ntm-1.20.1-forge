@@ -124,7 +124,7 @@ public class RegisterBlocks {
                     .noOcclusion()
                     .strength(5.0f, 4.0f)));
 
-    public static final RegistryObject<Block> BURNER_PRESS_PART = registerBlock("burner_press_part",
+    public static final RegistryObject<Block> BURNER_PRESS_PART = BLOCKS.register("burner_press_part",
             () -> new BurnerPressPartBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .mapColor(MapColor.NONE)
                     .noOcclusion()
