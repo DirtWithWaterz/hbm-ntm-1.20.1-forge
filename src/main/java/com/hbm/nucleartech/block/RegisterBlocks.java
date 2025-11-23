@@ -457,19 +457,19 @@ public class RegisterBlocks {
             ));
 
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_CIRCLE = registerBlock("jungle_brick_circle",
+    public static final RegistryObject<Block> CIRCULAR_JUNGLE_BRICK = registerBlock("circular_jungle_brick",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_CRACKED = registerBlock("jungle_brick_cracked",
+    public static final RegistryObject<Block> CRACKED_JUNGLE_BRICK = registerBlock("cracked_jungle_brick",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_FRAGILE = registerBlock("jungle_brick_fragile",
+    public static final RegistryObject<Block> FRAGILE_JUNGLE_BRICK = registerBlock("fragile_jungle_brick",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));

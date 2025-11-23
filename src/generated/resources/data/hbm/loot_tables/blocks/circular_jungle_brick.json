@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hbm:jungle_brick_circle"
+          "name": "hbm:circular_jungle_brick"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "hbm:blocks/jungle_brick_circle"
+  "random_sequence": "hbm:blocks/circular_jungle_brick"
 }

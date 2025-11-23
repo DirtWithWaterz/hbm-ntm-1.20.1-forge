@@ -292,9 +292,9 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.YELLOW_CONCRETE.get());
 
                         output.accept(RegisterBlocks.JUNGLE_BRICK.get());
-                        output.accept(RegisterBlocks.JUNGLE_BRICK_CIRCLE.get());
-                        output.accept(RegisterBlocks.JUNGLE_BRICK_CRACKED.get());
-                        output.accept(RegisterBlocks.JUNGLE_BRICK_FRAGILE.get());
+                        output.accept(RegisterBlocks.CIRCULAR_JUNGLE_BRICK.get());
+                        output.accept(RegisterBlocks.CRACKED_JUNGLE_BRICK.get());
+                        output.accept(RegisterBlocks.FRAGILE_JUNGLE_BRICK.get());
                         output.accept(RegisterBlocks.JUNGLE_BRICK_GLYPH_0.get());
                         output.accept(RegisterBlocks.JUNGLE_BRICK_GLYPH_1.get());
                         output.accept(RegisterBlocks.JUNGLE_BRICK_GLYPH_2.get());

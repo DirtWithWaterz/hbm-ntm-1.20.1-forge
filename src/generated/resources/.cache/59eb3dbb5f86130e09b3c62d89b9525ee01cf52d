@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-22T18:21:59.3781424	Loot Tables
+// 1.20.1	2025-11-22T19:43:23.1405491	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
 20e19a65676ca36db0f62fff896c635893679c68 data/hbm/loot_tables/blocks/asbestos_air.json
@@ -15,11 +15,13 @@ e218923cd4b8edef8dec22e7442831bec2c208c3 data/hbm/loot_tables/blocks/brown_thori
 a080171c2e47231cc7b7bd6bce2a72077ad764e1 data/hbm/loot_tables/blocks/burner_press.json
 4be6573747a25b0909b3f16aa4eb895d6e8fff2d data/hbm/loot_tables/blocks/cinnabar_block.json
 f4e359674d12a62fc5f13860f2831cef9a5b3dbd data/hbm/loot_tables/blocks/cinnabar_ore.json
+8e2afced8f0ebc0267a6e9f5fdd80e6f33e73ee8 data/hbm/loot_tables/blocks/circular_jungle_brick.json
 c494d91990a7763dbc318dd534b8187302d50b48 data/hbm/loot_tables/blocks/coal_air.json
 7f8ff9cc7b1cc686b31f552f1cb1622412579cf8 data/hbm/loot_tables/blocks/cobalt_block.json
 5bb56e09d3c3bfb4c7d9ce45e21beac8ee430039 data/hbm/loot_tables/blocks/cobalt_ore.json
 04773db79682a4042b6f6bc7b1d5eab544ef0c02 data/hbm/loot_tables/blocks/coltan_block.json
 cf17d14cf717e5c8955e7918c764349c69ba706e data/hbm/loot_tables/blocks/coltan_ore.json
+df1ef23f2b783ff404885cd033afe463e8b61a10 data/hbm/loot_tables/blocks/cracked_jungle_brick.json
 c5b6feea5f22b983e6ec59358427752881e63a2a data/hbm/loot_tables/blocks/cyan_concrete.json
 2eecc087c37c45f1aafaee113ade4024039203f9 data/hbm/loot_tables/blocks/dead_grass.json
 ca92eda5341b7e21bdb96887071fe98f3893e757 data/hbm/loot_tables/blocks/deepslate_aluminum_ore.json
@@ -42,13 +44,11 @@ fdf0d03009bf2bb21df3efc893e2f108c0281b41 data/hbm/loot_tables/blocks/fire_brick.
 40e260a19a519361a4421da2551587cbd26cedef data/hbm/loot_tables/blocks/fluorite_block.json
 f63c97f9803dba42ac981016e207e3a056957d80 data/hbm/loot_tables/blocks/fluorite_ore.json
 e9b0a7fe1af2c65bf08675fbbdc9a07e7bd0c86a data/hbm/loot_tables/blocks/forgotten_brick.json
+13635f4141af7efbc7649feeebc976682b2fe4c2 data/hbm/loot_tables/blocks/fragile_jungle_brick.json
 70f76caa13da93e2010bd51278279fbba22b2e0c data/hbm/loot_tables/blocks/graphite_block.json
 6c0a145654957e255bd8e0a4e475acefe8549b9d data/hbm/loot_tables/blocks/gray_concrete.json
 e9489fad3565a8e1f6fcca92e6f05189182cb9e3 data/hbm/loot_tables/blocks/green_concrete.json
 8f97790e9e7a978e4feef30f860d2d9cb514adbc data/hbm/loot_tables/blocks/jungle_brick.json
-69ca85e32a14e40ed8eac585e008fa27dca10b52 data/hbm/loot_tables/blocks/jungle_brick_circle.json
-e360dfa022a24d0eb08d9e7c8ef48f67249edd0c data/hbm/loot_tables/blocks/jungle_brick_cracked.json
-a712045ee448117b2ca6eac214e83269088d8021 data/hbm/loot_tables/blocks/jungle_brick_fragile.json
 424e1244141a11fbbce33b6b48f27df962cb1b2b data/hbm/loot_tables/blocks/jungle_brick_glyph_0.json
 d746173ad6f1649b9143ac8fccaabddadc2b7285 data/hbm/loot_tables/blocks/jungle_brick_glyph_1.json
 6112786bcf19ce34efe877f56c858a5d81643034 data/hbm/loot_tables/blocks/jungle_brick_glyph_10.json

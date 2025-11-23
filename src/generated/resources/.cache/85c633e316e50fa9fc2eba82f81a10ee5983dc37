@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-22T18:21:59.3726342	Block States: hbm
+// 1.20.1	2025-11-22T19:43:23.1375872	Block States: hbm
 1efbf5ee60bf34c342853eaf098fe73788c85dfe assets/hbm/blockstates/aluminum_block.json
 7d3b3eedac85e1d6bf425cd672de4f47901f790f assets/hbm/blockstates/aluminum_ore.json
 f65c1c39acd53d979171efc21a7e3015ee0fe36a assets/hbm/blockstates/asbestos_block.json
@@ -13,10 +13,12 @@ b25bc2efb0a93edce67a07c9d17fbf9c40147249 assets/hbm/blockstates/boron_block.json
 c03455fbefa608b41b459aff533d6d92d34d6454 assets/hbm/blockstates/brown_thorium_ore.json
 06e338d09728ff55801e6436229b9a06ffdd9e6e assets/hbm/blockstates/cinnabar_block.json
 4971bd57c7cca301788f82988f4c65ddac21cca9 assets/hbm/blockstates/cinnabar_ore.json
+0414e76c8ec39171e4a4731ac180cc3d1819091d assets/hbm/blockstates/circular_jungle_brick.json
 e3da2547445a4e94c558e4e90759a089d4542f4e assets/hbm/blockstates/cobalt_block.json
 7b11679f055dc43fe86a590fce8ad80ce6ec9813 assets/hbm/blockstates/cobalt_ore.json
 1886a8e771a2a7937faeef0b1638b59a6d51f4c5 assets/hbm/blockstates/coltan_block.json
 fcdedfa5f97ebf77e764c57535879ab6f7598d3a assets/hbm/blockstates/coltan_ore.json
+5f57078c05b9fcbe84f2da9670706ac331397df6 assets/hbm/blockstates/cracked_jungle_brick.json
 529fe963cadbbe2e8b6c61db16e82a45e792e15e assets/hbm/blockstates/cyan_concrete.json
 45d1187d7f7619e19db92664e371f160e7d64850 assets/hbm/blockstates/dead_grass.json
 3c639634c3038fc023a31e50ea62f329bdaf526a assets/hbm/blockstates/deepslate_aluminum_ore.json
@@ -39,12 +41,10 @@ e793a095a2b6aeb138c3eb8893543e729dc9dbd6 assets/hbm/blockstates/deepslate_schrab
 e0178393d2ccf7de19fbc36e117757b7573f488a assets/hbm/blockstates/fluorite_block.json
 2e7bf3a25f4c34d13ebc6ef5410756336c8ef8ee assets/hbm/blockstates/fluorite_ore.json
 b2dd78352d0cffd56bd4290f503578ac274ac12e assets/hbm/blockstates/forgotten_brick.json
+8969c2dd28d8e480460efc6bcea7157567507a5c assets/hbm/blockstates/fragile_jungle_brick.json
 3d3fbe502b8150b94c4f996a8aca09f92a1a7d0b assets/hbm/blockstates/gray_concrete.json
 8a696e551581446e680c78adf639d2f69e2c8869 assets/hbm/blockstates/green_concrete.json
 ad9fcad23adc97d245d9ffa8fa1172acad42ac73 assets/hbm/blockstates/jungle_brick.json
-d23e16339950b8e437fef8f542643a3c19c7fdfd assets/hbm/blockstates/jungle_brick_circle.json
-be0a8779b7234472f41d09dcba7a21e8261ad803 assets/hbm/blockstates/jungle_brick_cracked.json
-3607640f26430f770cdc12c0447abd844cdf9f1d assets/hbm/blockstates/jungle_brick_fragile.json
 c4dcd32fd8f1d143fed76b2225dc0f7d72a50efd assets/hbm/blockstates/jungle_brick_glyph_0.json
 2d6fd854510a2c5c21e6004c2c57374f925fa036 assets/hbm/blockstates/jungle_brick_glyph_1.json
 a2127e5fdc92d8d535ea01b0e2b7bc3a40407687 assets/hbm/blockstates/jungle_brick_glyph_10.json
@@ -123,10 +123,12 @@ fa3ee6486b036d40af2899eefea954f71975bf94 assets/hbm/models/block/blue_concrete.j
 8443cb5c32a3da8e483d8ee4fb51220d517e86aa assets/hbm/models/block/brown_thorium_ore.json
 ca4c5979036a4077c68bfb44bb3bcde7e6304610 assets/hbm/models/block/cinnabar_block.json
 bbb7c9265a945e2195eeef01f9f03df6a8aaa7da assets/hbm/models/block/cinnabar_ore.json
+3dfc22d1ea251f42ded3dee332f4f5f174b8a407 assets/hbm/models/block/circular_jungle_brick.json
 1597711108adbec024fee04cf86de9b429e6a5e1 assets/hbm/models/block/cobalt_block.json
 eedf854a787c7683b55806ae459e95f87cfae8c4 assets/hbm/models/block/cobalt_ore.json
 e856cf5b2cea6b55de68a253e69d44e82de9b7c0 assets/hbm/models/block/coltan_block.json
 644e34ba49d6ae6d39044acd21bd79632706affc assets/hbm/models/block/coltan_ore.json
+79dee19dba804925b15945f93c54d13b25ab7b72 assets/hbm/models/block/cracked_jungle_brick.json
 64bdf577474334be44a6407c1b0702f49bcd96d2 assets/hbm/models/block/cyan_concrete.json
 26b63f9d69e537e9ad7a7b73dc14db5b9ab0b5ad assets/hbm/models/block/dead_grass.json
 24d29a00d40898b0160b8cb6b089f42d5f6ab00b assets/hbm/models/block/deepslate_aluminum_ore.json
@@ -149,12 +151,10 @@ d0509bbe17f93b6f05df664a442ab0b24007b0e6 assets/hbm/models/block/fire_brick.json
 ff7c282bb25a78a55ba3829f3af0d3927a75209e assets/hbm/models/block/fluorite_block.json
 d6106d8a89bc9ab9770663b5533f92f0958baa62 assets/hbm/models/block/fluorite_ore.json
 beedabdb51a765e29ba4cca9d189b557efc57edb assets/hbm/models/block/forgotten_brick.json
+1dccf900e3c66dff26ed15cc0a4e3d50a52181a5 assets/hbm/models/block/fragile_jungle_brick.json
 f33f7c4e05db1125ec35a81ff2a780970439b3a3 assets/hbm/models/block/gray_concrete.json
 54aa7747785ade47d855e09f8adb053b19c09174 assets/hbm/models/block/green_concrete.json
 f33ca8fa75068c4387e184604ea1e3b496aca488 assets/hbm/models/block/jungle_brick.json
-538f12fc61807ee2f6d5f2befb3c60d13a00a5cd assets/hbm/models/block/jungle_brick_circle.json
-7ee8fb7322206b7e0d387c8afc760f881f42395d assets/hbm/models/block/jungle_brick_cracked.json
-30872e40c4b460c00e4f7bf48b330bd87f4cf003 assets/hbm/models/block/jungle_brick_fragile.json
 c8a3c637a9ec0fca74f150ec1c52173e00358908 assets/hbm/models/block/jungle_brick_glyph_0.json
 ac82ff4f3e32a9dc0a20be68163f75cd339546cf assets/hbm/models/block/jungle_brick_glyph_1.json
 89593b11b6527e6b210eb057ecaef04d3821c9e9 assets/hbm/models/block/jungle_brick_glyph_10.json
@@ -233,10 +233,12 @@ d50407b3e7b3949661ac238da43ca1a0c1067312 assets/hbm/models/item/brown_concrete.j
 47c88f75144529043403c476fb81a26966cda96d assets/hbm/models/item/brown_thorium_ore.json
 cd0f01525207f37dd3860d3f52181b6351b15426 assets/hbm/models/item/cinnabar_block.json
 3705ab580b779526bb147576d010ed84e2befc78 assets/hbm/models/item/cinnabar_ore.json
+9116efa6abb0a0d92f0f21d96c813616ac04cf56 assets/hbm/models/item/circular_jungle_brick.json
 165f79dabfc08f17d2d8af67831e5dfcef98c772 assets/hbm/models/item/cobalt_block.json
 285bd786b1282422f2186fce5b5cd2e92dcc1362 assets/hbm/models/item/cobalt_ore.json
 b664662278654f06bb332b44e44171ecab9276fc assets/hbm/models/item/coltan_block.json
 9fd29b1c01bd61a16d2b2da70adca02dd3d7f2e3 assets/hbm/models/item/coltan_ore.json
+17242afa0e76001f6cab070ee3b7449261d5706d assets/hbm/models/item/cracked_jungle_brick.json
 9e656ead884950dff96b63952d229be39e3b3eda assets/hbm/models/item/cyan_concrete.json
 b8f4b3fcf243955ae20ce1bec295c1cc18628621 assets/hbm/models/item/dead_grass.json
 bd2918e67bc572c82665463154a448cf625f2834 assets/hbm/models/item/deepslate_aluminum_ore.json
@@ -259,12 +261,10 @@ d9513bd4d82c317f05c865beee97283df68dffbd assets/hbm/models/item/fire_brick.json
 46a8fba19b49e2e5dcb160bc1e65b6d06b66004c assets/hbm/models/item/fluorite_block.json
 2a5744fce76a0f8f753bda7cc815ab436aa249c2 assets/hbm/models/item/fluorite_ore.json
 f6aea9dc5ee935afb3dfc382fed05ac6db033188 assets/hbm/models/item/forgotten_brick.json
+a707a3d70c57e4c97b5a4d842457ef028a77e7a6 assets/hbm/models/item/fragile_jungle_brick.json
 0c32a79666488e13128d547f5b5f7fd16e2a91e6 assets/hbm/models/item/gray_concrete.json
 555c4141168c2e0a0a2767b9d24d08978e07cbd9 assets/hbm/models/item/green_concrete.json
 fcd194530932ddeb3afca6e4e84e3c1bbae9066b assets/hbm/models/item/jungle_brick.json
-03f3cee6ac76556f893bcfbb33bdbd29f3c67cc1 assets/hbm/models/item/jungle_brick_circle.json
-f7acd755d13fc184fdb60ab49eb222bae368e38a assets/hbm/models/item/jungle_brick_cracked.json
-a81c878507e15af8da818957de557d849c3b8949 assets/hbm/models/item/jungle_brick_fragile.json
 8e04a2507a523abb091f54274fbcc3f1a5678059 assets/hbm/models/item/jungle_brick_glyph_0.json
 6a626e7ac8fa2876988045342835f723f9b3c45d assets/hbm/models/item/jungle_brick_glyph_1.json
 a0619569e9917bb576223da61c436ad6b8960513 assets/hbm/models/item/jungle_brick_glyph_10.json

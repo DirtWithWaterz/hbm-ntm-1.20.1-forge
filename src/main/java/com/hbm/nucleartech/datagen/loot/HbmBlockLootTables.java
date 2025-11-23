@@ -49,9 +49,9 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.COLTAN_BLOCK.get());
 
         this.dropSelf(RegisterBlocks.JUNGLE_BRICK.get());
-        this.dropSelf(RegisterBlocks.JUNGLE_BRICK_CIRCLE.get());
-        this.dropSelf(RegisterBlocks.JUNGLE_BRICK_CRACKED.get());
-        this.dropSelf(RegisterBlocks.JUNGLE_BRICK_FRAGILE.get());
+        this.dropSelf(RegisterBlocks.CIRCULAR_JUNGLE_BRICK.get());
+        this.dropSelf(RegisterBlocks.CRACKED_JUNGLE_BRICK.get());
+        this.dropSelf(RegisterBlocks.FRAGILE_JUNGLE_BRICK.get());
         this.dropSelf(RegisterBlocks.JUNGLE_BRICK_GLYPH_0.get());
         this.dropSelf(RegisterBlocks.JUNGLE_BRICK_GLYPH_1.get());
         this.dropSelf(RegisterBlocks.JUNGLE_BRICK_GLYPH_2.get());

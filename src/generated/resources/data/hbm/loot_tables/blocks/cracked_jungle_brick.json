@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "hbm:jungle_brick_fragile"
+          "name": "hbm:cracked_jungle_brick"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "hbm:blocks/jungle_brick_fragile"
+  "random_sequence": "hbm:blocks/cracked_jungle_brick"
 }

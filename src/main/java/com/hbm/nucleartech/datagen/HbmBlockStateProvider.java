@@ -129,9 +129,9 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         blockWithItem(RegisterBlocks.YELLOW_CONCRETE);
 
         blockWithItem(RegisterBlocks.JUNGLE_BRICK);
-        blockWithItem(RegisterBlocks.JUNGLE_BRICK_CIRCLE);
-        blockWithItem(RegisterBlocks.JUNGLE_BRICK_CRACKED);
-        blockWithItem(RegisterBlocks.JUNGLE_BRICK_FRAGILE);
+        blockWithItem(RegisterBlocks.CIRCULAR_JUNGLE_BRICK);
+        blockWithItem(RegisterBlocks.CRACKED_JUNGLE_BRICK);
+        blockWithItem(RegisterBlocks.FRAGILE_JUNGLE_BRICK);
         blockWithItem(RegisterBlocks.JUNGLE_BRICK_GLYPH_0);
         blockWithItem(RegisterBlocks.JUNGLE_BRICK_GLYPH_1);
         blockWithItem(RegisterBlocks.JUNGLE_BRICK_GLYPH_2);
