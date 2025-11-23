@@ -451,164 +451,164 @@ public class RegisterBlocks {
             ));
 
 
-    public static final RegistryObject<Block> JUNGLE_BRICK = registerBlock("jungle_brick",
+    public static final RegistryObject<Block> JUNGLE_BRICKS = registerBlock("jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
-    public static final RegistryObject<Block> CIRCULAR_JUNGLE_BRICK = registerBlock("circular_jungle_brick",
+    public static final RegistryObject<Block> CIRCULAR_JUNGLE_BRICKS = registerBlock("circular_jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
-    public static final RegistryObject<Block> CRACKED_JUNGLE_BRICK = registerBlock("cracked_jungle_brick",
+    public static final RegistryObject<Block> CRACKED_JUNGLE_BRICKS = registerBlock("cracked_jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
-    public static final RegistryObject<Block> FRAGILE_JUNGLE_BRICK = registerBlock("fragile_jungle_brick",
+    public static final RegistryObject<Block> FRAGILE_JUNGLE_BRICKS = registerBlock("fragile_jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_0 = registerBlock("jungle_brick_glyph_0",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_0 = registerBlock("glyphed_jungle_bricks_0",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_1 = registerBlock("jungle_brick_glyph_1",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_1 = registerBlock("glyphed_jungle_bricks_1",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_2 = registerBlock("jungle_brick_glyph_2",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_2 = registerBlock("glyphed_jungle_bricks_2",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_3 = registerBlock("jungle_brick_glyph_3",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_3 = registerBlock("glyphed_jungle_bricks_3",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_4 = registerBlock("jungle_brick_glyph_4",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_4 = registerBlock("glyphed_jungle_bricks_4",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_5 = registerBlock("jungle_brick_glyph_5",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_5 = registerBlock("glyphed_jungle_bricks_5",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_6 = registerBlock("jungle_brick_glyph_6",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_6 = registerBlock("glyphed_jungle_bricks_6",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_7 = registerBlock("jungle_brick_glyph_7",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_7 = registerBlock("glyphed_jungle_bricks_7",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_8 = registerBlock("jungle_brick_glyph_8",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_8 = registerBlock("glyphed_jungle_bricks_8",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_9 = registerBlock("jungle_brick_glyph_9",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_9 = registerBlock("glyphed_jungle_bricks_9",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_10 = registerBlock("jungle_brick_glyph_10",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_10 = registerBlock("glyphed_jungle_bricks_10",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_11 = registerBlock("jungle_brick_glyph_11",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_11 = registerBlock("glyphed_jungle_bricks_11",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_12 = registerBlock("jungle_brick_glyph_12",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_12 = registerBlock("glyphed_jungle_bricks_12",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_13 = registerBlock("jungle_brick_glyph_13",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_13 = registerBlock("glyphed_jungle_bricks_13",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_14 = registerBlock("jungle_brick_glyph_14",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_14 = registerBlock("glyphed_jungle_bricks_14",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> JUNGLE_BRICK_GLYPH_15 = registerBlock("jungle_brick_glyph_15",
+    public static final RegistryObject<Block> JUNGLE_BRICKS_GLYPH_15 = registerBlock("glyphed_jungle_bricks_15",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> FIRE_BRICK = registerBlock("fire_brick",
+    public static final RegistryObject<Block> FIRE_BRICKS = registerBlock("fire_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> FORGOTTEN_BRICK = registerBlock("forgotten_brick",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-                    .strength(5.0f, 3.0f)
-            ));
-
-
-
-    public static final RegistryObject<Block> LAVA_JUNGLE_BRICK = registerBlock("lava_jungle_brick",
+    public static final RegistryObject<Block> FORGOTTEN_BRICKS = registerBlock("forgotten_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
 
-    public static final RegistryObject<Block> MYSTIC_JUNGLE_BRICK = registerBlock("mystic_jungle_brick",
+    public static final RegistryObject<Block> LAVA_JUNGLE_BRICKS = registerBlock("lava_jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
 
-    public static final RegistryObject<Block> OOZING_JUNGLE_BRICK = registerBlock("oozing_jungle_brick",
+    public static final RegistryObject<Block> MYSTIC_JUNGLE_BRICKS = registerBlock("mystic_jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
 
-    public static final RegistryObject<Block> TRAPPED_JUNGLE_BRICK = registerBlock("trapped_jungle_brick",
+    public static final RegistryObject<Block> OOZING_JUNGLE_BRICKS = registerBlock("oozing_jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
 
-    public static final RegistryObject<Block> LIGHT_BRICK = registerBlock("light_brick",
+    public static final RegistryObject<Block> TRAPPED_JUNGLE_BRICKS = registerBlock("trapped_jungle_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
 
 
-    public static final RegistryObject<Block> LIGHT_BRICK_ALT = registerBlock("light_brick_alt",
+    public static final RegistryObject<Block> LIGHT_BRICKS = registerBlock("light_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> OBSIDIAN_BRICK = registerBlock("obsidian_brick",
+
+
+    public static final RegistryObject<Block> LIGHT_BRICKS_ALT = registerBlock("light_bricks_alt",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .strength(5.0f, 3.0f)
+            ));
+
+    public static final RegistryObject<Block> OBSIDIAN_BRICKS = registerBlock("obsidian_bricks",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 3.0f)
             ));
