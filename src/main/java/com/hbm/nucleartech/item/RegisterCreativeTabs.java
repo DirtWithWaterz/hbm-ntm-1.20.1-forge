@@ -311,15 +311,15 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.JUNGLE_BRICK_GLYPH_13.get());
                         output.accept(RegisterBlocks.JUNGLE_BRICK_GLYPH_14.get());
                         output.accept(RegisterBlocks.JUNGLE_BRICK_GLYPH_15.get());
-                        output.accept(RegisterBlocks.BRICK_FIRE.get());
-                        output.accept(RegisterBlocks.BRICK_FORGOTTEN.get());
-                        output.accept(RegisterBlocks.BRICK_JUNGLE_LAVA.get());
-                        output.accept(RegisterBlocks.BRICK_JUNGLE_MYSTIC.get());
-                        output.accept(RegisterBlocks.BRICK_JUNGLE_OOZE.get());
-                        output.accept(RegisterBlocks.BRICK_JUNGLE_TRAP.get());
+                        output.accept(RegisterBlocks.FIRE_BRICK.get());
+                        output.accept(RegisterBlocks.FORGOTTEN_BRICK.get());
+                        output.accept(RegisterBlocks.LAVA_JUNGLE_BRICK.get());
+                        output.accept(RegisterBlocks.MYSTIC_JUNGLE_BRICK.get());
+                        output.accept(RegisterBlocks.OOZING_JUNGLE_BRICK.get());
+                        output.accept(RegisterBlocks.TRAPPED_JUNGLE_BRICK.get());
                         output.accept(RegisterBlocks.LIGHT_BRICK.get());
                         output.accept(RegisterBlocks.LIGHT_BRICK_ALT.get());
-                        output.accept(RegisterBlocks.BRICK_OBSIDIAN.get());
+                        output.accept(RegisterBlocks.OBSIDIAN_BRICK.get());
 
                         output.accept(RegisterBlocks.GRAPHITE_BLOCK.get());
                         output.accept(RegisterBlocks.BORON_BLOCK.get());
