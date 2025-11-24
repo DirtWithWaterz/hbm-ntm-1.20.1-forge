@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "hbm:block/armor_modification_table" }
+  }
+}

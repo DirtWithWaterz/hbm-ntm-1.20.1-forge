@@ -199,6 +199,8 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(RegisterBlocks.BURNER_PRESS.get());
 
+        this.dropSelf(RegisterBlocks.ARMOR_MODIFICATION_TABLE.get());
+
         this.dropSelf(RegisterBlocks.SHREDDER.get());
     }
 

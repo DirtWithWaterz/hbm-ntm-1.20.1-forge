@@ -1,7 +1,6 @@
 {
   "values": [
     "hbm:titanium_block",
-    "hbm:shredder",
     "hbm:graphite_block",
     "hbm:boron_block",
     "hbm:titanium_ore",
@@ -59,6 +58,7 @@
     "hbm:raw_cobalt_block",
     "hbm:radiation_decontaminator",
     "hbm:shredder",
+    "hbm:armor_modification_table",
     "hbm:burner_press",
     "hbm:burner_press_part",
     "hbm:red_thorium_ore",

@@ -333,6 +333,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.RADIATION_DECONTAMINATOR.get());
                         output.accept(RegisterItems.BURNER_PRESS.get());
                         output.accept(RegisterItems.SHREDDER.get());
+                        output.accept(RegisterItems.ARMOR_MODIFICATION_TABLE.get());
                     })
                     .build());
 

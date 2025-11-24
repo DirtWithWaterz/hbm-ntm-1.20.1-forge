@@ -458,6 +458,9 @@ public class RegisterItems {
     public static final RegistryObject<Item> SHREDDER = ITEMS.register("shredder",
             () -> new ShredderItem(RegisterBlocks.SHREDDER.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> ARMOR_MODIFICATION_TABLE = ITEMS.register("armor_modification_table",
+            () -> new ArmorModificationTableItem(RegisterBlocks.ARMOR_MODIFICATION_TABLE.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> GRAPHITE_BLOCK = ITEMS.register("graphite_block",
             () -> new GraphiteBlockItem(RegisterBlocks.GRAPHITE_BLOCK.get(), new Item.Properties()));
 

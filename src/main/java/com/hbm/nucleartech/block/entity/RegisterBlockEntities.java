@@ -28,6 +28,11 @@ public class RegisterBlockEntities {
                     BlockEntityType.Builder.of(GraphiteBlockEntity::new,
                             RegisterBlocks.GRAPHITE_BLOCK.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<ArmorModificationTableEntity>> ARMOR_MODIFICATION_TABLE_ENTITY =
+            BLOCK_ENTITIES.register("armor_modification_table_entity", () ->
+                    BlockEntityType.Builder.of(ArmorModificationTableEntity::new,
+                            RegisterBlocks.ARMOR_MODIFICATION_TABLE.get()).build(null));
+
     public static void register(IEventBus eventBus) {
 
         BLOCK_ENTITIES.register(eventBus);

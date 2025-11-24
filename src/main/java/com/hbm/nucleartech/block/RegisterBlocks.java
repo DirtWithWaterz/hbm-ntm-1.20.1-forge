@@ -116,6 +116,9 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> SHREDDER = BLOCKS.register("shredder",
             () -> new ShredderBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
+    public static final RegistryObject<Block> ARMOR_MODIFICATION_TABLE = BLOCKS.register("armor_modification_table",
+            () -> new ArmorModificationTableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+
     public static final RegistryObject<Block> DEAD_GRASS = registerBlock("dead_grass",
             () -> new GrassBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
 

@@ -1,6 +1,6 @@
-// 1.20.1	2025-11-22T20:15:07.6983419	Tags for minecraft:block mod id hbm
+// 1.20.1	2025-11-24T00:57:44.3540866	Tags for minecraft:block mod id hbm
 ec1f20ddfb310a255825d0e60e7762f4390f8cfb data/forge/tags/blocks/ores.json
 154739f615cbbe1e17fa96a5e1e48cc0cacc2471 data/forge/tags/blocks/ores/coal.json
-a5aea99bf710e9ff4520c6cd38fe8e763e292904 data/minecraft/tags/blocks/mineable/pickaxe.json
+084180d8debfee064eae4ca3f8a547821e7e1981 data/minecraft/tags/blocks/mineable/pickaxe.json
 49f62c02bfc3c00049023ab5268a51ac12cf2435 data/minecraft/tags/blocks/needs_iron_tool.json
 7f6d64a00e2d42af022785b2ec0a43204b1df830 data/minecraft/tags/blocks/needs_stone_tool.json
