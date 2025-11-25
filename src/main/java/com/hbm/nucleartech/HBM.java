@@ -17,6 +17,7 @@ import com.hbm.nucleartech.item.custom.GeigerCounterItem;
 import com.hbm.nucleartech.network.HbmPacketHandler;
 import com.hbm.nucleartech.particle.RegisterParticles;
 import com.hbm.nucleartech.recipe.RegisterRecipes;
+import com.hbm.nucleartech.screen.ArmorModificationTableScreen;
 import com.hbm.nucleartech.screen.BurnerPressScreen;
 import com.hbm.nucleartech.screen.RegisterMenuTypes;
 import com.hbm.nucleartech.screen.ShredderScreen;
@@ -173,7 +174,7 @@ public class HBM
 
             MenuScreens.register(RegisterMenuTypes.BURNER_PRESS_MENU.get(), BurnerPressScreen::new);
             MenuScreens.register(RegisterMenuTypes.SHREDDER_MENU.get(), ShredderScreen::new);
-//            MenuScreens.register(RegisterMenuTypes.ARMOR_MODIFICATION_TABLE_MENU.get(), ArmorModificationTableScreen::new);
+            MenuScreens.register(RegisterMenuTypes.ARMOR_MODIFICATION_TABLE_MENU.get(), ArmorModificationTableScreen::new);
         }
     }
 

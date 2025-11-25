@@ -2,17 +2,28 @@ package com.hbm.nucleartech.util;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
+import com.hbm.nucleartech.capability.HbmCapabilities;
+import com.hbm.nucleartech.handler.HbmContaminationSystem;
 import com.hbm.nucleartech.hazard.HazardItem;
+import com.hbm.nucleartech.interfaces.IEntityCapabilityBase;
 import com.hbm.nucleartech.item.RegisterItems;
+import com.hbm.nucleartech.item.custom.armormodifiers.HealthArmorModifierItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -104,5 +115,76 @@ public final class InterceptUtil {
 
         // you can also test tags:
         // if (stack.is(YourTags.Items.MY_FUEL_TAG)) event.setBurnTime(...);
+    }
+
+    @SubscribeEvent
+    public static void onEquipmentChange(LivingEquipmentChangeEvent event) {
+
+        LivingEntity entity = event.getEntity();
+
+        EquipmentSlot slot = event.getSlot();
+
+        if(!slot.isArmor()) return;
+
+        ItemStack from = event.getFrom();
+        ItemStack to = event.getTo();
+
+        CompoundTag fromTag = from.getOrCreateTag().getCompound("hbm_armor_mod_table");
+        CompoundTag toTag = to.getOrCreateTag().getCompound("hbm_armor_mod_table");
+
+//        System.err.println("[Debug] Equipment change");
+
+        for(int i = 1; i <= 9; i++) {
+
+            String[] metadata = fromTag.getString(String.valueOf(i)).split(":");
+
+            if(metadata.length != 3) continue;
+
+            Item modder = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+
+            if(modder == null) continue;
+
+            if(modder instanceof HealthArmorModifierItem healthArmorModifierItem) {
+
+                AttributeInstance hp = entity.getAttribute(Attributes.MAX_HEALTH);
+
+                HbmCapabilities.getData(entity).setValue(IEntityCapabilityBase.Type.OLD_MAX_HEALTH, HbmCapabilities.getData(entity).getValue(IEntityCapabilityBase.Type.OLD_MAX_HEALTH) - healthArmorModifierItem.getHealthBuff());
+                HbmCapabilities.getData(entity).syncLivingVariables(entity);
+
+                if(hp != null)
+                    hp.setBaseValue(entity.getMaxHealth() - healthArmorModifierItem.getHealthBuff());
+
+                entity.setHealth(entity.getHealth() - healthArmorModifierItem.getHealthBuff());
+
+//                HbmCapabilities.getData(entity).setValue(IEntityCapabilityBase.Type.OLD_ROUNDED_DAMAGE, -1);
+                HbmContaminationSystem.healthShinanigans(entity, HbmCapabilities.getData(entity).getValue(IEntityCapabilityBase.Type.INTERNAL_DAMAGE));
+            }
+        }
+        for(int i = 1; i <= 9; i++) {
+
+            String[] metadata = toTag.getString(String.valueOf(i)).split(":");
+
+            if(metadata.length != 3) continue;
+
+            Item modder = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+
+            if(modder == null) continue;
+
+            if(modder instanceof HealthArmorModifierItem healthArmorModifierItem) {
+
+                AttributeInstance hp = entity.getAttribute(Attributes.MAX_HEALTH);
+
+                HbmCapabilities.getData(entity).setValue(IEntityCapabilityBase.Type.OLD_MAX_HEALTH, HbmCapabilities.getData(entity).getValue(IEntityCapabilityBase.Type.OLD_MAX_HEALTH) + healthArmorModifierItem.getHealthBuff());
+                HbmCapabilities.getData(entity).syncLivingVariables(entity);
+
+                if(hp != null)
+                    hp.setBaseValue(entity.getMaxHealth() + healthArmorModifierItem.getHealthBuff());
+
+                entity.setHealth(entity.getHealth() + healthArmorModifierItem.getHealthBuff());
+
+//                HbmCapabilities.getData(entity).setValue(IEntityCapabilityBase.Type.OLD_ROUNDED_DAMAGE, -1);
+                HbmContaminationSystem.healthShinanigans(entity, HbmCapabilities.getData(entity).getValue(IEntityCapabilityBase.Type.INTERNAL_DAMAGE));
+            }
+        }
     }
 }

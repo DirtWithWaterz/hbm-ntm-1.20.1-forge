@@ -571,20 +571,22 @@ public class ShredderEntity extends BaseHbmBlockEntity implements GeoBlockEntity
 //        System.out.println("[Debug] progress: " + progress);
     }
 
+    // ------------- constants & accumulators -------------
+    final int DEFAULT_TICKS = 120;
+    final FloatingLong DEFAULT_POWER = FloatingLong.create(1.0E0);
     private boolean hasItems() {
-
-        // ------------- constants & accumulators -------------
-        final int DEFAULT_TICKS = 120;
-        final FloatingLong DEFAULT_POWER = FloatingLong.create(1.0E0);
-
-        int maxTicksFound = 0;
-        FloatingLong maxPowerFound = FloatingLong.ZERO;
 
         // Quick list of non-empty input slots so we iterate consistent data twice
         List<Integer> nonEmptyInputs = new ArrayList<>(INPUT_SLOT.length);
         for (int slot : INPUT_SLOT) {
             if (!this.itemHandler.getStackInSlot(slot).isEmpty()) nonEmptyInputs.add(slot);
         }
+
+        if(nonEmptyInputs.isEmpty())
+            return false;
+
+        int maxTicksFound = 0;
+        FloatingLong maxPowerFound = FloatingLong.ZERO;
 
         // ------------ PASS 1: gather maxima across all inputs ------------
         for (int slot : nonEmptyInputs) {

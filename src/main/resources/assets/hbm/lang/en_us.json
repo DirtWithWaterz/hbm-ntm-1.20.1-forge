@@ -9,6 +9,8 @@
   "adjective.medium": "Medium",
   "adjective.low": "Low",
 
+  "noun.health": "health",
+
   "desc.na": "N/A",
   "desc.nofilter": "No filter installed!",
   "desc.infilter":"Installed filter:",
@@ -45,6 +47,9 @@
   "desc.applicablel1": "Leggings",
   "desc.applicableservo": "Servos",
   "desc.applicableslot": "Slot:",
+  "desc.mods": "Mods:",
+
+  "blurb.heart_piece": "Heart Piece (+5.0 health)",
 
   "death.attack.radiation": "%1$s died from radiation poisoning",
   "death.attack.radiation.player": "%1$s died from radiation poisoning whilst trying to escape %2$s",
@@ -125,8 +130,9 @@
 
   "creativetab.resources_and_parts": "NTM Resources and Parts",
   "creativetab.machine_items_and_fuel": "NTM Machine Items and Fuel",
-  "creativetab.ntm_blocks": "NTM Blocks",
-  "creativetab.ntm_machines": "NTM Machines",
+  "creativetab.blocks": "NTM Blocks",
+  "creativetab.machines": "NTM Machines",
+  "creativetab.consumables_and_gear": "NTM Consumables and Gear",
 
   "item.hbm.uranium_ingot": "Uranium Ingot",
   "item.hbm.beryllium_ingot": "Beryllium Ingot",
@@ -195,6 +201,8 @@
   "item.hbm.hazmat_chestplate_grey": "High-Performance Hazmat Chestplate",
   "item.hbm.hazmat_leggings_grey": "High-Performance Hazmat Leggings",
   "item.hbm.hazmat_boots_grey": "High-Performance Hazmat Boots",
+
+  "item.hbm.heart_piece": "Heart Piece",
 
   "geiger.chunk_rad": "Current chunk radiation:",
   "geiger.env_rad": "Total environmental radiation:",

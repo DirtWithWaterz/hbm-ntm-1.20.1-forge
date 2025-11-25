@@ -21,6 +21,9 @@ public class RegisterMenuTypes {
     public static final RegistryObject<MenuType<ShredderMenu>> SHREDDER_MENU =
             registerMenuType("shredder_menu", ShredderMenu::new);
 
+    public static final RegistryObject<MenuType<ArmorModificationTableMenu>> ARMOR_MODIFICATION_TABLE_MENU =
+            registerMenuType("armor_modification_table_menu", ArmorModificationTableMenu::new);
+
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
 
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

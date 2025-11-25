@@ -41,6 +41,8 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                 .add(SharedTagLists.PILE_RODS.toArray(new Item[0]));
         tag(RegisterTags.Items.BIOMASS)
                 .add(SharedTagLists.BIOMASS.toArray(new Item[0]));
+        tag(RegisterTags.Items.SPECIAL_ARMOR_MODIFIERS)
+                .add(SharedTagLists.SPECIAL_ARMOR_MODIFIERS.toArray(new Item[0]));
 
         tag(Tags.Items.INGOTS)
                 .add(
@@ -50,6 +52,11 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
     }
 
     public static class SharedTagLists {
+
+        public static final List<Item> SPECIAL_ARMOR_MODIFIERS = List.of(
+                RegisterItems.HEART_PIECE.get()
+        );
+
         public static final List<Item> PLATE_STAMPS = List.of(
                 RegisterItems.IRON_PLATE_STAMP.get(),
                 RegisterItems.STEEL_PLATE_STAMP.get(),

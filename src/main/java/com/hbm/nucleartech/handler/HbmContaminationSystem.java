@@ -340,69 +340,76 @@ public class HbmContaminationSystem {
                                             AdvancementManager.grant(player, "rad_poison");
                                     }
 
-                                    AttributeInstance hp = entity.getAttribute(Attributes.MAX_HEALTH);
-
-                                    int oldRoundedDam = (int)HbmCapabilities.getData(entity).getValue(Type.OLD_ROUNDED_DAMAGE);
-
-                                    int roundedDam = (int)Math.round(internal_dam);
-
-//                                    boolean maxHealthChanged;
-
-                                    if (hp != null) {
-
-                                        if(roundedDam != oldRoundedDam) {
-
-                                            float currMax = entity.getMaxHealth();
-                                            float ogMax = (float)HbmCapabilities.getData(entity).getValue(Type.OLD_MAX_HEALTH);
-
-                                            float newMax = switch(roundedDam) {
-
-                                                case 100 -> 1;
-                                                case 95, 90,
-                                                     85, 80,
-                                                     75, 70,
-                                                     65, 60,
-                                                     55, 50,
-                                                     45, 40,
-                                                     35, 30,
-                                                     25, 20,
-                                                     15, 10,
-                                                     5   -> ogMax*(1f - (roundedDam/100f));
-                                                default  -> currMax;
-                                            };
-                                            hp.setBaseValue(newMax);
-
-                                            // clamp current health to new max so the entity doesn't have > max HP
-                                            if (entity.getHealth() > newMax) {
-                                                entity.setHealth(newMax);
-                                            }
-
-                                            HbmCapabilities.getData(entity).setValue(Type.OLD_ROUNDED_DAMAGE, roundedDam);
-                                            HbmCapabilities.getData(entity).syncLivingVariables(entity);
-
-//                                            maxHealthChanged = true;
-
-//                                            if(entity instanceof ServerPlayer)
-//                                                System.out.println("\n================================================================================"
-//                                                        + "\ncontamination = " + eRad + ", permanent contamination = " + perm_con + ", internal damage = " + internal_dam
-//                                                        + "\nrounded internal damage = " + roundedDam + ", old rounded internal damage = " + oldRoundedDam + ", max health changed = " + maxHealthChanged
-//                                                        + "\ncurrent max health = " + currMax + ", new max health = " + newMax + ", entity.getHealth() = " + entity.getHealth() + ", og max health = " + ogMax
-//                                                        + "\n================================================================================");
-                                        }
-
-//                                        if(entity instanceof ServerPlayer)
-//                                            System.out.println("\n================================================================================"
-//                                                    + "\ncontamination = " + eRad + ", permanent contamination = " + perm_con + ", internal damage = " + internal_dam
-//                                                    + "\nrounded internal damage = " + roundedDam + ", old rounded internal damage = " + oldRoundedDam
-//                                                    + "\nentity.getHealth() = " + entity.getHealth()
-//                                                    + "\n================================================================================");
-                                    }
+                                    healthShinanigans(entity, internal_dam);
                                 }
                             }
                         }
                     }
                 }
             }
+        }
+    }
+
+    public static void healthShinanigans(LivingEntity entity, double internal_dam) {
+
+        HbmCapabilities.getData(entity).syncLivingVariables(entity);
+
+        AttributeInstance hp = entity.getAttribute(Attributes.MAX_HEALTH);
+
+        int oldRoundedDam = (int)HbmCapabilities.getData(entity).getValue(Type.OLD_ROUNDED_DAMAGE);
+
+        int roundedDam = (int)Math.round(internal_dam);
+
+//        boolean maxHealthChanged;
+
+        if (hp != null) {
+
+            if(roundedDam != oldRoundedDam) {
+
+                float currMax = entity.getMaxHealth();
+                float ogMax = (float)HbmCapabilities.getData(entity).getValue(Type.OLD_MAX_HEALTH);
+
+                float newMax = switch(roundedDam) {
+
+                    case 100 -> 1;
+                    case 95, 90,
+                         85, 80,
+                         75, 70,
+                         65, 60,
+                         55, 50,
+                         45, 40,
+                         35, 30,
+                         25, 20,
+                         15, 10,
+                         5   -> ogMax*(1f - (roundedDam/100f));
+                    default  -> currMax;
+                };
+                hp.setBaseValue(newMax);
+
+                // clamp current health to new max so the entity doesn't have > max HP
+                if (entity.getHealth() > newMax) {
+                    entity.setHealth(newMax);
+                }
+
+                HbmCapabilities.getData(entity).setValue(Type.OLD_ROUNDED_DAMAGE, roundedDam);
+                HbmCapabilities.getData(entity).syncLivingVariables(entity);
+
+//                maxHealthChanged = true;
+
+//                if(entity instanceof ServerPlayer)
+//                    System.out.println("\n================================================================================"
+//                            + "\ncontamination = " + eRad + ", permanent contamination = " + perm_con + ", internal damage = " + internal_dam
+//                            + "\nrounded internal damage = " + roundedDam + ", old rounded internal damage = " + oldRoundedDam + ", max health changed = " + maxHealthChanged
+//                            + "\ncurrent max health = " + currMax + ", new max health = " + newMax + ", entity.getHealth() = " + entity.getHealth() + ", og max health = " + ogMax
+//                            + "\n================================================================================");
+            }
+
+//            if(entity instanceof ServerPlayer)
+//                System.out.println("\n================================================================================"
+//                        + "\ncontamination = " + eRad + ", permanent contamination = " + perm_con + ", internal damage = " + internal_dam
+//                        + "\nrounded internal damage = " + roundedDam + ", old rounded internal damage = " + oldRoundedDam
+//                        + "\nentity.getHealth() = " + entity.getHealth()
+//                        + "\n================================================================================");
         }
     }
 

@@ -27,6 +27,17 @@ public class RegisterTags {
         public static final TagKey<Item> PILE_RODS = tag("pile_rods");
         public static final TagKey<Item> BIOMASS = tag("biomass");
 
+        public static final TagKey<Item> HELMET_ARMOR_MODIFIERS = tag("helmet_armor_modifiers");
+        public static final TagKey<Item> CHESTPLATE_ARMOR_MODIFIERS = tag("chestplate_armor_modifiers");
+        public static final TagKey<Item> LEGGINGS_ARMOR_MODIFIERS = tag("leggings_armor_modifiers");
+        public static final TagKey<Item> BOOTS_ARMOR_MODIFIERS = tag("boots_armor_modifiers");
+        public static final TagKey<Item> SERVO_ARMOR_MODIFIERS = tag("servo_armor_modifiers");
+        public static final TagKey<Item> CLADDING_ARMOR_MODIFIERS = tag("cladding_armor_modifiers");
+        public static final TagKey<Item> INSERT_ARMOR_MODIFIERS = tag("insert_armor_modifiers");
+        public static final TagKey<Item> SPECIAL_ARMOR_MODIFIERS = tag("special_armor_modifiers");
+        public static final TagKey<Item> BATTERY_ARMOR_MODIFIERS = tag("battery_armor_modifiers");
+
+
         private static TagKey<Item> tag(String name) {
 
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, name));

@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-16T00:06:13.6779127	Item Models: hbm
+// 1.20.1	2025-11-25T03:52:51.6014676	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -56,6 +56,7 @@ f43e353be66d308945b876d9abf5f0af2f7df907 assets/hbm/models/item/hazmat_helmet_re
 ae121eda749ae46efc579e38cb2264255fa18aa6 assets/hbm/models/item/hazmat_leggings.json
 b7475a7b24c338557e93d2664caaab51625320af assets/hbm/models/item/hazmat_leggings_grey.json
 34bf1230d41a74d19b76dc6dd4615182be4e1d95 assets/hbm/models/item/hazmat_leggings_red.json
+a01a56bd320ddc9ea1a96731c620f9aa5fe5a41e assets/hbm/models/item/heart_piece.json
 8491fc3e8ecfb7e49f957455ebd2e495414febf3 assets/hbm/models/item/infinite_fusion_core.json
 febd671c742b17614e51d2f605566258ca2c280d assets/hbm/models/item/iron_blade.json
 c86cd8fc966dd652bbc591f1fc8b31687f8817d7 assets/hbm/models/item/iron_plate.json

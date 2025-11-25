@@ -5,6 +5,7 @@ import com.hbm.nucleartech.hazard.HazardSystem;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.BatteryItem;
 import com.hbm.nucleartech.item.custom.SelfChargingBatteryItem;
+import com.hbm.nucleartech.item.custom.base.ArmorModifierItem;
 import com.hbm.nucleartech.item.special.ItemArmorMod;
 import com.hbm.nucleartech.util.ArmorRegistry;
 import com.hbm.nucleartech.util.ArmorRegistry.HazardClass;
@@ -14,11 +15,14 @@ import com.hbm.nucleartech.util.RegisterTags;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -27,8 +31,10 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mod.EventBusSubscriber
@@ -42,7 +48,40 @@ public class ItemHandler {
         boolean leftShiftDown = InputConstants.isKeyDown(window, GLFW.GLFW_KEY_LEFT_SHIFT);
 
         ItemStack stack = event.getItemStack();
-        List<Component> list = event.getToolTip();
+        List<Component> toolTiplist = event.getToolTip();
+        List<Component> list = new ArrayList<>();
+
+        /// ARMOR MODIFIERS ///
+        CompoundTag tag = stack.getOrCreateTag().getCompound("hbm_armor_mod_table");
+
+        boolean armor_mods = false;
+
+        for(int i = 1; i <= 9; i++) {
+
+            String check = tag.getString(String.valueOf(i));
+            if(check.isEmpty())
+                continue;
+            armor_mods = true;
+        }
+
+        if(armor_mods) {
+
+            list.add(Component.translatable("desc.mods").withStyle(ChatFormatting.YELLOW));
+
+            for(int i = 1; i <= 9; i++) {
+
+                String[] metadata = tag.getString(String.valueOf(i)).split(":");
+
+                if(metadata.length != 3) continue;
+
+                Item moddingItem = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+
+                if(moddingItem != null) {
+
+                    list.add(((ArmorModifierItem)moddingItem).getBlurb());
+                }
+            }
+        }
 
         /// HAZMAT INFO ///
         List<HazardClass> hazInfo = ArmorRegistry.hazardClasses.get(stack.getItem());
@@ -161,6 +200,14 @@ public class ItemHandler {
 
         /// NEUTRON RADS ///
         ContaminationUtil.addNeutronRadInfo(stack, event.getEntity(), list, event.getFlags());
+
+        list.addAll(toolTiplist.subList(1, (int)toolTiplist.stream().count()));
+
+        Component name = toolTiplist.get(0);
+
+        toolTiplist.clear();
+        toolTiplist.add(name);
+        toolTiplist.addAll(list);
     }
 
     @SubscribeEvent

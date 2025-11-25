@@ -6,6 +6,8 @@ import com.hbm.nucleartech.capability.energy.WattHourStorage;
 import com.hbm.nucleartech.handler.ArmorModHandler;
 import com.hbm.nucleartech.hazard.HazardItem;
 import com.hbm.nucleartech.item.custom.*;
+import com.hbm.nucleartech.item.custom.armormodifiers.HealthArmorModifierItem;
+import com.hbm.nucleartech.item.custom.base.ArmorModifierItem;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.item.special.CustomLoreItem;
 import com.hbm.nucleartech.util.FloatingLong;
@@ -495,6 +497,11 @@ public class RegisterItems {
             () -> new StampItem(new Item.Properties()));
     public static final RegistryObject<Item> SCHRABIDIUM_WIRE_STAMP = ITEMS.register("schrabidium_wire_stamp",
             () -> new StampItem(new Item.Properties()));
+
+    //    ====================================== armor modifier items ======================================
+
+    public static final RegistryObject<Item> HEART_PIECE = ITEMS.register("heart_piece",
+            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 5.0f, "heart_piece"));
 
     public static void register(IEventBus eventBus) {
 

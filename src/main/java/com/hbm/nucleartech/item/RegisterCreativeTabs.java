@@ -201,7 +201,7 @@ public class RegisterCreativeTabs {
 
     public static final RegistryObject<CreativeModeTab> NTM_BLOCKS = CREATIVE_TABS.register("ntm_blocks",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(RegisterBlocks.TITANIUM_BLOCK.get()))
-                    .title(Component.translatable("creativetab.ntm_blocks"))
+                    .title(Component.translatable("creativetab.blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
 
                         output.accept(RegisterBlocks.WASTE_BLOCK.get());
@@ -328,12 +328,20 @@ public class RegisterCreativeTabs {
 
     public static final RegistryObject<CreativeModeTab> NTM_MACHINES = CREATIVE_TABS.register("ntm_machines",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(RegisterBlocks.RADIATION_DECONTAMINATOR.get()))
-                    .title(Component.translatable("creativetab.ntm_machines"))
+                    .title(Component.translatable("creativetab.machines"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(RegisterBlocks.RADIATION_DECONTAMINATOR.get());
                         output.accept(RegisterItems.BURNER_PRESS.get());
                         output.accept(RegisterItems.SHREDDER.get());
                         output.accept(RegisterItems.ARMOR_MODIFICATION_TABLE.get());
+                    })
+                    .build());
+
+    public static final RegistryObject<CreativeModeTab> NTM_CONSUMABLES_AND_GEAR = CREATIVE_TABS.register("ntm_consumables_and_gear",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(RegisterItems.PLACEHOLDER.get()))
+                    .title(Component.translatable("creativetab.consumables_and_gear"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(RegisterItems.HEART_PIECE.get());
                     })
                     .build());
 
