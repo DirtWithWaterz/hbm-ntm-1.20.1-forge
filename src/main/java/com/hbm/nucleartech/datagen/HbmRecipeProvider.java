@@ -71,10 +71,13 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
         Pressing(consumer, RegisterItems.STEEL_INGOT.get(), RegisterItems.STEEL_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
         Pressing(consumer, Items.COPPER_INGOT, RegisterItems.COPPER_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
         Pressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
+        Pressing(consumer, RegisterItems.LEAD_INGOT.get(), RegisterItems.LEAD_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
+        Pressing(consumer, RegisterItems.TUNGSTEN_INGOT.get(), RegisterItems.TUNGSTEN_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
 
         Pressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
         Pressing(consumer,RegisterItems.GOLD_PLATE.get(),RegisterItems.GOLD_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
-
+        Pressing(consumer,RegisterItems.LEAD_PLATE.get(),RegisterItems.LEAD_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
+        Pressing(consumer,RegisterItems.TUNGSTEN_PLATE.get(),RegisterItems.TUNGSTEN_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
 
         List<Pair<ItemLike, MetaData>> results;
 //=======================================shredder==================================================================
@@ -108,6 +111,13 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
         itemShredding(consumer, RegisterItems.RAW_TITANIUM .get() ,results, FloatingLong.create(1.39E1), 60);
 
         results = List.of(
+                Pair.of(RegisterItems.COPPER_POWDER.get(), new MetaData(1, 1, 2)),
+                Pair.of(Items.CLAY_BALL, new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.GOLD_POWDER.get(), new MetaData(2, 2, 100))
+        );
+        itemShredding(consumer, Items.RAW_GOLD ,results, FloatingLong.create(1.39E1), 60);
+
+        results = List.of(
          Pair.of(RegisterItems.IRON_POWDER.get(), new MetaData(1, 1, 100)));
         itemShredding(consumer, Items.IRON_INGOT, results, FloatingLong.create(2.083E1), 80);
 
@@ -133,7 +143,8 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("TTT")
                 .define('T', RegisterItems.TITANIUM_INGOT.get())
                 .unlockedBy(getHasName(RegisterItems.TITANIUM_INGOT.get()), has(RegisterItems.TITANIUM_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.TITANIUM_BLOCK.get()) + "_from_" + getItemName(RegisterItems.TITANIUM_INGOT.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.TITANIUM_BLOCK.get())
+                        + "_from_" + getItemName(RegisterItems.TITANIUM_INGOT.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.GRAPHITE_BLOCK.get())
                 .pattern("GGG")
@@ -141,7 +152,8 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("GGG")
                 .define('G', RegisterItems.GRAPHITE_INGOT.get())
                 .unlockedBy(getHasName(RegisterItems.GRAPHITE_INGOT.get()), has(RegisterItems.GRAPHITE_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.GRAPHITE_BLOCK.get()) + "_from_" + getItemName(RegisterItems.GRAPHITE_INGOT.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.GRAPHITE_BLOCK.get())
+                        + "_from_" + getItemName(RegisterItems.GRAPHITE_INGOT.get()));
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.URANIUM_BLOCK.get())
@@ -150,7 +162,8 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("UUU")
                 .define('U', RegisterItems.URANIUM_INGOT.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.URANIUM_BLOCK.get()) + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.URANIUM_BLOCK.get())
+                        + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterBlocks.SULFUR_BLOCK.get())
                 .pattern("SSS")
@@ -158,7 +171,8 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SSS")
                 .define('S', RegisterItems.SULFUR.get())
                 .unlockedBy(getHasName(RegisterItems.SULFUR.get()), has(RegisterItems.SULFUR.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.SULFUR_BLOCK.get()) + "_from_" + getItemName(RegisterItems.SULFUR.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterBlocks.SULFUR_BLOCK.get())
+                        + "_from_" + getItemName(RegisterItems.SULFUR.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get())
                 .pattern("NNN")
@@ -166,7 +180,8 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("NNN")
                 .define('N', RegisterItems.URANIUM_NUGGET.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_INGOT.get()) + "_from_" + getItemName(RegisterItems.URANIUM_NUGGET.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_INGOT.get())
+                        + "_from_" + getItemName(RegisterItems.URANIUM_NUGGET.get()));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.URANIUM_PILE_ROD.get())
                 .pattern(" B ")
@@ -175,43 +190,51 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', RegisterItems.URANIUM_BILLET.get())
                 .define('P', RegisterItems.IRON_PLATE.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_PILE_ROD.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_PILE_ROD.get())
+                        + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get()));
 
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 9)
                 .requires(RegisterBlocks.TITANIUM_BLOCK.get())
                 .unlockedBy(getHasName(RegisterBlocks.TITANIUM_BLOCK.get()), has(RegisterBlocks.TITANIUM_BLOCK.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.TITANIUM_INGOT.get()) + "_from_" + getItemName(RegisterBlocks.TITANIUM_BLOCK.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.TITANIUM_INGOT.get())
+                        + "_from_" + getItemName(RegisterBlocks.TITANIUM_BLOCK.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.GRAPHITE_INGOT.get(), 9)
                 .requires(RegisterBlocks.GRAPHITE_BLOCK.get())
                 .unlockedBy(getHasName(RegisterBlocks.GRAPHITE_BLOCK.get()), has(RegisterBlocks.GRAPHITE_BLOCK.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.GRAPHITE_INGOT.get()) + "_from_" + getItemName(RegisterBlocks.GRAPHITE_BLOCK.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.GRAPHITE_INGOT.get())
+                        + "_from_" + getItemName(RegisterBlocks.GRAPHITE_BLOCK.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 9)
                 .requires(RegisterBlocks.URANIUM_BLOCK.get())
                 .unlockedBy(getHasName(RegisterBlocks.URANIUM_BLOCK.get()), has(RegisterBlocks.URANIUM_BLOCK.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_INGOT.get()) + "_from_" + getItemName(RegisterBlocks.URANIUM_BLOCK.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_INGOT.get())
+                        + "_from_" + getItemName(RegisterBlocks.URANIUM_BLOCK.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.URANIUM_NUGGET.get(), 9)
                 .requires(RegisterItems.URANIUM_INGOT.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get()) + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get())
+                        + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.URANIUM_BILLET.get(), 3)
                 .requires(RegisterItems.URANIUM_INGOT.get(), 2)
                 .unlockedBy(getHasName(RegisterItems.URANIUM_INGOT.get()), has(RegisterItems.URANIUM_INGOT.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_BILLET.get()) + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_BILLET.get())
+                        + "_from_" + getItemName(RegisterItems.URANIUM_INGOT.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 2)
                 .requires(RegisterItems.URANIUM_BILLET.get(), 3)
                 .unlockedBy(getHasName(RegisterItems.URANIUM_BILLET.get()), has(RegisterItems.URANIUM_BILLET.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_INGOT.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_INGOT.get())
+                        + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.URANIUM_NUGGET.get(), 6)
                 .requires(RegisterItems.URANIUM_BILLET.get())
                 .unlockedBy(getHasName(RegisterItems.URANIUM_BILLET.get()), has(RegisterItems.URANIUM_BILLET.get()))
-                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get()) + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get())
+                        + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
 //============================================tools==============================================================
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.DESH_BLADE.get())//HAND_DRILL_DESH
                 .pattern("D  ")
