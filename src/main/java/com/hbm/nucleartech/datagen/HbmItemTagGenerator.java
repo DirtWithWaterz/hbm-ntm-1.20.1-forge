@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-import static com.hbm.nucleartech.HBM.getItemsFromTag;
-
 public class HbmItemTagGenerator extends ItemTagsProvider {
     public HbmItemTagGenerator(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, @Nullable ExistingFileHelper existingFileHelper) {
 
@@ -46,7 +44,7 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
 
         tag(Tags.Items.INGOTS)
                 .add(
-                        RegisterItems.ALUMINIUM_INGOT.get(),
+                        RegisterItems.ALUMINUM_INGOT.get(),
                         RegisterItems.TITANIUM_INGOT.get()
                 );
     }

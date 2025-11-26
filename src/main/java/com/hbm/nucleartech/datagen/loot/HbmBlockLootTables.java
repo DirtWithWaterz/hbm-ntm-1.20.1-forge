@@ -126,9 +126,9 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
                 block -> createOreDrop(RegisterBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RegisterItems.RAW_TUNGSTEN.get()));
 
         this.add(RegisterBlocks.ALUMINIUM_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINIUM.get()));
+                block -> createOreDrop(RegisterBlocks.ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINUM.get()));
         this.add(RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(),
-                block -> createOreDrop(RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINIUM.get()));
+                block -> createOreDrop(RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINUM.get()));
 
         this.add(RegisterBlocks.FLUORITE_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.FLUORITE_ORE.get(), RegisterItems.FLUORITE.get()));

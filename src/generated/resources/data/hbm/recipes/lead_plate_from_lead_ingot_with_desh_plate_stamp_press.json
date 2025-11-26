@@ -1,0 +1,15 @@
+{
+  "type": "hbm:press",
+  "ingredients": [
+    {
+      "item": "hbm:desh_plate_stamp"
+    },
+    {
+      "item": "hbm:lead_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "hbm:lead_plate"
+  }
+}

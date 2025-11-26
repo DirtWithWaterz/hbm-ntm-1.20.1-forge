@@ -153,6 +153,24 @@
   "item.hbm.graphite_ingot": "Graphite Ingot",
   "item.hbm.dablufium_ingot": "Dablufium Ingot",
 
+  "item.hbm.aluminum_plate": "Aluminum Plate",
+  "item.hbm.schrabidium_plate": "Schrabidium Plate",
+  "item.hbm.lead_plate": "Lead Plate",
+
+  "item.hbm.aluminum_wire": "Aluminum Wire",
+  "item.hbm.carbon_wire": "Carbon Wire",
+  "item.hbm.tungsten_wire": "Tungsten Wire",
+  "item.hbm.schrabidium_wire": "Schrabidium Wire",
+  "item.hbm.lead_wire": "Lead Wire",
+
+  "item.hbm.dense_copper_wire": "Dense Copper Wire",
+  "item.hbm.dense_gold_wire": "Dense Gold Wire",
+
+  "item.hbm.copper_powder": "Copper Powder",
+  "item.hbm.titanium_powder": "Titanium Powder",
+  "item.hbm.iron_powder": "Iron Powder",
+  "item.hbm.gold_powder": "Gold Powder",
+
   "item.hbm.raw_uranium": "Raw Uranium",
   "item.hbm.raw_titanium": "Raw Titanium",
   "item.hbm.raw_tungsten": "Raw Tungsten",

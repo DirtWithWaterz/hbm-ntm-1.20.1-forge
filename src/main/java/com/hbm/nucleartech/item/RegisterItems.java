@@ -40,19 +40,13 @@ public class RegisterItems {
     public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ALUMINIUM_PLATE = ITEMS.register("aluminium_wire",
+    public static final RegistryObject<Item> ALUMINUM_PLATE = ITEMS.register("aluminum_plate",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> CARBON_PLATE = ITEMS.register("carbon_wire",
+    public static final RegistryObject<Item> SCHRABIDIUM_PLATE = ITEMS.register("schrabidium_plate",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> TUNGSTEN_PLATE = ITEMS.register("tungsten_wire",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> SCHRABIDIUM_PLATE = ITEMS.register("schrabidium_wire",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> LEAD_PLATE = ITEMS.register("lead_wire",
+    public static final RegistryObject<Item> LEAD_PLATE = ITEMS.register("lead_plate",
             () -> new Item(new Item.Properties()));
     //=============================================WIRE========================================================
     public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire",
@@ -61,7 +55,7 @@ public class RegisterItems {
     public static final RegistryObject<Item> GOLD_WIRE = ITEMS.register("gold_wire",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ALUMINIUM_WIRE = ITEMS.register("aluminium_wire",
+    public static final RegistryObject<Item> ALUMINUM_WIRE = ITEMS.register("aluminum_wire",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> CARBON_WIRE = ITEMS.register("carbon_wire",
@@ -96,7 +90,7 @@ public class RegisterItems {
     //========================================copper==============================================================
     public static final RegistryObject<Item> COPPER_POWDER = ITEMS.register("copper_powder",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_WIRE_DENSE = ITEMS.register("copper_dense_wire",
+    public static final RegistryObject<Item> DENSE_COPPER_WIRE = ITEMS.register("dense_copper_wire",
             () -> new Item(new Item.Properties()));
     //========================================desh==============================================================
     public static final RegistryObject<Item> DESH_INGOT = ITEMS.register("desh_ingot",
@@ -119,7 +113,7 @@ public class RegisterItems {
     //========================================gold==============================================================
     public static final RegistryObject<Item> GOLD_POWDER = ITEMS.register("gold_powder",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_WIRE_DENSE = ITEMS.register("gold_dense_wire",
+    public static final RegistryObject<Item> DENSE_GOLD_WIRE = ITEMS.register("dense_gold_wire",
             () -> new Item(new Item.Properties()));
     //========================================uranium==============================================================
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot",
@@ -182,11 +176,11 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> RAW_TUNGSTEN = ITEMS.register("raw_tungsten",
             () -> new Item(new Item.Properties()));
-    //=========================================aluminium==============================================================
-    public static final RegistryObject<Item> ALUMINIUM_INGOT = ITEMS.register("aluminum_ingot",
+    //=========================================aluminum==============================================================
+    public static final RegistryObject<Item> ALUMINUM_INGOT = ITEMS.register("aluminum_ingot",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> RAW_ALUMINIUM = ITEMS.register("raw_aluminum",
+    public static final RegistryObject<Item> RAW_ALUMINUM = ITEMS.register("raw_aluminum",
             () -> new Item(new Item.Properties()));
     //=========================================fluorite==============================================================
     public static final RegistryObject<Item> FLUORITE = ITEMS.register("fluorite",

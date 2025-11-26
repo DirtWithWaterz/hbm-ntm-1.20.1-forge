@@ -30,7 +30,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.SULFUR.get());
                         output.accept(RegisterItems.NITER.get());
                         output.accept(RegisterItems.TUNGSTEN_INGOT.get());
-                        output.accept(RegisterItems.ALUMINIUM_INGOT.get());
+                        output.accept(RegisterItems.ALUMINUM_INGOT.get());
                         output.accept(RegisterItems.FLUORITE.get());
                         output.accept(RegisterItems.LEAD_INGOT.get());
                         output.accept(RegisterItems.LIGNITE.get());
@@ -51,7 +51,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.RAW_URANIUM.get());
                         output.accept(RegisterItems.RAW_THORIUM.get());
                         output.accept(RegisterItems.RAW_TUNGSTEN.get());
-                        output.accept(RegisterItems.RAW_ALUMINIUM.get());
+                        output.accept(RegisterItems.RAW_ALUMINUM.get());
                         output.accept(RegisterItems.RAW_BERYLLIUM.get());
                         output.accept(RegisterItems.RAW_LEAD.get());
                         output.accept(RegisterItems.RAW_SCHRABIDIUM.get());
@@ -60,6 +60,11 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.THORIUM_SHALE.get());
                         output.accept(RegisterItems.THORIUM_INGOT.get());
                         output.accept(RegisterItems.THORIUM_POWDER.get());
+
+                        output.accept(RegisterItems.COPPER_POWDER.get());
+                        output.accept(RegisterItems.TITANIUM_POWDER.get());
+                        output.accept(RegisterItems.IRON_POWDER.get());
+                        output.accept(RegisterItems.GOLD_POWDER.get());
 
                         output.accept(RegisterItems.GRAPHITE_INGOT.get());
 
@@ -112,11 +117,22 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.COPPER_PLATE.get());
                         output.accept(RegisterItems.GOLD_PLATE.get());
                         output.accept(RegisterItems.TITANIUM_PLATE.get());
+                        output.accept(RegisterItems.ALUMINUM_PLATE.get());
+                        output.accept(RegisterItems.SCHRABIDIUM_PLATE.get());
+                        output.accept(RegisterItems.LEAD_PLATE.get());
 
                         output.accept(RegisterItems.COPPER_WIRE.get());
                         output.accept(RegisterItems.GOLD_WIRE.get());
                         output.accept(RegisterItems.COPPER_COIL.get());
                         output.accept(RegisterItems.MOTOR.get());
+                        output.accept(RegisterItems.ALUMINUM_WIRE.get());
+                        output.accept(RegisterItems.CARBON_WIRE.get());
+                        output.accept(RegisterItems.TUNGSTEN_WIRE.get());
+                        output.accept(RegisterItems.SCHRABIDIUM_WIRE.get());
+                        output.accept(RegisterItems.LEAD_WIRE.get());
+
+                        output.accept(RegisterItems.DENSE_COPPER_WIRE.get());
+                        output.accept(RegisterItems.DENSE_GOLD_WIRE.get());
 
                         output.accept(RegisterItems.BORON_PILE_ROD.get());
                         output.accept(RegisterItems.RADIUM_PILE_ROD.get());

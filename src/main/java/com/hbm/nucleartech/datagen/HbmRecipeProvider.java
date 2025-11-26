@@ -7,12 +7,10 @@ import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.recipe.RegisterRecipes;
 import com.hbm.nucleartech.util.FloatingLong;
-import com.hbm.nucleartech.util.RegisterTags;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -27,8 +25,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.hbm.nucleartech.HBM.getItemsFromTag;
-
 public class HbmRecipeProvider extends RecipeProvider implements IConditionBuilder {
 
     private static final List<ItemLike> TITANIUM_SMELTABLES = List.of(RegisterBlocks.TITANIUM_ORE.get()
@@ -36,7 +32,7 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
     private static final List<ItemLike> URANIUM_SMELTABLES = List.of(RegisterBlocks.URANIUM_ORE.get()
             , RegisterBlocks.DEEPSLATE_URANIUM_ORE.get(), RegisterItems.RAW_URANIUM.get(), RegisterItems.URANIUM_CRYSTAL.get());
     private static final List<ItemLike> ALUMINIUM_SMELTABLES = List.of(RegisterBlocks.ALUMINIUM_ORE.get()
-            , RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINIUM.get());
+            , RegisterBlocks.DEEPSLATE_ALUMINIUM_ORE.get(), RegisterItems.RAW_ALUMINUM.get());
     private static final List<ItemLike> TUNGSTEN_SMELTABLES = List.of(RegisterBlocks.TUNGSTEN_ORE.get()
             , RegisterBlocks.DEEPSLATE_TUNGSTEN_ORE.get(), RegisterItems.RAW_TUNGSTEN.get());
     private static final List<ItemLike> THORIUM_SMELTABLES = List.of(RegisterItems.RAW_THORIUM.get());
@@ -54,8 +50,8 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 200, "uranium_ingot");
         oreBlasting(consumer, URANIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.URANIUM_INGOT.get(), 1.0f, 100, "uranium_ingot");
 
-        oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 200, "aluminium_ingot");
-        oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINIUM_INGOT.get(), 1.0f, 100, "aluminium_ingot");
+        oreSmelting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINUM_INGOT.get(), 1.0f, 200, "aluminium_ingot");
+        oreBlasting(consumer, ALUMINIUM_SMELTABLES, RecipeCategory.MISC, RegisterItems.ALUMINUM_INGOT.get(), 1.0f, 100, "aluminium_ingot");
 
         oreSmelting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 200, "tungsten_ingot");
         oreBlasting(consumer, TUNGSTEN_SMELTABLES, RecipeCategory.MISC, RegisterItems.TUNGSTEN_INGOT.get(), 1.0f, 100, "tungsten_ingot");
@@ -72,12 +68,10 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
         Pressing(consumer, Items.COPPER_INGOT, RegisterItems.COPPER_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
         Pressing(consumer, Items.GOLD_INGOT, RegisterItems.GOLD_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
         Pressing(consumer, RegisterItems.LEAD_INGOT.get(), RegisterItems.LEAD_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
-        Pressing(consumer, RegisterItems.TUNGSTEN_INGOT.get(), RegisterItems.TUNGSTEN_PLATE.get().getDefaultInstance(), HbmItemTagGenerator.SharedTagLists.PLATE_STAMPS);
 
         Pressing(consumer,RegisterItems.COPPER_PLATE.get(),RegisterItems.COPPER_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
         Pressing(consumer,RegisterItems.GOLD_PLATE.get(),RegisterItems.GOLD_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
         Pressing(consumer,RegisterItems.LEAD_PLATE.get(),RegisterItems.LEAD_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
-        Pressing(consumer,RegisterItems.TUNGSTEN_PLATE.get(),RegisterItems.TUNGSTEN_WIRE.get().getDefaultInstance().copyWithCount(8), HbmItemTagGenerator.SharedTagLists.WIRE_STAMPS);
 
         List<Pair<ItemLike, MetaData>> results;
 //=======================================shredder==================================================================

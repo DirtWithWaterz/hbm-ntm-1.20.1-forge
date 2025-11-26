@@ -37,7 +37,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.SULFUR);
         simpleItem(RegisterItems.NITER);
         simpleItem(RegisterItems.TUNGSTEN_INGOT);
-        simpleItem(RegisterItems.ALUMINIUM_INGOT);
+        simpleItem(RegisterItems.ALUMINUM_INGOT);
         simpleItem(RegisterItems.FLUORITE);
         simpleItem(RegisterItems.LEAD_INGOT);
         simpleItem(RegisterItems.LIGNITE);
@@ -51,7 +51,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.RAW_TITANIUM);
         simpleItem(RegisterItems.RAW_URANIUM);
         simpleItem(RegisterItems.RAW_TUNGSTEN);
-        simpleItem(RegisterItems.RAW_ALUMINIUM);
+        simpleItem(RegisterItems.RAW_ALUMINUM);
         simpleItem(RegisterItems.RAW_BERYLLIUM);
         simpleItem(RegisterItems.RAW_LEAD);
         simpleItem(RegisterItems.RAW_SCHRABIDIUM);
@@ -200,6 +200,24 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.DESH_WIRE_STAMP);
         simpleItem(RegisterItems.SCHRABIDIUM_WIRE_STAMP);
         simpleItem(RegisterItems.HEART_PIECE);
+
+        simpleItem(RegisterItems.ALUMINUM_PLATE);
+        simpleItem(RegisterItems.SCHRABIDIUM_PLATE);
+        simpleItem(RegisterItems.LEAD_PLATE);
+
+        simpleItem(RegisterItems.ALUMINUM_WIRE);
+        simpleItem(RegisterItems.CARBON_WIRE);
+        simpleItem(RegisterItems.TUNGSTEN_WIRE);
+        simpleItem(RegisterItems.SCHRABIDIUM_WIRE);
+        simpleItem(RegisterItems.LEAD_WIRE);
+
+        simpleItem(RegisterItems.DENSE_COPPER_WIRE);
+        simpleItem(RegisterItems.DENSE_GOLD_WIRE);
+
+        simpleItem(RegisterItems.COPPER_POWDER);
+        simpleItem(RegisterItems.TITANIUM_POWDER);
+        simpleItem(RegisterItems.IRON_POWDER);
+        simpleItem(RegisterItems.GOLD_POWDER);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
