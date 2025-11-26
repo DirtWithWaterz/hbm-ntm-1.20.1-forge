@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-26T03:12:37.9405367	Item Models: hbm
+// 1.20.1	2025-11-26T07:02:18.0967057	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -17,6 +17,7 @@ a219959b38ff8570e860a41ccc9d004cb47c1b0c assets/hbm/models/item/asbestos_sheet.j
 10ca5510c6091556f4099525d977c6fee0a163fb assets/hbm/models/item/australium_ingot.json
 8d20caf5e6ead72d2e1e303c9856e8151922ee7f assets/hbm/models/item/beryllium_ingot.json
 018aa89c5e59ed7bfd6bb169c126e2d5a2026aa8 assets/hbm/models/item/biomass.json
+fae2de46f607905e8a1d3250c0624e8fb85d8ff4 assets/hbm/models/item/black_diamond.json
 2ed5e6e4e5c5dd13b0756db9bfe7abe34ed3b79f assets/hbm/models/item/boron_pile_rod.json
 777e706e03400480c2b6f7b61372cde38765164a assets/hbm/models/item/carbon_wire.json
 44d88c6c85395d91adfdd5e976fd4717fb1bf7e8 assets/hbm/models/item/cinnabar.json
@@ -36,6 +37,7 @@ a0f6172ab25b8cd03ca32de1b2d0d3113951354a assets/hbm/models/item/desh_plate_stamp
 7f84315542bed144b0a18368a5f0a158cef97a3d assets/hbm/models/item/desh_wire_stamp.json
 cf96b3afe5eb68592da9aba2a26cccd1bedb360b assets/hbm/models/item/electronium_cube.json
 cf96b3afe5eb68592da9aba2a26cccd1bedb360b assets/hbm/models/item/electronium_cube_full.json
+2d06a8f874bb82e6eedcf55f835569a5f8130995 assets/hbm/models/item/fab_heart.json
 1a2d5e2743f80fe2886e8b48c53f081335259b84 assets/hbm/models/item/fluorite.json
 7f29f38ac80fcc1cf894de82a414bb8d732fc029 assets/hbm/models/item/gas_mask_filter.json
 fd94910aead41f339c985199cd59465d9a66afb1 assets/hbm/models/item/gas_mask_filter_combo.json
@@ -63,6 +65,9 @@ f43e353be66d308945b876d9abf5f0af2f7df907 assets/hbm/models/item/hazmat_helmet_re
 ae121eda749ae46efc579e38cb2264255fa18aa6 assets/hbm/models/item/hazmat_leggings.json
 b7475a7b24c338557e93d2664caaab51625320af assets/hbm/models/item/hazmat_leggings_grey.json
 34bf1230d41a74d19b76dc6dd4615182be4e1d95 assets/hbm/models/item/hazmat_leggings_red.json
+9eb88dc77115ea81e8e263d32213546044a2ce8e assets/hbm/models/item/heart_booster.json
+05eeb7634fadcc95e7f4087fa45cfd1ee5b81d32 assets/hbm/models/item/heart_container.json
+11b11a9e665e4dbe15f3de39b4e864b958b0f0fb assets/hbm/models/item/heart_of_darkness.json
 a01a56bd320ddc9ea1a96731c620f9aa5fe5a41e assets/hbm/models/item/heart_piece.json
 8491fc3e8ecfb7e49f957455ebd2e495414febf3 assets/hbm/models/item/infinite_fusion_core.json
 febd671c742b17614e51d2f605566258ca2c280d assets/hbm/models/item/iron_blade.json

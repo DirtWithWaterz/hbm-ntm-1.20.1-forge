@@ -358,6 +358,11 @@ public class RegisterCreativeTabs {
                     .title(Component.translatable("creativetab.consumables_and_gear"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(RegisterItems.HEART_PIECE.get());
+                        output.accept(RegisterItems.HEART_CONTAINER.get());
+                        output.accept(RegisterItems.FAB_HEART.get());
+                        output.accept(RegisterItems.HEART_BOOSTER.get());
+                        output.accept(RegisterItems.HEART_OF_DARKNESS.get());
+                        output.accept(RegisterItems.BLACK_DIAMOND.get());
                     })
                     .build());
 

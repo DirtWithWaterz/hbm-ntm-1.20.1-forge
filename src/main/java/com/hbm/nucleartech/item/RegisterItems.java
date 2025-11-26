@@ -533,6 +533,26 @@ public class RegisterItems {
     public static final RegistryObject<Item> HEART_PIECE = ITEMS.register("heart_piece",
             () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 5.0f, "heart_piece"));
 
+    public static final RegistryObject<Item> HEART_CONTAINER = ITEMS.register("heart_container",
+            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 20.0f, "heart_container"));
+
+    public static final RegistryObject<Item> FAB_HEART = ITEMS.register("fab_heart",
+            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 30.0f, "fab_heart"));
+
+
+    public static final RegistryObject<Item> HEART_BOOSTER = ITEMS.register("heart_booster",
+            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 40.0f, "heart_booster"));
+
+
+    public static final RegistryObject<Item> BLACK_DIAMOND = ITEMS.register("black_diamond",
+            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 40.0f, "black_diamond"));
+
+
+    public static final RegistryObject<Item> HEART_OF_DARKNESS = ITEMS.register("heart_of_darkness",
+            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 60.0f, "heart_of_darkness"));
+
+
+
     public static void register(IEventBus eventBus) {
 
         ITEMS.register(eventBus);

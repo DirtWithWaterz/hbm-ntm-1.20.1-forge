@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.item.custom.armormodifiers;
 
+import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.base.ArmorModifierItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -35,6 +36,13 @@ public class HealthArmorModifierItem extends ArmorModifierItem {
 
         pTooltipComponents.add(Component.literal("+" + String.format("%.1f", healthBuff)).append(Component.literal(" ")).append(Component.translatable("noun.health")).withStyle(color));
         pTooltipComponents.add(Component.empty());
+
+        if(this.getDefaultInstance().is(RegisterItems.BLACK_DIAMOND.get())) {
+
+            pTooltipComponents.add(Component.translatable("blurb.black_diamond1").withStyle(ChatFormatting.BLACK));
+            pTooltipComponents.add(Component.empty());
+        }
+
         pTooltipComponents.add(Component.translatable("desc.applicable").withStyle(ChatFormatting.DARK_PURPLE));
         pTooltipComponents.add(Component.literal("  ").append(Component.translatable(applicableMap.get(this.applicableTo))));
         pTooltipComponents.add(Component.translatable("desc.applicableslot").withStyle(ChatFormatting.DARK_PURPLE));

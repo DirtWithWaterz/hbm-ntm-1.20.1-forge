@@ -50,6 +50,12 @@
   "desc.mods": "Mods:",
 
   "blurb.heart_piece": "Heart Piece (+5.0 health)",
+  "blurb.heart_container": "Heart Container (+20.0 health)",
+  "blurb.fab_heart": "FAB Heart (+30.0 health)",
+  "blurb.heart_booster": "Heart Booster (+40.0 health)",
+  "blurb.black_diamond": "Black Diamond (+40.0 health)",
+  "blurb.black_diamond1": "Nostalgia",
+  "blurb.heart_of_darkness": "Heart of Darkness (+60.0 health)",
 
   "death.attack.radiation": "%1$s died from radiation poisoning",
   "death.attack.radiation.player": "%1$s died from radiation poisoning whilst trying to escape %2$s",
@@ -221,6 +227,11 @@
   "item.hbm.hazmat_boots_grey": "High-Performance Hazmat Boots",
 
   "item.hbm.heart_piece": "Heart Piece",
+  "item.hbm.heart_container": "Heart Container",
+  "item.hbm.fab_heart": "FAB Heart",
+  "item.hbm.heart_booster": "Heart Booster",
+  "item.hbm.black_diamond": "Black Diamond",
+  "item.hbm.heart_of_darkness": "Heart of Darkness",
 
   "geiger.chunk_rad": "Current chunk radiation:",
   "geiger.env_rad": "Total environmental radiation:",

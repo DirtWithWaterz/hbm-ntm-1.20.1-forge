@@ -1,5 +1,10 @@
 {
   "values": [
-    "hbm:heart_piece"
+    "hbm:heart_piece",
+    "hbm:heart_container",
+    "hbm:fab_heart",
+    "hbm:heart_booster",
+    "hbm:heart_of_darkness",
+    "hbm:black_diamond"
   ]
 }

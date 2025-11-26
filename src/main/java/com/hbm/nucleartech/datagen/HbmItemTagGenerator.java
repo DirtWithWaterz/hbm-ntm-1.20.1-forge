@@ -52,7 +52,12 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
     public static class SharedTagLists {
 
         public static final List<Item> SPECIAL_ARMOR_MODIFIERS = List.of(
-                RegisterItems.HEART_PIECE.get()
+                RegisterItems.HEART_PIECE.get(),
+                RegisterItems.HEART_CONTAINER.get(),
+                RegisterItems.FAB_HEART.get(),
+                RegisterItems.HEART_BOOSTER.get(),
+                RegisterItems.HEART_OF_DARKNESS.get(),
+                RegisterItems.BLACK_DIAMOND.get()
         );
 
         public static final List<Item> PLATE_STAMPS = List.of(

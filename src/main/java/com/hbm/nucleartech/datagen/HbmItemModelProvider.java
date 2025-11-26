@@ -199,7 +199,13 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.OBSIDIAN_WIRE_STAMP);
         simpleItem(RegisterItems.DESH_WIRE_STAMP);
         simpleItem(RegisterItems.SCHRABIDIUM_WIRE_STAMP);
+
         simpleItem(RegisterItems.HEART_PIECE);
+        simpleItem(RegisterItems.HEART_CONTAINER);
+        simpleItem(RegisterItems.FAB_HEART);
+        simpleItem(RegisterItems.HEART_BOOSTER);
+        simpleItem(RegisterItems.BLACK_DIAMOND);
+        simpleItem(RegisterItems.HEART_OF_DARKNESS);
 
         simpleItem(RegisterItems.ALUMINUM_PLATE);
         simpleItem(RegisterItems.SCHRABIDIUM_PLATE);

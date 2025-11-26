@@ -1,9 +1,9 @@
-// 1.20.1	2025-11-25T03:52:51.604461	Tags for minecraft:item mod id hbm
+// 1.20.1	2025-11-26T07:12:59.4418793	Tags for minecraft:item mod id hbm
 cb9b039efd1365c0c82903fc9e5751b92512d1bf data/forge/tags/items/ingots.json
 9aff6c773c207b21a57f8f32f320172c1e23b4b7 data/hbm/tags/items/biomass.json
 163ca0ef138145060f239e1f37d4257bcb9a61de data/hbm/tags/items/desh.json
 a697e8f511746b3f0bf2c48c673ebcdc38570cdd data/hbm/tags/items/pile_rods.json
 4c3ad42f377e8197aa1b7ab71244358ee327f9c8 data/hbm/tags/items/plate_stamps.json
 440cefbaaf3c09997c3dd86b9e3a01983019acdd data/hbm/tags/items/shredder_blades.json
-effb2d928f4a976216abdaf8302050d8aa181271 data/hbm/tags/items/special_armor_modifiers.json
+c93e23a925a53132cb637c37860379d257816572 data/hbm/tags/items/special_armor_modifiers.json
 f3eb1ddcc00580b2fcbd81baea7f7f2d6db34b5f data/hbm/tags/items/wire_stamp.json
