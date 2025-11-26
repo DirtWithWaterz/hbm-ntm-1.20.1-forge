@@ -112,6 +112,13 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
         itemShredding(consumer, Items.RAW_GOLD ,results, FloatingLong.create(1.39E1), 60);
 
         results = List.of(
+                Pair.of(RegisterItems.GOLD_POWDER.get(), new MetaData(1, 1, 2)),
+                Pair.of(Items.CLAY_BALL, new MetaData(1, 1, 5)),
+                Pair.of(RegisterItems.COPPER_POWDER.get(), new MetaData(2, 2, 100))
+        );
+        itemShredding(consumer, Items.RAW_COPPER ,results, FloatingLong.create(1.39E1), 60);
+
+        results = List.of(
          Pair.of(RegisterItems.IRON_POWDER.get(), new MetaData(1, 1, 100)));
         itemShredding(consumer, Items.IRON_INGOT, results, FloatingLong.create(2.083E1), 80);
 
@@ -187,6 +194,18 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_PILE_ROD.get())
                         + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()) + "_and_" + getItemName(RegisterItems.IRON_PLATE.get()));
 
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.COPPER_WIRE.get(), 9)
+                .requires(RegisterItems.COPPER_WIRE_DENSE.get())
+                .unlockedBy(getHasName(RegisterItems.COPPER_WIRE_DENSE.get()), has(RegisterItems.COPPER_WIRE_DENSE.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.COPPER_WIRE.get())
+                        + "_from_" + getItemName(RegisterItems.COPPER_WIRE_DENSE.get()));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.GOLD_WIRE.get(), 9)
+                .requires(RegisterItems.GOLD_WIRE_DENSE.get())
+                .unlockedBy(getHasName(RegisterItems.GOLD_WIRE_DENSE.get()), has(RegisterItems.GOLD_WIRE_DENSE.get()))
+                .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.GOLD_WIRE.get())
+                        + "_from_" + getItemName(RegisterItems.GOLD_WIRE_DENSE.get()));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RegisterItems.TITANIUM_INGOT.get(), 9)
                 .requires(RegisterBlocks.TITANIUM_BLOCK.get())

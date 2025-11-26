@@ -6,8 +6,6 @@ import com.hbm.nucleartech.capability.energy.WattHourStorage;
 import com.hbm.nucleartech.handler.ArmorModHandler;
 import com.hbm.nucleartech.hazard.HazardItem;
 import com.hbm.nucleartech.item.custom.*;
-import com.hbm.nucleartech.item.custom.armormodifiers.HealthArmorModifierItem;
-import com.hbm.nucleartech.item.custom.base.ArmorModifierItem;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.item.special.CustomLoreItem;
 import com.hbm.nucleartech.util.FloatingLong;
@@ -40,13 +38,19 @@ public class RegisterItems {
     public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ALUMINUM_PLATE = ITEMS.register("aluminum_plate",
+    public static final RegistryObject<Item> ALUMINIUM_PLATE = ITEMS.register("aluminium_wire",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> SCHRABIDIUM_PLATE = ITEMS.register("schrabidium_plate",
+    public static final RegistryObject<Item> CARBON_PLATE = ITEMS.register("carbon_wire",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> LEAD_PLATE = ITEMS.register("lead_plate",
+    public static final RegistryObject<Item> TUNGSTEN_PLATE = ITEMS.register("tungsten_wire",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SCHRABIDIUM_PLATE = ITEMS.register("schrabidium_wire",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> LEAD_PLATE = ITEMS.register("lead_wire",
             () -> new Item(new Item.Properties()));
     //=============================================WIRE========================================================
     public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire",
@@ -55,7 +59,7 @@ public class RegisterItems {
     public static final RegistryObject<Item> GOLD_WIRE = ITEMS.register("gold_wire",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ALUMINUM_WIRE = ITEMS.register("aluminum_wire",
+    public static final RegistryObject<Item> ALUMINIUM_WIRE = ITEMS.register("aluminium_wire",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> CARBON_WIRE = ITEMS.register("carbon_wire",
@@ -76,7 +80,33 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> COPPER_COIL = ITEMS.register("copper_coil",
             () -> new Item(new Item.Properties()));
+    //=========================================piles==============================================================
+    public static final RegistryObject<Item> URANIUM_PILE_ROD = ITEMS.register("uranium_pile_rod",
+            () -> new HazardItem(0.525, new Item.Properties()));
 
+    public static final RegistryObject<Item> PLUTONIUM_PILE_ROD = ITEMS.register("plutonium_pile_rod",
+            () -> new HazardItem(11.25, new Item.Properties()));
+
+    public static final RegistryObject<Item> RADIUM_PILE_ROD = ITEMS.register("radium_pile_rod",
+            () -> new HazardItem(11.25, new Item.Properties()));
+
+    public static final RegistryObject<Item> BORON_PILE_ROD = ITEMS.register("boron_pile_rod",
+            () -> new HazardItem(0, new Item.Properties()));
+
+    //a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+    //=========================================asbestos==============================================================
+    public static final RegistryObject<Item> ASBESTOS_SHEET = ITEMS.register("asbestos_sheet",
+            () -> new HazardItem(0, 0, 0, 0, 0, 1, new Item.Properties()));
+    //=========================================aluminium==============================================================
+    public static final RegistryObject<Item> ALUMINIUM_INGOT = ITEMS.register("aluminum_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_ALUMINIUM = ITEMS.register("raw_aluminum",
+            () -> new Item(new Item.Properties()));
+    //=========================================australium==============================================================
+    public static final RegistryObject<Item> AUSTRALIUM_INGOT = ITEMS.register("australium_ingot",
+            () -> new Item(new Item.Properties()));
     //========================================bio mass==============================================================
 
     public static final RegistryObject<Item> BIOMASS = ITEMS.register("biomass",
@@ -90,14 +120,92 @@ public class RegisterItems {
     //========================================copper==============================================================
     public static final RegistryObject<Item> COPPER_POWDER = ITEMS.register("copper_powder",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DENSE_COPPER_WIRE = ITEMS.register("dense_copper_wire",
+    public static final RegistryObject<Item> COPPER_WIRE_DENSE = ITEMS.register("copper_dense_wire",
+            () -> new Item(new Item.Properties()));
+    //=========================================cobalt==============================================================
+    public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_COBALT = ITEMS.register("raw_cobalt",
+            () -> new Item(new Item.Properties()));
+    //=========================================coltan==============================================================
+    public static final RegistryObject<Item> COLTAN = ITEMS.register("coltan",
+            () -> new Item(new Item.Properties()));
+    //=================================================cinnabar======================================================
+    public static final RegistryObject<Item> CINNABAR = ITEMS.register("cinnabar",
             () -> new Item(new Item.Properties()));
     //========================================desh==============================================================
     public static final RegistryObject<Item> DESH_INGOT = ITEMS.register("desh_ingot",
             () -> new Item(new Item.Properties()));
+    //=========================================dablufium==============================================================
+    public static final RegistryObject<Item> DABLUFIUM_INGOT = ITEMS.register("dablufium_ingot",
+            () -> new Item(new Item.Properties()));
+    //=========================================fluorite==============================================================
+    public static final RegistryObject<Item> FLUORITE = ITEMS.register("fluorite",
+            () -> new Item(new Item.Properties()));
+    //========================================gold==============================================================
+    public static final RegistryObject<Item> GOLD_POWDER = ITEMS.register("gold_powder",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_WIRE_DENSE = ITEMS.register("gold_dense_wire",
+            () -> new Item(new Item.Properties()));
+    //=========================================graphite==============================================================
+    public static final RegistryObject<Item> GRAPHITE_INGOT = ITEMS.register("graphite_ingot",
+            () -> new Item(new Item.Properties()));
+
+    //========================================iron==============================================================
+    public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
+            () -> new Item(new Item.Properties()));
+    //=========================================Lead==============================================================
+    public static final RegistryObject<Item> LEAD_INGOT = ITEMS.register("lead_ingot",
+            () -> new HazardItem(0, 0, 0, 0, 2, new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_LEAD = ITEMS.register("raw_lead",
+            () -> new HazardItem(0, 0, 0, 0, 1, new Item.Properties()));
+
+    public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget",
+            () -> new HazardItem(0, 0, 0, 0, 1, new Item.Properties()));
+    //=========================================lignite==============================================================
+    public static final RegistryObject<Item> LIGNITE = ITEMS.register("lignite",
+            () -> new HazardItem(0, 0, 0, 0, 0, 0, 1, new Item.Properties()));
+
+
+
+
+
+
+
+
+    //=========================================sulfur==============================================================
+    public static final RegistryObject<Item> SULFUR = ITEMS.register("sulfur",
+            () -> new Item(new Item.Properties()));
+    //=========================================niter==============================================================
+    public static final RegistryObject<Item> NITER = ITEMS.register("niter",
+            () -> new Item(new Item.Properties()));
+    //=========================================plutonium==============================================================
+
+
+
+    //============================================schrabidium=========================================================
+    public static final RegistryObject<Item> SCHRABIDIUM_INGOT = ITEMS.register("schrabidium_ingot",
+            () -> new HazardItem(15.0, new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_SCHRABIDIUM = ITEMS.register("raw_schrabidium",
+            () -> new HazardItem(1.5, new Item.Properties()));
     //========================================steel==============================================================
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
             () -> new Item(new Item.Properties()));
+    //=========================================thorium==============================================================
+    public static final RegistryObject<Item> THORIUM_SHALE = ITEMS.register("thorium_shale",
+            () -> new HazardItem(0.01, new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_THORIUM = ITEMS.register("raw_thorium",
+            () -> new HazardItem(0.01, new Item.Properties()));
+
+    public static final RegistryObject<Item> THORIUM_POWDER = ITEMS.register("thorium_powder",
+            () -> new HazardItem(0.3, new Item.Properties()));
+
+    public static final RegistryObject<Item> THORIUM_INGOT = ITEMS.register("thorium_ingot",
+            () -> new HazardItem(0.1, new Item.Properties()));
     //========================================titanium==============================================================
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
             () -> new Item(new Item.Properties()));
@@ -107,13 +215,11 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> TITANIUM_POWDER = ITEMS.register("titanium_powder",
             () -> new Item(new Item.Properties()));
-    //========================================iron==============================================================
-    public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
+    //=========================================tungsten==============================================================
+    public static final RegistryObject<Item> TUNGSTEN_INGOT = ITEMS.register("tungsten_ingot",
             () -> new Item(new Item.Properties()));
-    //========================================gold==============================================================
-    public static final RegistryObject<Item> GOLD_POWDER = ITEMS.register("gold_powder",
-            () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DENSE_GOLD_WIRE = ITEMS.register("dense_gold_wire",
+
+    public static final RegistryObject<Item> RAW_TUNGSTEN = ITEMS.register("raw_tungsten",
             () -> new Item(new Item.Properties()));
     //========================================uranium==============================================================
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot",
@@ -133,101 +239,6 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> URANIUM_BILLET = ITEMS.register("uranium_billet",
             () -> new HazardItem(0.175, new Item.Properties()));
-
-    //=========================================thorium==============================================================
-    public static final RegistryObject<Item> THORIUM_SHALE = ITEMS.register("thorium_shale",
-            () -> new HazardItem(0.01, new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_THORIUM = ITEMS.register("raw_thorium",
-            () -> new HazardItem(0.01, new Item.Properties()));
-
-    public static final RegistryObject<Item> THORIUM_POWDER = ITEMS.register("thorium_powder",
-            () -> new HazardItem(0.3, new Item.Properties()));
-
-    public static final RegistryObject<Item> THORIUM_INGOT = ITEMS.register("thorium_ingot",
-            () -> new HazardItem(0.1, new Item.Properties()));
-
-    //=========================================plutonium==============================================================
-    //=========================================piles==============================================================
-    public static final RegistryObject<Item> URANIUM_PILE_ROD = ITEMS.register("uranium_pile_rod",
-            () -> new HazardItem(0.525, new Item.Properties()));
-
-    public static final RegistryObject<Item> PLUTONIUM_PILE_ROD = ITEMS.register("plutonium_pile_rod",
-            () -> new HazardItem(11.25, new Item.Properties()));
-
-    public static final RegistryObject<Item> RADIUM_PILE_ROD = ITEMS.register("radium_pile_rod",
-            () -> new HazardItem(11.25, new Item.Properties()));
-
-    public static final RegistryObject<Item> BORON_PILE_ROD = ITEMS.register("boron_pile_rod",
-            () -> new HazardItem(0, new Item.Properties()));
-
-
-    public static final RegistryObject<Item> DESH_BLADE = ITEMS.register("desh_blade",
-            () -> new BladeItem(new Item.Properties().stacksTo(1), 9));
-    //=========================================sulfur==============================================================
-    public static final RegistryObject<Item> SULFUR = ITEMS.register("sulfur",
-            () -> new Item(new Item.Properties()));
-    //=========================================niter==============================================================
-    public static final RegistryObject<Item> NITER = ITEMS.register("niter",
-            () -> new Item(new Item.Properties()));
-    //=========================================tungsten==============================================================
-    public static final RegistryObject<Item> TUNGSTEN_INGOT = ITEMS.register("tungsten_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_TUNGSTEN = ITEMS.register("raw_tungsten",
-            () -> new Item(new Item.Properties()));
-    //=========================================aluminum==============================================================
-    public static final RegistryObject<Item> ALUMINUM_INGOT = ITEMS.register("aluminum_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_ALUMINUM = ITEMS.register("raw_aluminum",
-            () -> new Item(new Item.Properties()));
-    //=========================================fluorite==============================================================
-    public static final RegistryObject<Item> FLUORITE = ITEMS.register("fluorite",
-            () -> new Item(new Item.Properties()));
-    //=========================================Lead==============================================================
-    public static final RegistryObject<Item> LEAD_INGOT = ITEMS.register("lead_ingot",
-            () -> new HazardItem(0, 0, 0, 0, 2, new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_LEAD = ITEMS.register("raw_lead",
-            () -> new HazardItem(0, 0, 0, 0, 1, new Item.Properties()));
-
-    public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget",
-            () -> new HazardItem(0, 0, 0, 0, 1, new Item.Properties()));
-    //=========================================lignite==============================================================
-    public static final RegistryObject<Item> LIGNITE = ITEMS.register("lignite",
-            () -> new HazardItem(0, 0, 0, 0, 0, 0, 1, new Item.Properties()));
-    //=========================================asbestos==============================================================
-    public static final RegistryObject<Item> ASBESTOS_SHEET = ITEMS.register("asbestos_sheet",
-            () -> new HazardItem(0, 0, 0, 0, 0, 1, new Item.Properties()));
-    //============================================schrabidium=========================================================
-    public static final RegistryObject<Item> SCHRABIDIUM_INGOT = ITEMS.register("schrabidium_ingot",
-            () -> new HazardItem(15.0, new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_SCHRABIDIUM = ITEMS.register("raw_schrabidium",
-            () -> new HazardItem(1.5, new Item.Properties()));
-    //=========================================australium==============================================================
-    public static final RegistryObject<Item> AUSTRALIUM_INGOT = ITEMS.register("australium_ingot",
-            () -> new Item(new Item.Properties()));
-    //=========================================cobalt==============================================================
-    public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
-            () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> RAW_COBALT = ITEMS.register("raw_cobalt",
-            () -> new Item(new Item.Properties()));
-    //=================================================cinnabar======================================================
-    public static final RegistryObject<Item> CINNABAR = ITEMS.register("cinnabar",
-            () -> new Item(new Item.Properties()));
-    //=========================================coltan==============================================================
-    public static final RegistryObject<Item> COLTAN = ITEMS.register("coltan",
-            () -> new Item(new Item.Properties()));
-    //=========================================graphite==============================================================
-    public static final RegistryObject<Item> GRAPHITE_INGOT = ITEMS.register("graphite_ingot",
-            () -> new Item(new Item.Properties()));
-    //=========================================dablufium==============================================================
-    public static final RegistryObject<Item> DABLUFIUM_INGOT = ITEMS.register("dablufium_ingot",
-            () -> new Item(new Item.Properties()));
-
     //===========================================blades=============================================================
     public static final RegistryObject<Item> ALUMINUM_BLADE = ITEMS.register("aluminum_blade",
             () -> new BladeItem(new Item.Properties().durability(24), 1));
@@ -252,6 +263,9 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> SCHRABIDIUM_BLADE = ITEMS.register("schrabidium_blade",
             () -> new BladeItem(new Item.Properties().durability(4096), 8));
+
+    public static final RegistryObject<Item> DESH_BLADE = ITEMS.register("desh_blade",
+            () -> new BladeItem(new Item.Properties().stacksTo(1), 9));
 
 //    ====================================== CELLS ======================================
 
@@ -527,31 +541,6 @@ public class RegisterItems {
             () -> new StampItem(new Item.Properties()));
     public static final RegistryObject<Item> SCHRABIDIUM_WIRE_STAMP = ITEMS.register("schrabidium_wire_stamp",
             () -> new StampItem(new Item.Properties()));
-
-    //    ====================================== armor modifier items ======================================
-
-    public static final RegistryObject<Item> HEART_PIECE = ITEMS.register("heart_piece",
-            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 5.0f, "heart_piece"));
-
-    public static final RegistryObject<Item> HEART_CONTAINER = ITEMS.register("heart_container",
-            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 20.0f, "heart_container"));
-
-    public static final RegistryObject<Item> FAB_HEART = ITEMS.register("fab_heart",
-            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 30.0f, "fab_heart"));
-
-
-    public static final RegistryObject<Item> HEART_BOOSTER = ITEMS.register("heart_booster",
-            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 40.0f, "heart_booster"));
-
-
-    public static final RegistryObject<Item> BLACK_DIAMOND = ITEMS.register("black_diamond",
-            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 40.0f, "black_diamond"));
-
-
-    public static final RegistryObject<Item> HEART_OF_DARKNESS = ITEMS.register("heart_of_darkness",
-            () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 60.0f, "heart_of_darkness"));
-
-
 
     public static void register(IEventBus eventBus) {
 
