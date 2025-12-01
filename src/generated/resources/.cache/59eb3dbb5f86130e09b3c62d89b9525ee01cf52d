@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-24T00:57:44.3550827	Loot Tables
+// 1.20.1	2025-12-01T06:03:14.7936113	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
 540b91ff025b9ce6245df145e97928d9016ff716 data/hbm/loot_tables/blocks/armor_modification_table.json
@@ -9,7 +9,9 @@ ea4b0cb91787e9322bf8cf6bd33e06f0db8aee62 data/hbm/loot_tables/blocks/asbestos_bl
 46d278b862c77239a20475594d964933cef351e6 data/hbm/loot_tables/blocks/beryllium_block.json
 046e382059bdb767fdba86fcecf4f386046cdef8 data/hbm/loot_tables/blocks/beryllium_ore.json
 ece562dc48782a3867c51a623c6968c628d85cf4 data/hbm/loot_tables/blocks/black_concrete.json
+25b3fde920699b78f53657d808e0f74499be215d data/hbm/loot_tables/blocks/blazing_sellafite.json
 d61648bb03fd85c4ab739cd51a485264a25a275f data/hbm/loot_tables/blocks/blue_concrete.json
+f32fbd892e9f632119fe37825c143a5acf513968 data/hbm/loot_tables/blocks/boiling_sellafite.json
 3aa51acc340dd76e693a6d6d344c2e240f4f93c7 data/hbm/loot_tables/blocks/boron_block.json
 ff1c90e1edc67d526eed1a2a8568ddee91733e5e data/hbm/loot_tables/blocks/brown_concrete.json
 e218923cd4b8edef8dec22e7442831bec2c208c3 data/hbm/loot_tables/blocks/brown_thorium_ore.json
@@ -65,6 +67,8 @@ e42b65b80fe5f39b3b6f9c8a1fbeed984b70072f data/hbm/loot_tables/blocks/glyphed_jun
 70f76caa13da93e2010bd51278279fbba22b2e0c data/hbm/loot_tables/blocks/graphite_block.json
 6c0a145654957e255bd8e0a4e475acefe8549b9d data/hbm/loot_tables/blocks/gray_concrete.json
 e9489fad3565a8e1f6fcca92e6f05189182cb9e3 data/hbm/loot_tables/blocks/green_concrete.json
+4fdcfc7b84140283c594352c8c54ff55b8748b38 data/hbm/loot_tables/blocks/hot_sellafite.json
+dff3d8520ec5b73dcf0083c3973335e59909a1bc data/hbm/loot_tables/blocks/infernal_sellafite.json
 66b87baf628d016207a3ce918a48a6b6b8f76c88 data/hbm/loot_tables/blocks/jungle_bricks.json
 707197d157938918effbae43de7dde953236a7e9 data/hbm/loot_tables/blocks/lava_jungle_bricks.json
 d87642ab2dabf21c5f7c92fba3e999d3034ea7c2 data/hbm/loot_tables/blocks/lead_block.json
@@ -98,14 +102,21 @@ b09b2c9a4bcfb19c37ca83838fa02001666f2169 data/hbm/loot_tables/blocks/raw_schrabi
 eb52bfbbf75d4f81587b3389ae89eaf8a1513fef data/hbm/loot_tables/blocks/raw_tungsten_block.json
 4b64b22d4668e8d00553e476c1a4e0d5bf929c91 data/hbm/loot_tables/blocks/red_concrete.json
 3a9811e388c50dd800162d899eed8f8d353bca33 data/hbm/loot_tables/blocks/red_thorium_ore.json
+8048bde3471bc1f0dc3ef10c9d5b5ced0354f4c6 data/hbm/loot_tables/blocks/red_trinitite_ore.json
 dcb03c518f7c98dd9bfda18d333270b4e3f7be57 data/hbm/loot_tables/blocks/schrabidium_block.json
 1058fabfc2d71943058881def0aeac699eaaa2d4 data/hbm/loot_tables/blocks/schrabidium_ore.json
+225e1fd8094586c15089335717128e781d2f820a data/hbm/loot_tables/blocks/scorched_uranium_ore.json
+e7e65804f92b6f729ae8eb08cc78d52f8c365385 data/hbm/loot_tables/blocks/sellafite.json
+26a9d94abff028c0d72d7a04a9fff170dc6b39b9 data/hbm/loot_tables/blocks/sellafite_corium.json
 0edab738447b3c7a948aa5685bb9cfbb003b2b0d data/hbm/loot_tables/blocks/shredder.json
+2da3f1fa3449b84cd430cc9401f372c1dc60aead data/hbm/loot_tables/blocks/slaked_sellafite.json
 6d78b514bded572a9a91e2990890102cc134221c data/hbm/loot_tables/blocks/sulfur_block.json
 7ef1e0bc66d2905485c73eea52aa11188af4918e data/hbm/loot_tables/blocks/sulfur_ore.json
 23036813070a5ca74ca7d9a9fc0dab0bd6fdd2b9 data/hbm/loot_tables/blocks/titanium_block.json
 0f656cbb679f0488535029c34b6ba5fbd18b39cc data/hbm/loot_tables/blocks/titanium_ore.json
 52dc9a963ce2bb1e6005edf106f12dd9b09b4adc data/hbm/loot_tables/blocks/trapped_jungle_bricks.json
+3326d42c3f4bea296289e902956d85683b875dd3 data/hbm/loot_tables/blocks/trinitite_block.json
+f4b1bee96110f5bc4471e4dcdd9c744848fac461 data/hbm/loot_tables/blocks/trinitite_ore.json
 e370f1dc48339d9dbafd6b8877c535122b9ef725 data/hbm/loot_tables/blocks/tungsten_block.json
 d19aee0abba432cb7c21dc7492139f6bf1f73c79 data/hbm/loot_tables/blocks/tungsten_ore.json
 89c63ff2d547933afe84617aeb488ff79584b331 data/hbm/loot_tables/blocks/uranium_block.json

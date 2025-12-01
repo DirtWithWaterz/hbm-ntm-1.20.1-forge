@@ -59,7 +59,6 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                 RegisterItems.HEART_OF_DARKNESS.get(),
                 RegisterItems.BLACK_DIAMOND.get()
         );
-
         public static final List<Item> PLATE_STAMPS = List.of(
                 RegisterItems.IRON_PLATE_STAMP.get(),
                 RegisterItems.STEEL_PLATE_STAMP.get(),
@@ -104,7 +103,6 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                 HbmItemTagGenerator.SharedTagLists.PILE_RODS.get(2).getDefaultInstance().getDisplayName().plainCopy().getString(), 3,
                 HbmItemTagGenerator.SharedTagLists.PILE_RODS.get(3).getDefaultInstance().getDisplayName().plainCopy().getString(), 4
         );
-
         public static final List<Item> BIOMASS = List.of(
                 Blocks.ACACIA_LOG.asItem(),
                 Blocks.BIRCH_LOG.asItem(),

@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-26T07:02:18.0967057	Item Models: hbm
+// 1.20.1	2025-12-01T06:03:14.7716702	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -165,6 +165,7 @@ a96a15a6aeb793b4f5e7420fb1ee95a0aa225581 assets/hbm/models/item/titanium_blade.j
 179d92881e3f9fc379550cacc9ad5d76b49c6b1e assets/hbm/models/item/titanium_plate_stamp.json
 05107b3dc79e12d10f14af3b1710787ffca6d649 assets/hbm/models/item/titanium_powder.json
 6c155b8220a2aaefbde8fdcf83dc56309ceabf52 assets/hbm/models/item/titanium_wire_stamp.json
+38758c995337a7961eb2b439f0343f55904b0cdf assets/hbm/models/item/trinitite.json
 de5f55f335b421e161e31bd4b16e6096b03fedee assets/hbm/models/item/trixite_battery.json
 de5f55f335b421e161e31bd4b16e6096b03fedee assets/hbm/models/item/trixite_battery_full.json
 94dd2ca460b951ddfb0660ab41024035c78a2b1a assets/hbm/models/item/tungsten_ingot.json

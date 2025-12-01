@@ -100,6 +100,24 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.GRAPHITE_BLOCK.get());
         this.dropSelf(RegisterBlocks.BORON_BLOCK.get());
 
+        this.dropSelf(RegisterBlocks.SLAKED_SELLAFITE.get());
+        this.dropSelf(RegisterBlocks.SELLAFITE.get());
+        this.dropSelf(RegisterBlocks.HOT_SELLAFITE.get());
+        this.dropSelf(RegisterBlocks.BOILING_SELLAFITE.get());
+        this.dropSelf(RegisterBlocks.BLAZING_SELLAFITE.get());
+        this.dropSelf(RegisterBlocks.INFERNAL_SELLAFITE.get());
+        this.dropSelf(RegisterBlocks.SELLAFITE_CORIUM.get());
+
+        this.dropSelf(RegisterBlocks.TRINITITE_BLOCK.get());
+
+        this.add(RegisterBlocks.TRINITITE_ORE.get(),
+                block -> createOreDrop(RegisterBlocks.TRINITITE_ORE.get(), RegisterItems.TRINITITE.get()));
+        this.add(RegisterBlocks.RED_TRINITITE_ORE.get(),
+                block -> createOreDrop(RegisterBlocks.RED_TRINITITE_ORE.get(), RegisterItems.TRINITITE.get()));
+
+        this.add(RegisterBlocks.SCORCHED_URANIUM_ORE.get(),
+                block -> createOreDrop(RegisterBlocks.SCORCHED_URANIUM_ORE.get(), RegisterItems.RAW_URANIUM.get()));
+
         this.add(RegisterBlocks.TITANIUM_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.TITANIUM_ORE.get(), RegisterItems.RAW_TITANIUM.get()));
         this.add(RegisterBlocks.DEEPSLATE_TITANIUM_ORE.get(),

@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hbm:block/sellafite_corium_0"
+      },
+      {
+        "model": "hbm:block/sellafite_corium_1"
+      },
+      {
+        "model": "hbm:block/sellafite_corium_2"
+      },
+      {
+        "model": "hbm:block/sellafite_corium_3"
+      }
+    ]
+  }
+}

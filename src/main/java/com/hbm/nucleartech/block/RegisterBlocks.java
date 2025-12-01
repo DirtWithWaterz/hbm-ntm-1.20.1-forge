@@ -616,6 +616,57 @@ public class RegisterBlocks {
                     .strength(5.0f, 3.0f)
             ));
 
+    public static final RegistryObject<Block> SLAKED_SELLAFITE = registerHazardBlock(2.5f, "slaked_sellafite",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .strength(3.0f, 2.0f), 2.5f
+            ));
+
+    public static final RegistryObject<Block> SELLAFITE = registerHazardBlock(5.0f, "sellafite",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .strength(3.0f, 2.0f), 5.0f
+            ));
+
+    public static final RegistryObject<Block> HOT_SELLAFITE = registerHazardBlock(10.0f, "hot_sellafite",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .strength(3.0f, 2.0f), 10.0f
+            ));
+
+    public static final RegistryObject<Block> BOILING_SELLAFITE = registerHazardBlock(20.0f, "boiling_sellafite",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .strength(3.0f, 2.0f), 20.0f
+            ));
+
+    public static final RegistryObject<Block> BLAZING_SELLAFITE = registerHazardBlock(40.0f, 1, "blazing_sellafite",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .strength(3.0f, 2.0f), 40.0f
+            ));
+
+    public static final RegistryObject<Block> INFERNAL_SELLAFITE = registerHazardBlock(80.0f, 2, "infernal_sellafite",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .strength(3.0f, 2.0f), 80.0f
+            ));
+
+    public static final RegistryObject<Block> SELLAFITE_CORIUM = registerHazardBlock(2000.0f, 5, "sellafite_corium",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
+                    .strength(3.0f, 2.0f), 2000.0f
+            ));
+
+    public static final RegistryObject<Block> TRINITITE_ORE = registerHazardBlock(25.0f, "trinitite_ore",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.SAND), 25.0f
+            ));
+
+    public static final RegistryObject<Block> RED_TRINITITE_ORE = registerHazardBlock(25.0f, "red_trinitite_ore",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.RED_SAND), 25.0f
+            ));
+
+    public static final RegistryObject<Block> TRINITITE_BLOCK = registerHazardBlock(25.0f*9, "trinitite_block",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK), 25.0f*9
+            ));
+
+    public static final RegistryObject<Block> SCORCHED_URANIUM_ORE = registerHazardBlock(0.5f, "scorched_uranium_ore",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(RegisterBlocks.URANIUM_ORE.get()), 0.5f
+            ));
+
 //    ================================== lamp oil, rope, BOMB? You want it Link, I've got it. So long as YOU have enough rubies. ==================================================
 
 //    public static final RegistryObject<Block> LITTLE_BOY = registerBlock("little_boy",
@@ -645,6 +696,16 @@ public class RegisterBlocks {
         return toReturn;
     }
 
+    private static <T extends Block>RegistryObject<T> registerHazardBlock(double radiation, int fire, String name, Supplier<T> block) {
+
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerHazardBlockItem(radiation, fire, name, toReturn);
+
+        HAZARD_BLOCKS.add(toReturn);
+
+        return toReturn;
+    }
+
     private static <T extends Block>RegistryObject<T> registerAsbestosBlock(int asbestos, String name, Supplier<T> block) {
 
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -658,6 +719,11 @@ public class RegisterBlocks {
     private static <T extends Block>RegistryObject<Item> registerHazardBlockItem(double radiation, String name, RegistryObject<T> block) {
 
         return RegisterItems.ITEMS.register(name, () -> new HazardBlockItem(radiation, block.get(), new Item.Properties()));
+    }
+
+    private static <T extends Block>RegistryObject<Item> registerHazardBlockItem(double radiation, int fire, String name, RegistryObject<T> block) {
+
+        return RegisterItems.ITEMS.register(name, () -> new HazardBlockItem(radiation, 0, fire, block.get(), new Item.Properties()));
     }
 
     private static <T extends Block>RegistryObject<Item> registerAsbestosBlockItem(int asbestos, String name, RegistryObject<T> block) {

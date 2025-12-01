@@ -6,7 +6,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -178,6 +180,21 @@ public class HbmBlockStateProvider extends BlockStateProvider {
                 ResourceLocation.tryParse("hbm:block/dead_grass_side"));
 
         blockWithItem(RegisterBlocks.RAD_RESISTANT_BLOCK);
+
+        randomCubeBlockWithItem(RegisterBlocks.SLAKED_SELLAFITE, 4);
+        randomCubeBlockWithItem(RegisterBlocks.SELLAFITE, 4);
+        randomCubeBlockWithItem(RegisterBlocks.HOT_SELLAFITE, 4);
+        randomCubeBlockWithItem(RegisterBlocks.BOILING_SELLAFITE, 4);
+        randomCubeBlockWithItem(RegisterBlocks.BLAZING_SELLAFITE, 4);
+        randomCubeBlockWithItem(RegisterBlocks.INFERNAL_SELLAFITE, 4);
+        randomCubeBlockWithItem(RegisterBlocks.SELLAFITE_CORIUM, 4);
+
+        blockWithItem(RegisterBlocks.TRINITITE_ORE);
+        blockWithItem(RegisterBlocks.RED_TRINITITE_ORE);
+
+        blockWithItem(RegisterBlocks.TRINITITE_BLOCK);
+
+        blockWithItem(RegisterBlocks.SCORCHED_URANIUM_ORE);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
@@ -206,6 +223,32 @@ public class HbmBlockStateProvider extends BlockStateProvider {
 
         // Register the item model to point to the block model
         itemModels().getBuilder(name).parent(model);
+    }
+
+    private void randomCubeBlockWithItem(RegistryObject<Block> block, int variants) {
+
+        String name = block.getId().getPath();
+
+        // Build model files: sellafite_0, sellafite_1, etc.
+        ModelFile[] models = new ModelFile[variants];
+
+        for (int i = 0; i < variants; i++) {
+            models[i] = models()
+                    .cubeAll(name + "_" + i,
+                            modLoc("block/" + name + "_" + i));
+        }
+
+        // Create a blockstate with "" = random variant selector
+        VariantBlockStateBuilder builder = getVariantBuilder(block.get());
+
+        for (ModelFile model : models) {
+            builder.partialState().addModels(new ConfiguredModel(model));
+        }
+
+        // Normal item model → point at variant 0 (vanilla standard behavior)
+        itemModels()
+                .getBuilder(name)
+                .parent(models[0]);
     }
 
     private void carpetWithItem(RegistryObject<Block> blockRegistryObject) {

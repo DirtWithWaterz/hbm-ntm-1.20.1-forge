@@ -47,6 +47,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.COBALT_INGOT);
         simpleItem(RegisterItems.CINNABAR);
         simpleItem(RegisterItems.COLTAN);
+        simpleItem(RegisterItems.TRINITITE);
 
         simpleItem(RegisterItems.RAW_TITANIUM);
         simpleItem(RegisterItems.RAW_URANIUM);

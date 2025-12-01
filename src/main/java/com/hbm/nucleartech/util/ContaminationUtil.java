@@ -57,7 +57,6 @@ public class ContaminationUtil {
         CRYOGENIC,
         DIGAMMA,
         EXPLOSIVE,
-        HOT,
         HYDROACTIVE,
         RADIATION,
         TOXIC,

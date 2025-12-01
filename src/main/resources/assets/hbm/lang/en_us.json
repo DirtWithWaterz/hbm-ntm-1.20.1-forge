@@ -233,6 +233,23 @@
   "item.hbm.black_diamond": "Black Diamond",
   "item.hbm.heart_of_darkness": "Heart of Darkness",
 
+  "block.hbm.slaked_sellafite": "Slaked Sellafite",
+  "block.hbm.sellafite": "Sellafite",
+  "block.hbm.hot_sellafite": "Hot Sellafite",
+  "block.hbm.boiling_sellafite": "Boiling Sellafite",
+  "block.hbm.blazing_sellafite": "Blazing Sellafite",
+  "block.hbm.infernal_sellafite": "Infernal Sellafite",
+  "block.hbm.sellafite_corium": "Sellafite-Corium",
+
+  "block.hbm.trinitite_ore": "Trinitite Ore",
+  "block.hbm.red_trinitite_ore": "Red Trinitite Ore",
+
+  "block.hbm.trinitite_block": "Block of Trinitite",
+
+  "block.hbm.scorched_uranium_ore": "Scorched Uranium Ore",
+
+  "item.hbm.trinitite": "Trinitite",
+
   "geiger.chunk_rad": "Current chunk radiation:",
   "geiger.env_rad": "Total environmental radiation:",
   "geiger.player_rad": "Player contamination:",
