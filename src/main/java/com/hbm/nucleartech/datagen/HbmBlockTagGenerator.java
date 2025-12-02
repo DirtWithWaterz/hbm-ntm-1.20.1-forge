@@ -20,8 +20,20 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
+        tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(RegisterBlocks.TRINITITE_ORE.get(),
+                        RegisterBlocks.RED_TRINITITE_ORE.get()
+                );
+
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(RegisterBlocks.TITANIUM_BLOCK.get(),
+                        RegisterBlocks.SLAKED_SELLAFITE.get(),
+                        RegisterBlocks.SELLAFITE.get(),
+                        RegisterBlocks.HOT_SELLAFITE.get(),
+                        RegisterBlocks.BOILING_SELLAFITE.get(),
+                        RegisterBlocks.BLAZING_SELLAFITE.get(),
+                        RegisterBlocks.INFERNAL_SELLAFITE.get(),
+                        RegisterBlocks.SELLAFITE_CORIUM.get(),
                         RegisterBlocks.GRAPHITE_BLOCK.get(),
                         RegisterBlocks.BORON_BLOCK.get(),
                         RegisterBlocks.TITANIUM_ORE.get(),
@@ -231,6 +243,9 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
 
         tag(Tags.Blocks.ORES)
                 .add(RegisterBlocks.TITANIUM_ORE.get(),
+                        RegisterBlocks.SCORCHED_URANIUM_ORE.get(),
+                        RegisterBlocks.TRINITITE_ORE.get(),
+                        RegisterBlocks.RED_TRINITITE_ORE.get(),
                         RegisterBlocks.DEEPSLATE_TITANIUM_ORE.get(),
                         RegisterBlocks.URANIUM_ORE.get(),
                         RegisterBlocks.DEEPSLATE_URANIUM_ORE.get(),

@@ -24,6 +24,8 @@ public class RegisterCreativeTabs {
                     .title(Component.translatable("creativetab.resources_and_parts"))
                     .displayItems((itemDisplayParameters, output) -> {
 
+                        output.accept(RegisterItems.TRINITITE.get());
+
                         output.accept(RegisterItems.TITANIUM_INGOT.get());
                         output.accept(RegisterItems.BERYLLIUM_INGOT.get());
                         output.accept(RegisterItems.URANIUM_INGOT.get());
@@ -339,6 +341,21 @@ public class RegisterCreativeTabs {
 
                         output.accept(RegisterBlocks.GRAPHITE_BLOCK.get());
                         output.accept(RegisterBlocks.BORON_BLOCK.get());
+
+                        output.accept(RegisterBlocks.SLAKED_SELLAFITE.get());
+                        output.accept(RegisterBlocks.SELLAFITE.get());
+                        output.accept(RegisterBlocks.HOT_SELLAFITE.get());
+                        output.accept(RegisterBlocks.BOILING_SELLAFITE.get());
+                        output.accept(RegisterBlocks.BLAZING_SELLAFITE.get());
+                        output.accept(RegisterBlocks.INFERNAL_SELLAFITE.get());
+                        output.accept(RegisterBlocks.SELLAFITE_CORIUM.get());
+
+                        output.accept(RegisterBlocks.TRINITITE_ORE.get());
+                        output.accept(RegisterBlocks.RED_TRINITITE_ORE.get());
+
+                        output.accept(RegisterBlocks.TRINITITE_BLOCK.get());
+
+                        output.accept(RegisterBlocks.SCORCHED_URANIUM_ORE.get());
                     })
                     .build());
 

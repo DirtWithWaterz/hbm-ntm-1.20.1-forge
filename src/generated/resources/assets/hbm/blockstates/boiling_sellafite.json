@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hbm:block/boiling_sellafite_0"
+      },
+      {
+        "model": "hbm:block/boiling_sellafite_1"
+      },
+      {
+        "model": "hbm:block/boiling_sellafite_2"
+      },
+      {
+        "model": "hbm:block/boiling_sellafite_3"
+      }
+    ]
+  }
+}

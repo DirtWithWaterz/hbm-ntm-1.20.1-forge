@@ -1,6 +1,13 @@
 {
   "values": [
     "hbm:titanium_block",
+    "hbm:slaked_sellafite",
+    "hbm:sellafite",
+    "hbm:hot_sellafite",
+    "hbm:boiling_sellafite",
+    "hbm:blazing_sellafite",
+    "hbm:infernal_sellafite",
+    "hbm:sellafite_corium",
     "hbm:graphite_block",
     "hbm:boron_block",
     "hbm:titanium_ore",

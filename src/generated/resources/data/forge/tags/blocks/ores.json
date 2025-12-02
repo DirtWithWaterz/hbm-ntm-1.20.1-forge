@@ -1,6 +1,9 @@
 {
   "values": [
     "hbm:titanium_ore",
+    "hbm:scorched_uranium_ore",
+    "hbm:trinitite_ore",
+    "hbm:red_trinitite_ore",
     "hbm:deepslate_titanium_ore",
     "hbm:uranium_ore",
     "hbm:deepslate_uranium_ore",

@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hbm:block/slaked_sellafite_0"
+      },
+      {
+        "model": "hbm:block/slaked_sellafite_1"
+      },
+      {
+        "model": "hbm:block/slaked_sellafite_2"
+      },
+      {
+        "model": "hbm:block/slaked_sellafite_3"
+      }
+    ]
+  }
+}

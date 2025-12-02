@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hbm:block/blazing_sellafite_0"
+      },
+      {
+        "model": "hbm:block/blazing_sellafite_1"
+      },
+      {
+        "model": "hbm:block/blazing_sellafite_2"
+      },
+      {
+        "model": "hbm:block/blazing_sellafite_3"
+      }
+    ]
+  }
+}

@@ -131,6 +131,15 @@ public class ItemHazardModule {
 //            System.err.println("calling ContaminationUtil.contaminate() for " + entity.getName().getString() + " with rad value: " + rad);
             ContaminationUtil.contaminate(entity, HazardType.RADIATION, ContaminationType.CREATIVE, (float) rad);
         }
+        if(this.fire * tempMod > 0) {
+
+            double fire = this.fire * tempMod * mod;
+
+            if(reacher)
+                fire = 0;
+
+            entity.setSecondsOnFire(Math.round(Math.round(fire)));
+        }
         if(this.toxic * tempMod > 0) {
 
             boolean hasToxFilter = false;

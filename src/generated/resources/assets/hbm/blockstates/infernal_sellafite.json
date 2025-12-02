@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "hbm:block/infernal_sellafite_0"
+      },
+      {
+        "model": "hbm:block/infernal_sellafite_1"
+      },
+      {
+        "model": "hbm:block/infernal_sellafite_2"
+      },
+      {
+        "model": "hbm:block/infernal_sellafite_3"
+      }
+    ]
+  }
+}
