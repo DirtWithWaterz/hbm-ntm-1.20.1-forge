@@ -13,7 +13,7 @@
 
   "desc.na": "N/A",
   "desc.nofilter": "No filter installed!",
-  "desc.infilter":"Installed filter:",
+  "desc.infilter": "Installed filter:",
   "desc.none": "None",
   "desc.tooltip.hold": "§8§oHold <§e§o%s§8§o> to display more info",
 
@@ -249,6 +249,16 @@
   "block.hbm.scorched_uranium_ore": "Scorched Uranium Ore",
 
   "item.hbm.trinitite": "Trinitite",
+
+  "block.hbm.contaminated_red_sandstone": "Contaminated Red Sandstone",
+  "block.hbm.contaminated_dirt": "Contaminated Dirt",
+  "block.hbm.contaminated_gravel": "Contaminated Gravel",
+  "block.hbm.contaminated_sandstone": "Contaminated Sandstone",
+  "block.hbm.contaminated_sand": "Contaminated Sand",
+  "block.hbm.contaminated_red_sand": "Contaminated Red Sand",
+  "block.hbm.contaminated_snow": "Contaminated Snow",
+  "block.hbm.contaminated_snow_block": "Contaminated Snow",
+  "block.hbm.contaminated_ice": "Contaminated Ice",
 
   "geiger.chunk_rad": "Current chunk radiation:",
   "geiger.env_rad": "Total environmental radiation:",

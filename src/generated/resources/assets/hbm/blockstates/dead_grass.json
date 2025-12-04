@@ -1,7 +1,28 @@
 {
   "variants": {
-    "": {
+    "variant=0": {
       "model": "hbm:block/dead_grass"
+    },
+    "variant=1": {
+      "model": "hbm:block/dead_grass_0"
+    },
+    "variant=2": {
+      "model": "hbm:block/dead_grass_1"
+    },
+    "variant=3": {
+      "model": "hbm:block/dead_grass_2"
+    },
+    "variant=4": {
+      "model": "hbm:block/dead_grass_3"
+    },
+    "variant=5": {
+      "model": "hbm:block/dead_grass_4"
+    },
+    "variant=6": {
+      "model": "hbm:block/dead_grass_5"
+    },
+    "variant=7": {
+      "model": "hbm:block/dead_grass_6"
     }
   }
 }

@@ -1,11 +1,9 @@
 package com.hbm.nucleartech.block.custom;
 
-import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.particle.RegisterParticles;
 import com.hbm.nucleartech.util.ContaminationUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -15,8 +13,6 @@ import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Arrays;
-
-import static net.minecraft.world.level.block.SnowLayerBlock.LAYERS;
 
 public class AsbestosAirBlock extends AirBlock {
 

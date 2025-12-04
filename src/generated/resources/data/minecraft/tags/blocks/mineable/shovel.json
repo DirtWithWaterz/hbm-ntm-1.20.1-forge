@@ -1,6 +1,13 @@
 {
   "values": [
     "hbm:trinitite_ore",
-    "hbm:red_trinitite_ore"
+    "hbm:red_trinitite_ore",
+    "hbm:contaminated_dirt",
+    "hbm:contaminated_sand",
+    "hbm:contaminated_red_sand",
+    "hbm:dead_grass",
+    "hbm:contaminated_snow_block",
+    "hbm:contaminated_snow",
+    "hbm:contaminated_gravel"
   ]
 }

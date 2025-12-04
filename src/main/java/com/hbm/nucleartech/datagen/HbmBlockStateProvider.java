@@ -2,15 +2,19 @@ package com.hbm.nucleartech.datagen;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
+import com.hbm.nucleartech.block.custom.ContaminatedVariableBlock;
+import com.hbm.nucleartech.block.custom.ContaminatedVariableLayerBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
 public class HbmBlockStateProvider extends BlockStateProvider {
 
@@ -174,10 +178,7 @@ public class HbmBlockStateProvider extends BlockStateProvider {
                 ResourceLocation.tryParse("hbm:block/radiation_decontaminator_side"),
                 ResourceLocation.tryParse("hbm:block/radiation_decontaminator_side"));
 
-        cubeBottomTopBlockWithItem(RegisterBlocks.DEAD_GRASS,
-                ResourceLocation.tryParse("hbm:block/dead_grass_top"),
-                ResourceLocation.tryParse("minecraft:block/dirt"),
-                ResourceLocation.tryParse("hbm:block/dead_grass_side"));
+        variantDeadGrassBlockWithItem(RegisterBlocks.DEAD_GRASS, 8);
 
         blockWithItem(RegisterBlocks.RAD_RESISTANT_BLOCK);
 
@@ -189,12 +190,25 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         randomCubeBlockWithItem(RegisterBlocks.INFERNAL_SELLAFITE, 4);
         randomCubeBlockWithItem(RegisterBlocks.SELLAFITE_CORIUM, 4);
 
-        blockWithItem(RegisterBlocks.TRINITITE_ORE);
-        blockWithItem(RegisterBlocks.RED_TRINITITE_ORE);
+        variantCubeBlockWithItem(RegisterBlocks.TRINITITE_ORE, 8);
+        variantCubeBlockWithItem(RegisterBlocks.RED_TRINITITE_ORE, 8);
 
         blockWithItem(RegisterBlocks.TRINITITE_BLOCK);
 
         blockWithItem(RegisterBlocks.SCORCHED_URANIUM_ORE);
+
+        blockWithItem(RegisterBlocks.CONTAMINATED_ICE);
+
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_DIRT, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_GRAVEL, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_SAND, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_RED_SAND, 8);
+
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW_BLOCK, 8);
+        variantLayerBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW, 8, RegisterBlocks.CONTAMINATED_SNOW_BLOCK);
+
+        variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_SANDSTONE, 8, Blocks.SANDSTONE);
+        variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_RED_SANDSTONE, 8, Blocks.RED_SANDSTONE);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
@@ -249,6 +263,134 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         itemModels()
                 .getBuilder(name)
                 .parent(models[0]);
+    }
+
+    private void variantCubeBlockWithItem(RegistryObject<Block> blockRegistryObject, int variants) {
+        String name = blockRegistryObject.getId().getPath();
+
+        // create models: name_0, name_1, ...
+        ModelFile[] models = new ModelFile[variants];
+
+        models[0] = models().cubeAll(name, modLoc("block/" + name));
+
+        for (int i = 1; i < variants; i++) {
+            models[i] = models().cubeAll(name + "_" + (i - 1), modLoc("block/" + name + "_" + (i - 1)));
+        }
+
+        // produce blockstate: variant=0 -> model name_0, variant=1 -> name_1, ...
+        VariantBlockStateBuilder builder = getVariantBuilder(blockRegistryObject.get());
+
+        for (int i = 0; i < variants; i++) {
+            builder.partialState().with(ContaminatedVariableBlock.VARIANT, i)
+                    .addModels(new ConfiguredModel(models[i]));
+        }
+
+        // item model points to the variant 0 model (common default)
+        itemModels().getBuilder(name).parent(models[0]);
+    }
+
+    private void variantLayerBlockWithItem(RegistryObject<Block> blockRegistryObject, int variants, @Nullable RegistryObject<Block> otherBlock) {
+        String name = blockRegistryObject.getId().getPath();
+
+        String texName = otherBlock != null ? otherBlock.getId().getPath() : name;
+
+        // create models: name_0, name_1, ...
+        ModelFile[] models = new ModelFile[variants*8];
+
+        for (int i = 1; i <= 8; i++) {
+
+            String modelName = name + "_" + 0 + "_" + i;
+
+            // snow_height2 .. snow_block
+            models[i-1] = models()
+                    .withExistingParent(modelName, mcLoc(i < 8 ? "block/snow_height" + (i*2) : "block/snow_block"))
+                    .texture("texture",
+                            modLoc("block/" + texName));
+        }
+
+        for (int i = 1; i < variants; i++) {
+            for (int j = 1; j <= 8; j++) {
+
+                String modelName = name + "_" + i + "_" + j;
+
+                // snow_height2 .. snow_block
+                models[j+((variants-1)*i)+(i-1)] = models()
+                        .withExistingParent(modelName, mcLoc(j < 8 ? "block/snow_height" + (j*2) : "block/snow_block"))
+                        .texture("texture",
+                                modLoc("block/" + texName + "_" + (i - 1)));
+            }
+        }
+
+        // produce blockstate: variant=0 -> model name_0, variant=1 -> name_1, ...
+        VariantBlockStateBuilder builder = getVariantBuilder(blockRegistryObject.get());
+
+        for (int i = 0; i < variants; i++) {
+            for(int j = 1; j <= 8; j++) {
+
+                builder.partialState()
+                        .with(ContaminatedVariableLayerBlock.VARIANT, i)
+                        .with(ContaminatedVariableLayerBlock.LAYERS, j)
+                        .addModels(new ConfiguredModel(models[j+((variants-1)*i)+(i-1)]));
+            }
+        }
+
+        // item model points to the variant 0 model (common default)
+        itemModels().getBuilder(name).parent(models[0]);
+    }
+
+    private void variantCubeBottomTopBlockWithItem(RegistryObject<Block> blockRegistryObject, int variants, @Nullable Block copyVanilla) {
+        String name = blockRegistryObject.getId().getPath();
+
+        // create models: name_0, name_1, ...
+        ModelFile[] models = new ModelFile[variants];
+
+        if(copyVanilla != null) {
+
+            String vN = copyVanilla.getName().getString().toLowerCase().replaceAll(" ", "_");
+
+            models[0] = models().withExistingParent(name, mcLoc("block/" + vN));
+        }
+        else
+            models[0] = models().cubeBottomTop(name, modLoc("block/" + name + "_side"), modLoc("block/" + name + "_bottom"), modLoc("block/" + name + "_top"));
+
+        for (int i = 1; i < variants; i++) {
+            models[i] = models().cubeBottomTop(name + "_" + (i - 1), modLoc("block/" + name + "_side" + "_" + (i - 1)), modLoc("block/" + name + "_bottom" + "_" + (i - 1)), modLoc("block/" + name + "_top" + "_" + (i - 1)));
+        }
+
+        // produce blockstate: variant=0 -> model name_0, variant=1 -> name_1, ...
+        VariantBlockStateBuilder builder = getVariantBuilder(blockRegistryObject.get());
+
+        for (int i = 0; i < variants; i++) {
+            builder.partialState().with(ContaminatedVariableBlock.VARIANT, i)
+                    .addModels(new ConfiguredModel(models[i]));
+        }
+
+        // item model points to the variant 0 model (common default)
+        itemModels().getBuilder(name).parent(models[0]);
+    }
+
+    private void variantDeadGrassBlockWithItem(RegistryObject<Block> blockRegistryObject, int variants) {
+        String name = blockRegistryObject.getId().getPath();
+
+        // create models: name_0, name_1, ...
+        ModelFile[] models = new ModelFile[variants];
+
+        models[0] = models().cubeBottomTop(name, modLoc("block/" + name + "_side"), mcLoc("block/dirt"), modLoc("block/" + name + "_top"));
+
+        for (int i = 1; i < variants; i++) {
+            models[i] = models().cubeBottomTop(name + "_" + (i - 1), modLoc("block/" + name + "_side" + "_" + (i - 1)), modLoc("block/contaminated_dirt_" + (i - 1)), modLoc("block/" + name + "_top" + "_" + (i - 1)));
+        }
+
+        // produce blockstate: variant=0 -> model name_0, variant=1 -> name_1, ...
+        VariantBlockStateBuilder builder = getVariantBuilder(blockRegistryObject.get());
+
+        for (int i = 0; i < variants; i++) {
+            builder.partialState().with(ContaminatedVariableBlock.VARIANT, i)
+                    .addModels(new ConfiguredModel(models[i]));
+        }
+
+        // item model points to the variant 0 model (common default)
+        itemModels().getBuilder(name).parent(models[0]);
     }
 
     private void carpetWithItem(RegistryObject<Block> blockRegistryObject) {

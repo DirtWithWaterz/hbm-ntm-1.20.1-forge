@@ -2,6 +2,8 @@
   "values": [
     "hbm:titanium_block",
     "hbm:slaked_sellafite",
+    "hbm:contaminated_sandstone",
+    "hbm:contaminated_red_sandstone",
     "hbm:sellafite",
     "hbm:hot_sellafite",
     "hbm:boiling_sellafite",

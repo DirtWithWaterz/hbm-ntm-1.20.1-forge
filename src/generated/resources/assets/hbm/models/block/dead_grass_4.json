@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "hbm:block/contaminated_dirt_4",
+    "side": "hbm:block/dead_grass_side_4",
+    "top": "hbm:block/dead_grass_top_4"
+  }
+}

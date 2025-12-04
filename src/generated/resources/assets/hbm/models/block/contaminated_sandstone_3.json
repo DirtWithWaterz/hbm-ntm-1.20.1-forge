@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "hbm:block/contaminated_sandstone_bottom_3",
+    "side": "hbm:block/contaminated_sandstone_side_3",
+    "top": "hbm:block/contaminated_sandstone_top_3"
+  }
+}

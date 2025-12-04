@@ -4,7 +4,13 @@ import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.item.RegisterItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
@@ -109,6 +115,29 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.SELLAFITE_CORIUM.get());
 
         this.dropSelf(RegisterBlocks.TRINITITE_BLOCK.get());
+
+        this.dropSelf(RegisterBlocks.CONTAMINATED_DIRT.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_GRAVEL.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_SANDSTONE.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_SAND.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_RED_SANDSTONE.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_RED_SAND.get());
+
+        this.add(RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get(), LootTable.lootTable()
+                // pool for non-silk-touch behavior: drop snowballs equal to 4
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .when(HAS_SILK_TOUCH)
+                                .add(LootItem.lootTableItem(RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get())))
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .when(HAS_NO_SILK_TOUCH)
+                                .add(LootItem.lootTableItem(Items.SNOWBALL))
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4)))));
+
+        this.add(RegisterBlocks.CONTAMINATED_ICE.get(), createSilkTouchOnlyTable(RegisterBlocks.CONTAMINATED_ICE.get()));
 
         this.add(RegisterBlocks.TRINITITE_ORE.get(),
                 block -> createOreDrop(RegisterBlocks.TRINITITE_ORE.get(), RegisterItems.TRINITITE.get()));
@@ -225,6 +254,8 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
     @Override
     protected Iterable<Block> getKnownBlocks() {
 
-        return RegisterBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+        return RegisterBlocks.BLOCKS.getEntries().stream()
+                .filter(b -> b != RegisterBlocks.CONTAMINATED_SNOW)
+                .map(RegistryObject::get)::iterator;
     }
 }

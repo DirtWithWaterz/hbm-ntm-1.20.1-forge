@@ -224,6 +224,9 @@ public class RegisterItems {
     //=========================================graphite==============================================================
     public static final RegistryObject<Item> GRAPHITE_INGOT = ITEMS.register("graphite_ingot",
             () -> new Item(new Item.Properties()));
+    //=========================================trinitite==============================================================
+    public static final RegistryObject<Item> TRINITITE = ITEMS.register("trinitite",
+            () -> new HazardItem(5.0f, new Item.Properties()));
     //=========================================dablufium==============================================================
     public static final RegistryObject<Item> DABLUFIUM_INGOT = ITEMS.register("dablufium_ingot",
             () -> new Item(new Item.Properties()));

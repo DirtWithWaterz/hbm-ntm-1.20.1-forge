@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/snow_height14",
+  "textures": {
+    "texture": "hbm:block/contaminated_snow_block_5"
+  }
+}

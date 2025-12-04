@@ -1,13 +1,17 @@
 package com.hbm.nucleartech.client;
 
+import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.particle.AsbestosParticleProvider;
 import com.hbm.nucleartech.particle.NeutronParticleProvider;
 import com.hbm.nucleartech.particle.RegisterParticles;
 import com.hbm.nucleartech.particle.DeconParticleProvider;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = "hbm", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
@@ -16,6 +20,14 @@ public class ClientSetup {
 //
 //        eventBus.addListener(ClientSetup::registerParticleFactories);
 //    }
+
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(
+                RegisterBlocks.CONTAMINATED_ICE.get(),
+                RenderType.translucent()
+        );
+    }
 
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {

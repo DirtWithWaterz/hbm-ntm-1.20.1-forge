@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.hazard;
 
+import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.modules.ItemHazardModule;
 import com.hbm.nucleartech.saveddata.RadiationSavedData;
@@ -177,10 +178,10 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
     public int tickRate(Level level){
         if(this.rad3d > 0)
-            return 1;
+            return ((1 - ((Config.hazardBlockTickSpeed - 1) / 20)) * 20);
 //        if(this.radIn > 0)
 //            return 60+level.random.nextInt(500);
-        return 10;
+        return 20;
     }
 
     @Override

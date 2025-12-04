@@ -1,7 +1,28 @@
 {
   "variants": {
-    "": {
+    "variant=0": {
       "model": "hbm:block/trinitite_ore"
+    },
+    "variant=1": {
+      "model": "hbm:block/trinitite_ore_0"
+    },
+    "variant=2": {
+      "model": "hbm:block/trinitite_ore_1"
+    },
+    "variant=3": {
+      "model": "hbm:block/trinitite_ore_2"
+    },
+    "variant=4": {
+      "model": "hbm:block/trinitite_ore_3"
+    },
+    "variant=5": {
+      "model": "hbm:block/trinitite_ore_4"
+    },
+    "variant=6": {
+      "model": "hbm:block/trinitite_ore_5"
+    },
+    "variant=7": {
+      "model": "hbm:block/trinitite_ore_6"
     }
   }
 }

@@ -22,12 +22,21 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(RegisterBlocks.TRINITITE_ORE.get(),
-                        RegisterBlocks.RED_TRINITITE_ORE.get()
+                        RegisterBlocks.RED_TRINITITE_ORE.get(),
+                        RegisterBlocks.CONTAMINATED_DIRT.get(),
+                        RegisterBlocks.CONTAMINATED_SAND.get(),
+                        RegisterBlocks.CONTAMINATED_RED_SAND.get(),
+                        RegisterBlocks.DEAD_GRASS.get(),
+                        RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get(),
+                        RegisterBlocks.CONTAMINATED_SNOW.get(),
+                        RegisterBlocks.CONTAMINATED_GRAVEL.get()
                 );
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(RegisterBlocks.TITANIUM_BLOCK.get(),
                         RegisterBlocks.SLAKED_SELLAFITE.get(),
+                        RegisterBlocks.CONTAMINATED_SANDSTONE.get(),
+                        RegisterBlocks.CONTAMINATED_RED_SANDSTONE.get(),
                         RegisterBlocks.SELLAFITE.get(),
                         RegisterBlocks.HOT_SELLAFITE.get(),
                         RegisterBlocks.BOILING_SELLAFITE.get(),

@@ -40,6 +40,10 @@ public class Config
             .comment("Number of concurrent threads to use for chunk processing. Set to 0 to use half of available processors.")
             .defineInRange("concurrentChunkThreads", 0, 0, 32);
 
+    private static final ForgeConfigSpec.IntValue HAZARD_BLOCK_TICK_SPEED = BUILDER
+            .comment("How many times hazard blocks are ticked per second (1-20). Yes this may be what's causing your lag-")
+            .defineInRange("hazardBlockTickSpeed", 20, 1, 20);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean logDirtBlock;
@@ -47,6 +51,7 @@ public class Config
     public static String magicNumberIntroduction;
     public static Set<Item> items;
     public static int concurrentChunkThreads;
+    public static int hazardBlockTickSpeed;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -65,6 +70,8 @@ public class Config
         concurrentChunkThreads = CONCURRENT_CHUNK_THREADS.get() > 0 
             ? CONCURRENT_CHUNK_THREADS.get() 
             : Math.max(1, availableProcessors / 2);
+
+        hazardBlockTickSpeed = HAZARD_BLOCK_TICK_SPEED.get();
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()

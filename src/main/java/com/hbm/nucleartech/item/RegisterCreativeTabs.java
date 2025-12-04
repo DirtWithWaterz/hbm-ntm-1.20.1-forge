@@ -356,6 +356,16 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.TRINITITE_BLOCK.get());
 
                         output.accept(RegisterBlocks.SCORCHED_URANIUM_ORE.get());
+
+                        output.accept(RegisterBlocks.CONTAMINATED_DIRT.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_GRAVEL.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_SANDSTONE.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_SAND.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_RED_SANDSTONE.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_RED_SAND.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_SNOW.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_ICE.get());
                     })
                     .build());
 

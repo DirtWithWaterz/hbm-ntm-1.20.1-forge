@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-01T06:03:14.7936113	Loot Tables
+// 1.20.1	2025-12-04T08:01:54.9656995	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
 540b91ff025b9ce6245df145e97928d9016ff716 data/hbm/loot_tables/blocks/armor_modification_table.json
@@ -24,6 +24,14 @@ c494d91990a7763dbc318dd534b8187302d50b48 data/hbm/loot_tables/blocks/coal_air.js
 5bb56e09d3c3bfb4c7d9ce45e21beac8ee430039 data/hbm/loot_tables/blocks/cobalt_ore.json
 04773db79682a4042b6f6bc7b1d5eab544ef0c02 data/hbm/loot_tables/blocks/coltan_block.json
 cf17d14cf717e5c8955e7918c764349c69ba706e data/hbm/loot_tables/blocks/coltan_ore.json
+2227d1ff316d49487906655de36f602e68ba8c94 data/hbm/loot_tables/blocks/contaminated_dirt.json
+557a247ce1a9295aa82edb45a5c6cfd92afafeb5 data/hbm/loot_tables/blocks/contaminated_gravel.json
+5066705bccd805775a60c8b87fe5515b2e7d2f55 data/hbm/loot_tables/blocks/contaminated_ice.json
+d3f6e99e9a244e98021b8c899acb6ad6f5735dd1 data/hbm/loot_tables/blocks/contaminated_red_sand.json
+7c34b2a43ac106de8be70a08f6f99ccbf177e491 data/hbm/loot_tables/blocks/contaminated_red_sandstone.json
+61162cf9da4caa769d7c2960acf1aaffde382fd2 data/hbm/loot_tables/blocks/contaminated_sand.json
+772c224cd087ce3cfcb573c64a50bd4dc1cbb10f data/hbm/loot_tables/blocks/contaminated_sandstone.json
+3461217d715d96be19c0d0977393a214bf3c4732 data/hbm/loot_tables/blocks/contaminated_snow_block.json
 c3d27dd21d1f6682951554b4e020050808745de1 data/hbm/loot_tables/blocks/cracked_jungle_bricks.json
 c5b6feea5f22b983e6ec59358427752881e63a2a data/hbm/loot_tables/blocks/cyan_concrete.json
 2eecc087c37c45f1aafaee113ade4024039203f9 data/hbm/loot_tables/blocks/dead_grass.json
