@@ -44,7 +44,7 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
 
         tag(Tags.Items.INGOTS)
                 .add(
-                        RegisterItems.ALUMINIUM_INGOT.get(),
+                        RegisterItems.ALUMINUM_INGOT.get(),
                         RegisterItems.TITANIUM_INGOT.get()
                 );
     }
