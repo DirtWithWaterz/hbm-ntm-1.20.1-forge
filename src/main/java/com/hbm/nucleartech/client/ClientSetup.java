@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.client;
 
 import com.hbm.nucleartech.block.RegisterBlocks;
+import com.hbm.nucleartech.fluid.RegisterFluids;
 import com.hbm.nucleartech.particle.AsbestosParticleProvider;
 import com.hbm.nucleartech.particle.NeutronParticleProvider;
 import com.hbm.nucleartech.particle.RegisterParticles;
@@ -23,8 +24,17 @@ public class ClientSetup {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
+
         ItemBlockRenderTypes.setRenderLayer(
                 RegisterBlocks.CONTAMINATED_ICE.get(),
+                RenderType.translucent()
+        );
+        ItemBlockRenderTypes.setRenderLayer(
+                RegisterFluids.CONTAMINATED_WATER.get(),
+                RenderType.translucent()
+        );
+        ItemBlockRenderTypes.setRenderLayer(
+                RegisterFluids.FLOWING_CONTAMINATED_WATER.get(),
                 RenderType.translucent()
         );
     }

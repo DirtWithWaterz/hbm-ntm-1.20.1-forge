@@ -2,17 +2,21 @@ package com.hbm.nucleartech.block;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.custom.*;
+import com.hbm.nucleartech.fluid.RegisterFluids;
 import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.hazard.HazardBlockItem;
+import com.hbm.nucleartech.hazard.LiquidHazardBlock;
 import com.hbm.nucleartech.item.RegisterItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -701,6 +705,20 @@ public class RegisterBlocks {
 
     public static final RegistryObject<Block> CONTAMINATED_SNOW = registerHazardBlock(1.0f, "contaminated_snow",
             () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), 1.0f
+            ));
+
+    public static final RegistryObject<Block> CONTAMINATED_WATER = BLOCKS.register("contaminated_water",
+            () -> new LiquidHazardBlock(RegisterFluids.CONTAMINATED_WATER,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WATER)
+                            .strength(100f)
+                            .noCollission()
+                            .noLootTable()
+                            .liquid()
+                            .pushReaction(PushReaction.DESTROY)
+                            .sound(SoundType.EMPTY)
+                            .replaceable(),
+                    1.0d
             ));
 
 //    ================================== lamp oil, rope, BOMB? You want it Link, I've got it. So long as YOU have enough rubies. ==================================================

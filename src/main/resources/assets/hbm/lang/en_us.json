@@ -260,6 +260,9 @@
   "block.hbm.contaminated_snow_block": "Contaminated Snow",
   "block.hbm.contaminated_ice": "Contaminated Ice",
 
+  "block.hbm.contaminated_water": "Contaminated Water",
+  "item.hbm.contaminated_water_bucket": "Contaminated Water Bucket",
+
   "geiger.chunk_rad": "Current chunk radiation:",
   "geiger.env_rad": "Total environmental radiation:",
   "geiger.player_rad": "Player contamination:",

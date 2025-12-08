@@ -9,6 +9,7 @@ import com.hbm.nucleartech.block.entity.client.GraphiteBlockRenderer;
 import com.hbm.nucleartech.block.entity.client.ShredderRenderer;
 import com.hbm.nucleartech.entity.HbmEntities;
 import com.hbm.nucleartech.entity.client.NuclearCreeperRenderer;
+import com.hbm.nucleartech.fluid.RegisterFluids;
 import com.hbm.nucleartech.handler.HazmatRegistry;
 import com.hbm.nucleartech.handler.HbmContaminationSystem;
 import com.hbm.nucleartech.item.RegisterCreativeTabs;
@@ -87,6 +88,7 @@ public class HBM
         RegisterCreativeTabs.register(modEventBus);
         RegisterItems.register(modEventBus);
         RegisterBlocks.register(modEventBus);
+        RegisterFluids.register(modEventBus);
         RegisterParticles.register(modEventBus);
         HbmEntities.register(modEventBus);
 //        ClientSetup.init(modEventBus);

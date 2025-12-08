@@ -3,6 +3,7 @@ package com.hbm.nucleartech.item;
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.capability.energy.WattHourStorage;
+import com.hbm.nucleartech.fluid.RegisterFluids;
 import com.hbm.nucleartech.handler.ArmorModHandler;
 import com.hbm.nucleartech.hazard.HazardItem;
 import com.hbm.nucleartech.item.custom.*;
@@ -11,8 +12,7 @@ import com.hbm.nucleartech.item.custom.base.ArmorModifierItem;
 import com.hbm.nucleartech.item.custom.base.StampItem;
 import com.hbm.nucleartech.item.special.CustomLoreItem;
 import com.hbm.nucleartech.util.FloatingLong;
-import net.minecraft.world.item.ArmorMaterials;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -554,7 +554,10 @@ public class RegisterItems {
     public static final RegistryObject<Item> HEART_OF_DARKNESS = ITEMS.register("heart_of_darkness",
             () -> new HealthArmorModifierItem(new Item.Properties().stacksTo(1), ArmorModifierItem.APPLICABLE.CHESTPLATE, 60.0f, "heart_of_darkness"));
 
+    // ====================================== liquids ===============================================
 
+    public static final RegistryObject<Item> CONTAMINATED_WATER_BUCKET = ITEMS.register("contaminated_water_bucket",
+            () -> new BucketItem(RegisterFluids.CONTAMINATED_WATER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON)));
 
     public static void register(IEventBus eventBus) {
 
