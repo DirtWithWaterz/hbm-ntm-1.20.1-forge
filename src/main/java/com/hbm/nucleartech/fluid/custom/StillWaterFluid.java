@@ -10,19 +10,18 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.LiquidBlock;
 
+public abstract class StillWaterFluid extends ForgeFlowingFluid {
+    public static final Properties PROPERTIES = new Properties(() -> RegisterFluids.STILL_WATER_TYPE.get(), () -> RegisterFluids.STILL_WATER.get(), () -> RegisterFluids.FLOWING_STILL_WATER.get())
+            .explosionResistance(100f).bucket(RegisterItems.STILL_WATER_BUCKET).block(() -> (LiquidBlock) RegisterBlocks.STILL_WATER.get());
 
-public abstract class ContaminatedWaterFluid extends ForgeFlowingFluid {
-    public static final ForgeFlowingFluid.Properties PROPERTIES = new ForgeFlowingFluid.Properties(() -> RegisterFluids.CONTAMINATED_WATER_TYPE.get(), () -> RegisterFluids.CONTAMINATED_WATER.get(), () -> RegisterFluids.FLOWING_CONTAMINATED_WATER.get())
-            .explosionResistance(100f).bucket(RegisterItems.CONTAMINATED_WATER_BUCKET).block(() -> (LiquidBlock) RegisterBlocks.CONTAMINATED_WATER.get());
-
-    private ContaminatedWaterFluid() {
+    private StillWaterFluid() {
         super(PROPERTIES);
     }
 
@@ -36,7 +35,7 @@ public abstract class ContaminatedWaterFluid extends ForgeFlowingFluid {
         }
     }
 
-    public static class Source extends ContaminatedWaterFluid {
+    public static class Source extends StillWaterFluid {
         public int getAmount(FluidState state) {
             return 8;
         }
@@ -46,7 +45,7 @@ public abstract class ContaminatedWaterFluid extends ForgeFlowingFluid {
         }
     }
 
-    public static class Flowing extends ContaminatedWaterFluid {
+    public static class Flowing extends StillWaterFluid {
         protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
             super.createFluidStateDefinition(builder);
             builder.add(LEVEL);

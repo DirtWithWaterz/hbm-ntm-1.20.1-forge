@@ -139,6 +139,9 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.BORON_PILE_ROD.get());
                         output.accept(RegisterItems.RADIUM_PILE_ROD.get());
                         output.accept(RegisterItems.PLUTONIUM_PILE_ROD.get());
+
+                        output.accept(RegisterItems.CONTAMINATED_WATER_BUCKET.get());
+                        output.accept(RegisterItems.STILL_WATER_BUCKET.get());
                     })
                     .build());
 

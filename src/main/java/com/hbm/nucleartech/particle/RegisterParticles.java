@@ -21,6 +21,12 @@ public class RegisterParticles {
     public static final RegistryObject<SimpleParticleType> NEUTRON_PARTICLE =
             PARTICLES.register("neutron_particle", () -> new SimpleParticleType(true));
 
+    public static final RegistryObject<SimpleParticleType> CONTAMINATED_BUBBLE_PARTICLE =
+            PARTICLES.register("contaminated_bubble_particle", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> CONTAMINATED_SPLASH_PARTICLE =
+            PARTICLES.register("contaminated_splash_particle", () -> new SimpleParticleType(true));
+
     public static void register(IEventBus eventBus) {
 
         PARTICLES.register(eventBus);

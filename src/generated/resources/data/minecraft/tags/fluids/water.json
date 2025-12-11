@@ -1,0 +1,8 @@
+{
+  "values": [
+    "hbm:contaminated_water",
+    "hbm:flowing_contaminated_water",
+    "hbm:still_water",
+    "hbm:flowing_still_water"
+  ]
+}

@@ -32,6 +32,9 @@ public class DataGenerators {
                 new HbmBlockTagGenerator(packOutput, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new HbmItemTagGenerator(packOutput, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper));
 
+        generator.addProvider(event.includeServer(),
+                new HbmFluidTagGenerator(packOutput, lookupProvider, existingFileHelper));
+
         generator.addProvider(event.includeServer(), new HbmWorldGenProvider(packOutput, lookupProvider));
 
         generator.addProvider(event.includeServer(), new HbmDamageTypeProvider(packOutput));

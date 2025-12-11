@@ -262,6 +262,8 @@
 
   "block.hbm.contaminated_water": "Contaminated Water",
   "item.hbm.contaminated_water_bucket": "Contaminated Water Bucket",
+  "block.hbm.still_water": "Still Water",
+  "item.hbm.still_water_bucket": "Still Water Bucket",
 
   "geiger.chunk_rad": "Current chunk radiation:",
   "geiger.env_rad": "Total environmental radiation:",

@@ -559,6 +559,9 @@ public class RegisterItems {
     public static final RegistryObject<Item> CONTAMINATED_WATER_BUCKET = ITEMS.register("contaminated_water_bucket",
             () -> new BucketItem(RegisterFluids.CONTAMINATED_WATER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON)));
 
+    public static final RegistryObject<Item> STILL_WATER_BUCKET = ITEMS.register("still_water_bucket",
+            () -> new BucketItem(RegisterFluids.STILL_WATER, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON)));
+
     public static void register(IEventBus eventBus) {
 
         ITEMS.register(eventBus);

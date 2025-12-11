@@ -2,10 +2,7 @@ package com.hbm.nucleartech.client;
 
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.fluid.RegisterFluids;
-import com.hbm.nucleartech.particle.AsbestosParticleProvider;
-import com.hbm.nucleartech.particle.NeutronParticleProvider;
-import com.hbm.nucleartech.particle.RegisterParticles;
-import com.hbm.nucleartech.particle.DeconParticleProvider;
+import com.hbm.nucleartech.particle.*;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -37,6 +34,14 @@ public class ClientSetup {
                 RegisterFluids.FLOWING_CONTAMINATED_WATER.get(),
                 RenderType.translucent()
         );
+        ItemBlockRenderTypes.setRenderLayer(
+                RegisterFluids.STILL_WATER.get(),
+                RenderType.translucent()
+        );
+        ItemBlockRenderTypes.setRenderLayer(
+                RegisterFluids.FLOWING_STILL_WATER.get(),
+                RenderType.translucent()
+        );
     }
 
     @SubscribeEvent
@@ -45,5 +50,7 @@ public class ClientSetup {
         event.registerSpriteSet(RegisterParticles.DECON_PARTICLE.get(), DeconParticleProvider::new);
         event.registerSpriteSet(RegisterParticles.ASBESTOS_PARTICLE.get(), AsbestosParticleProvider::new);
         event.registerSpriteSet(RegisterParticles.NEUTRON_PARTICLE.get(), NeutronParticleProvider::new);
+        event.registerSpriteSet(RegisterParticles.CONTAMINATED_BUBBLE_PARTICLE.get(), ContaminatedBubbleParticleProvider::new);
+        event.registerSpriteSet(RegisterParticles.CONTAMINATED_SPLASH_PARTICLE.get(), ContaminatedSplashParticleProvider::new);
     }
 }

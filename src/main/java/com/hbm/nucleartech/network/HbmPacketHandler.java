@@ -52,5 +52,17 @@ public class HbmPacketHandler {
                 ClientboundSpawnNeutronParticlePacket::decode,
                 ClientboundSpawnNeutronParticlePacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundSpawnContaminatedBubbleParticlePacket.class,
+                ClientboundSpawnContaminatedBubbleParticlePacket::encode,
+                ClientboundSpawnContaminatedBubbleParticlePacket::decode,
+                ClientboundSpawnContaminatedBubbleParticlePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundSpawnContaminatedSplashParticlePacket.class,
+                ClientboundSpawnContaminatedSplashParticlePacket::encode,
+                ClientboundSpawnContaminatedSplashParticlePacket::decode,
+                ClientboundSpawnContaminatedSplashParticlePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }

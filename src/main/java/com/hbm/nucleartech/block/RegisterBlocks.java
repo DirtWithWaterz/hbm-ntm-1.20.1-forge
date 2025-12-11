@@ -718,7 +718,21 @@ public class RegisterBlocks {
                             .pushReaction(PushReaction.DESTROY)
                             .sound(SoundType.EMPTY)
                             .replaceable(),
-                    1.0d
+                    5.0d
+            ));
+
+    public static final RegistryObject<Block> STILL_WATER = BLOCKS.register("still_water",
+            () -> new LiquidHazardBlock(RegisterFluids.STILL_WATER,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WATER)
+                            .strength(100f)
+                            .noCollission()
+                            .noLootTable()
+                            .liquid()
+                            .pushReaction(PushReaction.DESTROY)
+                            .sound(SoundType.EMPTY)
+                            .replaceable(),
+                    5.0d
             ));
 
 //    ================================== lamp oil, rope, BOMB? You want it Link, I've got it. So long as YOU have enough rubies. ==================================================
