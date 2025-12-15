@@ -146,7 +146,7 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> RAD_RESISTANT_BLOCK = registerBlock("rad_resistant_block",
             () -> new RadResistantBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f)
-                    , 99.99f, 1f
+                    , 100.0f, 1f
             )); // has values of lead ^^ ~100% resistance (water is 79. Lead is 99.99)
 
     public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
