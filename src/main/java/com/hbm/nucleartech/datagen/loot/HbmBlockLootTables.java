@@ -141,6 +141,8 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.CONTAMINATED_MAGENTA_TERRACOTTA.get());
         this.dropSelf(RegisterBlocks.CONTAMINATED_PINK_TERRACOTTA.get());
 
+        this.dropSelf(RegisterBlocks.CONTAMINATED_MYCELIUM.get());
+
         this.add(RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get(), LootTable.lootTable()
                 // pool for non-silk-touch behavior: drop snowballs equal to 4
                 .withPool(

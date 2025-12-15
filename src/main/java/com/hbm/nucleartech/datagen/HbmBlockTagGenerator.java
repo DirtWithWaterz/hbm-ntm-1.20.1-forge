@@ -54,6 +54,7 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
                         RegisterBlocks.CONTAMINATED_PURPLE_TERRACOTTA.get(),
                         RegisterBlocks.CONTAMINATED_MAGENTA_TERRACOTTA.get(),
                         RegisterBlocks.CONTAMINATED_PINK_TERRACOTTA.get(),
+                        RegisterBlocks.CONTAMINATED_MYCELIUM.get(),
                         RegisterBlocks.SELLAFITE.get(),
                         RegisterBlocks.HOT_SELLAFITE.get(),
                         RegisterBlocks.BOILING_SELLAFITE.get(),

@@ -222,6 +222,8 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_MAGENTA_TERRACOTTA, 8);
         variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_PINK_TERRACOTTA, 8);
 
+        variantDeadGrassBlockWithItem(RegisterBlocks.CONTAMINATED_MYCELIUM, 8);
+
         variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW_BLOCK, 8);
         variantLayerBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW, 8, RegisterBlocks.CONTAMINATED_SNOW_BLOCK);
 

@@ -720,59 +720,63 @@ public class RegisterBlocks {
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_GRAY_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_gray_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_BLACK_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_black_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_BROWN_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_brown_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_RED_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_red_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_ORANGE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_orange_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_YELLOW_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_yellow_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_LIME_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_lime_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIME_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_GREEN_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_green_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_CYAN_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_cyan_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_LIGHT_BLUE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_light_blue_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_BLUE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_blue_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_PURPLE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_purple_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_MAGENTA_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_magenta_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_TERRACOTTA), 5.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_PINK_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_pink_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PINK_TERRACOTTA), 5.0f
+            ));
+
+    public static final RegistryObject<Block> CONTAMINATED_MYCELIUM = registerHazardBlock(4.0f, "contaminated_mycelium",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MYCELIUM), 4.0f
             ));
 
     public static final RegistryObject<Block> CONTAMINATED_WATER = BLOCKS.register("contaminated_water",
