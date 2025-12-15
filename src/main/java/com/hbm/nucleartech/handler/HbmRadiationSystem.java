@@ -892,6 +892,38 @@ public class HbmRadiationSystem {
             }
             return (count == 0);
         }
+
+        /** Checks if the entire connected group of pockets (including this one) has no unloaded connections, meaning the group is fully sealed. */
+        public boolean isFullySealed() {
+            Set<RadPocket> visited = new HashSet<>();
+            Deque<RadPocket> queue = new ArrayDeque<>();
+            queue.add(this);
+            visited.add(this);
+
+            while (!queue.isEmpty()) {
+                RadPocket current = queue.poll();
+
+                for (Direction d : Direction.values()) {
+                    List<Integer> connList = current.connectionIndices[d.ordinal()];
+                    if (!connList.isEmpty()) {
+                        BlockPos adjSubPos = current.getSubChunkPos().relative(d, 16);
+                        Level level = current.parent.parentChunk.chunk.getLevel();
+                        if (!isSubChunkLoaded(level, adjSubPos)) {
+                            return false;  // Leak to unloaded area
+                        }
+                        // Get adjacent pocket using first connection index
+                        int localIndex = connList.get(0);
+                        BlockPos adjBlock = current.parent.getBlock(localIndex).relative(d, 1);
+                        RadPocket adjPocket = getPocket(level, adjBlock);
+                        if (adjPocket != null && !visited.contains(adjPocket)) {
+                            visited.add(adjPocket);
+                            queue.add(adjPocket);
+                        }
+                    }
+                }
+            }
+            return true;
+        }
     }
 
     // -----------------------------------
@@ -1606,10 +1638,15 @@ public class HbmRadiationSystem {
 
                 for(RadPocket p : activePockets) {
 
-                    activePositions.put(
-                            p.parent.getBlock(p.index),
-                            Math.round(p.radiation)
-                    );
+                    if(p.isFullySealed() || p.isSealed() || p.radiation > 1000) {
+
+                        activePositions.put(
+                                p.parent.getBlock(p.index),
+                                Math.round(p.radiation)
+                        );
+
+                        HBM.LOGGER.error("[Debug] pos: {}, rad: {}", p.parent.getBlock(p.index), activePositions.get(p.parent.getBlock(p.index)));
+                    }
                 }
 
                 saveMapToJson((ServerLevel)level, activePositions, "data/hbm/rad_vectors.json");
