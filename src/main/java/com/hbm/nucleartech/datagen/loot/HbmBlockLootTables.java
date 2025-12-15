@@ -123,6 +123,24 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.CONTAMINATED_RED_SANDSTONE.get());
         this.dropSelf(RegisterBlocks.CONTAMINATED_RED_SAND.get());
 
+        this.dropSelf(RegisterBlocks.CONTAMINATED_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_WHITE_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_LIGHT_GRAY_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_GRAY_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_BLACK_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_BROWN_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_RED_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_ORANGE_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_YELLOW_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_LIME_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_GREEN_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_CYAN_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_LIGHT_BLUE_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_BLUE_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_PURPLE_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_MAGENTA_TERRACOTTA.get());
+        this.dropSelf(RegisterBlocks.CONTAMINATED_PINK_TERRACOTTA.get());
+
         this.add(RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get(), LootTable.lootTable()
                 // pool for non-silk-touch behavior: drop snowballs equal to 4
                 .withPool(

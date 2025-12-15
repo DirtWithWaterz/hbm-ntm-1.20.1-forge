@@ -204,6 +204,24 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_SAND, 8);
         variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_RED_SAND, 8);
 
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_WHITE_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_LIGHT_GRAY_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_GRAY_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_BLACK_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_BROWN_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_RED_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_ORANGE_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_YELLOW_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_LIME_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_GREEN_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_CYAN_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_LIGHT_BLUE_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_BLUE_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_PURPLE_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_MAGENTA_TERRACOTTA, 8);
+        variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_PINK_TERRACOTTA, 8);
+
         variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW_BLOCK, 8);
         variantLayerBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW, 8, RegisterBlocks.CONTAMINATED_SNOW_BLOCK);
 

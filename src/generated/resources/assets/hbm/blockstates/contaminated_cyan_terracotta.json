@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "variant=0": {
+      "model": "hbm:block/contaminated_cyan_terracotta"
+    },
+    "variant=1": {
+      "model": "hbm:block/contaminated_cyan_terracotta_0"
+    },
+    "variant=2": {
+      "model": "hbm:block/contaminated_cyan_terracotta_1"
+    },
+    "variant=3": {
+      "model": "hbm:block/contaminated_cyan_terracotta_2"
+    },
+    "variant=4": {
+      "model": "hbm:block/contaminated_cyan_terracotta_3"
+    },
+    "variant=5": {
+      "model": "hbm:block/contaminated_cyan_terracotta_4"
+    },
+    "variant=6": {
+      "model": "hbm:block/contaminated_cyan_terracotta_5"
+    },
+    "variant=7": {
+      "model": "hbm:block/contaminated_cyan_terracotta_6"
+    }
+  }
+}

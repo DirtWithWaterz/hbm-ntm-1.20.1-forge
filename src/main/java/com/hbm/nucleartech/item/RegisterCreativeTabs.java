@@ -369,6 +369,24 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get());
                         output.accept(RegisterBlocks.CONTAMINATED_SNOW.get());
                         output.accept(RegisterBlocks.CONTAMINATED_ICE.get());
+
+                        output.accept(RegisterBlocks.CONTAMINATED_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_WHITE_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_LIGHT_GRAY_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_GRAY_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_BLACK_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_BROWN_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_RED_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_ORANGE_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_YELLOW_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_LIME_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_GREEN_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_CYAN_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_LIGHT_BLUE_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_BLUE_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_PURPLE_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_MAGENTA_TERRACOTTA.get());
+                        output.accept(RegisterBlocks.CONTAMINATED_PINK_TERRACOTTA.get());
                     })
                     .build());
 
