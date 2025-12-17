@@ -98,7 +98,7 @@ public class GeigerCounterItem extends Item {
                     if (sound == null) {
                         System.err.println("[Error] Missing geiger sound for level " + r);
                     } else {
-                        pLevel.playSound(null, pEntity.getOnPos().offset(0,1,0), sound, SoundSource.PLAYERS, 1, 1);
+                        pLevel.playSound(null, pEntity.getOnPos().offset(0,1,0), sound, SoundSource.PLAYERS, 0.2f, pLevel.random.nextFloat());
                     }
                 }
 //                    pLevel.playSound(null, pEntity.getOnPos().offset(0,1,0), soundMap.get(r), SoundSource.PLAYERS, 1, 1);
