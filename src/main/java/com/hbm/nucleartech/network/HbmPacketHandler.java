@@ -64,5 +64,11 @@ public class HbmPacketHandler {
                 ClientboundSpawnContaminatedSplashParticlePacket::decode,
                 ClientboundSpawnContaminatedSplashParticlePacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundSpawnRadioactiveDustParticlePacket.class,
+                ClientboundSpawnRadioactiveDustParticlePacket::encode,
+                ClientboundSpawnRadioactiveDustParticlePacket::decode,
+                ClientboundSpawnRadioactiveDustParticlePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }

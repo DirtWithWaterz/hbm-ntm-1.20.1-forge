@@ -6,6 +6,9 @@ import com.google.gson.reflect.TypeToken;
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.interfaces.IRadResistantBlock;
 import com.hbm.nucleartech.item.custom.GeigerCounterItem;
+import com.hbm.nucleartech.network.HbmPacketHandler;
+import com.hbm.nucleartech.network.packet.ClientboundSpawnDeconParticlePacket;
+import com.hbm.nucleartech.network.packet.ClientboundSpawnRadioactiveDustParticlePacket;
 import com.hbm.nucleartech.util.ContaminationUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,6 +21,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -25,8 +29,12 @@ import com.hbm.nucleartech.handler.HbmRadiationSystem.ChunkStorageCompat.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
+import net.minecraft.world.level.chunk.Palette;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.common.util.LazyOptional;
@@ -38,6 +46,7 @@ import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.network.PacketDistributor;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -207,7 +216,7 @@ public class HbmRadiationSystem {
      * Pockets transfer some of their radiation to pockets they're connected to.
      * It tries to do pretty much the same algorithm as the regular system, but in 3d with pockets.
      */
-    public static void updateRadiation() {
+    public static void updateRadiation(Level level) {
 
         long time = System.currentTimeMillis();
 
@@ -237,6 +246,35 @@ public class HbmRadiationSystem {
             }
             //System.out.println("[Debug] Pocket is active, proceeding...");
             // Rad fog code goes here
+
+//            System.err.println("[Debug] Spawning radioactive particles...");
+
+            for (int i = 0; i < 10; i++) {
+
+                BlockPos randPos = new BlockPos(level.getRandom().nextInt(15), level.getRandom().nextInt(15), level.getRandom().nextInt(15));
+
+                if(p.parent.pocketsByBlock != null &&
+                        p.parent.pocketsByBlock[randPos.getX() * 16 * 16 + randPos.getY() * 16 + randPos.getZ()] != p)
+                    continue;
+
+                randPos = randPos.offset(p.parent.parentChunk.getWorldPos(p.parent.yLevel));
+
+                BlockState state = level.getBlockState(randPos);
+                Vec3 rPos = new Vec3(randPos.getX() + 0.5, randPos.getY() + 0.5, randPos.getZ() + 0.5);
+
+                BlockHitResult trace = level.clip(new ClipContext(
+                        rPos, rPos.add(0, -6, 0), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, null
+                ));
+
+                if (state.isAir() && trace.getType() == HitResult.Type.BLOCK) {
+
+                    ClientboundSpawnRadioactiveDustParticlePacket packet = new ClientboundSpawnRadioactiveDustParticlePacket(
+                            rPos.x, rPos.y, rPos.z, 0, 0, 0
+                    );
+
+                    HbmPacketHandler.INSTANCE.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(p.parent.parentChunk.getWorldPos(p.parent.yLevel))), packet);
+                }
+            }
 
             // Count the number of connections to other pockets we have
             float count = 0;
@@ -454,7 +492,7 @@ public class HbmRadiationSystem {
             }
         } else {
 
-            RadPocket pocket = new RadPocket(subChunk, 0);
+            RadPocket pocket = new RadPocket(subChunk, 0/*, null*/);
 
             for(int x = 0; x < 16; x++) {
 
@@ -540,7 +578,7 @@ public class HbmRadiationSystem {
                                          RadPocket[] pocketsByBlock, int index) {
 
         // Create the new pocket we're going to use
-        RadPocket pocket = new RadPocket(subChunk, index);
+        RadPocket pocket = new RadPocket(subChunk, index/*, null*/);
 
 //        BlockPos chunkPos = new BlockPos(
 //                pocket.getSubChunkPos().getX() >> 4,
@@ -550,6 +588,9 @@ public class HbmRadiationSystem {
         //System.out.println("[Debug] Starting build of pocket of index " + index + " for chunk at " + chunkPos + ", at local position " + start);
 
         // Make sure stack is empty
+
+//        List<BlockPos> positions = new ArrayList<>();
+
         stack.clear();
         stack.add(start);
         // Flood fill
@@ -603,6 +644,11 @@ public class HbmRadiationSystem {
                     }
                     continue;
                 }
+//                else {
+//
+//                    if(block.defaultBlockState().isAir())
+//                        positions.add(pos);
+//                }
                 // Add the new position onto the stack, to be flood-fill checked later
                 if(!(block instanceof IRadResistantBlock && ((IRadResistantBlock) block).isRadResistant((ServerLevel) level, pos.offset(subChunkWorldPos)))) {
 
@@ -621,6 +667,8 @@ public class HbmRadiationSystem {
 //                ChunkStorageCompat.getIndexFromWorldY(pocket.getSubChunkPos().getY()),
 //                pocket.getSubChunkPos().getZ() >> 4);
         //System.out.println("[Debug] Finished build of pocket of index " + index + " for chunk at " + chunkPos + ", at local position " + start);
+
+//        pocket.blocks = positions.toArray(new BlockPos[0]);
 
         return pocket;
     }
@@ -856,14 +904,16 @@ public class HbmRadiationSystem {
         public final int index;           // 0..(pocketsInThisSubchunk−1)
         public float radiation = 0f;      // Current stored radiation value
         public float accumulatedRads = 0f;// Temporary accumulator for simultaneous spreading
+//        public BlockPos[] blocks;
 
         /** For each of the six directions, holds indices of connected pockets, or −1 if neighbor subchunk not loaded */
         @SuppressWarnings("unchecked")
         public final List<Integer>[] connectionIndices = new ArrayList[Direction.values().length];
 
-        public RadPocket(SubChunkRadiationStorage parent, int index) {
+        public RadPocket(SubChunkRadiationStorage parent, int index/*, @Nullable BlockPos[] blocks*/) {
             this.parent = parent;
             this.index = index;
+//            this.blocks = blocks;
             for (int i = 0; i < Direction.values().length; i++) {
                 connectionIndices[i] = new ArrayList<>(1);
             }
@@ -1006,7 +1056,7 @@ public class HbmRadiationSystem {
                         return pockets[0];
                     } else {
                         // if the first pocket isn't present either, create one
-                        p = new RadPocket(this, 0);
+                        p = new RadPocket(this, 0/*, null*/);
                         p.radiation = 0;
                         if(pockets == null || pockets.length == 0) {
 
@@ -1293,7 +1343,7 @@ public class HbmRadiationSystem {
                         for (int pi = 0; pi < pocketListNBT.size(); pi++) {
                             CompoundTag pTag = pocketListNBT.getCompound(pi);
                             int idx = pTag.getInt("index");
-                            RadPocket p = new RadPocket(sc, idx);
+                            RadPocket p = new RadPocket(sc, idx/*, null*/);
                             p.radiation = pTag.getFloat("radiation");
                             // Load connectionIndices
                             for (Direction d : Direction.values()) {
@@ -1582,10 +1632,10 @@ public class HbmRadiationSystem {
                     long mil = System.nanoTime();
 
                     // Every second, do a full system update, which will spread around radiation and all that
-                    updateRadiation();
 
                     for(ServerLevel level : e.getServer().getAllLevels()) {
 
+                        updateRadiation(level);
                         updateEntities(level);
                         if(level.random.nextInt(1000000) == 0)
                             GeigerCounterItem.jmp = true;

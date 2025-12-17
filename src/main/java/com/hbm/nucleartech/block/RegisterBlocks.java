@@ -124,7 +124,7 @@ public class RegisterBlocks {
             () -> new ArmorModificationTableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
     public static final RegistryObject<Block> DEAD_GRASS = registerHazardBlock(4.0f, "dead_grass",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK), 4.0f));
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK), 4.0f).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> BURNER_PRESS = BLOCKS.register("burner_press",
             () -> new BurnerPressBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
@@ -657,11 +657,11 @@ public class RegisterBlocks {
 
     public static final RegistryObject<Block> TRINITITE_ORE = registerHazardBlock(25.0f, "trinitite_ore",
             () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND), 25.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> RED_TRINITITE_ORE = registerHazardBlock(25.0f, "red_trinitite_ore",
             () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.RED_SAND), 25.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> TRINITITE_BLOCK = registerHazardBlock(25.0f*9, "trinitite_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK), 25.0f*9
@@ -673,111 +673,111 @@ public class RegisterBlocks {
 
     public static final RegistryObject<Block> CONTAMINATED_ICE = registerHazardBlock(20.0f, "contaminated_ice",
             () -> new ContaminatedIceBlock(BlockBehaviour.Properties.copy(Blocks.ICE).noOcclusion(), 20.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_DIRT = registerHazardBlock(1.0f, "contaminated_dirt",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.DIRT), 1.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_GRAVEL = registerHazardBlock(2.5f, "contaminated_gravel",
             () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.GRAVEL), 2.5f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_SANDSTONE = registerHazardBlock(2.5f, "contaminated_sandstone",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE), 2.5f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_RED_SANDSTONE = registerHazardBlock(2.5f, "contaminated_red_sandstone",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.RED_SANDSTONE), 2.5f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_SAND = registerHazardBlock(5.0f, "contaminated_sand",
             () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_RED_SAND = registerHazardBlock(5.0f, "contaminated_red_sand",
             () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.RED_SAND), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_SNOW_BLOCK = registerHazardBlock(10.0f, "contaminated_snow_block",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), 10.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_SNOW = registerHazardBlock(1.0f, "contaminated_snow",
             () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), 1.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_WHITE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_white_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_LIGHT_GRAY_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_light_gray_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_GRAY_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_gray_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_BLACK_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_black_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_BROWN_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_brown_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_RED_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_red_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_ORANGE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_orange_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_YELLOW_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_yellow_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_LIME_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_lime_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIME_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_GREEN_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_green_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_CYAN_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_cyan_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_LIGHT_BLUE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_light_blue_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_BLUE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_blue_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_PURPLE_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_purple_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_MAGENTA_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_magenta_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_PINK_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_pink_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PINK_TERRACOTTA), 5.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_MYCELIUM = registerHazardBlock(4.0f, "contaminated_mycelium",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MYCELIUM), 4.0f
-            ));
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_WATER = BLOCKS.register("contaminated_water",
             () -> new LiquidHazardBlock(RegisterFluids.CONTAMINATED_WATER,

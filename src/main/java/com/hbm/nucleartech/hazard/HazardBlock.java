@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.hazard;
 
 import com.hbm.nucleartech.Config;
+import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.modules.ItemHazardModule;
 import com.hbm.nucleartech.saveddata.RadiationSavedData;
@@ -79,7 +80,22 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
         switch(extEffect) {
             case RADFOG:
-                sPart(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), pRandom);
+
+                double ix = pPos.getX() + 0.5f + pRandom.nextDouble() * 3 - 1.5d;
+                double iy = pPos.getY() + 0.5f + pRandom.nextDouble() * 3 - 1.5d;
+                double iz = pPos.getZ() + 0.5f + pRandom.nextDouble() * 3 - 1.5d;
+
+                pLevel.addParticle(ParticleTypes.MYCELIUM, ix, iy, iz, 0.0, 0.0, 0.0);
+
+                for(int i = 0; i < 2; i++) {
+
+                    ix = pPos.getX() + pRandom.nextDouble();
+                    iy = pPos.getY() + 1f + (pRandom.nextDouble() * 0.1f);
+                    iz = pPos.getZ() + pRandom.nextDouble();
+
+                    pLevel.addParticle(ParticleTypes.MYCELIUM, ix, iy, iz, 0.0, 0.0, 0.0);
+                }
+                break;
             case SCHRAB:
                 break;
             case FLAMES:
