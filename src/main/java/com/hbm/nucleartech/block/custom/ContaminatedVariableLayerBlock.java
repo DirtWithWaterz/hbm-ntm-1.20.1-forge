@@ -7,28 +7,19 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class ContaminatedVariableLayerBlock extends HazardBlock {
@@ -101,11 +92,14 @@ public class ContaminatedVariableLayerBlock extends HazardBlock {
     }
 
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (pLevel.getBrightness(LightLayer.BLOCK, pPos) > 11) {
-            dropResources(pState, pLevel, pPos);
-            pLevel.removeBlock(pPos, false);
-        }
 
+        if(!pState.is(RegisterBlocks.CONTAMINATED_SNOW.get())) {
+
+            if (pLevel.getBrightness(LightLayer.BLOCK, pPos) > 11) {
+                dropResources(pState, pLevel, pPos);
+                pLevel.removeBlock(pPos, false);
+            }
+        }
     }
 
     public boolean canBeReplaced(BlockState pState, BlockPlaceContext pUseContext) {

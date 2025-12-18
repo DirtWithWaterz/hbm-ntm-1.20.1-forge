@@ -707,6 +707,14 @@ public class RegisterBlocks {
             () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), 1.0f
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
+    public static final RegistryObject<Block> FALLOUT_BLOCK = registerHazardBlock(100.0f, "fallout_block",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), 100.0f
+            ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
+
+    public static final RegistryObject<Block> FALLOUT = registerHazardBlock(20.0f, "fallout",
+            () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), 20.0f
+            ));
+
     public static final RegistryObject<Block> CONTAMINATED_TERRACOTTA = registerHazardBlock(5.0f, "contaminated_terracotta",
             () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
@@ -809,10 +817,10 @@ public class RegisterBlocks {
 
 //    ================================== lamp oil, rope, BOMB? You want it Link, I've got it. So long as YOU have enough rubies. ==================================================
 
-//    public static final RegistryObject<Block> LITTLE_BOY = registerBlock("little_boy",
-//            () -> new NukeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
-//                    .strength(6.0f, 3.0f)
-//            ));
+    public static final RegistryObject<Block> LITTLE_BOY = registerBlock("little_boy",
+            () -> new NukeBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .strength(6.0f, 3.0f)
+            ));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 

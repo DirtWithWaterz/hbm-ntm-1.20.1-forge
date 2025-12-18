@@ -389,6 +389,7 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterBlocks.CONTAMINATED_PINK_TERRACOTTA.get());
 
                         output.accept(RegisterBlocks.CONTAMINATED_MYCELIUM.get());
+                        output.accept(RegisterBlocks.FALLOUT.get());
                     })
                     .build());
 

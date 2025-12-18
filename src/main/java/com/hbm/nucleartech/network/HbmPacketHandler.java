@@ -70,5 +70,17 @@ public class HbmPacketHandler {
                 ClientboundSpawnRadioactiveDustParticlePacket::decode,
                 ClientboundSpawnRadioactiveDustParticlePacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundSpawnFalloutParticlePacket.class,
+                ClientboundSpawnFalloutParticlePacket::encode,
+                ClientboundSpawnFalloutParticlePacket::decode,
+                ClientboundSpawnFalloutParticlePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClientboundFalloutStatePacket.class,
+                ClientboundFalloutStatePacket::encode,
+                ClientboundFalloutStatePacket::decode,
+                ClientboundFalloutStatePacket::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }

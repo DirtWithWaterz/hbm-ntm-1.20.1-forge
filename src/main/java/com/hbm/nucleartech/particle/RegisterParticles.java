@@ -27,6 +27,9 @@ public class RegisterParticles {
     public static final RegistryObject<SimpleParticleType> CONTAMINATED_SPLASH_PARTICLE =
             PARTICLES.register("contaminated_splash_particle", () -> new SimpleParticleType(true));
 
+    public static final RegistryObject<SimpleParticleType> FALLOUT_PARTICLE =
+            PARTICLES.register("fallout_particle", () -> new SimpleParticleType(true));
+
     public static void register(IEventBus eventBus) {
 
         PARTICLES.register(eventBus);

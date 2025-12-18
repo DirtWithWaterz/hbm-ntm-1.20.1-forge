@@ -143,6 +143,20 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(RegisterBlocks.CONTAMINATED_MYCELIUM.get());
 
+        this.add(RegisterBlocks.FALLOUT_BLOCK.get(), LootTable.lootTable()
+                // pool for non-silk-touch behavior: drop snowballs equal to 4
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .when(HAS_SILK_TOUCH)
+                                .add(LootItem.lootTableItem(RegisterBlocks.FALLOUT_BLOCK.get())))
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .when(HAS_NO_SILK_TOUCH)
+                                .add(LootItem.lootTableItem(Items.SNOWBALL))
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(4)))));
+
         this.add(RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get(), LootTable.lootTable()
                 // pool for non-silk-touch behavior: drop snowballs equal to 4
                 .withPool(
@@ -269,13 +283,15 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.ARMOR_MODIFICATION_TABLE.get());
 
         this.dropSelf(RegisterBlocks.SHREDDER.get());
+
+        this.dropSelf(RegisterBlocks.LITTLE_BOY.get());
     }
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
 
         return RegisterBlocks.BLOCKS.getEntries().stream()
-                .filter(b -> b != RegisterBlocks.CONTAMINATED_SNOW)
+                .filter(b -> b != RegisterBlocks.CONTAMINATED_SNOW && b != RegisterBlocks.FALLOUT)
                 .map(RegistryObject::get)::iterator;
     }
 }

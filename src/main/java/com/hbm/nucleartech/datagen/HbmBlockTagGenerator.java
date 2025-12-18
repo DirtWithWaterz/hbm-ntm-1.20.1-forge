@@ -29,13 +29,16 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
                         RegisterBlocks.DEAD_GRASS.get(),
                         RegisterBlocks.CONTAMINATED_SNOW_BLOCK.get(),
                         RegisterBlocks.CONTAMINATED_SNOW.get(),
-                        RegisterBlocks.CONTAMINATED_GRAVEL.get()
+                        RegisterBlocks.CONTAMINATED_GRAVEL.get(),
+                        RegisterBlocks.FALLOUT.get(),
+                        RegisterBlocks.FALLOUT_BLOCK.get()
                 );
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(RegisterBlocks.TITANIUM_BLOCK.get(),
                         RegisterBlocks.SLAKED_SELLAFITE.get(),
                         RegisterBlocks.CONTAMINATED_SANDSTONE.get(),
+                        RegisterBlocks.LITTLE_BOY.get(),
                         RegisterBlocks.CONTAMINATED_RED_SANDSTONE.get(),
                         RegisterBlocks.CONTAMINATED_TERRACOTTA.get(),
                         RegisterBlocks.CONTAMINATED_WHITE_TERRACOTTA.get(),

@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "layers=1,variant=0": {
+      "model": "hbm:block/fallout_0_1"
+    },
+    "layers=1,variant=1": {
+      "model": "hbm:block/fallout_1_1"
+    },
+    "layers=1,variant=2": {
+      "model": "hbm:block/fallout_2_1"
+    },
+    "layers=1,variant=3": {
+      "model": "hbm:block/fallout_3_1"
+    },
+    "layers=1,variant=4": {
+      "model": "hbm:block/fallout_4_1"
+    },
+    "layers=1,variant=5": {
+      "model": "hbm:block/fallout_5_1"
+    },
+    "layers=1,variant=6": {
+      "model": "hbm:block/fallout_6_1"
+    },
+    "layers=1,variant=7": {
+      "model": "hbm:block/fallout_7_1"
+    },
+    "layers=2,variant=0": {
+      "model": "hbm:block/fallout_0_2"
+    },
+    "layers=2,variant=1": {
+      "model": "hbm:block/fallout_1_2"
+    },
+    "layers=2,variant=2": {
+      "model": "hbm:block/fallout_2_2"
+    },
+    "layers=2,variant=3": {
+      "model": "hbm:block/fallout_3_2"
+    },
+    "layers=2,variant=4": {
+      "model": "hbm:block/fallout_4_2"
+    },
+    "layers=2,variant=5": {
+      "model": "hbm:block/fallout_5_2"
+    },
+    "layers=2,variant=6": {
+      "model": "hbm:block/fallout_6_2"
+    },
+    "layers=2,variant=7": {
+      "model": "hbm:block/fallout_7_2"
+    },
+    "layers=3,variant=0": {
+      "model": "hbm:block/fallout_0_3"
+    },
+    "layers=3,variant=1": {
+      "model": "hbm:block/fallout_1_3"
+    },
+    "layers=3,variant=2": {
+      "model": "hbm:block/fallout_2_3"
+    },
+    "layers=3,variant=3": {
+      "model": "hbm:block/fallout_3_3"
+    },
+    "layers=3,variant=4": {
+      "model": "hbm:block/fallout_4_3"
+    },
+    "layers=3,variant=5": {
+      "model": "hbm:block/fallout_5_3"
+    },
+    "layers=3,variant=6": {
+      "model": "hbm:block/fallout_6_3"
+    },
+    "layers=3,variant=7": {
+      "model": "hbm:block/fallout_7_3"
+    },
+    "layers=4,variant=0": {
+      "model": "hbm:block/fallout_0_4"
+    },
+    "layers=4,variant=1": {
+      "model": "hbm:block/fallout_1_4"
+    },
+    "layers=4,variant=2": {
+      "model": "hbm:block/fallout_2_4"
+    },
+    "layers=4,variant=3": {
+      "model": "hbm:block/fallout_3_4"
+    },
+    "layers=4,variant=4": {
+      "model": "hbm:block/fallout_4_4"
+    },
+    "layers=4,variant=5": {
+      "model": "hbm:block/fallout_5_4"
+    },
+    "layers=4,variant=6": {
+      "model": "hbm:block/fallout_6_4"
+    },
+    "layers=4,variant=7": {
+      "model": "hbm:block/fallout_7_4"
+    },
+    "layers=5,variant=0": {
+      "model": "hbm:block/fallout_0_5"
+    },
+    "layers=5,variant=1": {
+      "model": "hbm:block/fallout_1_5"
+    },
+    "layers=5,variant=2": {
+      "model": "hbm:block/fallout_2_5"
+    },
+    "layers=5,variant=3": {
+      "model": "hbm:block/fallout_3_5"
+    },
+    "layers=5,variant=4": {
+      "model": "hbm:block/fallout_4_5"
+    },
+    "layers=5,variant=5": {
+      "model": "hbm:block/fallout_5_5"
+    },
+    "layers=5,variant=6": {
+      "model": "hbm:block/fallout_6_5"
+    },
+    "layers=5,variant=7": {
+      "model": "hbm:block/fallout_7_5"
+    },
+    "layers=6,variant=0": {
+      "model": "hbm:block/fallout_0_6"
+    },
+    "layers=6,variant=1": {
+      "model": "hbm:block/fallout_1_6"
+    },
+    "layers=6,variant=2": {
+      "model": "hbm:block/fallout_2_6"
+    },
+    "layers=6,variant=3": {
+      "model": "hbm:block/fallout_3_6"
+    },
+    "layers=6,variant=4": {
+      "model": "hbm:block/fallout_4_6"
+    },
+    "layers=6,variant=5": {
+      "model": "hbm:block/fallout_5_6"
+    },
+    "layers=6,variant=6": {
+      "model": "hbm:block/fallout_6_6"
+    },
+    "layers=6,variant=7": {
+      "model": "hbm:block/fallout_7_6"
+    },
+    "layers=7,variant=0": {
+      "model": "hbm:block/fallout_0_7"
+    },
+    "layers=7,variant=1": {
+      "model": "hbm:block/fallout_1_7"
+    },
+    "layers=7,variant=2": {
+      "model": "hbm:block/fallout_2_7"
+    },
+    "layers=7,variant=3": {
+      "model": "hbm:block/fallout_3_7"
+    },
+    "layers=7,variant=4": {
+      "model": "hbm:block/fallout_4_7"
+    },
+    "layers=7,variant=5": {
+      "model": "hbm:block/fallout_5_7"
+    },
+    "layers=7,variant=6": {
+      "model": "hbm:block/fallout_6_7"
+    },
+    "layers=7,variant=7": {
+      "model": "hbm:block/fallout_7_7"
+    },
+    "layers=8,variant=0": {
+      "model": "hbm:block/fallout_0_8"
+    },
+    "layers=8,variant=1": {
+      "model": "hbm:block/fallout_1_8"
+    },
+    "layers=8,variant=2": {
+      "model": "hbm:block/fallout_2_8"
+    },
+    "layers=8,variant=3": {
+      "model": "hbm:block/fallout_3_8"
+    },
+    "layers=8,variant=4": {
+      "model": "hbm:block/fallout_4_8"
+    },
+    "layers=8,variant=5": {
+      "model": "hbm:block/fallout_5_8"
+    },
+    "layers=8,variant=6": {
+      "model": "hbm:block/fallout_6_8"
+    },
+    "layers=8,variant=7": {
+      "model": "hbm:block/fallout_7_8"
+    }
+  }
+}

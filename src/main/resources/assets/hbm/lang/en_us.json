@@ -278,6 +278,10 @@
   "block.hbm.contaminated_pink_terracotta": "Contaminated Pink Terracotta",
   "block.hbm.contaminated_mycelium": "Contaminated Mycelium",
 
+  "block.hbm.fallout": "Fallout",
+  "block.hbm.fallout_block": "Fallout",
+  "block.hbm.little_boy": "Little Boy",
+
   "block.hbm.contaminated_water": "Contaminated Water",
   "item.hbm.contaminated_water_bucket": "Contaminated Water Bucket",
   "block.hbm.still_water": "Still Water",

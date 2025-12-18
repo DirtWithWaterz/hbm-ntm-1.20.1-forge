@@ -227,6 +227,11 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         variantCubeBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW_BLOCK, 8);
         variantLayerBlockWithItem(RegisterBlocks.CONTAMINATED_SNOW, 8, RegisterBlocks.CONTAMINATED_SNOW_BLOCK);
 
+        variantCubeBlockWithItem(RegisterBlocks.FALLOUT_BLOCK, 8);
+        variantLayerBlockWithItem(RegisterBlocks.FALLOUT, 8, RegisterBlocks.FALLOUT_BLOCK);
+
+        blockWithItem(RegisterBlocks.LITTLE_BOY);
+
         variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_SANDSTONE, 8, Blocks.SANDSTONE);
         variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_RED_SANDSTONE, 8, Blocks.RED_SANDSTONE);
     }
@@ -323,8 +328,8 @@ public class HbmBlockStateProvider extends BlockStateProvider {
 
             // snow_height2 .. snow_block
             models[i-1] = models()
-                    .withExistingParent(modelName, mcLoc(i < 8 ? "block/snow_height" + (i*2) : "block/snow_block"))
-                    .texture("texture",
+                    .withExistingParent(modelName, mcLoc(i < 8 ? "block/snow_height" + (i*2) : "block/cube_all"))
+                    .texture(i < 8 ? "texture" : "all",
                             modLoc("block/" + texName));
         }
 
@@ -335,8 +340,8 @@ public class HbmBlockStateProvider extends BlockStateProvider {
 
                 // snow_height2 .. snow_block
                 models[j+((variants-1)*i)+(i-1)] = models()
-                        .withExistingParent(modelName, mcLoc(j < 8 ? "block/snow_height" + (j*2) : "block/snow_block"))
-                        .texture("texture",
+                        .withExistingParent(modelName, mcLoc(j < 8 ? "block/snow_height" + (j*2) : "block/cube_all"))
+                        .texture(j < 8 ? "texture" : "all",
                                 modLoc("block/" + texName + "_" + (i - 1)));
             }
         }

@@ -52,5 +52,6 @@ public class ClientSetup {
         event.registerSpriteSet(RegisterParticles.NEUTRON_PARTICLE.get(), NeutronParticleProvider::new);
         event.registerSpriteSet(RegisterParticles.CONTAMINATED_BUBBLE_PARTICLE.get(), ContaminatedBubbleParticleProvider::new);
         event.registerSpriteSet(RegisterParticles.CONTAMINATED_SPLASH_PARTICLE.get(), ContaminatedSplashParticleProvider::new);
+        event.registerSpriteSet(RegisterParticles.FALLOUT_PARTICLE.get(), FalloutParticleProvider::new);
     }
 }

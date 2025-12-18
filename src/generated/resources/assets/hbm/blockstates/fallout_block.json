@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "variant=0": {
+      "model": "hbm:block/fallout_block"
+    },
+    "variant=1": {
+      "model": "hbm:block/fallout_block_0"
+    },
+    "variant=2": {
+      "model": "hbm:block/fallout_block_1"
+    },
+    "variant=3": {
+      "model": "hbm:block/fallout_block_2"
+    },
+    "variant=4": {
+      "model": "hbm:block/fallout_block_3"
+    },
+    "variant=5": {
+      "model": "hbm:block/fallout_block_4"
+    },
+    "variant=6": {
+      "model": "hbm:block/fallout_block_5"
+    },
+    "variant=7": {
+      "model": "hbm:block/fallout_block_6"
+    }
+  }
+}
