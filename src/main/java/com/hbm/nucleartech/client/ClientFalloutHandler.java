@@ -54,7 +54,7 @@ public class ClientFalloutHandler {
 //            AABB viewBox = new AABB(cam, cam).inflate(20, 10, 20).move(0, -cam.y + event.player.getY(), 0);
             RandomSource rand = level.random;
 
-            for (int i = 0; i < 150; i++) {  // Adjust density
+            for (int i = 0; i < 50 * currentIntensity; i++) {  // Adjust density
                 BlockPos pos = BlockPos.containing(cam.x + (rand.nextDouble() - 0.5) * 20,
                         cam.y + rand.nextDouble() * 10,
                         cam.z + (rand.nextDouble() - 0.5) * 20);

@@ -5,6 +5,7 @@ import com.hbm.nucleartech.network.HbmPacketHandler;
 import com.hbm.nucleartech.network.packet.ClientboundFalloutStatePacket;
 import com.hbm.nucleartech.util.ContaminationUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -25,6 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 import static com.hbm.nucleartech.block.custom.ContaminatedVariableLayerBlock.LAYERS;
+import static com.hbm.nucleartech.block.custom.ContaminatedVariableLayerBlock.VARIANT;
 
 @Mod.EventBusSubscriber(modid = "hbm", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class FalloutWeatherData extends SavedData {
@@ -33,6 +35,17 @@ public class FalloutWeatherData extends SavedData {
     private Map<Integer, WeatherDataInstance> instances = new HashMap<>();
 
     private int prevActiveCount = -1;  // Track changes for sync
+
+    public static int getVariant(float dist, float max_dist, ServerLevel level) {
+
+            if(dist >= max_dist)
+                return -1;
+            float step = max_dist / 7;
+
+            long result = 7 - Math.round(Math.floor(dist / step));
+
+            return (int)Mth.clamp(result + level.getRandom().nextInt(2), 0, 7);
+    }
 
     private static class WeatherDataInstance {
 
@@ -75,7 +88,7 @@ public class FalloutWeatherData extends SavedData {
 
                     if (!surface.is(RegisterBlocks.FALLOUT.get())) {
                         if(level.getBlockState(pos.above()).isAir())
-                            level.setBlock(pos, RegisterBlocks.FALLOUT.get().defaultBlockState(), 3);
+                            level.setBlock(pos, RegisterBlocks.FALLOUT.get().defaultBlockState().setValue(VARIANT, (int)getVariant((float)dist, radius, level)), 3);
                     }
                     else {
                         if(surface.getValue(LAYERS) < 8) {
@@ -85,7 +98,7 @@ public class FalloutWeatherData extends SavedData {
                             level.neighborChanged(pos.below(), newState.getBlock(), pos);  // Update below
                         }
                         else if(level.getBlockState(pos.above()).isAir() && level.getBlockState(pos.above().above()).isAir())
-                            level.setBlock(pos.above(), RegisterBlocks.FALLOUT.get().defaultBlockState(), 3);
+                            level.setBlock(pos.above(), RegisterBlocks.FALLOUT.get().defaultBlockState().setValue(VARIANT, (int)getVariant((float)dist, radius, level)), 3);
                     }
                 }
             }
