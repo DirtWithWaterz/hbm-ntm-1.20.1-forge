@@ -49,26 +49,19 @@ public class RegisterItems {
     public static final RegistryObject<Item> LEAD_PLATE = ITEMS.register("lead_plate",
             () -> new Item(new Item.Properties()));
     //=============================================WIRE========================================================
-    public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> GOLD_WIRE = ITEMS.register("gold_wire",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_WIRE = ITEMS.register("gold_wire", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ALUMINUM_WIRE = ITEMS.register("aluminum_wire",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ALUMINUM_WIRE = ITEMS.register("aluminum_wire", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> CARBON_WIRE = ITEMS.register("carbon_wire",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CARBON_WIRE = ITEMS.register("carbon_wire", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> TUNGSTEN_WIRE = ITEMS.register("tungsten_wire",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TUNGSTEN_WIRE = ITEMS.register("tungsten_wire", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> SCHRABIDIUM_WIRE = ITEMS.register("schrabidium_wire",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCHRABIDIUM_WIRE = ITEMS.register("schrabidium_wire", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> LEAD_WIRE = ITEMS.register("lead_wire",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LEAD_WIRE = ITEMS.register("lead_wire", () -> new Item(new Item.Properties()));
     //======================================MACHINE PARTS======================================================
 
     public static final RegistryObject<Item> MOTOR = ITEMS.register("motor",
