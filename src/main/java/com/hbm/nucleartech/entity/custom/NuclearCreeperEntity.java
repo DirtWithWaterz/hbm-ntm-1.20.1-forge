@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.entity.custom;
 
 import com.hbm.nucleartech.entity.ai.NuclearSwellGoal;
+import com.hbm.nucleartech.entity.effects.NukeTorexEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -263,27 +264,8 @@ public class NuclearCreeperEntity extends Monster implements PowerableMob {
             float f = this.isPowered() ? 2.0F : 1.0F;
             this.dead = true;
             this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);
+            NukeTorexEntity.statFac(this.level(), this.getX(), this.getY(), this.getZ(), 40);
             this.discard();
-            this.spawnLingeringCloud();
-        }
-
-    }
-
-    private void spawnLingeringCloud() {
-        Collection<MobEffectInstance> collection = this.getActiveEffects();
-        if (!collection.isEmpty()) {
-            AreaEffectCloud areaeffectcloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-            areaeffectcloud.setRadius(2.5F);
-            areaeffectcloud.setRadiusOnUse(-0.5F);
-            areaeffectcloud.setWaitTime(10);
-            areaeffectcloud.setDuration(areaeffectcloud.getDuration() / 2);
-            areaeffectcloud.setRadiusPerTick(-areaeffectcloud.getRadius() / (float)areaeffectcloud.getDuration());
-
-            for(MobEffectInstance mobeffectinstance : collection) {
-                areaeffectcloud.addEffect(new MobEffectInstance(mobeffectinstance));
-            }
-
-            this.level().addFreshEntity(areaeffectcloud);
         }
 
     }

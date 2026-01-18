@@ -1,6 +1,5 @@
 package com.hbm.nucleartech.client;
 
-import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.network.packet.ClientboundFalloutStatePacket;
 import com.hbm.nucleartech.particle.RegisterParticles;
 import com.mojang.blaze3d.shaders.FogShape;

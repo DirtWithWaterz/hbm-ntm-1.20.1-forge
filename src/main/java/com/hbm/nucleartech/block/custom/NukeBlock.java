@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.block.custom;
 
+import com.hbm.nucleartech.entity.effects.NukeTorexEntity;
 import com.hbm.nucleartech.handler.FalloutWeatherData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -22,10 +23,23 @@ public class NukeBlock extends Block {
 
         if(!pLevel.isClientSide()) {
 
-            FalloutWeatherData.get((ServerLevel)pLevel).startFallout((ServerLevel)pLevel, pPos, 100, 3);
+//            FalloutWeatherData.get((ServerLevel)pLevel).startFallout((ServerLevel)pLevel, pPos, 100, 3);
+
 //            System.err.println("[Debug] Starting Fallout");
         }
 
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+    }
+
+    @Override
+    public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos,
+                                Block pBlock, BlockPos fromPos, boolean isMoving) {
+
+        if (pLevel.isClientSide) return;
+
+        if (pLevel.hasNeighborSignal(pPos)){
+
+            NukeTorexEntity.statFac(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 100);
+        }
     }
 }
