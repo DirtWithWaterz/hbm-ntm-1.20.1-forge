@@ -95,9 +95,24 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
     compileOnly fg.deobf("maven.modrinth:mekanism:${mekanism_version}")
     runtimeOnly fg.deobf("maven.modrinth:mekanism:${mekanism_version}")
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+}
+
+mixin {
+    // MixinGradle Settings
+    add sourceSets.main, 'mixins.hbm.refmap.json'
+    config 'mixins.hbm.json'
+
+    debug.verbose = true
+    debug.export = true
+    dumpTargetOnFailure = true
+
+    disableTargetValidator = true
+    overwriteErrorLevel = 'error'
 }
 
 test {

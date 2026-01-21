@@ -99,14 +99,15 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	}
 
 	@Override
-	@OnlyIn(Dist.CLIENT)
 	public boolean shouldRenderAtSqrDistance(double distance) {
+
 		return true;
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
+//		System.out.println("[Debug] ticking");
 		if (!this.level().isClientSide) {
 			long time = this.level().getGameTime();
 			if (time < startTime || time - startTime > maxAge) {
@@ -577,8 +578,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		STANDARD,
 		RING,
 		CONDENSATION,
-		SHOCK,
-		STALK
+		SHOCK
 	}
 
 	public static void statFac(Level level, double x, double y, double z, float scale) {
