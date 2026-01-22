@@ -1,10 +1,13 @@
 package com.hbm.nucleartech.entity.effects;
 
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.UUID;
 
 import com.hbm.interfaces.IConstantRenderer;
 
 import com.hbm.nucleartech.entity.HbmEntities;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -27,6 +30,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
+
 import static com.hbm.nucleartech.entity.client.NukeTorexRenderer.FLARE_BASE_DURATION;
 import static com.hbm.nucleartech.entity.client.NukeTorexRenderer.FLASH_BASE_DURATION;
 
@@ -41,16 +46,11 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	public static final EntityDataAccessor<Float> SCALE = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.FLOAT);
 	public static final EntityDataAccessor<Byte> TYPE = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.BYTE);
 
-	public static final EntityDataSerializer<Double> DOUBLE = EntityDataSerializer.simple(FriendlyByteBuf::writeDouble, FriendlyByteBuf::readDouble);
+	public static final EntityDataAccessor<Optional<UUID>> UUID = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.OPTIONAL_UUID);
 
-	public static final EntityDataAccessor<Double> POS_X = SynchedEntityData.defineId(NukeTorexEntity.class, DOUBLE);
-	public static final EntityDataAccessor<Double> POS_Y = SynchedEntityData.defineId(NukeTorexEntity.class, DOUBLE);
-	public static final EntityDataAccessor<Double> POS_Z = SynchedEntityData.defineId(NukeTorexEntity.class, DOUBLE);
-
-	static {
-
-		EntityDataSerializers.registerSerializer(DOUBLE);
-	}
+	public static final EntityDataAccessor<String> POS_X = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.STRING);
+	public static final EntityDataAccessor<String> POS_Y = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.STRING);
+	public static final EntityDataAccessor<String> POS_Z = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.STRING);
 
 	public static final int firstCondenseHeight = 130;
 	public static final int secondCondenseHeight = 170;
@@ -96,9 +96,10 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	protected void defineSynchedData() {
 		this.entityData.define(SCALE, 1.0F);
 		this.entityData.define(TYPE, (byte) 0);
-		this.entityData.define(POS_X, 0d);
-		this.entityData.define(POS_Y, 0d);
-		this.entityData.define(POS_Z, 0d);
+		this.entityData.define(UUID, Optional.empty());
+		this.entityData.define(POS_X, "0");
+		this.entityData.define(POS_Y, "0");
+		this.entityData.define(POS_Z, "0");
 	}
 
 	@Override
@@ -109,13 +110,16 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		if (compound.contains("type")) {
 			this.entityData.set(TYPE, compound.getByte("type"));
 		}
+		if(compound.contains("uuid")) {
+			this.entityData.set(UUID, Optional.of(compound.getUUID("uuid")));
+		}
 		if(compound.contains("pos")) {
 			
 			CompoundTag posTag = compound.getCompound("pos");
 			
-			this.entityData.set(POS_X, posTag.getDouble("x"));
-			this.entityData.set(POS_Y, posTag.getDouble("y"));
-			this.entityData.set(POS_Z, posTag.getDouble("z"));
+			this.entityData.set(POS_X, String.valueOf(posTag.getDouble("x")));
+			this.entityData.set(POS_Y, String.valueOf(posTag.getDouble("y")));
+			this.entityData.set(POS_Z, String.valueOf(posTag.getDouble("z")));
 		}
 		if (compound.contains("time")) {
 			startTime = compound.getLong("time");
@@ -126,6 +130,8 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	public void addAdditionalSaveData(CompoundTag compound) {
 		compound.putFloat("scale", this.entityData.get(SCALE));
 		compound.putByte("type", this.entityData.get(TYPE));
+
+		compound.putUUID("uuid", this.getTorexUUID());
 		
 		CompoundTag posTag = new CompoundTag();
 		
@@ -153,7 +159,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			}
 			if(this.tickCount > ((float) this.getScale() * FLARE_BASE_DURATION)) {
 
-				Player player = level().getNearestPlayer(this, -1f);
+				Player player = level().getPlayerByUUID(this.getTorexUUID());
 				if(player != null) {
 
 					MinecraftServer server = level().getServer();
@@ -305,7 +311,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 	public Vec3 getPos() {
 
-		return new Vec3(this.entityData.get(POS_X), this.entityData.get(POS_Y), this.entityData.get(POS_Z));
+		return new Vec3(Double.parseDouble(this.entityData.get(POS_X)), Double.parseDouble(this.entityData.get(POS_Y)), Double.parseDouble(this.entityData.get(POS_Z)));
 	}
 
 	public byte getTorexType() {
@@ -643,29 +649,51 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	
 	private NukeTorexEntity setTorexPos(double x, double y, double z) {
 
-		this.entityData.set(POS_X, x);
-		this.entityData.set(POS_Y, y);
-		this.entityData.set(POS_Z, z);
+		this.entityData.set(POS_X, String.valueOf(x));
+		this.entityData.set(POS_Y, String.valueOf(y));
+		this.entityData.set(POS_Z, String.valueOf(z));
 		
 		return this;
 	}
 
+	private NukeTorexEntity setTorexUUID(UUID id) {
+
+		this.entityData.set(UUID, Optional.of(id));
+
+		return this;
+	}
+
+	@Nullable
+	public UUID getTorexUUID() {
+
+		return this.entityData.get(UUID).isPresent() ? this.entityData.get(UUID).get() : null;
+	}
+
 	public static void statFac(Level level, double x, double y, double z, float scale) {
-		NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexPos(x, y, z);
 
-		torex.setPos(x, y, z);
+		for(Player player : level.players()) {
 
-		torex.startTime = level.getGameTime();
-		level.addFreshEntity(torex);
+			NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexPos(x, y, z).setTorexUUID(player.getUUID());
+
+			torex.setPos(x, y, z);
+
+			torex.startTime = level.getGameTime();
+			level.addFreshEntity(torex);
+		}
+
 	}
 
 	public static void statFacBale(Level level, double x, double y, double z, float scale) {
-		NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexType(1).setTorexPos(x, y, z);
 
-		torex.setPos(x, y, z);
+		for(Player player : level.players()) {
 
-		torex.startTime = level.getGameTime();
-		level.addFreshEntity(torex);
+			NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexType(1).setTorexPos(x, y, z).setTorexUUID(player.getUUID());
+
+			torex.setPos(x, y, z);
+
+			torex.startTime = level.getGameTime();
+			level.addFreshEntity(torex);
+		}
 	}
 
 	// Override to set entity dimensions (replace with actual dimensions if needed)

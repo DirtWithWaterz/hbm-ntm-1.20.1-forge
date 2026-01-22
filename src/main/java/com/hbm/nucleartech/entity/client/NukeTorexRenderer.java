@@ -28,6 +28,7 @@ import org.joml.Matrix4f;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.UUID;
 
 import static com.hbm.nucleartech.damagesource.RegisterDamageSources.NUCLEAR_BLAST;
 import static com.hbm.nucleartech.entity.effects.NukeTorexEntity.shockSpeed;
@@ -49,6 +50,13 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
     @Override
     public void render(NukeTorexEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+
+        UUID uuid1 = entity.getTorexUUID();
+        Player player = Minecraft.getInstance().player;
+        UUID uuid2 = player != null ? player.getUUID() : null;
+
+        if (uuid1 == null || !uuid1.equals(uuid2))
+            return;
 
         doScreenShake(entity, partialTicks);
 
