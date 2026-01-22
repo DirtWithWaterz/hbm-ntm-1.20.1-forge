@@ -175,6 +175,17 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 				}
 			}
 		} else {
+
+			Player player = Minecraft.getInstance().player;
+			if(player != null) {
+
+				if (this.entityData.get(UUID).isPresent()) {
+
+					if(!this.entityData.get(UUID).get().equals(player.getUUID()))
+						return;
+				} else return;
+			} else return;
+
 			double s = this.getScale();
 			double cs = 1.5;
 			if (this.tickCount == 1) {
