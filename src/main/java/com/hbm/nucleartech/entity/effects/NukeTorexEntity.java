@@ -12,6 +12,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.players.PlayerList;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
@@ -25,6 +27,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import static com.hbm.nucleartech.entity.client.NukeTorexRenderer.FLARE_BASE_DURATION;
 import static com.hbm.nucleartech.entity.client.NukeTorexRenderer.FLASH_BASE_DURATION;
 
 //import static com.hbm.entity.logic.EntityNukeExplosionMK5.shockSpeed;
@@ -148,11 +151,22 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			if (time < startTime || time - startTime > maxAge) {
 				this.discard();
 			}
-			if(this.tickCount > ((float) this.getScale() * FLASH_BASE_DURATION) && this.tickCount % 20 == 0) {
+			if(this.tickCount > ((float) this.getScale() * FLARE_BASE_DURATION)) {
 
 				Player player = level().getNearestPlayer(this, -1f);
-				if(player != null)
-					this.setPos(player.position());
+				if(player != null) {
+
+					MinecraftServer server = level().getServer();
+					if(server != null) {
+
+						PlayerList playerList = server.getPlayerList();
+
+//						System.out.println("[Debug] Distance to player: " + this.distanceTo(player) + ", sim distance: "+ (playerList.getSimulationDistance() * 16) * 0.4f);
+
+						if(this.distanceTo(player) >= (playerList.getSimulationDistance() * 16) * 0.4f)
+							this.setPos(player.position());
+					}
+				}
 			}
 		} else {
 			double s = this.getScale();
