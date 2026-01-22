@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import com.hbm.interfaces.IConstantRenderer;
 
 import com.hbm.nucleartech.entity.HbmEntities;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
@@ -14,12 +17,15 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
+import static com.hbm.nucleartech.entity.client.NukeTorexRenderer.FLASH_BASE_DURATION;
 
 //import static com.hbm.entity.logic.EntityNukeExplosionMK5.shockSpeed;
 
@@ -31,6 +37,17 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 	public static final EntityDataAccessor<Float> SCALE = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.FLOAT);
 	public static final EntityDataAccessor<Byte> TYPE = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.BYTE);
+
+	public static final EntityDataSerializer<Double> DOUBLE = EntityDataSerializer.simple(FriendlyByteBuf::writeDouble, FriendlyByteBuf::readDouble);
+
+	public static final EntityDataAccessor<Double> POS_X = SynchedEntityData.defineId(NukeTorexEntity.class, DOUBLE);
+	public static final EntityDataAccessor<Double> POS_Y = SynchedEntityData.defineId(NukeTorexEntity.class, DOUBLE);
+	public static final EntityDataAccessor<Double> POS_Z = SynchedEntityData.defineId(NukeTorexEntity.class, DOUBLE);
+
+	static {
+
+		EntityDataSerializers.registerSerializer(DOUBLE);
+	}
 
 	public static final int firstCondenseHeight = 130;
 	public static final int secondCondenseHeight = 170;
@@ -76,6 +93,9 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	protected void defineSynchedData() {
 		this.entityData.define(SCALE, 1.0F);
 		this.entityData.define(TYPE, (byte) 0);
+		this.entityData.define(POS_X, 0d);
+		this.entityData.define(POS_Y, 0d);
+		this.entityData.define(POS_Z, 0d);
 	}
 
 	@Override
@@ -86,6 +106,14 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		if (compound.contains("type")) {
 			this.entityData.set(TYPE, compound.getByte("type"));
 		}
+		if(compound.contains("pos")) {
+			
+			CompoundTag posTag = compound.getCompound("pos");
+			
+			this.entityData.set(POS_X, posTag.getDouble("x"));
+			this.entityData.set(POS_Y, posTag.getDouble("y"));
+			this.entityData.set(POS_Z, posTag.getDouble("z"));
+		}
 		if (compound.contains("time")) {
 			startTime = compound.getLong("time");
 		}
@@ -95,6 +123,13 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	public void addAdditionalSaveData(CompoundTag compound) {
 		compound.putFloat("scale", this.entityData.get(SCALE));
 		compound.putByte("type", this.entityData.get(TYPE));
+		
+		CompoundTag posTag = new CompoundTag();
+		
+		posTag.putDouble("x", getPos().x);
+		posTag.putDouble("y", getPos().y);
+		posTag.putDouble("z", getPos().z);
+
 		compound.putLong("time", startTime);
 	}
 
@@ -113,6 +148,12 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			if (time < startTime || time - startTime > maxAge) {
 				this.discard();
 			}
+			if(this.tickCount > ((float) this.getScale() * FLASH_BASE_DURATION) && this.tickCount % 20 == 0) {
+
+				Player player = level().getNearestPlayer(this, -1f);
+				if(player != null)
+					this.setPos(player.position());
+			}
 		} else {
 			double s = this.getScale();
 			double cs = 1.5;
@@ -125,10 +166,10 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			}
 
 			if (lastSpawnY == -1) {
-				lastSpawnY = this.getY() - 3;
+				lastSpawnY = getPos().y - 3;
 			}
 
-			int spawnTarget = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(this.getX()), (int) Math.floor(this.getZ())) - 3; // Removed Math.max(...,1) to allow negative Y
+			int spawnTarget = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(getPos().x), (int) Math.floor(getPos().z)) - 3; // Removed Math.max(...,1) to allow negative Y
 			spawnTarget = Math.max(spawnTarget, this.level().getMinBuildHeight() + 1); // Clamp to world bottom +1 to avoid invalid Y
 			double moveSpeed = 0.5D;
 
@@ -146,8 +187,8 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 
 			for (int i = 0; i < toSpawn; i++) {
-				double x = this.getX() + this.random.nextGaussian() * range;
-				double z = this.getZ() + this.random.nextGaussian() * range;
+				double x = getPos().x + this.random.nextGaussian() * range;
+				double z = getPos().z + this.random.nextGaussian() * range;
 				Cloudlet cloud = new Cloudlet(x, lastSpawnY, z, (float) (this.random.nextDouble() * 2D * Math.PI), 0, lifetime);
 				cloud.setScale((float) (Math.sqrt(s) * 3 + this.tickCount * 0.0025 * s), (float) (Math.sqrt(s) * 3 + this.tickCount * 0.0025 * 6 * cs * s));
 				cloudlets.add(cloud);
@@ -167,8 +208,8 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 					Vec3 vec = new Vec3((this.tickCount + this.random.nextDouble() * 2 - 2) * shockSpeed, 0, 0);
 					float rot = (float) (Math.PI * 2 * this.random.nextDouble());
 					vec = vec.yRot(rot);
-					double shockY = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(vec.x + this.getX() + 1), (int) Math.floor(vec.z + this.getZ())) + 3;
-					Cloudlet cloud = new Cloudlet(vec.x + this.getX(), shockY, vec.z + this.getZ(), rot, 0, shockLife, TorexType.SHOCK);
+					double shockY = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(vec.x + getPos().x + 1), (int) Math.floor(vec.z + getPos().z)) + 3;
+					Cloudlet cloud = new Cloudlet(vec.x + getPos().x, shockY, vec.z + getPos().z, rot, 0, shockLife, TorexType.SHOCK);
 					cloud.setScale((float) s * 5F, (float) s * 2F).setMotion(1.0); // Remove clamp for immediate expansion
 					cloudlets.add(cloud);
 				}
@@ -178,7 +219,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			if (this.tickCount < 200) {
 				lifetime *= (int) s;
 				for (int i = 0; i < 2; i++) {
-					Cloudlet cloud = new Cloudlet(this.getX(), this.getY() + coreHeight, this.getZ(), (float) (this.random.nextDouble() * 2D * Math.PI), 0, lifetime, TorexType.RING);
+					Cloudlet cloud = new Cloudlet(getPos().x, getPos().y + coreHeight, getPos().z, (float) (this.random.nextDouble() * 2D * Math.PI), 0, lifetime, TorexType.RING);
 					cloud.setScale((float) (Math.sqrt(s) * cs + this.tickCount * 0.0015 * s), (float) (Math.sqrt(s) * cs + this.tickCount * 0.0015 * 6 * cs * s));
 					cloudlets.add(cloud);
 				}
@@ -211,15 +252,15 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	}
 
 	public void spawnCondensationClouds(double range, float humidity, int height, int count, int spreadAngle, double s, double cs) {
-		if (range > 0 && (this.getY() + range) > height) {
+		if (range > 0 && (getPos().y + range) > height) {
 
 			for (int i = 0; i < (int) (5 * humidity * count / (double) spreadAngle); i++) {
 				for (int j = 1; j < spreadAngle; j++) {
 					float angle = (float) (Math.PI * 2 * this.random.nextDouble());
 					Vec3 vec = new Vec3(0, range, 0);
-					vec = vec.zRot((float) Math.acos((height - this.getY()) / (range)) + (float) Math.toRadians(humidity * humidity * 90 * j * (0.1 * this.random.nextDouble() - 0.05)));
+					vec = vec.zRot((float) Math.acos((height - getPos().y) / (range)) + (float) Math.toRadians(humidity * humidity * 90 * j * (0.1 * this.random.nextDouble() - 0.05)));
 					vec = vec.yRot(angle);
-					Cloudlet cloud = new Cloudlet(this.getX() + vec.x, this.getY() + vec.y, this.getZ() + vec.z, angle, 0, (int) ((20 + range / 10) * (1 + this.random.nextDouble() * 0.1)), TorexType.CONDENSATION);
+					Cloudlet cloud = new Cloudlet(getPos().x + vec.x, getPos().y + vec.y, getPos().z + vec.z, angle, 0, (int) ((20 + range / 10) * (1 + this.random.nextDouble() * 0.1)), TorexType.CONDENSATION);
 					cloud.setScale(3F * (float) (cs * s), 4F * (float) (cs * s));
 					cloudlets.add(cloud);
 				}
@@ -246,6 +287,11 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 	public double getScale() {
 		return this.entityData.get(SCALE);
+	}
+
+	public Vec3 getPos() {
+
+		return new Vec3(this.entityData.get(POS_X), this.entityData.get(POS_Y), this.entityData.get(POS_Z));
 	}
 
 	public byte getTorexType() {
@@ -354,15 +400,15 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			this.prevPosY = this.posY;
 			this.prevPosZ = this.posZ;
 
-			Vec3 simPos = new Vec3(NukeTorexEntity.this.getX() - this.posX, 0, NukeTorexEntity.this.getZ() - this.posZ);
-			double simPosX = NukeTorexEntity.this.getX() + simPos.length();
-			double simPosZ = NukeTorexEntity.this.getZ() + 0D;
+			Vec3 simPos = new Vec3(getPos().x - this.posX, 0, getPos().z - this.posZ);
+			double simPosX = getPos().x + simPos.length();
+			double simPosZ = getPos().z + 0D;
 
 			if (this.type == TorexType.STANDARD) {
 				Vec3 convection = getConvectionMotion(simPosX, simPosZ);
 				Vec3 lift = getLiftMotion(simPosX, simPosZ);
 
-				double factor = Mth.clamp((this.posY - NukeTorexEntity.this.getY()) / NukeTorexEntity.this.coreHeight, 0, 1);
+				double factor = Mth.clamp((this.posY - getPos().y) / NukeTorexEntity.this.coreHeight, 0, 1);
 				this.motionX = convection.x * factor + lift.x * (1D - factor);
 				this.motionY = convection.y * factor + lift.y * (1D - factor);
 				this.motionZ = convection.z * factor + lift.z * (1D - factor);
@@ -393,14 +439,14 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		}
 
 		private Vec3 getCondensationMotion() {
-			Vec3 delta = new Vec3(posX - NukeTorexEntity.this.getX(), 0, posZ - NukeTorexEntity.this.getZ()).normalize();
+			Vec3 delta = new Vec3(posX - getPos().x, 0, posZ - getPos().z).normalize();
 			double speed = motionCondensationMult * NukeTorexEntity.this.getScale() * 0.125D;
 			delta = new Vec3(delta.x * speed, 0, delta.z * speed);
 			return delta;
 		}
 
 		private Vec3 getShockwaveMotion() {
-			Vec3 delta = new Vec3(posX - NukeTorexEntity.this.getX(), 0, posZ - NukeTorexEntity.this.getZ()).normalize();
+			Vec3 delta = new Vec3(posX - getPos().x, 0, posZ - getPos().z).normalize();
 			double speed = motionShockwaveMult * NukeTorexEntity.this.getScale() * 0.5D; // Increased from 0.25D for faster expansion
 			delta = new Vec3(delta.x * speed, 0, delta.z * speed);
 			return delta;
@@ -408,14 +454,14 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 		private Vec3 getRingMotion(double simPosX, double simPosZ) {
 
-			if (simPosX > NukeTorexEntity.this.getX() + torusWidth * 2)
+			if (simPosX > getPos().x + torusWidth * 2)
 				return Vec3.ZERO;
 
 			/* the position of the torus' outer ring center */
 			Vec3 torusPos = new Vec3(
-					(NukeTorexEntity.this.getX() + torusWidth),
-					(NukeTorexEntity.this.getY() + coreHeight * 0.5),
-					NukeTorexEntity.this.getZ());
+					(getPos().x + torusWidth),
+					(getPos().y + coreHeight * 0.5),
+					getPos().z);
 
 			/* the difference between the cloudlet and the torus' ring center */
 			Vec3 delta = new Vec3(torusPos.x - simPosX, torusPos.y - this.posY, torusPos.z - simPosZ);
@@ -452,14 +498,14 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		/* simulated on a 2D-plane along the X/Y axis */
 		private Vec3 getConvectionMotion(double simPosX, double simPosZ) {
 
-			if (simPosX > NukeTorexEntity.this.getX() + torusWidth * 2)
+			if (simPosX > getPos().x + torusWidth * 2)
 				return Vec3.ZERO;
 
 			/* the position of the torus' outer ring center */
 			Vec3 torusPos = new Vec3(
-					(NukeTorexEntity.this.getX() + torusWidth),
-					(NukeTorexEntity.this.getY() + coreHeight),
-					NukeTorexEntity.this.getZ());
+					(getPos().x + torusWidth),
+					(getPos().y + coreHeight),
+					getPos().z);
 
 			/* the difference between the cloudlet and the torus' ring center */
 			Vec3 delta = new Vec3(torusPos.x - simPosX, torusPos.y - this.posY, torusPos.z - simPosZ);
@@ -494,9 +540,9 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		}
 
 		private Vec3 getLiftMotion(double simPosX, double simPosZ) {
-			double scale = Mth.clamp(1D - (simPosX - (NukeTorexEntity.this.getX() + torusWidth)), 0, 1) * motionLiftMult;
+			double scale = Mth.clamp(1D - (simPosX - (getPos().x + torusWidth)), 0, 1) * motionLiftMult;
 
-			Vec3 motion = new Vec3(NukeTorexEntity.this.getX() - this.posX, (NukeTorexEntity.this.getY() + convectionHeight) - this.posY, NukeTorexEntity.this.getZ() - this.posZ);
+			Vec3 motion = new Vec3(getPos().x - this.posX, (getPos().y + convectionHeight) - this.posY, getPos().z - this.posZ);
 
 			motion = motion.normalize();
 			motion = new Vec3(motion.x * scale, motion.y * scale, motion.z * scale);
@@ -507,9 +553,9 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		private void updateColor() {
 			this.prevColor = this.color;
 
-			double exX = NukeTorexEntity.this.getX();
-			double exY = NukeTorexEntity.this.getY() + NukeTorexEntity.this.coreHeight;
-			double exZ = NukeTorexEntity.this.getZ();
+			double exX = getPos().x;
+			double exY = getPos().y + NukeTorexEntity.this.coreHeight;
+			double exZ = getPos().z;
 
 			double distX = exX - posX;
 			double distY = exY - posY;
@@ -580,17 +626,31 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		CONDENSATION,
 		SHOCK
 	}
+	
+	private NukeTorexEntity setTorexPos(double x, double y, double z) {
+
+		this.entityData.set(POS_X, x);
+		this.entityData.set(POS_Y, y);
+		this.entityData.set(POS_Z, z);
+		
+		return this;
+	}
 
 	public static void statFac(Level level, double x, double y, double z, float scale) {
-		NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F));
+		NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexPos(x, y, z);
+
 		torex.setPos(x, y, z);
+
 		torex.startTime = level.getGameTime();
 		level.addFreshEntity(torex);
 	}
 
 	public static void statFacBale(Level level, double x, double y, double z, float scale) {
-		NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexType(1);
+		NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexType(1).setTorexPos(x, y, z);
+
 		torex.setPos(x, y, z);
+
+		torex.startTime = level.getGameTime();
 		level.addFreshEntity(torex);
 	}
 

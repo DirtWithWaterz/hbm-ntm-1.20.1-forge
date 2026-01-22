@@ -401,6 +401,8 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.BURNER_PRESS.get());
                         output.accept(RegisterItems.SHREDDER.get());
                         output.accept(RegisterItems.ARMOR_MODIFICATION_TABLE.get());
+
+                        output.accept(RegisterItems.LITTLE_BOY.get());
                     })
                     .build());
 

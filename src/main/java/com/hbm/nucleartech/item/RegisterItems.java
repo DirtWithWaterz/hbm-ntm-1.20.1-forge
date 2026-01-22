@@ -492,6 +492,11 @@ public class RegisterItems {
     public static final RegistryObject<Item> GRAPHITE_BLOCK = ITEMS.register("graphite_block",
             () -> new GraphiteBlockItem(RegisterBlocks.GRAPHITE_BLOCK.get(), new Item.Properties()));
 
+    //    ====================================== BOMBS =======================================
+
+    public static final RegistryObject<Item> LITTLE_BOY = ITEMS.register("little_boy",
+            () -> new LittleBoyItem(RegisterBlocks.LITTLE_BOY.get(), new Item.Properties()));
+
     //    ====================================== stamps ======================================
 
     public static final RegistryObject<Item> STONE_PLATE_STAMP = ITEMS.register("stone_plate_stamp",

@@ -39,8 +39,8 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
     private static final ResourceLocation CLOUD_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/particle/contrail.png");
     private static final ResourceLocation FLARE_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/particle/flare.png");
 
-    private static final int FLASH_BASE_DURATION = 30;
-    private static final int FLARE_BASE_DURATION = 100;
+    public static final int FLASH_BASE_DURATION = 30;
+    public static final int FLARE_BASE_DURATION = 100;
 
     public NukeTorexRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -123,7 +123,7 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
         double shockwaveDistance = dist - entity.tickCount * shockSpeed;
         if (shockwaveDistance > shockSpeed * 2 || shockwaveDistance < 0) return;
         float amplitude = (float) entity.getScale() * 100;
-        entity.level().playSound(player, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.LIGHTNING_BOLT_THUNDER, net.minecraft.sounds.SoundSource.AMBIENT, amplitude, 0.8F + entity.level().random.nextFloat() * 0.2F);
+        entity.level().playSound(player, entity.getPos().x, entity.getPos().y, entity.getPos().z, SoundEvents.LIGHTNING_BOLT_THUNDER, net.minecraft.sounds.SoundSource.AMBIENT, amplitude, 0.8F + entity.level().random.nextFloat() * 0.2F);
         int duration = (int) (40 * Math.min(1.5, (amplitude * amplitude) / (dist * dist)));
         if (duration < 15) return;
         int swingTimer = duration << 1;

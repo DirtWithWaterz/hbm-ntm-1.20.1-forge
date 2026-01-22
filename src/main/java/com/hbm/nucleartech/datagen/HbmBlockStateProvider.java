@@ -230,8 +230,6 @@ public class HbmBlockStateProvider extends BlockStateProvider {
         variantCubeBlockWithItem(RegisterBlocks.FALLOUT_BLOCK, 8);
         variantLayerBlockWithItem(RegisterBlocks.FALLOUT, 8, RegisterBlocks.FALLOUT_BLOCK);
 
-        blockWithItem(RegisterBlocks.LITTLE_BOY);
-
         variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_SANDSTONE, 8, Blocks.SANDSTONE);
         variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_RED_SANDSTONE, 8, Blocks.RED_SANDSTONE);
     }

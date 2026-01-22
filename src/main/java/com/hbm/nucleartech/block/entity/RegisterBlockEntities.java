@@ -33,6 +33,11 @@ public class RegisterBlockEntities {
                     BlockEntityType.Builder.of(ArmorModificationTableEntity::new,
                             RegisterBlocks.ARMOR_MODIFICATION_TABLE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<LittleBoyEntity>> LITTLE_BOY_ENTITY =
+            BLOCK_ENTITIES.register("little_boy_entity", () ->
+                    BlockEntityType.Builder.of(LittleBoyEntity::new,
+                            RegisterBlocks.LITTLE_BOY.get()).build(null));
+
     public static void register(IEventBus eventBus) {
 
         BLOCK_ENTITIES.register(eventBus);

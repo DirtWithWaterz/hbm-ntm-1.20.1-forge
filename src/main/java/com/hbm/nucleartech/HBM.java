@@ -3,10 +3,7 @@ package com.hbm.nucleartech;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.block.custom.ArmorModificationTableBlock;
 import com.hbm.nucleartech.block.entity.RegisterBlockEntities;
-import com.hbm.nucleartech.block.entity.client.ArmorModificationTableRenderer;
-import com.hbm.nucleartech.block.entity.client.BurnerPressRenderer;
-import com.hbm.nucleartech.block.entity.client.GraphiteBlockRenderer;
-import com.hbm.nucleartech.block.entity.client.ShredderRenderer;
+import com.hbm.nucleartech.block.entity.client.*;
 import com.hbm.nucleartech.entity.HbmEntities;
 import com.hbm.nucleartech.entity.client.NuclearCreeperRenderer;
 import com.hbm.nucleartech.fluid.RegisterFluids;
@@ -173,6 +170,7 @@ public class HBM
             BlockEntityRenderers.register(RegisterBlockEntities.SHREDDER_ENTITY.get(), ShredderRenderer::new);
             BlockEntityRenderers.register(RegisterBlockEntities.GRAPHITE_BLOCK_ENTITY.get(), GraphiteBlockRenderer::new);
             BlockEntityRenderers.register(RegisterBlockEntities.ARMOR_MODIFICATION_TABLE_ENTITY.get(), ArmorModificationTableRenderer::new);
+            BlockEntityRenderers.register(RegisterBlockEntities.LITTLE_BOY_ENTITY.get(), LittleBoyRenderer::new);
 
             MenuScreens.register(RegisterMenuTypes.BURNER_PRESS_MENU.get(), BurnerPressScreen::new);
             MenuScreens.register(RegisterMenuTypes.SHREDDER_MENU.get(), ShredderScreen::new);
