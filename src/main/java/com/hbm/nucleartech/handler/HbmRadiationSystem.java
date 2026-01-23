@@ -1421,7 +1421,7 @@ public class HbmRadiationSystem {
 
 //        private static final Set<LevelChunk> chunksWithRebuildRequests = Collections.synchronizedSet(new HashSet<>());
 
-        private static final ResourceLocation RADIATION_CAP_KEY = ResourceLocation.fromNamespaceAndPath("hbm", "chunk_radiation");
+        private static final ResourceLocation RADIATION_CAP_KEY = new ResourceLocation("hbm", "chunk_radiation");
 
         @SubscribeEvent
         public static void attachChunkRadiation(AttachCapabilitiesEvent<LevelChunk> event) {
@@ -1613,7 +1613,7 @@ public class HbmRadiationSystem {
 
         static {
             for (int i = 0; i < FRAME_COUNT; i++) {
-                FRAMES[i] = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/gui/jmpscr/frame_" + String.format("%02d", i) + ".png");
+                FRAMES[i] = new ResourceLocation(HBM.MOD_ID, "textures/gui/jmpscr/frame_" + String.format("%02d", i) + ".png");
             }
         }
 

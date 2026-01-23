@@ -37,10 +37,10 @@ import static com.hbm.nucleartech.entity.effects.NukeTorexEntity.shockSpeed;
 @OnlyIn(Dist.CLIENT)
 public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
 
-    private static final ResourceLocation CLOUD_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/particle/contrail.png");
-    private static final ResourceLocation FLARE_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/particle/flare.png");
+    private static final ResourceLocation CLOUD_TEXTURE = new ResourceLocation(HBM.MOD_ID, "textures/particle/contrail.png");
+    private static final ResourceLocation FLARE_TEXTURE = new ResourceLocation(HBM.MOD_ID, "textures/particle/flare.png");
 
-    public static final int FLASH_BASE_DURATION = 30;
+    public static final int FLASH_BASE_DURATION = 45;
     public static final int FLARE_BASE_DURATION = 100;
 
     public NukeTorexRenderer(EntityRendererProvider.Context context) {
@@ -73,6 +73,13 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
         ArrayList<Cloudlet> sortedCloudlets = new ArrayList<>(entity.cloudlets);
         sortedCloudlets.sort(cloudSorter);
 
+        // Get the torex position
+        Vec3 torexPos = entity.getPos();
+
+        // Translate the pose stack to render relative to the entity's current position but using torex coordinates
+        poseStack.pushPose();
+        poseStack.translate(torexPos.x - entity.getX(), torexPos.y - entity.getY(), torexPos.z - entity.getZ());
+
         for (Cloudlet cloudlet : sortedCloudlets) {
             if (cloudlet.isDead) continue;
 
@@ -85,7 +92,7 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
             float scale = cloudlet.getScale();
 
             poseStack.pushPose();
-            poseStack.translate(pos.x - entity.getX(), pos.y - entity.getY(), pos.z - entity.getZ());
+            poseStack.translate(pos.x - torexPos.x, pos.y - torexPos.y, pos.z - torexPos.z);
             poseStack.mulPose(this.entityRenderDispatcher.camera.rotation());
 
             Matrix4f matrix = poseStack.last().pose();
@@ -108,8 +115,10 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
 
         float flashDuration = (float) entity.getScale() * FLASH_BASE_DURATION;
         if (entity.tickCount < flashDuration + 1) {
-            renderFlash(entity, partialTicks, 200, buffer, poseStack);
+            renderFlash(entity, partialTicks, flashDuration, buffer, poseStack);
         }
+
+        poseStack.popPose(); // Restore after global translation
 
         RenderSystem.depthMask(true);
         RenderSystem.enableCull();
@@ -130,8 +139,9 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
         double dist = player.distanceTo(entity);
         double shockwaveDistance = dist - entity.tickCount * shockSpeed;
         if (shockwaveDistance > shockSpeed * 2 || shockwaveDistance < 0) return;
+        Player p = Minecraft.getInstance().player;
         float amplitude = (float) entity.getScale() * 100;
-        entity.level().playSound(player, entity.getPos().x, entity.getPos().y, entity.getPos().z, SoundEvents.LIGHTNING_BOLT_THUNDER, net.minecraft.sounds.SoundSource.AMBIENT, amplitude, 0.8F + entity.level().random.nextFloat() * 0.2F);
+        entity.level().playSound(p, entity.getPos().x, entity.getPos().y, entity.getPos().z, SoundEvents.LIGHTNING_BOLT_THUNDER, net.minecraft.sounds.SoundSource.AMBIENT, amplitude, 0.8F + entity.level().random.nextFloat() * 0.2F);
         int duration = (int) (40 * Math.min(1.5, (amplitude * amplitude) / (dist * dist)));
         if (duration < 15) return;
         int swingTimer = duration << 1;
@@ -196,7 +206,7 @@ public class NukeTorexRenderer extends EntityRenderer<NukeTorexEntity> {
             poseStack.mulPose(Axis.XP.rotationDegrees(random.nextFloat() * 360.0F));
             poseStack.mulPose(Axis.YP.rotationDegrees(random.nextFloat() * 360.0F));
 
-            float vert1 = (random.nextFloat() * 200.0f + 50.0f) * (float) (intensity * flashDuration / FLASH_BASE_DURATION);
+            float vert1 = (random.nextFloat() * 450.0f + 50.0f) * (float) (intensity * flashDuration / FLASH_BASE_DURATION);
             float vert2 = (random.nextFloat() * 2.0F + 1.0F + 1 * 2.0F) * (float) (intensity * flashDuration / FLASH_BASE_DURATION);
 
             Matrix4f matrix = poseStack.last().pose(); // Get matrix inside loop after rotations

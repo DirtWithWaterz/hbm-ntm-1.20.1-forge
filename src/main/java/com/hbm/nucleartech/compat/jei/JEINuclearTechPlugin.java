@@ -23,7 +23,7 @@ public class JEINuclearTechPlugin implements IModPlugin {
 
     @Override
     public ResourceLocation getPluginUid() {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "jei_plugin");
+        return new ResourceLocation(HBM.MOD_ID, "jei_plugin");
     }
 
     @Override

@@ -313,7 +313,7 @@ public class ArmorModificationTableEntity extends BlockEntity implements GeoBloc
                     if(metadata.length != 3)
                         continue;
 
-                    Item item = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+                    Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(metadata[0], metadata[1]));
 
                     ItemStack itemStack = item != null ? new ItemStack(item) : ItemStack.EMPTY;
 
@@ -477,7 +477,7 @@ public class ArmorModificationTableEntity extends BlockEntity implements GeoBloc
 //                        if(metadata.length != 3)
 //                            continue;
 //
-//                        Item item = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+//                        Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(metadata[0], metadata[1]));
 //
 //                        ItemStack itemStack = item != null ? new ItemStack(item) : ItemStack.EMPTY;
 //

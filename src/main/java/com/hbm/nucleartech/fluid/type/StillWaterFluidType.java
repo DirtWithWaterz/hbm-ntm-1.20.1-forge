@@ -39,8 +39,8 @@ public class StillWaterFluidType extends FluidType {
         consumer.accept(new IClientFluidTypeExtensions() {
 
             private static final ResourceLocation
-                    STILL_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "block/still_water_still"),
-                    FLOWING_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "block/still_water_flow");
+                    STILL_TEXTURE = new ResourceLocation(HBM.MOD_ID, "block/still_water_still"),
+                    FLOWING_TEXTURE = new ResourceLocation(HBM.MOD_ID, "block/still_water_flow");
 
             @Override
             public ResourceLocation getStillTexture() {
@@ -58,7 +58,7 @@ public class StillWaterFluidType extends FluidType {
             @Override
             public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
 
-                return ResourceLocation.fromNamespaceAndPath("minecraft", "textures/misc/underwater.png");
+                return new ResourceLocation("minecraft", "textures/misc/underwater.png");
             }
 
             @Override

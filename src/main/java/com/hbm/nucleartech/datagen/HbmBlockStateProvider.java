@@ -419,7 +419,7 @@ public class HbmBlockStateProvider extends BlockStateProvider {
     private void carpetWithItem(RegistryObject<Block> blockRegistryObject) {
         String name = blockRegistryObject.getId().getPath();
 
-        ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "block/" + name);
+        ResourceLocation texture = new ResourceLocation(HBM.MOD_ID, "block/" + name);
 
         // Create a carpet model that uses the 'wool' texture slot the vanilla parent expects
         ModelFile model = models()

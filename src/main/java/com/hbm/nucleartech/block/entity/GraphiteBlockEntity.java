@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.block.entity;
 
+import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.network.HbmPacketHandler;
@@ -367,14 +368,17 @@ public class GraphiteBlockEntity extends BlockEntity implements GeoBlockEntity {
             }
         }
 
-        Vec3 pos = new Vec3(worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5);
-        Vec3 vel = new Vec3(vec.xCoord, vec.yCoord, vec.zCoord);
+        if(this.getTick(this) % (20f/Config.neutronParticleSpawnSpeed) == 0) {
 
-        ClientboundSpawnNeutronParticlePacket packet = new ClientboundSpawnNeutronParticlePacket(
-                pos.xCoord, pos.yCoord, pos.zCoord, vel.xCoord, vel.yCoord, vel.zCoord
-        );
+            Vec3 pos = new Vec3(worldPosition.getX() + 0.5, worldPosition.getY() + 0.5, worldPosition.getZ() + 0.5);
+            Vec3 vel = new Vec3(vec.xCoord, vec.yCoord, vec.zCoord);
 
-        HbmPacketHandler.INSTANCE.send(PacketDistributor.TRACKING_CHUNK.with(() -> pLevel.getChunkAt(pos.toBlockPos())), packet);
+            ClientboundSpawnNeutronParticlePacket packet = new ClientboundSpawnNeutronParticlePacket(
+                    pos.xCoord, pos.yCoord, pos.zCoord, vel.xCoord, vel.yCoord, vel.zCoord
+            );
+
+            HbmPacketHandler.INSTANCE.send(PacketDistributor.TRACKING_CHUNK.with(() -> pLevel.getChunkAt(pos.toBlockPos())), packet);
+        }
     }
 
     public void receiveNeutrons(int n) {

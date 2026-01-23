@@ -13,17 +13,17 @@ public class ArmorModificationTableItemModel extends GeoModel<ArmorModificationT
 
     @Override
     public ResourceLocation getModelResource(ArmorModificationTableItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "geo/item/armor_modification_table.geo.json");
+        return new ResourceLocation(HBM.MOD_ID, "geo/item/armor_modification_table.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(ArmorModificationTableItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/block/armor_modification_table.png");
+        return new ResourceLocation(HBM.MOD_ID, "textures/block/armor_modification_table.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(ArmorModificationTableItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "animations/item/armor_modification_table.animation.json");
+        return new ResourceLocation(HBM.MOD_ID, "animations/item/armor_modification_table.animation.json");
     }
     @Override
     public void setCustomAnimations(ArmorModificationTableItem animatable, long instanceId, AnimationState<ArmorModificationTableItem> animationState) {

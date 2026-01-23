@@ -44,6 +44,10 @@ public class Config
             .comment("How many times hazard blocks are ticked per second (1-20). Yes this may be what's causing your lag-")
             .defineInRange("hazardBlockTickSpeed", 20, 1, 20);
 
+    private static final ForgeConfigSpec.IntValue NEUTRON_PARTICLE_SPAWN_SPEED = BUILDER
+            .comment("How many neutron particles are produced per second from blocks like graphite used in the chicago pile (1-20).")
+            .defineInRange("neutronParticleSpawnSpeed", 20, 1, 20);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean logDirtBlock;
@@ -52,6 +56,7 @@ public class Config
     public static Set<Item> items;
     public static int concurrentChunkThreads;
     public static int hazardBlockTickSpeed;
+    public static int neutronParticleSpawnSpeed;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -72,6 +77,8 @@ public class Config
             : Math.max(1, availableProcessors / 2);
 
         hazardBlockTickSpeed = HAZARD_BLOCK_TICK_SPEED.get();
+
+        neutronParticleSpawnSpeed = NEUTRON_PARTICLE_SPAWN_SPEED.get();
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()

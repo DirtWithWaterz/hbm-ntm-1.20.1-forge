@@ -17,7 +17,7 @@ import java.util.Objects;
 public class ArmorModificationTableScreen extends AbstractContainerScreen<ArmorModificationTableMenu> {
 
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/gui/armor_modification_table_gui.png");
+            new ResourceLocation(HBM.MOD_ID, "textures/gui/armor_modification_table_gui.png");
 
     public ArmorModificationTableScreen(ArmorModificationTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);

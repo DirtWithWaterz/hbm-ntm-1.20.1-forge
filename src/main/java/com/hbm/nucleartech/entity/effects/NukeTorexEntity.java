@@ -6,13 +6,11 @@ import java.util.UUID;
 
 import com.hbm.interfaces.IConstantRenderer;
 
+import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.entity.HbmEntities;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializer;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.MinecraftServer;
@@ -23,17 +21,16 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
-
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
 import static com.hbm.nucleartech.entity.client.NukeTorexRenderer.FLARE_BASE_DURATION;
-import static com.hbm.nucleartech.entity.client.NukeTorexRenderer.FLASH_BASE_DURATION;
 
 //import static com.hbm.entity.logic.EntityNukeExplosionMK5.shockSpeed;
 
@@ -157,129 +154,133 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			if (time < startTime || time - startTime > maxAge) {
 				this.discard();
 			}
-			if(this.tickCount > ((float) this.getScale() * FLARE_BASE_DURATION)) {
 
-				Player player = level().getPlayerByUUID(this.getTorexUUID());
-				if(player != null) {
+			Player player = level().getPlayerByUUID(this.getTorexUUID());
+			if(player != null) {
 
-					MinecraftServer server = level().getServer();
-					if(server != null) {
+				MinecraftServer server = level().getServer();
+				if(server != null) {
 
-						PlayerList playerList = server.getPlayerList();
+//					PlayerList playerList = server.getPlayerList();
 
 //						System.out.println("[Debug] Distance to player: " + this.distanceTo(player) + ", sim distance: "+ (playerList.getSimulationDistance() * 16) * 0.4f);
-
-						if(this.distanceTo(player) >= (playerList.getSimulationDistance() * 16) * 0.4f)
-							this.setPos(player.position());
-					}
+					Vec3 dir = getPos().subtract(player.getEyePosition()).normalize();
+//					if(this.distanceTo(player) >= (playerList.getSimulationDistance() * 16) * 0.1f)
+					this.setPos(player.getEyePosition().add(dir.multiply(8, 1, 8)));
 				}
 			}
 		} else {
 
-			Player player = Minecraft.getInstance().player;
-			if(player != null) {
+			clientTick();
+		}
+	}
 
-				if (this.entityData.get(UUID).isPresent()) {
+	@OnlyIn(Dist.CLIENT)
+	private void clientTick() {
 
-					if(!this.entityData.get(UUID).get().equals(player.getUUID()))
-						return;
-				} else return;
+		Player player = Minecraft.getInstance().player;
+		if(player != null) {
+
+			if (this.entityData.get(UUID).isPresent()) {
+
+				if(!this.entityData.get(UUID).get().equals(player.getUUID()))
+					return;
 			} else return;
+		} else return;
 
-			double s = this.getScale();
-			double cs = 1.5;
-			if (this.tickCount == 1) {
-				this.setScale((float) s);
-			}
+		double s = this.getScale();
+		double cs = 1.5;
+		if (this.tickCount == 1) {
+			this.setScale((float) s);
+		}
 
-			if (humidity == -1) {
-				humidity = this.level().getBiome(this.blockPosition()).value().getModifiedClimateSettings().downfall();
-			}
+		if (humidity == -1) {
+			humidity = this.level().getBiome(this.blockPosition()).value().getModifiedClimateSettings().downfall();
+		}
 
-			if (lastSpawnY == -1) {
-				lastSpawnY = getPos().y - 3;
-			}
+		if (lastSpawnY == -1) {
+			lastSpawnY = getPos().y - 3;
+		}
 
-			int spawnTarget = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(getPos().x), (int) Math.floor(getPos().z)) - 3; // Removed Math.max(...,1) to allow negative Y
-			spawnTarget = Math.max(spawnTarget, this.level().getMinBuildHeight() + 1); // Clamp to world bottom +1 to avoid invalid Y
-			double moveSpeed = 0.5D;
+		int spawnTarget = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(getPos().x), (int) Math.floor(getPos().z)) - 3; // Removed Math.max(...,1) to allow negative Y
+		spawnTarget = Math.max(spawnTarget, this.level().getMinBuildHeight() + 1); // Clamp to world bottom +1 to avoid invalid Y
+		double moveSpeed = 0.5D;
 
-			if (Math.abs(spawnTarget - lastSpawnY) < moveSpeed) {
-				lastSpawnY = spawnTarget;
-			} else {
-				lastSpawnY += moveSpeed * Math.signum(spawnTarget - lastSpawnY);
-			}
+		if (Math.abs(spawnTarget - lastSpawnY) < moveSpeed) {
+			lastSpawnY = spawnTarget;
+		} else {
+			lastSpawnY += moveSpeed * Math.signum(spawnTarget - lastSpawnY);
+		}
 
-			// spawn mush clouds
-			double range = (torusWidth - rollerSize) * 0.5;
-			double simSpeed = getSimulationSpeed();
-			int lifetime = Math.min((this.tickCount * this.tickCount) + 600, maxAge - this.tickCount + 200);
-			int toSpawn = (int) (0.6 * Math.min(Math.max(0, maxCloudlets - cloudlets.size()), Math.ceil(10 * simSpeed * simSpeed * Math.min(1, 1200 / (double) lifetime))));
+		// spawn mush clouds
+		double range = (torusWidth - rollerSize) * 0.5;
+		double simSpeed = getSimulationSpeed();
+		int lifetime = Math.min((this.tickCount * this.tickCount) + 600, maxAge - this.tickCount + 200);
+		int toSpawn = (int) (0.6 * Math.min(Math.max(0, maxCloudlets - cloudlets.size()), Math.ceil(10 * simSpeed * simSpeed * Math.min(1, 1200 / (double) lifetime))));
 
 
-			for (int i = 0; i < toSpawn; i++) {
-				double x = getPos().x + this.random.nextGaussian() * range;
-				double z = getPos().z + this.random.nextGaussian() * range;
-				Cloudlet cloud = new Cloudlet(x, lastSpawnY, z, (float) (this.random.nextDouble() * 2D * Math.PI), 0, lifetime);
-				cloud.setScale((float) (Math.sqrt(s) * 3 + this.tickCount * 0.0025 * s), (float) (Math.sqrt(s) * 3 + this.tickCount * 0.0025 * 6 * cs * s));
+		for (int i = 0; i < toSpawn; i++) {
+			double x = getPos().x + this.random.nextGaussian() * range;
+			double z = getPos().z + this.random.nextGaussian() * range;
+			Cloudlet cloud = new Cloudlet(x, lastSpawnY, z, (float) (this.random.nextDouble() * 2D * Math.PI), 0, lifetime);
+			cloud.setScale((float) (Math.sqrt(s) * 3 + this.tickCount * 0.0025 * s), (float) (Math.sqrt(s) * 3 + this.tickCount * 0.0025 * 6 * cs * s));
+			cloudlets.add(cloud);
+		}
+
+		if (this.tickCount < 120 * s) {
+			this.level().setSkyFlashTime(2);
+		}
+
+		// spawn shock clouds
+		if (this.tickCount * shockSpeed < 200) {
+
+			int cloudCount = (int) Math.min(this.tickCount * shockSpeed, 100);
+			int shockLife = (int) Math.max(s * 300 - this.tickCount * shockSpeed * 10, 60);
+
+			for (int i = 0; i < cloudCount; i++) {
+				Vec3 vec = new Vec3((this.tickCount + this.random.nextDouble() * 2 - 2) * shockSpeed, 0, 0);
+				float rot = (float) (Math.PI * 2 * this.random.nextDouble());
+				vec = vec.yRot(rot);
+				double shockY = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(vec.x + getPos().x + 1), (int) Math.floor(vec.z + getPos().z)) + 3;
+				Cloudlet cloud = new Cloudlet(vec.x + getPos().x, shockY, vec.z + getPos().z, rot, 0, shockLife, TorexType.SHOCK);
+				cloud.setScale((float) s * 5F, (float) s * 2F).setMotion(1.0); // Remove clamp for immediate expansion
 				cloudlets.add(cloud);
 			}
+		}
 
-			if (this.tickCount < 120 * s) {
-				this.level().setSkyFlashTime(2);
+		// spawn ring clouds
+		if (this.tickCount < 200) {
+			lifetime *= (int) s;
+			for (int i = 0; i < 2; i++) {
+				Cloudlet cloud = new Cloudlet(getPos().x, getPos().y + coreHeight, getPos().z, (float) (this.random.nextDouble() * 2D * Math.PI), 0, lifetime, TorexType.RING);
+				cloud.setScale((float) (Math.sqrt(s) * cs + this.tickCount * 0.0015 * s), (float) (Math.sqrt(s) * cs + this.tickCount * 0.0015 * 6 * cs * s));
+				cloudlets.add(cloud);
 			}
+		}
 
-			// spawn shock clouds
-			if (this.tickCount * shockSpeed < 200) {
+		if (this.humidity > 0 && this.tickCount * shockSpeed < 180) {
+			// spawn lower condensation clouds
+			spawnCondensationClouds(this.tickCount * shockSpeed - 8, this.humidity, firstCondenseHeight, 80, 4, s, cs);
 
-				int cloudCount = (int) Math.min(this.tickCount * shockSpeed, 100);
-				int shockLife = (int) Math.max(s * 300 - this.tickCount * shockSpeed * 10, 60);
-
-				for (int i = 0; i < cloudCount; i++) {
-					Vec3 vec = new Vec3((this.tickCount + this.random.nextDouble() * 2 - 2) * shockSpeed, 0, 0);
-					float rot = (float) (Math.PI * 2 * this.random.nextDouble());
-					vec = vec.yRot(rot);
-					double shockY = this.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int) Math.floor(vec.x + getPos().x + 1), (int) Math.floor(vec.z + getPos().z)) + 3;
-					Cloudlet cloud = new Cloudlet(vec.x + getPos().x, shockY, vec.z + getPos().z, rot, 0, shockLife, TorexType.SHOCK);
-					cloud.setScale((float) s * 5F, (float) s * 2F).setMotion(1.0); // Remove clamp for immediate expansion
-					cloudlets.add(cloud);
-				}
-			}
-
-			// spawn ring clouds
-			if (this.tickCount < 200) {
-				lifetime *= (int) s;
-				for (int i = 0; i < 2; i++) {
-					Cloudlet cloud = new Cloudlet(getPos().x, getPos().y + coreHeight, getPos().z, (float) (this.random.nextDouble() * 2D * Math.PI), 0, lifetime, TorexType.RING);
-					cloud.setScale((float) (Math.sqrt(s) * cs + this.tickCount * 0.0015 * s), (float) (Math.sqrt(s) * cs + this.tickCount * 0.0015 * 6 * cs * s));
-					cloudlets.add(cloud);
-				}
-			}
-
-			if (this.humidity > 0 && this.tickCount * shockSpeed < 180) {
-				// spawn lower condensation clouds
-				spawnCondensationClouds(this.tickCount * shockSpeed - 8, this.humidity, firstCondenseHeight, 80, 4, s, cs);
-
-				// spawn upper condensation clouds
-				spawnCondensationClouds(this.tickCount * shockSpeed - 8, this.humidity, secondCondenseHeight, 80, 2, s, cs);
-			}
+			// spawn upper condensation clouds
+			spawnCondensationClouds(this.tickCount * shockSpeed - 8, this.humidity, secondCondenseHeight, 80, 2, s, cs);
+		}
 
 
 
-			cloudlets.removeIf(x -> x.isDead);
-			for (Cloudlet cloud : cloudlets) {
-				cloud.update();
-			}
+		cloudlets.removeIf(x -> x.isDead);
+		for (Cloudlet cloud : cloudlets) {
+			cloud.update();
+		}
 //        System.out.println(cloudlets.size());
 
-			coreHeight += 0.15/* * s*/;
-			torusWidth += 0.05/* * s*/;
-			rollerSize = torusWidth * 0.35;
-			convectionHeight = coreHeight + rollerSize;
+		coreHeight += 0.15/* * s*/;
+		torusWidth += 0.05/* * s*/;
+		rollerSize = torusWidth * 0.35;
+		convectionHeight = coreHeight + rollerSize;
 
-			int maxHeat = (int) (50 * s * s);
-			heat = maxHeat - Math.pow((double) (maxHeat * this.tickCount) / maxAge, 0.6);
-		}
+		int maxHeat = (int) (50 * s * s);
+		heat = maxHeat - Math.pow((double) (maxHeat * this.tickCount) / maxAge, 0.6);
 	}
 
 	public void spawnCondensationClouds(double range, float humidity, int height, int count, int spreadAngle, double s, double cs) {
@@ -686,7 +687,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 			NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexPos(x, y, z).setTorexUUID(player.getUUID());
 
-			torex.setPos(x, y, z);
+			torex.setPos(player.position());
 
 			torex.startTime = level.getGameTime();
 			level.addFreshEntity(torex);
@@ -700,7 +701,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 			NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexType(1).setTorexPos(x, y, z).setTorexUUID(player.getUUID());
 
-			torex.setPos(x, y, z);
+			torex.setPos(player.position());
 
 			torex.startTime = level.getGameTime();
 			level.addFreshEntity(torex);

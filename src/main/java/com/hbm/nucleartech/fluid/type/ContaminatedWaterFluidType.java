@@ -38,8 +38,8 @@ public class ContaminatedWaterFluidType extends FluidType {
         consumer.accept(new IClientFluidTypeExtensions() {
 
             private static final ResourceLocation
-                    STILL_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "block/contaminated_water_still"),
-                    FLOWING_TEXTURE = ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "block/contaminated_water_flow");
+                    STILL_TEXTURE = new ResourceLocation(HBM.MOD_ID, "block/contaminated_water_still"),
+                    FLOWING_TEXTURE = new ResourceLocation(HBM.MOD_ID, "block/contaminated_water_flow");
 
             @Override
             public ResourceLocation getStillTexture() {
@@ -57,9 +57,9 @@ public class ContaminatedWaterFluidType extends FluidType {
             @Override
             public ResourceLocation getRenderOverlayTexture(Minecraft mc) {
                 // Location of texture used as the "underwater" overlay (use texture path not model)
-//                return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/misc/under_contaminated_water.png");
+//                return new ResourceLocation(HBM.MOD_ID, "textures/misc/under_contaminated_water.png");
 
-                return ResourceLocation.fromNamespaceAndPath("minecraft", "textures/misc/underwater.png");
+                return new ResourceLocation("minecraft", "textures/misc/underwater.png");
             }
 
             @Override

@@ -140,7 +140,7 @@ public final class InterceptUtil {
 
             if(metadata.length != 3) continue;
 
-            Item modder = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+            Item modder = ForgeRegistries.ITEMS.getValue(new ResourceLocation(metadata[0], metadata[1]));
 
             if(modder == null) continue;
 
@@ -166,7 +166,7 @@ public final class InterceptUtil {
 
             if(metadata.length != 3) continue;
 
-            Item modder = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+            Item modder = ForgeRegistries.ITEMS.getValue(new ResourceLocation(metadata[0], metadata[1]));
 
             if(modder == null) continue;
 

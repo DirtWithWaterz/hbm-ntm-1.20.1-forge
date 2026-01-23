@@ -48,7 +48,7 @@ public class NukeBlock extends BaseEntityBlock {
 
         if (pLevel.hasNeighborSignal(pPos)){
 
-            NukeTorexEntity.statFac(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 100);
+            NukeTorexEntity.statFac(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 1000);
         }
     }
 

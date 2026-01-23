@@ -236,6 +236,6 @@ public class HbmItemModelProvider extends ItemModelProvider {
 
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.tryParse("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "item/" + item.getId().getPath().replace("_full", "")));
+                new ResourceLocation(HBM.MOD_ID, "item/" + item.getId().getPath().replace("_full", "")));
     }
 }

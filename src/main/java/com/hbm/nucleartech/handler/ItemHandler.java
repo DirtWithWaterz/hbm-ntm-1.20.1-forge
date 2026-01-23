@@ -74,7 +74,7 @@ public class ItemHandler {
 
                 if(metadata.length != 3) continue;
 
-                Item moddingItem = ForgeRegistries.ITEMS.getValue(ResourceLocation.fromNamespaceAndPath(metadata[0], metadata[1]));
+                Item moddingItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(metadata[0], metadata[1]));
 
                 if(moddingItem != null) {
 

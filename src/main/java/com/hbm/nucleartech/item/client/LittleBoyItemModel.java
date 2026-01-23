@@ -13,17 +13,17 @@ public class LittleBoyItemModel extends GeoModel<LittleBoyItem> {
 
     @Override
     public ResourceLocation getModelResource(LittleBoyItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "geo/item/little_boy.geo.json");
+        return new ResourceLocation(HBM.MOD_ID, "geo/item/little_boy.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(LittleBoyItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/block/little_boy.png");
+        return new ResourceLocation(HBM.MOD_ID, "textures/block/little_boy.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(LittleBoyItem animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "animations/item/little_boy.animation.json");
+        return new ResourceLocation(HBM.MOD_ID, "animations/item/little_boy.animation.json");
     }
     @Override
     public void setCustomAnimations(LittleBoyItem animatable, long instanceId, AnimationState<LittleBoyItem> animationState) {

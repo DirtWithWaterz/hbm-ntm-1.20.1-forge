@@ -42,7 +42,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ForgeClientSetup {
 
     private static final ResourceLocation CONTAM_OVERLAY =
-            ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/misc/under_contaminated_water.png");
+            new ResourceLocation(HBM.MOD_ID, "textures/misc/under_contaminated_water.png");
 
     private static final Map<UUID, Boolean> previousFeetInFluid = new ConcurrentHashMap<>();
     private static final Map<UUID, Boolean> previousEyesInFluid = new ConcurrentHashMap<>();

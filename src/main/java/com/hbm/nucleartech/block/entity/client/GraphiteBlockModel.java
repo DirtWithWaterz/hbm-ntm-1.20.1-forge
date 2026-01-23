@@ -9,16 +9,16 @@ public class GraphiteBlockModel extends GeoModel<GraphiteBlockEntity> {
 
     @Override
     public ResourceLocation getModelResource(GraphiteBlockEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "geo/block/graphite_block.geo.json");
+        return new ResourceLocation(HBM.MOD_ID, "geo/block/graphite_block.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(GraphiteBlockEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/block/graphite_block.png");
+        return new ResourceLocation(HBM.MOD_ID, "textures/block/graphite_block.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(GraphiteBlockEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "animations/block/graphite_block.animation.json");
+        return new ResourceLocation(HBM.MOD_ID, "animations/block/graphite_block.animation.json");
     }
 }

@@ -5,5 +5,5 @@ import net.minecraft.resources.ResourceLocation;
 
 public class HbmModelLayers {
 //    public static final ModelLayerLocation NUCLEAR_CREEPER_LAYER = new ModelLayerLocation(
-//            ResourceLocation.fromNamespaceAndPath("minecraft", "creeper"), "main");
+//            new ResourceLocation("minecraft", "creeper"), "main");
 }

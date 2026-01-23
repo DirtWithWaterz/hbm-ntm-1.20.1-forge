@@ -451,7 +451,7 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
 
         @Override
         public ResourceLocation getId() {
-            return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, getItemName(results.get(0).left().asItem()) + "_from_" + getItemName(input) + "_with_shredder");
+            return new ResourceLocation(HBM.MOD_ID, getItemName(results.get(0).left().asItem()) + "_from_" + getItemName(input) + "_with_shredder");
         }
 
         @Override
@@ -508,7 +508,7 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
 
         @Override
         public ResourceLocation getId() {
-            return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, getItemName(result.getItem()) + "_from_" + getItemName(input) + "_with_" + getItemName(stamp) + "_press");
+            return new ResourceLocation(HBM.MOD_ID, getItemName(result.getItem()) + "_from_" + getItemName(input) + "_with_" + getItemName(stamp) + "_press");
         }
 
         @Override

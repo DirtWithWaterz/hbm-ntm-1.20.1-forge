@@ -10,16 +10,16 @@ public class LittleBoyModel extends GeoModel<LittleBoyEntity> {
 
     @Override
     public ResourceLocation getModelResource(LittleBoyEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "geo/block/little_boy.geo.json");
+        return new ResourceLocation(HBM.MOD_ID, "geo/block/little_boy.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(LittleBoyEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "textures/block/little_boy.png");
+        return new ResourceLocation(HBM.MOD_ID, "textures/block/little_boy.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(LittleBoyEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HBM.MOD_ID, "animations/block/little_boy.animation.json");
+        return new ResourceLocation(HBM.MOD_ID, "animations/block/little_boy.animation.json");
     }
 }
