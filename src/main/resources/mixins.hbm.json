@@ -4,9 +4,16 @@
   "package": "com.hbm.nucleartech.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MixinLevel",
+    "MixinServerLevel",
+    "MixinPersistentEntitySectionManager",
+    "MixinEntityCallbacks",
+    "MixinEntity"
   ],
   "client": [],
   "server": [
+    "MixinServerLevel",
+    "MixinEntityCallbacks"
   ],
   "injectors": {
     "defaultRequire": 1

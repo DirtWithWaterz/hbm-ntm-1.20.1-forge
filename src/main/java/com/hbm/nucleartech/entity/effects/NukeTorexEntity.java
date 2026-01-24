@@ -1,8 +1,6 @@
 package com.hbm.nucleartech.entity.effects;
 
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import com.hbm.interfaces.IConstantRenderer;
 
@@ -14,6 +12,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.players.PlayerList;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -27,6 +26,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.world.ForgeChunkManager;
 
 import javax.annotation.Nullable;
 
@@ -42,6 +42,8 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 
 	public static final EntityDataAccessor<Float> SCALE = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.FLOAT);
 	public static final EntityDataAccessor<Byte> TYPE = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.BYTE);
+
+	public static final EntityDataAccessor<Boolean> SHOULD_DIE = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.BOOLEAN);
 
 	public static final EntityDataAccessor<Optional<UUID>> UUID = SynchedEntityData.defineId(NukeTorexEntity.class, EntityDataSerializers.OPTIONAL_UUID);
 
@@ -93,6 +95,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	protected void defineSynchedData() {
 		this.entityData.define(SCALE, 1.0F);
 		this.entityData.define(TYPE, (byte) 0);
+		this.entityData.define(SHOULD_DIE, false);
 		this.entityData.define(UUID, Optional.empty());
 		this.entityData.define(POS_X, "0");
 		this.entityData.define(POS_Y, "0");
@@ -107,6 +110,9 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		if (compound.contains("type")) {
 			this.entityData.set(TYPE, compound.getByte("type"));
 		}
+		if(compound.contains("should_die")) {
+			this.entityData.set(SHOULD_DIE, compound.getBoolean("should_die"));
+		}
 		if(compound.contains("uuid")) {
 			this.entityData.set(UUID, Optional.of(compound.getUUID("uuid")));
 		}
@@ -118,15 +124,17 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 			this.entityData.set(POS_Y, String.valueOf(posTag.getDouble("y")));
 			this.entityData.set(POS_Z, String.valueOf(posTag.getDouble("z")));
 		}
-		if (compound.contains("time")) {
-			startTime = compound.getLong("time");
-		}
+//		if (compound.contains("time")) {
+//			startTime = compound.getLong("time");
+//		}
 	}
 
 	@Override
 	public void addAdditionalSaveData(CompoundTag compound) {
 		compound.putFloat("scale", this.entityData.get(SCALE));
 		compound.putByte("type", this.entityData.get(TYPE));
+
+		compound.putBoolean("should_die", this.entityData.get(SHOULD_DIE));
 
 		compound.putUUID("uuid", this.getTorexUUID());
 		
@@ -136,7 +144,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		posTag.putDouble("y", getPos().y);
 		posTag.putDouble("z", getPos().z);
 
-		compound.putLong("time", startTime);
+//		compound.putLong("time", startTime);
 	}
 
 	@Override
@@ -152,6 +160,7 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		if (!this.level().isClientSide) {
 			long time = this.level().getGameTime();
 			if (time < startTime || time - startTime > maxAge) {
+				this.entityData.set(SHOULD_DIE, true);
 				this.discard();
 			}
 

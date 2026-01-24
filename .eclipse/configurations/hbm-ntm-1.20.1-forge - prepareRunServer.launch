@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.buildship.core.launch.runconfiguration">
+  <stringAttribute key="gradle_distribution" value="GRADLE_DISTRIBUTION(WRAPPER)"/>
+  <booleanAttribute key="offline_mode" value="false"/>
+  <booleanAttribute key="show_console_view" value="true"/>
+  <booleanAttribute key="show_execution_view" value="true"/>
+  <stringAttribute key="working_dir" value="E:\Data\Repositories\hbm-ntm-1.20.1-forge"/>
+  <listAttribute key="tasks">
+    <listEntry value=":copyEclipseResources"/>
+  </listAttribute>
+</launchConfiguration>

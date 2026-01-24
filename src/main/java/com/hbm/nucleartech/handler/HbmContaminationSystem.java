@@ -244,8 +244,11 @@ public class HbmContaminationSystem {
 //                                        continue;
 //                                    }
 
-                                    HbmCapabilities.getData(entity).addValue(Type.PERMANENT_CONTAMINATION, (float)(eRad/1000000f));
+                                    HbmCapabilities.getData(entity).addValue(Type.PERMANENT_CONTAMINATION, (float)(eRad/1000000f)); // demon core should emit roughly 100,000,000 rads to provide a lethal dose that allows survival for ~1 week
                                     HbmCapabilities.getData(entity).syncLivingVariables(entity);
+
+                                    if(HbmCapabilities.getData(entity).getValue(Type.PERMANENT_CONTAMINATION) < 100 && eRad <= 0)
+                                        HbmCapabilities.getData(entity).addValue(Type.PERMANENT_CONTAMINATION, -(1/1000f));
 
                                     if (eRad > 1000000)
                                         HbmCapabilities.getData(entity).setValue(Type.RADIATION, 1000000); // grant achievement "HOW"

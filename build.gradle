@@ -104,7 +104,7 @@ dependencies {
 
 mixin {
     // MixinGradle Settings
-    add sourceSets.main, 'mixins.hbm.refmap.json'
+    add sourceSets.main, 'hbm.refmap.json'
     config 'mixins.hbm.json'
 
     debug.verbose = true
