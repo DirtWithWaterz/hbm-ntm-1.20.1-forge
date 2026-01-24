@@ -82,5 +82,17 @@ public class HbmPacketHandler {
                 ClientboundFalloutStatePacket::decode,
                 ClientboundFalloutStatePacket::handle,
                 Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClearMarkedChunkPack.class,
+                ClearMarkedChunkPack::encode,
+                ClearMarkedChunkPack::new,
+                ClearMarkedChunkPack::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
+        INSTANCE.registerMessage(packetId++,
+                ClearSectionListPack.class,
+                ClearSectionListPack::encode,
+                ClearSectionListPack::new,
+                ClearSectionListPack::handle,
+                Optional.of(NetworkDirection.PLAY_TO_CLIENT));
     }
 }
