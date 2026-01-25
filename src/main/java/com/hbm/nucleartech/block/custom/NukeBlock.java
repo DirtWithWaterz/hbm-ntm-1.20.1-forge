@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.block.custom;
 
 import com.hbm.nucleartech.entity.effects.NukeTorexEntity;
+import com.hbm.nucleartech.explosion.VeryFastRaycast;
 import com.hbm.nucleartech.handler.FalloutWeatherData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -47,7 +48,8 @@ public class NukeBlock extends BaseEntityBlock {
         if (pLevel.isClientSide) return;
 
         if (pLevel.hasNeighborSignal(pPos)){
-
+            VeryFastRaycast vfr = new VeryFastRaycast(pLevel, fromPos.getX(), fromPos.getY(), fromPos.getZ(), 48, 95, 95, 95, (byte)0, 1, 2, 1, null);
+            vfr.explode();
             NukeTorexEntity.statFac(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 1000);
         }
     }

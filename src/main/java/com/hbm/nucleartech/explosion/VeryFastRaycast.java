@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
 import java.util.*;
 
 @SuppressWarnings("deprecation")
-public final class VeryFastRaycast {
+public class VeryFastRaycast {
 
 	private static ServerLevel level;
 	private static int xx, yy ,zz;
@@ -59,13 +59,13 @@ public final class VeryFastRaycast {
 	private static final HashMap<BlockState, Integer> blockResistanceMap = new HashMap<>();
 	private int fire_small = 0;
 
-	public static void explode(Level Level, double X, double Y, double Z, int Edge, int maxradiusx, int maxradiusy, int Rayradiusx,
+	public VeryFastRaycast(Level Level, double X, double Y, double Z, int Edge, int maxradiusx, int maxradiusy, int Rayradiusx,
 						   byte Shape, float Knockbackmltp, int Powermltp, float Dmgmltp, @Nullable Entity source) {
 		//
+		level = (ServerLevel) Level;
 		maxBuildHeight = level.getMaxBuildHeight();
 		minBuildHeight = level.getMinBuildHeight();
 		if (source != null) ssource = source;
-		level = (ServerLevel) Level;
 		x = X;
 		y = Y;
 		z = Z;
@@ -130,17 +130,17 @@ public final class VeryFastRaycast {
 		//blockResistanceMap = blockResistanceCache;//Collections.unmodifiableMap(blockResistanceCache); // convert to unmodifiable -> faster .get
 		System.out.println((System.nanoTime() - start)/1000 + "micros to get res, size: " + blockResistanceMap.size());
 		//blockResistanceMap.forEach((blockState, resistance) -> System.out.println(blockState + ": " + resistance));
-
+		explode();
 	}
 
 
 
-	public void explode(Level level, double x, double y, double z, int edge, int maxradius, int rayradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
-		explode( level, x, y, z, edge, maxradius, maxradius, rayradius, shape, knockmltp, powermltp, dmgmltp, source);
+	public VeryFastRaycast(Level level, double x, double y, double z, int edge, int maxradius, int rayradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
+		this( level, x, y, z, edge, maxradius, maxradius, rayradius, shape, knockmltp, powermltp, dmgmltp, source);
 	}
 
-	public void explode (Level level, double x, double y, double z, int edge, int maxradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
-		explode( level, x, y, z, edge, maxradius, maxradius, maxradius, shape, knockmltp, powermltp, dmgmltp, source);
+	public VeryFastRaycast (Level level, double x, double y, double z, int edge, int maxradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
+		this( level, x, y, z, edge, maxradius, maxradius, maxradius, shape, knockmltp, powermltp, dmgmltp, source);
 	}
 
 	public static final BlockState BedrockState = Blocks.BEDROCK.defaultBlockState();
@@ -189,6 +189,19 @@ public final class VeryFastRaycast {
 		}
 
 		return id;
+	}
+
+	static {
+		for (int bits = 1; bits < other_magic.length; bits++) {
+			int valuesPerLong = (char)(64 / bits);
+			int i = 3 * (valuesPerLong - 1);
+			MagicEntry entry = new MagicEntry(
+					(1L << bits) - 1L, bits, valuesPerLong, Integer.toUnsignedLong(MAGIC[i]), Integer.toUnsignedLong(MAGIC[i + 1]), MAGIC[i + 2]
+			);
+			other_magic[bits] = entry;
+		}
+
+		rng = new Random();
 	}
 
 	///
@@ -433,7 +446,7 @@ public final class VeryFastRaycast {
 		}
 	}
 
-	private final Random rng = new Random();
+	private static Random rng = new Random();
 
 	public void fireFastestSmallRay(int finaldx, int finaldy, int finaldz, int power)
 	{ //endxyz - delta of small ray end point from center, startxyz - raw beginning point of small ray
