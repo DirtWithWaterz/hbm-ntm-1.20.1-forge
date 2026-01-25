@@ -48,9 +48,10 @@ public class NukeBlock extends BaseEntityBlock {
         if (pLevel.isClientSide) return;
 
         if (pLevel.hasNeighborSignal(pPos)){
+
+            NukeTorexEntity.statFac(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 100);
             VeryFastRaycast vfr = new VeryFastRaycast(pLevel, fromPos.getX(), fromPos.getY(), fromPos.getZ(), 48, 95, 95, 95, (byte)0, 1, 2, 1, null);
             vfr.explode();
-            NukeTorexEntity.statFac(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 1000);
         }
     }
 
