@@ -45,8 +45,7 @@ public class NukeBlock extends BaseEntityBlock {
         if (pLevel.isClientSide) return;
 
         if (pLevel.hasNeighborSignal(pPos)){
-
-            new VeryFastRaycastedExplosion(pLevel, fromPos.getX(), fromPos.getY(), fromPos.getZ(), 48, 95, 95, 95, (byte)0, 1, 2, 1, null, 100);
+            new VeryFastRaycastedExplosion(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 48, 95, 95, 95, (byte)0, 1, 2, 1, null, 100);
         }
     }
 

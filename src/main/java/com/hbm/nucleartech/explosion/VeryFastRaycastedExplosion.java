@@ -61,6 +61,7 @@ public class VeryFastRaycastedExplosion {
 	private static Entity ssource;
 	private static final HashMap<BlockState, Integer> blockResistanceMap = new HashMap<>();
 	private int fire_small = 0;
+	private  int initial_loss = 0;
 
 	public VeryFastRaycastedExplosion(Level Level, double X, double Y, double Z, int Edge, int maxradiusx, int maxradiusy, int Rayradiusx,
 									  byte Shape, float Knockbackmltp, int Powermltp, float Dmgmltp, @Nullable Entity source, float cloudScale) {
@@ -359,6 +360,12 @@ public class VeryFastRaycastedExplosion {
 	///
 	public void explode() {
 		long startTime = System.nanoTime();
+		initial_loss = blockResistanceMap.get(getBlockFastNOPOS(level, xx, yy, zz));
+		if (initial_loss >= radiusx*2*powermltp) {
+			System.out.println("Explosion fully absorbed.");
+			return;
+		}
+		level.setBlock(new BlockPos(xx, yy, zz), Blocks.AIR.defaultBlockState(), 3);
 		if (dmgmltp > 0) fireEntityRays();
 		switch (shape) {
 			case 1 -> Ellipsoid();
@@ -370,7 +377,6 @@ public class VeryFastRaycastedExplosion {
 		long estimatedTime = System.nanoTime() - startTime;
 		System.out.println("Time taken for calc: " + estimatedTime/1000000 + "ms");
 		removeMarked(estimatedTime);// remove the marked blocks
-		estimatedTime = System.nanoTime() - startTime;
 		System.out.println(fire_small + " small rays"); // small rays
 		System.out.println("called the mark function: " + blocks_marked + " times");
 
@@ -433,7 +439,7 @@ public class VeryFastRaycastedExplosion {
 
 	private void calculateRaysInSec(int dcx, int dcy, int dcz)
 	{
-		int dx, dy, dz, dist;
+		int dx, dy, dz, dist, power;
 		for (int i = 0; i < 16; ++i) {
 			for (int j = 0; j < 16; ++j) {
 				for (int k = 0; k < 16; ++k) {
@@ -441,10 +447,14 @@ public class VeryFastRaycastedExplosion {
 					dy = (dcy << 4) + j - 7;
 					dz = (dcz << 4) + k - 7;
 					if (blockInRange(dx, dy, dz)) {
-						if (shape == 0) fireFastestSmallRay(dx, dy, dz, radiusx*2*powermltp);
+						if (shape == 0) {
+							power = rng.nextInt(radiusx-edge, radiusx);
+							fireFastestSmallRay(dx, dy, dz, power*2*powermltp-initial_loss);
+						}
 						else {
 							dist = (int)Math.sqrt(dx*dx + dy*dy + dz*dz);
-							fireFastestSmallRay(dx, dy, dz, dist*2*powermltp);
+							power = rng.nextInt(dist-edge, dist);
+							fireFastestSmallRay(dx, dy, dz, power*2*powermltp-initial_loss);
 						}
 					}
 				}
