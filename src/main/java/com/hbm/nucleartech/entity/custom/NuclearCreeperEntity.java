@@ -264,7 +264,7 @@ public class NuclearCreeperEntity extends Monster implements PowerableMob {
             float f = this.isPowered() ? 2.0F : 1.0F;
             this.dead = true;
             this.level().explode(this, this.getX(), this.getY(), this.getZ(), (float)this.explosionRadius * f, Level.ExplosionInteraction.MOB);
-            NukeTorexEntity.statFac(this.level(), this.getX(), this.getY(), this.getZ(), 40);
+            NukeTorexEntity.statFac(this.level(), this.getX(), this.getZ(), 40);
             this.discard();
         }
 

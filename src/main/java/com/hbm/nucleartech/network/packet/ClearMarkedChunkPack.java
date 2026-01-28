@@ -2,6 +2,7 @@ package com.hbm.nucleartech.network.packet;
 
 import java.util.function.Supplier;
 
+import com.hbm.nucleartech.mixin.MixinData;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientChunkCache;
@@ -9,6 +10,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.SimpleBitStorage;
 import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.DataLayer;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
@@ -16,7 +18,7 @@ import net.minecraft.world.level.lighting.LevelLightEngine;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
-import com.hbm.nucleartech.explosion.VeryFastRaycast;
+import com.hbm.nucleartech.explosion.VeryFastRaycastedExplosion;
 import net.minecraftforge.network.NetworkEvent.Context;
 
 public class ClearMarkedChunkPack {
@@ -35,7 +37,7 @@ public class ClearMarkedChunkPack {
         ClientChunkCache cache = world.getChunkSource();
         int minSec = world.getMinSection();
         LevelLightEngine lightEngine = cache.getLightEngine();
-        LightEngine<?, ?> block_engine = (LightEngine<?, ?>)lightEngine.getLayerListener(LightLayer.BLOCK);
+        LightEngine<?, ?> block_engine = (LightEngine<?, ?>)lightEngine.getLayerListener(LightLayer.SKY);
         Long2ObjectOpenHashMap<DataLayer> block_map = block_engine.storage.visibleSectionData.map;
         long[] markerBits = new long[this.buff.readInt()];
 
@@ -48,7 +50,7 @@ public class ClearMarkedChunkPack {
         LevelChunk chunk = cache.getChunkNow(chunkX, chunkZ);
         if (chunk != null) {
             LevelChunkSection[] sections = chunk.getSections();
-            long longID = VeryFastRaycast.asLong(chunkX, minSec, chunkZ);
+            long longID = VeryFastRaycastedExplosion.asLong(chunkX, minSec, chunkZ);
 
             for (int sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
                 LevelChunkSection section = sections[sectionIndex];
@@ -62,10 +64,10 @@ public class ClearMarkedChunkPack {
 
                     if (blockLongOffset != 64) {
                         int sectionY = minSec + sectionIndex;
-                        longID = VeryFastRaycast.asLongY(longID, (long)sectionY);
-                        int air_id = section.states.data.palette.idFor(VeryFastRaycast.AirState);
-                        SimpleBitStorage bitstorage = (SimpleBitStorage)section.states.data.storage;
-                        VeryFastRaycast.MagicEntry magicEntry = VeryFastRaycast.other_magic[bitstorage.getBits()];
+                        longID = VeryFastRaycastedExplosion.asLongY(longID, (long)sectionY);
+                        int air_id = ((MixinData<BlockState>)(Object)section.states.data).getPalette().idFor(VeryFastRaycastedExplosion.AirState);
+                        SimpleBitStorage bitstorage = (SimpleBitStorage)((MixinData<BlockState>)(Object)section.states.data).getStorage();
+                        VeryFastRaycastedExplosion.MagicEntry magicEntry = VeryFastRaycastedExplosion.other_magic[bitstorage.getBits()];
                         long maskedAirId = (long)air_id & magicEntry.mask;
                         DataLayer layer = (DataLayer)block_map.get(longID);
                         if (layer == null) {

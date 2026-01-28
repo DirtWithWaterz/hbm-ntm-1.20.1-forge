@@ -1,5 +1,7 @@
 package com.hbm.nucleartech.explosion;
 
+import com.hbm.nucleartech.entity.effects.NukeTorexEntity;
+import com.hbm.nucleartech.mixin.MixinData;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
@@ -33,7 +35,7 @@ import javax.annotation.Nullable;
 import java.util.*;
 
 @SuppressWarnings("deprecation")
-public class VeryFastRaycast {
+public class VeryFastRaycastedExplosion {
 
 	private static ServerLevel level;
 	private static int xx, yy ,zz;
@@ -53,14 +55,15 @@ public class VeryFastRaycast {
 	private static int minBuildHeight;
 	private static Long2ObjectOpenHashMap<DataLayer> block_map;
 	private static double x, y, z;
+	private static float scale;
 	private static int maxdistsqInRange;
 	private static int mindistsqInRange;
 	private static Entity ssource;
 	private static final HashMap<BlockState, Integer> blockResistanceMap = new HashMap<>();
 	private int fire_small = 0;
 
-	public VeryFastRaycast(Level Level, double X, double Y, double Z, int Edge, int maxradiusx, int maxradiusy, int Rayradiusx,
-						   byte Shape, float Knockbackmltp, int Powermltp, float Dmgmltp, @Nullable Entity source) {
+	public VeryFastRaycastedExplosion(Level Level, double X, double Y, double Z, int Edge, int maxradiusx, int maxradiusy, int Rayradiusx,
+									  byte Shape, float Knockbackmltp, int Powermltp, float Dmgmltp, @Nullable Entity source, float cloudScale) {
 		//
 		level = (ServerLevel) Level;
 		maxBuildHeight = level.getMaxBuildHeight();
@@ -72,6 +75,7 @@ public class VeryFastRaycast {
 		xx = (int) Math.floor(X);
 		yy = (int) Math.floor(Y);
 		zz = (int) Math.floor(Z);
+		scale = cloudScale;
 		edge = Edge;
 		radiusx = maxradiusx;
 		radiusy = maxradiusy;
@@ -89,7 +93,7 @@ public class VeryFastRaycast {
 		marker = new BlockMarker((maxbigradiusx +2)*(maxbigradiusx +2)*4, level.getSectionsCount());
 		minSec = level.getMinSection();
 		final ThreadedLevelLightEngine lightEngine = ((ServerLevel) level).getChunkSource().getLightEngine();
-		LightEngine<?, ?> block_engine = (LightEngine<?, ?>) lightEngine.getLayerListener(LightLayer.BLOCK);
+		LightEngine<?, ?> block_engine = (LightEngine<?, ?>) lightEngine.getLayerListener(LightLayer.SKY);
 		block_map = block_engine.storage.visibleSectionData.map;
 
 		//HashMap<Block, Float> blockResistanceMap = new HashMap<>();
@@ -135,13 +139,13 @@ public class VeryFastRaycast {
 
 
 
-	public VeryFastRaycast(Level level, double x, double y, double z, int edge, int maxradius, int rayradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
-		this( level, x, y, z, edge, maxradius, maxradius, rayradius, shape, knockmltp, powermltp, dmgmltp, source);
-	}
-
-	public VeryFastRaycast (Level level, double x, double y, double z, int edge, int maxradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
-		this( level, x, y, z, edge, maxradius, maxradius, maxradius, shape, knockmltp, powermltp, dmgmltp, source);
-	}
+//	public VeryFastRaycast(Level level, double x, double y, double z, int edge, int maxradius, int rayradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
+//		this( level, x, y, z, edge, maxradius, maxradius, rayradius, shape, knockmltp, powermltp, dmgmltp, source);
+//	}
+//
+//	public VeryFastRaycast (Level level, double x, double y, double z, int edge, int maxradius, byte shape, float knockmltp, int powermltp, float dmgmltp, @Nullable Entity source) {
+//		this( level, x, y, z, edge, maxradius, maxradius, maxradius, shape, knockmltp, powermltp, dmgmltp, source);
+//	}
 
 	public static final BlockState BedrockState = Blocks.BEDROCK.defaultBlockState();
 	public static final BlockState AirState = Blocks.AIR.defaultBlockState();
@@ -236,9 +240,9 @@ public class VeryFastRaycast {
 						for (int i = chunkAndSectionLongOffset; i < maxOffset && markerBits[i] == 0L; i++)
 							blockLongOffset++;
 						if (blockLongOffset != 64) {
-							int air_id = section.states.data.palette.idFor(AirState);
-							if (!(section.states.data.storage instanceof net.minecraft.util.ZeroBitStorage)) {
-								SimpleBitStorage bitstorage = (SimpleBitStorage)section.states.data.storage;
+							int air_id = ((MixinData<BlockState>)(Object)section.states.data).getPalette().idFor(AirState);
+							if (!(((MixinData<BlockState>)(Object)section.states.data).getStorage() instanceof net.minecraft.util.ZeroBitStorage)) {
+								SimpleBitStorage bitstorage = (SimpleBitStorage)((MixinData<BlockState>)(Object)section.states.data).getStorage();
 								MagicEntry magicEntry = other_magic[bitstorage.getBits()];
 								long maskedAirId = air_id & magicEntry.mask;
 								DataLayer layer = (DataLayer)block_map.get(longID);
@@ -286,7 +290,7 @@ public class VeryFastRaycast {
             int z = z(l);
             LevelChunk chunk = level.getChunk(x, z);
             LevelChunkSection section = chunk.getSection(y(l));
-            setAll(section.states.data.palette, section.states.data.storage);
+            setAll(((MixinData<BlockState>)(Object)section.states.data).getPalette(), ((MixinData<BlockState>)(Object)section.states.data).getStorage());
             long longID = asLong(x, y + minSec, z);
             DataLayer layer = (DataLayer) block_map.get(longID);
             if (layer == null) {
@@ -297,6 +301,8 @@ public class VeryFastRaycast {
             section.recalcBlockCounts();
             chunk.setUnsaved(true);
         }
+		if(scale > 0)
+			NukeTorexEntity.statFac(level, x, z, scale);
 	}
 
 	public static void setAll(Palette<BlockState> palette, BitStorage storage) {

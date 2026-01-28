@@ -690,11 +690,11 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 		return this.entityData.get(UUID).isPresent() ? this.entityData.get(UUID).get() : null;
 	}
 
-	public static void statFac(Level level, double x, double y, double z, float scale) {
+	public static void statFac(Level level, double x, double z, float scale) {
 
 		for(Player player : level.players()) {
 
-			NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexPos(x, y, z).setTorexUUID(player.getUUID());
+			NukeTorexEntity torex = new NukeTorexEntity(HbmEntities.NUKE_TOREX.get(), level).setScale(Mth.clamp(scale * 0.01F, 0.25F, 5F)).setTorexPos(x, level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, (int)x, (int)z), z).setTorexUUID(player.getUUID());
 
 			torex.setPos(player.position());
 
