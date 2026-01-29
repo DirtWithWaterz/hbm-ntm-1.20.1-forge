@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.explosion;
 
+import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.entity.effects.NukeTorexEntity;
 import com.hbm.nucleartech.mixin.MixinData;
 import io.netty.buffer.ByteBuf;
@@ -209,6 +210,77 @@ public class VeryFastRaycastedExplosion {
 		rng = new Random();
 	}
 
+	private void contaminateStone() {
+		double extFactor = 1.1; // Plus a bit further (10%)
+		int extRadiusX = (int) (radiusx * extFactor);
+		int extRadiusY = (int) (radiusy * extFactor);
+		double maxExtDistSq = (double) extRadiusX * extRadiusX; // For quick checks
+
+		// Iterate over bounding box
+		for (int dx = -extRadiusX; dx <= extRadiusX; dx++) {
+			for (int dy = -extRadiusY; dy <= extRadiusY; dy++) {
+				for (int dz = -extRadiusX; dz <= extRadiusX; dz++) {
+					// Calculate distSq based on shape
+					double distSq;
+					switch (shape) {
+						case 1: // Ellipsoid
+							distSq = (double) dx * dx + (double) dy * dy * radiusx * radiusx / (radiusy * radiusy) + (double) dz * dz;
+							break;
+						case 2: // Cuboid (max axis)
+							distSq = Math.max(Math.abs(dx), Math.max(Math.abs(dy * radiusx / radiusy), Math.abs(dz)));
+							distSq *= distSq; // Square for comparison
+							break;
+						default: // Sphere
+							distSq = (double) dx * dx + (double) dy * dy + (double) dz * dz;
+							break;
+					}
+
+					if (distSq > maxExtDistSq) continue; // Outside extended volume
+
+					int bx = xx + dx;
+					int by = yy + dy;
+					int bz = zz + dz;
+					if (by < minBuildHeight || by >= maxBuildHeight) continue;
+
+					BlockPos pos = new BlockPos(bx, by, bz);
+					BlockState state = level.getBlockState(pos);
+					if (state.is(Blocks.STONE)) {
+						// Normalized dist: 0 at center, 1 at original radius (scale to original for gradient)
+						double dist = Math.sqrt(distSq);
+						double normDist = dist / radiusx; // Adjust for shape (approx)
+
+						// Add jitter for random gradient
+						double jitter = level.random.nextGaussian() * 0.1;
+						double adjusted = Math.max(0, Math.min(1, normDist + jitter));
+
+						// Choose based on adjusted dist (hotter near 0)
+						BlockState newState;
+						if (adjusted < 0.15) {
+							newState = RegisterBlocks.SELLAFITE_CORIUM.get().defaultBlockState();
+						} else if (adjusted < 0.3) {
+							newState = RegisterBlocks.INFERNAL_SELLAFITE.get().defaultBlockState();
+						} else if (adjusted < 0.45) {
+							newState = RegisterBlocks.BLAZING_SELLAFITE.get().defaultBlockState();
+						} else if (adjusted < 0.6) {
+							newState = RegisterBlocks.BOILING_SELLAFITE.get().defaultBlockState();
+						} else if (adjusted < 0.75) {
+							newState = RegisterBlocks.HOT_SELLAFITE.get().defaultBlockState();
+						} else if (adjusted < 0.9) {
+							newState = RegisterBlocks.SELLAFITE.get().defaultBlockState();
+						} else {
+							newState = RegisterBlocks.SLAKED_SELLAFITE.get().defaultBlockState();
+						}
+
+						// Set block and mark chunk dirty
+						level.setBlock(pos, newState, 3); // Update with flags (notify neighbors, etc.)
+						ChunkAccess chunk = level.getChunk(pos);
+						chunk.setUnsaved(true);
+					}
+				}
+			}
+		}
+	}
+
 	///
 	public void removeMarked(long estimatedTime) {
 		ServerChunkCache cache = level.getChunkSource();
@@ -377,6 +449,7 @@ public class VeryFastRaycastedExplosion {
 		long estimatedTime = System.nanoTime() - startTime;
 		System.out.println("Time taken for calc: " + estimatedTime/1000000 + "ms");
 		removeMarked(estimatedTime);// remove the marked blocks
+		contaminateStone();
 		System.out.println(fire_small + " small rays"); // small rays
 		System.out.println("called the mark function: " + blocks_marked + " times");
 
