@@ -68,6 +68,7 @@ public class ContaminatedVariableFallingBlock extends HazardBlock implements Fal
             FallingBlockEntity $$4 = FallingBlockEntity.fall(pLevel, pPos, pState);
             this.falling($$4);
         }
+        super.tick(pState, pLevel, pPos, pRandom);
     }
 
     protected void falling(FallingBlockEntity pEntity) {

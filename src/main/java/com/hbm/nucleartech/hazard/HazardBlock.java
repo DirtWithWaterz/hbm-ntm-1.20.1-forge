@@ -176,7 +176,7 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
     public void onGenerated(ServerLevel level, BlockPos worldPosition) {
 
-        level.scheduleTick(worldPosition, this.toBlock(), this.tickRate(level), TickPriority.HIGH);
+        level.scheduleTick(worldPosition, this.toBlock(), this.tickRate(), TickPriority.HIGH);
     }
 
     @Override
@@ -185,14 +185,14 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
         if(this.rad3d > 0){
             ContaminationUtil.radiate(pLevel, pPos.getX()+0.5, pPos.getY()+0.5, pPos.getZ()+0.5, 32, (float)this.rad3d, 0, this.module.fire * 5000, 0, 0, pPos);
-            pLevel.scheduleTick(pPos, this.toBlock(), this.tickRate(pLevel), TickPriority.HIGH);
+            pLevel.scheduleTick(pPos, this.toBlock(), this.tickRate(), TickPriority.HIGH);
         }
 //        if(this.radIn > 0){
 //            RadiationSavedData.incrementRad(pLevel, pPos, (float)radIn, (float)radIn*10F);
 //        }
     }
 
-    public int tickRate(Level level){
+    public int tickRate(){
         if(this.rad3d > 0)
             return ((1 - ((Config.hazardBlockTickSpeed - 1) / 20)) * 20);
 //        if(this.radIn > 0)
@@ -204,7 +204,7 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pMovedByPiston) {
         super.onPlace(pState, pLevel, pPos, pOldState, pMovedByPiston);
         if(this.radIn > 0 || this.rad3d > 0){
-            pLevel.scheduleTick(pPos, this.toBlock(), this.tickRate(pLevel));
+            pLevel.scheduleTick(pPos, this.toBlock(), this.tickRate());
         }
     }
 
