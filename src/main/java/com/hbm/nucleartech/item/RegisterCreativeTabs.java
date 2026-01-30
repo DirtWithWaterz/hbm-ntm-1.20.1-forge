@@ -402,7 +402,8 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.SHREDDER.get());
                         output.accept(RegisterItems.ARMOR_MODIFICATION_TABLE.get());
 
-                        output.accept(RegisterItems.LITTLE_BOY.get());
+                        output.accept(RegisterBlocks.LITTLE_BOY.get());
+                        output.accept(RegisterBlocks.ANTI_PERSONNEL_MINE.get());
                     })
                     .build());
 

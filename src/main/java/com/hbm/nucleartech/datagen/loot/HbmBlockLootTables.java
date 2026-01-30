@@ -285,6 +285,7 @@ public class HbmBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(RegisterBlocks.SHREDDER.get());
 
         this.dropSelf(RegisterBlocks.LITTLE_BOY.get());
+        this.dropSelf(RegisterBlocks.ANTI_PERSONNEL_MINE.get());
     }
 
     @Override

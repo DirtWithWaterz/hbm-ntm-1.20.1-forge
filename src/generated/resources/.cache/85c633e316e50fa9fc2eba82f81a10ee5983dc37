@@ -1,6 +1,7 @@
-// 1.20.1	2026-01-24T04:12:51.3151286	Block States: hbm
+// 1.20.1	2026-01-30T06:50:31.6781976	Block States: hbm
 1efbf5ee60bf34c342853eaf098fe73788c85dfe assets/hbm/blockstates/aluminum_block.json
 7d3b3eedac85e1d6bf425cd672de4f47901f790f assets/hbm/blockstates/aluminum_ore.json
+66fb5d3ede60aac6a4884951ee9decebaa0bb357 assets/hbm/blockstates/anti_personnel_mine.json
 f65c1c39acd53d979171efc21a7e3015ee0fe36a assets/hbm/blockstates/asbestos_block.json
 8a376e290a632d8873beaa0013f74d0897105ff4 assets/hbm/blockstates/asbestos_ore.json
 2ece8287ea6671333746b0c37424edb71f707eda assets/hbm/blockstates/australium_block.json
@@ -105,6 +106,7 @@ aff30127bf72c0c3b62548ce8953fc3ee668e4a1 assets/hbm/blockstates/light_gray_concr
 6ecc893367d2cf964af36ed33e0184c59825184a assets/hbm/blockstates/lignite_block.json
 3b7ad49a37a26f790b2d18b9e1a3b74c45dd4ee4 assets/hbm/blockstates/lignite_ore.json
 55f5b036eb58605ec44e3fb3c6c42318ada665f9 assets/hbm/blockstates/lime_concrete.json
+b230b28516ed86efc1f392f7b00202b9b0f05a0d assets/hbm/blockstates/little_boy.json
 6e842c4236682a243b427bd117c0699a18364c40 assets/hbm/blockstates/magenta_concrete.json
 608b8a0debc3d28a187918b2b4ab76602768bd0b assets/hbm/blockstates/mystic_jungle_bricks.json
 9e707945614f2628062d696d1af9d4c6d311cc6e assets/hbm/blockstates/niter_block.json
@@ -651,6 +653,7 @@ e91d61fcabab280e2cd3123d8502586a1f709c2a assets/hbm/models/block/waste_block.jso
 f66bd453e3f0bed458998d9dde996310372c265e assets/hbm/models/block/yellow_thorium_ore.json
 28aacc93510a2232919c0691e47f20a76056b4cd assets/hbm/models/item/aluminum_block.json
 39b23e20c8c101012d80eff2d552057e59fefb28 assets/hbm/models/item/aluminum_ore.json
+0c591f0d6601b2c59f8ea222e4b4b99794bb8116 assets/hbm/models/item/anti_personnel_mine.json
 4b9eaa7bc749f2ee564f114a542e90dfd6998c36 assets/hbm/models/item/asbestos_block.json
 96f4514227df7785c26e69c73ce20d21d768fb3d assets/hbm/models/item/asbestos_ore.json
 f1ca3ead92ce8064761e170c5da66928d5de51a4 assets/hbm/models/item/australium_block.json
@@ -755,6 +758,7 @@ e0ed9cac079a6d5fa7999b22746804e8e4c5671d assets/hbm/models/item/lead_block.json
 2438fbb9f1ce73331fea0919517b76e7a9fb6a3d assets/hbm/models/item/lignite_block.json
 5f2a5d45f5024f500ef70980a57b754df67d8171 assets/hbm/models/item/lignite_ore.json
 74067cef775a894e4c176786b996638b16f19486 assets/hbm/models/item/lime_concrete.json
+fd675b9ab9700c41c01e11177075357732da1d0f assets/hbm/models/item/little_boy.json
 4950f0dad2cba9f1e6b703afb6ce996f60a72258 assets/hbm/models/item/magenta_concrete.json
 1f461ef403d921372d3f1c8972f3cc82af2822e0 assets/hbm/models/item/mystic_jungle_bricks.json
 0ffc18d1c0fa5391d6813efe7a712faa96980f5d assets/hbm/models/item/niter_block.json

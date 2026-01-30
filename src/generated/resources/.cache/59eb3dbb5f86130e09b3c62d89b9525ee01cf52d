@@ -1,6 +1,7 @@
-// 1.20.1	2026-01-24T03:20:12.4857561	Loot Tables
+// 1.20.1	2026-01-30T06:50:31.6841793	Loot Tables
 0b88990bd5b8b879ca3a464bd4be7956eae2951e data/hbm/loot_tables/blocks/aluminum_block.json
 208c95cc662685f7dadd19692951e5109d72b176 data/hbm/loot_tables/blocks/aluminum_ore.json
+3de62f21878652c0b2fadd9dbf99eaa28837f63e data/hbm/loot_tables/blocks/anti_personnel_mine.json
 540b91ff025b9ce6245df145e97928d9016ff716 data/hbm/loot_tables/blocks/armor_modification_table.json
 20e19a65676ca36db0f62fff896c635893679c68 data/hbm/loot_tables/blocks/asbestos_air.json
 ea4b0cb91787e9322bf8cf6bd33e06f0db8aee62 data/hbm/loot_tables/blocks/asbestos_block.json

@@ -494,8 +494,8 @@ public class RegisterItems {
 
     //    ====================================== BOMBS =======================================
 
-    public static final RegistryObject<Item> LITTLE_BOY = ITEMS.register("little_boy",
-            () -> new LittleBoyItem(RegisterBlocks.LITTLE_BOY.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> LITTLE_BOY = ITEMS.register("little_boy",
+//            () -> new LittleBoyItem(RegisterBlocks.LITTLE_BOY.get(), new Item.Properties()));
 
     //    ====================================== stamps ======================================
 

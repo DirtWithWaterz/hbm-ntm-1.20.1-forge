@@ -51,6 +51,14 @@ public class ClientSetup {
                 RegisterFluids.FLOWING_STILL_WATER.get(),
                 RenderType.translucent()
         );
+        ItemBlockRenderTypes.setRenderLayer(
+                RegisterBlocks.LITTLE_BOY.get(),
+                RenderType.cutout()
+        );
+        ItemBlockRenderTypes.setRenderLayer(
+                RegisterBlocks.ANTI_PERSONNEL_MINE.get(),
+                RenderType.cutout()
+        );
     }
 
     @SubscribeEvent

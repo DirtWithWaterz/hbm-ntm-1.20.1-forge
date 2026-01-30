@@ -12,11 +12,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -817,9 +815,14 @@ public class RegisterBlocks {
 
 //    ================================== lamp oil, rope, BOMB? You want it Link, I've got it. So long as YOU have enough rubies. ==================================================
 
-    public static final RegistryObject<Block> LITTLE_BOY = BLOCKS.register("little_boy",
+    public static final RegistryObject<Block> LITTLE_BOY = registerBlock("little_boy",
             () -> new LittleBoyBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()
                     .strength(6.0f, 3.0f)
+            ));
+
+    public static final RegistryObject<Block> ANTI_PERSONNEL_MINE = registerBlock("anti_personnel_mine",
+            () -> new AntiPersonnelMineBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()
+                    .strength(1.0f, 1.0f)
             ));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {

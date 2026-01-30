@@ -170,7 +170,6 @@ public class HBM
             BlockEntityRenderers.register(RegisterBlockEntities.SHREDDER_ENTITY.get(), ShredderRenderer::new);
             BlockEntityRenderers.register(RegisterBlockEntities.GRAPHITE_BLOCK_ENTITY.get(), GraphiteBlockRenderer::new);
             BlockEntityRenderers.register(RegisterBlockEntities.ARMOR_MODIFICATION_TABLE_ENTITY.get(), ArmorModificationTableRenderer::new);
-            BlockEntityRenderers.register(RegisterBlockEntities.LITTLE_BOY_ENTITY.get(), LittleBoyRenderer::new);
 
             MenuScreens.register(RegisterMenuTypes.BURNER_PRESS_MENU.get(), BurnerPressScreen::new);
             MenuScreens.register(RegisterMenuTypes.SHREDDER_MENU.get(), ShredderScreen::new);

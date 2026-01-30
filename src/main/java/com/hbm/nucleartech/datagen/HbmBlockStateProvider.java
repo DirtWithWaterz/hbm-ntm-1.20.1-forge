@@ -232,6 +232,13 @@ public class HbmBlockStateProvider extends BlockStateProvider {
 
         variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_SANDSTONE, 8, Blocks.SANDSTONE);
         variantCubeBottomTopBlockWithItem(RegisterBlocks.CONTAMINATED_RED_SANDSTONE, 8, Blocks.RED_SANDSTONE);
+
+        simpleBlockWithItem(RegisterBlocks.LITTLE_BOY.get(), new ModelFile.UncheckedModelFile(
+                modLoc("block/little_boy")
+        ));
+        simpleBlockWithItem(RegisterBlocks.ANTI_PERSONNEL_MINE.get(), new ModelFile.UncheckedModelFile(
+                modLoc("block/anti_personnel_mine")
+        ));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

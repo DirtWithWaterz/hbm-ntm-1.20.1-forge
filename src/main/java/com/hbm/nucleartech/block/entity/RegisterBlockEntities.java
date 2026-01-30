@@ -38,6 +38,11 @@ public class RegisterBlockEntities {
                     BlockEntityType.Builder.of(LittleBoyEntity::new,
                             RegisterBlocks.LITTLE_BOY.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<AntiPersonnelMineEntity>> ANTI_PERSONNEL_MINE_ENTITY =
+            BLOCK_ENTITIES.register("anti_personnel_mine_entity", () ->
+                    BlockEntityType.Builder.of(AntiPersonnelMineEntity::new,
+                            RegisterBlocks.ANTI_PERSONNEL_MINE.get()).build(null));
+
     public static void register(IEventBus eventBus) {
 
         BLOCK_ENTITIES.register(eventBus);

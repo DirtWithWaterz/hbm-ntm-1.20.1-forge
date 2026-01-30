@@ -39,6 +39,7 @@ public class HbmBlockTagGenerator extends BlockTagsProvider {
                         RegisterBlocks.SLAKED_SELLAFITE.get(),
                         RegisterBlocks.CONTAMINATED_SANDSTONE.get(),
                         RegisterBlocks.LITTLE_BOY.get(),
+                        RegisterBlocks.ANTI_PERSONNEL_MINE.get(),
                         RegisterBlocks.CONTAMINATED_RED_SANDSTONE.get(),
                         RegisterBlocks.CONTAMINATED_TERRACOTTA.get(),
                         RegisterBlocks.CONTAMINATED_WHITE_TERRACOTTA.get(),
