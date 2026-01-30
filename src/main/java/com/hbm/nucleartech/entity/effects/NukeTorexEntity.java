@@ -154,6 +154,19 @@ public class NukeTorexEntity extends Entity implements IConstantRenderer {
 	}
 
 	@Override
+	public void onAddedToWorld() {
+		super.onAddedToWorld();
+		if (!this.level().isClientSide) return;
+		clientInit();
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	private void clientInit() {
+
+		Minecraft.getInstance().levelRenderer.allChanged();
+	}
+
+	@Override
 	public void tick() {
 		super.tick();
 //		System.out.println("[Debug] ticking");
