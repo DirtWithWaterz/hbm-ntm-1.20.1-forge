@@ -2,6 +2,7 @@ package com.hbm.nucleartech.block.custom;
 
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.hazard.HazardBlock;
+import com.hbm.nucleartech.hazard.LowProfileHazardBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -22,7 +23,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.Objects;
 
-public class ContaminatedVariableLayerBlock extends HazardBlock {
+public class ContaminatedVariableLayerBlock extends LowProfileHazardBlock {
 
     // allow 0..7 (8 variants).
     public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 0, 7);

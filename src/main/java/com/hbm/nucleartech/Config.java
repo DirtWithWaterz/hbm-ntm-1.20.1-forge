@@ -48,6 +48,18 @@ public class Config
             .comment("How many neutron particles are produced per second from blocks like graphite used in the chicago pile (1-20).")
             .defineInRange("neutronParticleSpawnSpeed", 20, 1, 20);
 
+    private static final ForgeConfigSpec.IntValue BI93_IB_CONSTANT = BUILDER
+            .comment("How many ingots for one solid block (needed for Bi93)")
+            .defineInRange("ingotsPerBlockConstant", 4374, 1, 4374*2);
+
+    private static final ForgeConfigSpec.IntValue MOLES_CONSTANT = BUILDER
+            .comment("How many moles for each ingot")
+            .defineInRange("molesPerIngotConstant", 10, 1, 100);
+
+    private static final ForgeConfigSpec.BooleanValue EXTRA_RADIATE_FUNCTIONS = BUILDER
+            .comment("Whether to make radioactive blocks and item entities cast rays to the player allowing cooler radiation (can probably get very laggy)")
+            .define("extraRadiateFunctions", true);
+
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
     public static boolean logDirtBlock;
@@ -57,6 +69,10 @@ public class Config
     public static int concurrentChunkThreads;
     public static int hazardBlockTickSpeed;
     public static int neutronParticleSpawnSpeed;
+
+    public static int ingotsPerBlockConstant;
+    public static int molesPerIngotConstant;
+    public static boolean extraRadiateFunctions;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -79,6 +95,11 @@ public class Config
         hazardBlockTickSpeed = HAZARD_BLOCK_TICK_SPEED.get();
 
         neutronParticleSpawnSpeed = NEUTRON_PARTICLE_SPAWN_SPEED.get();
+
+        ingotsPerBlockConstant = BI93_IB_CONSTANT.get();
+        molesPerIngotConstant = MOLES_CONSTANT.get();
+
+        extraRadiateFunctions = EXTRA_RADIATE_FUNCTIONS.get();
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()

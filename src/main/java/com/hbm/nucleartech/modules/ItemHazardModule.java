@@ -1,5 +1,9 @@
 package com.hbm.nucleartech.modules;
 
+import com.hbm.nucleartech.Config;
+import com.hbm.nucleartech.explosion.VeryFastRaycastedExplosion;
+import com.hbm.nucleartech.hazard.HazardItem;
+import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.lib.Library;
 import com.hbm.nucleartech.util.ArmorRegistry;
@@ -9,12 +13,13 @@ import com.hbm.nucleartech.util.ContaminationUtil;
 import com.hbm.nucleartech.util.ContaminationUtil.HazardType;
 import com.hbm.nucleartech.util.ContaminationUtil.ContaminationType;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,12 +28,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.jetbrains.annotations.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ItemHazardModule {
+
+    private static DecimalFormat df = new DecimalFormat("0.##");
 
     public double radiation;
     public double digamma;
@@ -41,6 +48,15 @@ public class ItemHazardModule {
     public boolean hydro;
     public float explosive;
 
+    public int uExpRadius;
+
+    public float halfLife;
+
+    public boolean isIsotope;
+    public float mass; // grams
+    public double gangue;
+    public float originalMass;
+
     public float tempMod = 1f;
 
     public void setMod(float tempMod) {
@@ -51,6 +67,25 @@ public class ItemHazardModule {
     public boolean isRadioactive() {
 
         return this.radiation > 0;
+    }
+
+    public boolean isIsotope() {
+
+        return this.isIsotope;
+    }
+
+    public void addMass(float mass) {
+
+        mass *= Config.molesPerIngotConstant;
+
+        this.originalMass = mass;
+    }
+
+    public void addGangue(double gangue) {
+
+        gangue *= Config.molesPerIngotConstant;
+
+        this.gangue = gangue;
     }
 
     public void addRadiation(double radiation) {
@@ -103,7 +138,12 @@ public class ItemHazardModule {
         this.explosive = bang;
     }
 
-    public void applyEffects(LivingEntity entity, float mod, int slot, boolean currentItem, InteractionHand hand) {
+    public boolean isInitialized(ItemStack stack) {
+
+        return stack.getOrCreateTag().getBoolean("initialized");
+    }
+
+    public void update(@Nullable ItemStack stack, LivingEntity entity, float mod, int slot, boolean currentItem, InteractionHand hand) {
 
         boolean reacher = false;
 
@@ -115,6 +155,8 @@ public class ItemHazardModule {
             reacher = Library.checkForHeld(player, RegisterItems.REACHER.get());
         }
 
+        if(stack != null)
+            stack.getOrCreateTag().putLong("time_elapsed", System.currentTimeMillis() - stack.getOrCreateTag().getLong("start_time"));
 
         if(this.radiation * tempMod > 0) {
 
@@ -186,6 +228,53 @@ public class ItemHazardModule {
 
             ContaminationUtil.contaminate(entity, HazardType.ASBESTOS, ContaminationType.CREATIVE, (float) meso);
         }
+        if(stack != null) {
+
+            if(isInitialized(stack)) {
+
+                stack.getOrCreateTag().putFloat("mass", recalculateMass(this.originalMass, getTimeElapsed(stack), this.halfLife));
+                if(halfLivesPassed(getTimeElapsed(stack), this.halfLife) > 10)
+                    explode(stack, entity);
+            }
+            else
+                stack.getOrCreateTag().putFloat("mass", this.originalMass);
+        }
+    }
+
+    private static long getTimeElapsed(ItemStack stack) {
+
+        return stack.getOrCreateTag().getLong("time_elapsed");
+    }
+
+    private static float recalculateMass(float originalMass, long timeElapsed, float halfLife) {
+
+        return ((Double)(originalMass * Math.pow(0.5, halfLivesPassed(timeElapsed, halfLife)))).floatValue();
+    }
+
+    public static float halfLivesPassed(long timeElapsed, float halfLife) {
+
+        return timeElapsed / halfLife;
+    }
+
+    private Component getDecay(ItemStack stack) {
+
+        return Component.literal(df.format(((this.originalMass - getMass(stack)) / this.originalMass) * 100) + "%");
+    }
+
+    private static float getMass(ItemStack stack) {
+
+        float malalassasssssSAASSSSSSFUUUUUCCKKKKKK = stack.getOrCreateTag().getFloat("mass");
+
+        return malalassasssssSAASSSSSSFUUUUUCCKKKKKK > 0 ? malalassasssssSAASSSSSSFUUUUUCCKKKKKK : ((IItemHazard)stack.getItem()).getModule().originalMass;
+    }
+
+    private void explode(ItemStack stack, Entity source) {
+
+        if(source instanceof Player player)
+            player.getInventory().removeItem(stack);
+        if(source instanceof ItemEntity item)
+            item.remove(RemovalReason.DISCARDED);
+        new VeryFastRaycastedExplosion(source.level(), source.getX(), source.getY(), source.getZ(), Math.round(this.uExpRadius / 3f), this.uExpRadius, this.uExpRadius, Math.round(this.uExpRadius*1.5f), (byte)0, 1, 2, 1, null, this.uExpRadius);
     }
 
     public static double getNewValue(double radiation) {
@@ -211,8 +300,22 @@ public class ItemHazardModule {
         }
     }
 
+    public static String getMassFormatted(ItemStack stack) {
+
+        float mass = getMass(stack);
+
+        return mass > 1000 ? df.format(mass / 1000) + "kg" : mass < 1 ? Math.round(mass * 1000) + "mg" : df.format(mass) + "g";
+    }
+
     public void addInformation(ItemStack stack, List<Component> list, TooltipFlag flagIn) {
 
+        stack.getOrCreateTag().putFloat("mass", getMass(stack));
+
+        // Mass
+        if(getMass(stack) > 0) {
+
+            list.add(Component.literal("Mass: ").append(getMassFormatted(stack)).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
+        }
         // Rad
         if(this.radiation * tempMod > 0) {
 
@@ -256,11 +359,20 @@ public class ItemHazardModule {
 
             list.add(Component.literal("[Coal Dust]").withStyle(ChatFormatting.DARK_GRAY));
         }
+        // Unstable
+        if(this.uExpRadius > 0) {
+
+            list.add(Component.literal("[Unstable]").withStyle(ChatFormatting.DARK_RED));
+            list.add(Component.literal("  -:").append(Component.translatable("trait.halflife")).append(df.format(halfLife / 1000) + "s").withStyle(ChatFormatting.RED));
+            list.add(Component.literal("  -:").append(Component.translatable("trait.decay")).append(getDecay(stack)).withStyle(ChatFormatting.RED));
+        }
     }
 
-    public boolean onEntityItemUpdate(ItemEntity item) {
+    public boolean onEntityItemUpdate(ItemStack stack, ItemEntity item) {
 
         if(!item.level().isClientSide) {
+
+            stack.getOrCreateTag().putLong("time_elapsed", System.currentTimeMillis() - stack.getOrCreateTag().getLong("start_time"));
 
             if(this.hydro && (item.isInWaterOrRain())) {
 
@@ -281,6 +393,15 @@ public class ItemHazardModule {
 //                System.err.println("[Debug] radiating...");
                 ContaminationUtil.radiate((ServerLevel) item.level(), item.getOnPos().getX(), item.getOnPos().getY()+1, item.getOnPos().getZ(), 32, (float)(this.radiation*0.00004D-(0.00004D*20)), item.getOnPos().offset(0, 1, 0));
             }
+
+            if(this.isInitialized(stack)) {
+
+                stack.getOrCreateTag().putFloat("mass", recalculateMass(this.originalMass, getTimeElapsed(stack), this.halfLife));
+                if(halfLivesPassed(getTimeElapsed(stack), this.halfLife) > 10)
+                    explode(stack, item);
+            }
+            else
+                stack.getOrCreateTag().putFloat("mass", this.originalMass);
         }
 
         return false;

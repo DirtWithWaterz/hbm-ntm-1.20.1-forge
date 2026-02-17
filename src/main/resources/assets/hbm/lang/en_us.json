@@ -2,6 +2,8 @@
   "trait.radioactive": "Radioactive",
   "trait.rad_resistance": "Radiation resistance: %s",
   "trait.toxic": "Toxicity",
+  "trait.halflife":  "Half-Life: ",
+  "trait.decay": "Decay: ",
 
   "adjective.extreme": "Extreme",
   "adjective.very_high": "Very High",

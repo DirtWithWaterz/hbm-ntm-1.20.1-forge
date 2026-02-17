@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.util;
 
+import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.block.custom.RadResistantBlock;
 import com.hbm.nucleartech.damagesource.RegisterDamageSources;
 import com.hbm.nucleartech.handler.HazmatRegistry;
@@ -87,7 +88,14 @@ public class ContaminationUtil {
     public static void radiate(ServerLevel level, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, float blast3d, BlockPos worldPosition) {
         radiate(level, x, y, z, range, rad3d, dig3d, fire3d, blast3d, range, worldPosition);
     }
+    /*
+    You should really fix your radiation system. Make blocks and item entities only set rads in their rad-pocket once, or when they are called to, and then remove their rads on deletion.
+     */
+    @Deprecated(since = "check comment", forRemoval = true)
     public static void radiate(ServerLevel pLevel, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, float blast3d, double blastRange, BlockPos worldPosition) {
+        radiate(pLevel, x, y, z, range, rad3d, dig3d, fire3d, blast3d, blastRange, true, worldPosition);
+    }
+    public static void radiate(ServerLevel pLevel, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, float blast3d, double blastRange, boolean raycast, BlockPos worldPosition) {
         if (pLevel == null) return;
         
         // Create a thread-safe copy of the entity list to prevent ConcurrentModificationException
@@ -107,6 +115,8 @@ public class ContaminationUtil {
 
         pockets.add(ppppppp);
 
+        if(!(Config.extraRadiateFunctions && raycast))
+            return;
         for(Entity e : entities) {
 
             if(isExplosionExempt(e)) continue;

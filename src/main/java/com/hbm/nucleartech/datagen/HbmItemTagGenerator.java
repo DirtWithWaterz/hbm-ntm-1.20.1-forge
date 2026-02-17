@@ -47,6 +47,50 @@ public class HbmItemTagGenerator extends ItemTagsProvider {
                         RegisterItems.ALUMINUM_INGOT.get(),
                         RegisterItems.TITANIUM_INGOT.get()
                 );
+
+        tag(Tags.Items.ARMORS)
+                .add(
+                        RegisterItems.HAZMAT_BOOTS.get(),
+                        RegisterItems.HAZMAT_BOOTS_GREY.get(),
+                        RegisterItems.HAZMAT_BOOTS_RED.get(),
+                        RegisterItems.HAZMAT_LEGGINGS.get(),
+                        RegisterItems.HAZMAT_LEGGINGS_GREY.get(),
+                        RegisterItems.HAZMAT_LEGGINGS_RED.get(),
+                        RegisterItems.HAZMAT_CHESTPLATE.get(),
+                        RegisterItems.HAZMAT_CHESTPLATE_GREY.get(),
+                        RegisterItems.HAZMAT_CHESTPLATE_RED.get(),
+                        RegisterItems.HAZMAT_HELMET.get(),
+                        RegisterItems.HAZMAT_HELMET_GREY.get(),
+                        RegisterItems.HAZMAT_HELMET_RED.get()
+                );
+
+        tag(Tags.Items.ARMORS_BOOTS)
+                .add(
+                        RegisterItems.HAZMAT_BOOTS.get(),
+                        RegisterItems.HAZMAT_BOOTS_GREY.get(),
+                        RegisterItems.HAZMAT_BOOTS_RED.get()
+                );
+
+        tag(Tags.Items.ARMORS_LEGGINGS)
+                .add(
+                        RegisterItems.HAZMAT_LEGGINGS.get(),
+                        RegisterItems.HAZMAT_LEGGINGS_GREY.get(),
+                        RegisterItems.HAZMAT_LEGGINGS_RED.get()
+                );
+
+        tag(Tags.Items.ARMORS_CHESTPLATES)
+                .add(
+                        RegisterItems.HAZMAT_CHESTPLATE.get(),
+                        RegisterItems.HAZMAT_CHESTPLATE_GREY.get(),
+                        RegisterItems.HAZMAT_CHESTPLATE_RED.get()
+                );
+
+        tag(Tags.Items.ARMORS_HELMETS)
+                .add(
+                        RegisterItems.HAZMAT_HELMET.get(),
+                        RegisterItems.HAZMAT_HELMET_GREY.get(),
+                        RegisterItems.HAZMAT_HELMET_RED.get()
+                );
     }
 
     public static class SharedTagLists {

@@ -1,0 +1,16 @@
+{
+  "values": [
+    "hbm:hazmat_boots",
+    "hbm:hazmat_boots_grey",
+    "hbm:hazmat_boots_red",
+    "hbm:hazmat_leggings",
+    "hbm:hazmat_leggings_grey",
+    "hbm:hazmat_leggings_red",
+    "hbm:hazmat_chestplate",
+    "hbm:hazmat_chestplate_grey",
+    "hbm:hazmat_chestplate_red",
+    "hbm:hazmat_helmet",
+    "hbm:hazmat_helmet_grey",
+    "hbm:hazmat_helmet_red"
+  ]
+}

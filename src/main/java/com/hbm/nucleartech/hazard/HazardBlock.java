@@ -1,10 +1,8 @@
 package com.hbm.nucleartech.hazard;
 
 import com.hbm.nucleartech.Config;
-import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.modules.ItemHazardModule;
-import com.hbm.nucleartech.saveddata.RadiationSavedData;
 import com.hbm.nucleartech.util.ContaminationUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -26,9 +24,9 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
     ItemHazardModule module;
 
-    private double radIn = 0.0F;
-    private double rad3d = 0.0f;
-    private ExtDisplayEffect extEffect = null;
+    double radIn = 0.0F;
+    double rad3d = 0.0f;
+    ExtDisplayEffect extEffect = null;
 
     private boolean beaconable = false;
 
@@ -220,14 +218,14 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         super.stepOn(pLevel, pPos, pState, pEntity);
         if(pEntity instanceof LivingEntity e)
-            this.module.applyEffects(e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
+            this.module.update(null, e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
     }
 
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         super.entityInside(pState, pLevel, pPos, pEntity);
         if(pEntity instanceof LivingEntity e)
-            this.module.applyEffects(e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
+            this.module.update(null, e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
     }
 
     @Override
