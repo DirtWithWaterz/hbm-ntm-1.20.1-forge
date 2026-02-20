@@ -2,6 +2,8 @@ package com.hbm.nucleartech.explosion;
 
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.entity.effects.NukeTorexEntity;
+import com.hbm.nucleartech.handler.HbmRadiationSystem;
+import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.mixin.MixinData;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -70,7 +72,7 @@ public class VeryFastRaycastedExplosion {
 	private  int initial_loss = 0;
 
 	public VeryFastRaycastedExplosion(Level Level, double X, double Y, double Z, int Edge, int maxradiusx, int maxradiusy, int Rayradiusx,
-									  byte Shape, float Knockbackmltp, int Powermltp, float Dmgmltp, @Nullable Entity source, float cloudScale) {
+									  byte Shape, float Knockbackmltp, int Powermltp, float Dmgmltp, @Nullable Entity source, float cloudScale, boolean doCloudFirst) {
 		//
 		level = (ServerLevel) Level;
 		maxBuildHeight = level.getMaxBuildHeight();
@@ -141,9 +143,9 @@ public class VeryFastRaycastedExplosion {
 		//blockResistanceMap = blockResistanceCache;//Collections.unmodifiableMap(blockResistanceCache); // convert to unmodifiable -> faster .get
 		System.out.println((System.nanoTime() - start)/1000 + "micros to get res, size: " + blockResistanceMap.size());
 		//blockResistanceMap.forEach((blockState, resistance) -> System.out.println(blockState + ": " + resistance));
-		if(scale > 0)
+		if(scale > 0 && doCloudFirst)
 			NukeTorexEntity.statFac(level, x, z, scale);
-		explode();
+		explode(doCloudFirst);
 	}
 
 	private static List<Vector2i> getChunksInRadius(int cx, int cz, int r) {
@@ -290,13 +292,21 @@ public class VeryFastRaycastedExplosion {
 						}
 
 						// Set block and mark chunk dirty
-						level.setBlock(pos, newState, 3); // Update with flags (notify neighbors, etc.)
+						level.setBlock(pos, newState, 2); // Update with flags (notify neighbors, etc.)
+						HbmRadiationSystem.addRadSource(level, pos, (float)((HazardBlock)newState.getBlock()).rad3d, false);
+//						HbmRadiationSystem.incrementRad(level, pos, (float)((HazardBlock)newState.getBlock()).rad3d);
 						ChunkAccess chunk = level.getChunk(pos);
+						HbmRadiationSystem.getChunkStorage((LevelChunk)chunk).lazyRefresh[HbmRadiationSystem.ChunkStorageCompat.getIndexFromWorldY(pos.getY())] = true;
 						chunk.setUnsaved(true);
 					}
 				}
 			}
 		}
+//		for(Vector2i vec : getChunksInRadius(xx, zz, rayradiusx)) {
+//			for(int i = 0; i < 24; i++)
+//				if(!Objects.requireNonNull(level.getChunkSource().getChunk(vec.x, vec.y, true)).getSection(i).hasOnlyAir())
+//					HbmRadiationSystem.rebuildChunkPockets(level.getChunkAt(new BlockPos(vec.x, HbmRadiationSystem.ChunkStorageCompat.getWorldYFromIndex(i), vec.y)), i);
+//		}
 	}
 
 	///
@@ -446,7 +456,7 @@ public class VeryFastRaycastedExplosion {
 	}
 
 	///
-	public void explode() {
+	public void explode(boolean doCloudFirst) {
 		long startTime = System.nanoTime();
 		initial_loss = blockResistanceMap.get(getBlockFastNOPOS(level, xx, yy, zz));
 		if (initial_loss >= radiusx*2*powermltp) {
@@ -465,7 +475,9 @@ public class VeryFastRaycastedExplosion {
 		long estimatedTime = System.nanoTime() - startTime;
 		System.out.println("Time taken for calc: " + estimatedTime/1000000 + "ms");
 		removeMarked(estimatedTime);// remove the marked blocks
-		contaminateStone();
+		if(scale > 0 && !doCloudFirst)
+			NukeTorexEntity.statFac(level, x, z, scale);
+//		contaminateStone();
 		System.out.println(fire_small + " small rays"); // small rays
 		System.out.println("called the mark function: " + blocks_marked + " times");
 

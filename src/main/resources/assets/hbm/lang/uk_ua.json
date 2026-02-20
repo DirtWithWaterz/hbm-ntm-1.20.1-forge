@@ -164,9 +164,9 @@
   "item.hbm.hazmat_leggings_grey": "Високоефективні антирадіаційні наголінники",
   "item.hbm.hazmat_boots_grey": "Високоефективні антирадіаційні черевики",
 
-  "geiger.chunk_rad": "Поточна радіація в чанку:",
-  "geiger.env_rad": "Загальне радіаційне забруднення середовища:",
-  "geiger.player_rad": "Зараження гравця:",
+  "geiger.section_activity": "Поточна радіація в чанку:",
+  "geiger.ambient_dose_rate": "Загальне радіаційне забруднення середовища:",
+  "geiger.accumulated_dose": "Зараження гравця:",
   "geiger.player_res": "Захист гравця від радіації:",
   "geiger.title": "ЛІЧИЛЬНИК ГЕЙГЕРА",
 

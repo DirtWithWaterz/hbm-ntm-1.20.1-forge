@@ -196,9 +196,9 @@
   "item.hbm.hazmat_leggings_grey": "Высокоэффективные антирадиационные поножи",
   "item.hbm.hazmat_boots_grey": "Высокоэффективные антирадиационные ботинки",
 
-   "geiger.chunk_rad": "Текущая радиация в чанке:",
-  "geiger.env_rad": "Общее радиационное загрязнение среды:",
-  "geiger.player_rad": "Заражение игрока:",
+   "geiger.section_activity": "Текущая радиация в чанке:",
+  "geiger.ambient_dose_rate": "Общее радиационное загрязнение среды:",
+  "geiger.accumulated_dose": "Заражение игрока:",
   "geiger.player_res": "Защита игрока от радиации:",
   "geiger.title": "СЧЁТЧИК ГЕЙГЕРА",
 

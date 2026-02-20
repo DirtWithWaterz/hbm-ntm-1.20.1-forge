@@ -123,8 +123,8 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> ARMOR_MODIFICATION_TABLE = BLOCKS.register("armor_modification_table",
             () -> new ArmorModificationTableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
-    public static final RegistryObject<Block> DEAD_GRASS = registerHazardBlock(null, 4.0f, "dead_grass",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK), 4.0f).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
+    public static final RegistryObject<Block> DEAD_GRASS = registerHazardBlock(null, 1.0f, "dead_grass",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK), 1.0f).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> BURNER_PRESS = BLOCKS.register("burner_press",
             () -> new BurnerPressBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)

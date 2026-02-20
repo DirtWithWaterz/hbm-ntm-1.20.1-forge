@@ -1,6 +1,5 @@
 package com.hbm.nucleartech.util;
 
-import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.block.custom.RadResistantBlock;
 import com.hbm.nucleartech.damagesource.RegisterDamageSources;
 import com.hbm.nucleartech.handler.HazmatRegistry;
@@ -18,6 +17,7 @@ import com.hbm.nucleartech.render.amlfrom1710.Vec3;
 import com.hbm.nucleartech.saveddata.RadiationSavedData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -93,11 +93,8 @@ public class ContaminationUtil {
      */
     @Deprecated(since = "check comment", forRemoval = true)
     public static void radiate(ServerLevel pLevel, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, float blast3d, double blastRange, BlockPos worldPosition) {
-        radiate(pLevel, x, y, z, range, rad3d, dig3d, fire3d, blast3d, blastRange, true, worldPosition);
-    }
-    public static void radiate(ServerLevel pLevel, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, float blast3d, double blastRange, boolean raycast, BlockPos worldPosition) {
         if (pLevel == null) return;
-        
+
         // Create a thread-safe copy of the entity list to prevent ConcurrentModificationException
         List<Entity> entities;
         try {
@@ -111,12 +108,10 @@ public class ContaminationUtil {
 
         HbmRadiationSystem.RadPocket ppppppp = getPocket(pLevel, worldPosition);
 
-        RadiationSavedData.incrementRad(pLevel, worldPosition, rad3d, rad3d);
+        RadiationSavedData.incrementRad(pLevel, worldPosition, rad3d);
 
         pockets.add(ppppppp);
 
-        if(!(Config.extraRadiateFunctions && raycast))
-            return;
         for(Entity e : entities) {
 
             if(isExplosionExempt(e)) continue;
@@ -172,13 +167,8 @@ public class ContaminationUtil {
 
                 BlockPos dPos = e.getOnPos().offset(0,1,0);
 
-                HbmRadiationSystem.RadPocket decidedPocket = HbmRadiationSystem.getPocket(pLevel, dPos);
+                RadiationSavedData.incrementRad(pLevel, dPos, eRads/(pLevel.random.nextFloat()+0.75f));
 
-                if(!pockets.contains(decidedPocket)) {
-
-                    RadiationSavedData.incrementRad(pLevel, dPos, eRads, eRads);
-                    pockets.add(decidedPocket);
-                }
 //                RadiationSavedData.decrementRad(pLevel, e.getOnPos().offset(0,1,0), eRads);
 //                else
 //                    System.err.println("[Debug] Radiation being applied is too close to zero: " + eRads);
@@ -265,7 +255,7 @@ public class ContaminationUtil {
         }
         HbmRadiationSystem.RadPocket ePoc = getPocket(level, entity.getOnPos().offset(0, 1, 0));
 
-        env = env + (double)ePoc.radiation;
+        env = ePoc.sourceRads + env + (double)ePoc.radiation;
 
         HbmCapabilities.getData(entity).setValue(Type.RADENV, (float)env);
         HbmCapabilities.getData(entity).syncLivingVariables(entity);
@@ -312,6 +302,7 @@ public class ContaminationUtil {
 
 //                System.out.println("radiation. adding " + amount + " rads to " + entity.getName().getString());
                 HbmCapabilities.getData(entity).addValue(Type.RADIATION, amount);
+                HbmCapabilities.getData(entity).addValue(Type.RADENV, amount+(amount/((entity.level().random.nextFloat()*2)-1)));
                 if(entity instanceof Player)
                     HbmCapabilities.getData(entity).syncLivingVariables(entity);
                 return true;
@@ -392,30 +383,73 @@ public class ContaminationUtil {
                 e instanceof IRadiationImmune || checkConfigEntityImmunity(e)*/;
     }
 
-    public static void printGeigerData(Player player) {
+    private static String formattedBq(double Bq) {
 
-        double playerContamination = (double)((HbmCapabilities.getData(player).getValue(Type.RADIATION) * 10)) / 10D;
+        if(Bq >= 1_000_000_000_000L)
+            return String.format("%.1f", Bq / 1_000_000_000_000L) + " TBq";
+        else if(Bq >= 1_000_000_000)
+            return String.format("%.1f", Bq / 1_000_000_000) + " GBq";
+        else if(Bq >= 1_000_000)
+            return String.format("%.1f", Bq / 1_000_000) + " MBq";
+        else if(Bq >= 1_000)
+            return String.format("%.1f", Bq / 1_000) + " kBq";
+        else
+            return String.format("%.1f", Bq) + " Bq";
+    }
 
-        double environmentalRads = (double)(HbmCapabilities.getData(player).getValue(Type.RADENV) * 10) / 10D;
+    private static String formattedSvH(double SvH) {
 
-        double neutronRads = (double)(HbmCapabilities.getData(player).getValue(Type.NEUTRON) * 10) / 10D;
+        if(SvH >= 1_000_000_000_000L)
+            return String.format("%.1f", SvH / 1_000_000_000_000L) + " TSv/h";
+        else if(SvH >= 1_000_000_000)
+            return String.format("%.1f", SvH / 1_000_000_000) + " GSv/h";
+        else if(SvH >= 1_000_000)
+            return String.format("%.1f", SvH / 1_000_000) + " MSv/h";
+        else if(SvH >= 1_000)
+            return String.format("%.1f", SvH / 1_000) + " kSv/h";
+        else if(SvH >= 1)
+            return String.format("%.1f", SvH) + " Sv/h";
+        else if(SvH >= 0.001)
+            return String.format("%.1f", SvH * 1_000) + " mSv/h";
+        else if(SvH >= 0.00000_1)
+            return String.format("%.1f", SvH * 1_000_000) + " µSv/h";
+        else
+            return String.format("%.1f", SvH * 1_000_000_000) + " nSv/h";
+    }
+
+    public static void printGeigerData(ServerLevel level, Player player) {
+
+        HbmRadiationSystem.RadPocket p = getPocket(level, player.getOnPos().above());
+
+        double sectionActivity = p.sourceRads;
+
+        double envRads = HbmCapabilities.getData(player).getValue(Type.RADENV);
+        double neutRads = HbmCapabilities.getData(player).getValue(Type.NEUTRON);
+        double playerCont = HbmCapabilities.getData(player).getValue(Type.RADIATION);
 
         double res = ((int)(10000D - ContaminationUtil.calculateRadiationMod(player) * 10000D)) / 100D;
         double resKoeff = ((int)(HazmatRegistry.getResistance(player) * 100D)) / 100D;
 
-        String envPrefix = getPrefixFromRad(environmentalRads);
+        String sectionBq        = formattedBq(sectionActivity * 1_000_000);
+        String ambientSvH  = formattedSvH(((envRads + neutRads) * 0.01 * 3600) / 1_000_000);   // Sv/h
+        double playerMsv        = playerCont * 0.01 * 1000;                     // mSv
+
+
+
+        String sectPrefix = getPrefixFromRad(sectionActivity);
+        String envPrefix = getPrefixFromRad(envRads + neutRads);
         String radPrefix = "";
         String resPrefix = "" + ChatFormatting.WHITE;
 
-        if(playerContamination < 200)
+        if(playerCont < 200)
             radPrefix += ChatFormatting.GREEN;
-        else if(playerContamination < 400)
+        else if(playerCont < 400)
             radPrefix += ChatFormatting.YELLOW;
-        else if(playerContamination < 600)
+        else if(playerCont < 600)
             radPrefix += ChatFormatting.GOLD;
-        else if(playerContamination < 800)
+        else if(playerCont < 800)
             radPrefix += ChatFormatting.RED;
-        else if(playerContamination < 1000)
+        else if(playerCont < 1000)
             radPrefix += ChatFormatting.DARK_RED;
         else
             radPrefix += ChatFormatting.DARK_GRAY;
@@ -424,8 +458,21 @@ public class ContaminationUtil {
             resPrefix += ChatFormatting.GREEN;
 
         player.sendSystemMessage(Component.literal("===== ☢ ").append(Component.translatable("geiger.title")).append(Component.literal(" ☢ =====")).withStyle(ChatFormatting.GOLD));
-        player.sendSystemMessage(Component.translatable("geiger.env_rad").append(Component.literal(" " + envPrefix + String.format("%.1f", environmentalRads + neutronRads) + " RAD/s")).withStyle(ChatFormatting.YELLOW));
-        player.sendSystemMessage(Component.translatable("geiger.player_rad").append(Component.literal(" " + radPrefix + String.format("%.1f", playerContamination) + " RAD")).withStyle(ChatFormatting.YELLOW));
+        player.sendSystemMessage(Component.translatable("geiger.section_activity")
+                .withStyle(ChatFormatting.YELLOW).append(
+                Component.literal(
+                        " " + sectPrefix + String.format(
+                                java.util.Locale.US,
+                                sectionBq))
+        ));
+        player.sendSystemMessage(Component.translatable("geiger.ambient_dose_rate")
+                .withStyle(ChatFormatting.YELLOW).append(
+                Component.literal(
+                        " " + envPrefix + String.format(
+                                java.util.Locale.US,
+                                ambientSvH))
+        ));
+        player.sendSystemMessage(Component.translatable("geiger.accumulated_dose").append(Component.literal(" " + radPrefix + String.format("%.1f", playerMsv) + " mSv")).withStyle(ChatFormatting.YELLOW));
         player.sendSystemMessage(Component.translatable("geiger.player_res").append(Component.literal(" " + resPrefix + res + "% (" + resKoeff + ")")).withStyle(ChatFormatting.YELLOW));
     }
 

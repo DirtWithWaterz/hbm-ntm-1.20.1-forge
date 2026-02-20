@@ -68,18 +68,13 @@ public class RadiationWorldHandler {
         
         if (pockets == null || pockets.isEmpty()) return List.of();
 
-        // Snapshot to avoid concurrent modification
         List<HbmRadiationSystem.RadPocket> snapshot = new ArrayList<>(pockets);
         List<HbmRadiationSystem.RadPocket> result = new ArrayList<>(Math.min(snapshot.size(), 16));
 
         for (HbmRadiationSystem.RadPocket pocket : snapshot) {
             if (pocket == null) continue;
             if (Float.isNaN(pocket.radiation)) continue; // Skip invalid radiation values
-            
-            // Optional: filter by world if needed
-            // if (pocket.parent == null || pocket.parent.parentChunk == null || 
-            //     pocket.parent.parentChunk.chunk.getLevel() != world) continue;
-                
+
             if (pocket.radiation >= threshold) {
                 result.add(pocket);
             }
@@ -97,8 +92,7 @@ public class RadiationWorldHandler {
 
         return result;
     }
-    
-    // Called during server shutdown to clean up resources
+
     public static void shutdown() {
         AsyncChunkProcessor.shutdown();
     }

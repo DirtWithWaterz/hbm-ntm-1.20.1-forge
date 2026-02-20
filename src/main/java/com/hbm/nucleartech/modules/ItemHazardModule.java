@@ -37,7 +37,14 @@ public class ItemHazardModule {
 
     private static DecimalFormat df = new DecimalFormat("0.##");
 
-    public double radiation;
+    public double radiation; // should no longer be visible
+
+    public double alpha;
+    public double beta;
+    public double gamma;
+    public double neutron;
+    public double xray;
+
     public double digamma;
     public int fire;
     public int cryogenic;
@@ -53,7 +60,6 @@ public class ItemHazardModule {
     public float halfLife;
 
     public boolean isIsotope;
-    public float mass; // grams
     public double gangue;
     public float originalMass;
 
@@ -274,7 +280,7 @@ public class ItemHazardModule {
             player.getInventory().removeItem(stack);
         if(source instanceof ItemEntity item)
             item.remove(RemovalReason.DISCARDED);
-        new VeryFastRaycastedExplosion(source.level(), source.getX(), source.getY(), source.getZ(), Math.round(this.uExpRadius / 3f), this.uExpRadius, this.uExpRadius, Math.round(this.uExpRadius*1.5f), (byte)0, 1, 2, 1, null, this.uExpRadius);
+        new VeryFastRaycastedExplosion(source.level(), source.getX(), source.getY(), source.getZ(), Math.round(this.uExpRadius / 3f), this.uExpRadius, this.uExpRadius, Math.round(this.uExpRadius*1.5f), (byte)0, 1, 2, 1, null, this.uExpRadius, true);
     }
 
     public static double getNewValue(double radiation) {

@@ -101,9 +101,9 @@
 
   "item.hbm.geiger_counter": "携帯用ガイガーカウンター",
 
-  "geiger.chunk_rad": "現在のチャンク内放射線量:",
-  "geiger.env_rad": "総環境放射線量:",
-  "geiger.player_rad": "プレイヤー被曝線量:",
+  "geiger.section_activity": "現在のチャンク内放射線量:",
+  "geiger.ambient_dose_rate": "総環境放射線量:",
+  "geiger.accumulated_dose": "プレイヤー被曝線量:",
   "geiger.player_res": "プレイヤー放射線耐性:",
   "geiger.title": "ガイガーカウンター",
 
