@@ -90,7 +90,7 @@ public class RadiationSavedData {
 
     public float getRadForCoord(BlockPos pos) {
 //        if(true) { // if GeneralConfig.advancedRadiation
-            return HbmRadiationSystem.getRadForCoord(worldObj, pos);
+            return HbmRadiationSystem.getRadForCoord(worldObj, pos, false);
 //        }
 //        RadiationSaveStructure rad = contamination.get(new ChunkPos(pos));
 //        if(rad != null)
@@ -240,10 +240,10 @@ public class RadiationSavedData {
 //        return openInstance;
 //    }
 
-    public static void incrementRad(ServerLevel worldObj, BlockPos pos, float rad, float maxRad) {
+    public static void incrementRad(ServerLevel worldObj, BlockPos pos, float rad) {
         if(true){ // if GeneralConfig.advancedRadiation
 //            System.out.println("[Debug] Increment Rad called with size: " + rad);
-            HbmRadiationSystem.incrementRad(worldObj, pos, rad, maxRad);
+            HbmRadiationSystem.incrementRad(worldObj, pos, rad);
 //            return;
         }
 //        RadiationSavedData data = getData(worldObj);

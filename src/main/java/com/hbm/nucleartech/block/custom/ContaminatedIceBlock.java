@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.block.custom;
 
 import com.hbm.nucleartech.hazard.HazardBlock;
+import com.hbm.nucleartech.hazard.LowProfileHazardBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -18,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class ContaminatedIceBlock extends HazardBlock {
+public class ContaminatedIceBlock extends LowProfileHazardBlock {
 
     public ContaminatedIceBlock(BlockBehaviour.Properties pProperties, double rad) {
         super(pProperties, rad);

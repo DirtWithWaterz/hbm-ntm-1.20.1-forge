@@ -37,6 +37,12 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.TUNGSTEN_WIRE);
 
         simpleItem(RegisterItems.URANIUM_INGOT);
+        simpleItem(RegisterItems.URANIUM_233_INGOT);
+        simpleItem(RegisterItems.URANIUM_235_INGOT);
+        simpleItem(RegisterItems.URANIUM_238_INGOT);
+        simpleItem(RegisterItems.URANIUM_238m2_INGOT);
+        simpleItem(RegisterItems.URANIUM_FUEL_INGOT);
+
         simpleItem(RegisterItems.BERYLLIUM_INGOT);
         simpleItem(RegisterItems.TITANIUM_INGOT);
         simpleItem(RegisterItems.SULFUR);
@@ -62,6 +68,8 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.RAW_LEAD);
         simpleItem(RegisterItems.RAW_SCHRABIDIUM);
         simpleItem(RegisterItems.RAW_COBALT);
+        simpleItem(RegisterItems.DESH_INGOT);
+        simpleItem(RegisterItems.STEEL_INGOT);
 
         simpleItem(RegisterItems.GRAPHITE_INGOT);
 
@@ -78,8 +86,20 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.BIOMASS);
 
         simpleItem(RegisterItems.URANIUM_BILLET);
+        simpleItem(RegisterItems.URANIUM_233_BILLET);
+        simpleItem(RegisterItems.URANIUM_235_BILLET);
+        simpleItem(RegisterItems.URANIUM_238_BILLET);
+        simpleItem(RegisterItems.URANIUM_FUEL_BILLET);
+
         simpleItem(RegisterItems.URANIUM_CRYSTAL);
+
         simpleItem(RegisterItems.URANIUM_NUGGET);
+        simpleItem(RegisterItems.URANIUM_233_NUGGET);
+        simpleItem(RegisterItems.URANIUM_235_NUGGET);
+        simpleItem(RegisterItems.URANIUM_238_NUGGET);
+        simpleItem(RegisterItems.URANIUM_238m2_NUGGET);
+        simpleItem(RegisterItems.URANIUM_FUEL_NUGGET);
+
         simpleItem(RegisterItems.URANIUM_POWDER);
 
         simpleItem(RegisterItems.THORIUM_SHALE);

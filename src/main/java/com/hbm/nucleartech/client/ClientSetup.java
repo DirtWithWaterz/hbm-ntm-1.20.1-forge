@@ -1,18 +1,25 @@
 package com.hbm.nucleartech.client;
 
+import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.entity.HbmEntities;
 import com.hbm.nucleartech.entity.client.NukeTorexRenderer;
 import com.hbm.nucleartech.fluid.RegisterFluids;
+import com.hbm.nucleartech.hazard.HazardItem;
+import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.particle.*;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = "hbm", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
@@ -59,6 +66,18 @@ public class ClientSetup {
                 RegisterBlocks.ANTI_PERSONNEL_MINE.get(),
                 RenderType.cutout()
         );
+
+        event.enqueueWork(() -> {
+
+            for(RegistryObject<Item> item : RegisterItems.ITEMS.getEntries()) {
+
+                if(item.get() instanceof HazardItem haz)
+                    ItemProperties.register(item.get(),
+                            new ResourceLocation(HBM.MOD_ID, "mass"),
+                            (stack, level, entity, seed) -> haz.getModule().originalMass > 0 ? haz.getModule().originalMass : stack.getOrCreateTag().getFloat("mass"));
+
+            }
+        });
     }
 
     @SubscribeEvent

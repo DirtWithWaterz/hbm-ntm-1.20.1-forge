@@ -2,6 +2,8 @@
   "trait.radioactive": "Radioactive",
   "trait.rad_resistance": "Radiation resistance: %s",
   "trait.toxic": "Toxicity",
+  "trait.halflife":  "Half-Life: ",
+  "trait.decay": "Decay: ",
 
   "adjective.extreme": "Extreme",
   "adjective.very_high": "Very High",
@@ -287,10 +289,10 @@
   "block.hbm.still_water": "Still Water",
   "item.hbm.still_water_bucket": "Still Water Bucket",
 
-  "geiger.chunk_rad": "Current chunk radiation:",
-  "geiger.env_rad": "Total environmental radiation:",
-  "geiger.player_rad": "Player contamination:",
-  "geiger.player_res": "Player resistance:",
+  "geiger.section_activity": "Section activity:",
+  "geiger.ambient_dose_rate": "Ambient dose rate:",
+  "geiger.accumulated_dose": "Accumulated dose:",
+  "geiger.player_res": "Resistance:",
   "geiger.title": "GEIGER COUNTER",
 
   "block.hbm.waste_block": "Block of Nuclear Waste",

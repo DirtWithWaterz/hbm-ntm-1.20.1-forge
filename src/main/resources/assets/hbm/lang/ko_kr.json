@@ -163,9 +163,9 @@
   "item.hbm.hazmat_leggings_grey": "고성능 방호 레깅스",
   "item.hbm.hazmat_boots_grey": "고성능 방호 부츠",
 
-  "geiger.chunk_rad": "현 청크 방사선:",
-  "geiger.env_rad": "총 환경 방사선:",
-  "geiger.player_rad": "플레이어 오염도:",
+  "geiger.section_activity": "현 청크 방사선:",
+  "geiger.ambient_dose_rate": "총 환경 방사선:",
+  "geiger.accumulated_dose": "플레이어 오염도:",
   "geiger.player_res": "플레이어 저항:",
   "geiger.title": "가이거 계수기",
 

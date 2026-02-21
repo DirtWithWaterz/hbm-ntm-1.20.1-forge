@@ -45,7 +45,7 @@ public class AntiPersonnelMineEntity extends BlockEntity {
 
         if (closestEntity != null) {
 
-//            System.out.println("[Debug] kaboom!!");
+            System.out.println("[Debug] kaboom!!");
         }
     }
 }

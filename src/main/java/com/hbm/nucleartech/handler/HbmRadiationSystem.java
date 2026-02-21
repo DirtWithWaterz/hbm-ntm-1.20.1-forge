@@ -7,7 +7,6 @@ import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.interfaces.IRadResistantBlock;
 import com.hbm.nucleartech.item.custom.GeigerCounterItem;
 import com.hbm.nucleartech.network.HbmPacketHandler;
-import com.hbm.nucleartech.network.packet.ClientboundSpawnDeconParticlePacket;
 import com.hbm.nucleartech.network.packet.ClientboundSpawnRadioactiveDustParticlePacket;
 import com.hbm.nucleartech.util.ContaminationUtil;
 import net.minecraft.core.BlockPos;
@@ -17,6 +16,7 @@ import net.minecraft.nbt.IntArrayTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.FullChunkStatus;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -27,9 +27,9 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import com.hbm.nucleartech.handler.HbmRadiationSystem.ChunkStorageCompat.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.chunk.LevelChunkSection;
-import net.minecraft.world.level.chunk.Palette;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -44,9 +44,11 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.ChunkEvent;
 import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.PacketDistributor;
+import org.spongepowered.asm.mixin.MixinEnvironment;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -216,11 +218,11 @@ public class HbmRadiationSystem {
      * Pockets transfer some of their radiation to pockets they're connected to.
      * It tries to do pretty much the same algorithm as the regular system, but in 3d with pockets.
      */
-    public static void updateRadiation(Level level) {
+    public static void updateRadiation(ServerLevel level) {
 
         long time = System.currentTimeMillis();
 
-        //System.out.println("[Debug] Started updating radiation");
+//        System.out.println("[Debug] Started updating radiation");
 
         List<RadPocket> itrActive = new ArrayList<>(getActivePockets());
         Iterator<RadPocket> itr = itrActive.iterator();
@@ -231,10 +233,11 @@ public class HbmRadiationSystem {
             BlockPos pos = p.parent.parentChunk.getWorldPos(p.parent.yLevel);
 
             // Lower the radiation a bit, and mark the parent chunk as dirty so the radiation gets saved
-            p.radiation *= 0.999F;
-            p.radiation -= 0.05F;
+            p.radiation += p.sourceRads/10;
+            p.radiation *= 0.9F;
+            p.radiation -= 0.5F;
             p.parent.parentChunk.chunk.setUnsaved(true);
-            if(p.radiation <= 0) {
+            if(p.sourceRads + p.radiation <= 0) {
 
                 // If there is no more radiation and the radPocket is unsealed, set it to 0 and remove it
                 p.radiation = 0;
@@ -281,7 +284,7 @@ public class HbmRadiationSystem {
             for(Direction d : Direction.values())
                 count += p.connectionIndices[d.ordinal()].size();
 
-            float amountPer = 0.7F / count;
+            float amountPer = 1.3F / count;
 
             if(count == 0 || p.radiation < 1) {
 
@@ -290,7 +293,7 @@ public class HbmRadiationSystem {
                 amountPer = 0;
             }
             // Don't update if our own radiation is less than 1
-            if(p.radiation < 1)
+            if(p.sourceRads + p.radiation < 1)
                 amountPer = 0;
 
 //            BlockPos chunkPos = new BlockPos(
@@ -304,7 +307,7 @@ public class HbmRadiationSystem {
 
             // This might also cause leaks from sealed pockets to unsealed ones
             // Only update other values if this one has radiation to update with
-            if(p.radiation > 0 && amountPer > 0) {
+            if(p.sourceRads + p.radiation > 0 && amountPer > 0) {
 
                 // For each direction...
                 for(Direction e : Direction.values()) {
@@ -331,7 +334,7 @@ public class HbmRadiationSystem {
                             if(!sc2.pockets[idx].isSealed()) {
 
                                 // Only accumulated rads get updated so the system doesn't interfere with itself while working
-                                sc2.pockets[idx].accumulatedRads += p.radiation * amountPer;
+                                sc2.pockets[idx].accumulatedRads += p.sourceRads + p.radiation * amountPer;
                                 addActivePocket(sc2.pockets[idx]);
                             }
                         }
@@ -339,11 +342,11 @@ public class HbmRadiationSystem {
                 }
             }
             if(amountPer != 0)
-                p.accumulatedRads += p.radiation * 0.3F;
+                p.accumulatedRads += p.radiation * 0.4F;
 
-            // Make sure we only use around 20 ms max per tick, to help reduce lag
-            // The lage should die down by itself after a few minutes when all radioactive chunks get built
-            if(System.currentTimeMillis() - time > 20)
+            // Make sure we only use around 10 ms max per tick, to help reduce lag
+            // The lag should die down by itself after a few minutes when all radioactive chunks get built
+            if(System.currentTimeMillis() - time > 40)
                 break;
         }
 
@@ -354,10 +357,18 @@ public class HbmRadiationSystem {
         while(itr.hasNext()) {
 
             RadPocket act = itr.next();
-            act.radiation = act.accumulatedRads;
-            act.accumulatedRads = 0;
-            if(act.radiation <= 0) {
 
+            // Decay only the transient part (accumulatedRads)
+            act.accumulatedRads *= 0.7F;
+            act.accumulatedRads -= 0.5F;
+
+
+            // FINAL RADIATION = permanent source + current transient
+            act.radiation = act.sourceRads + act.accumulatedRads;
+
+            if(act.radiation <= 0) {
+                act.radiation = 0;
+                act.accumulatedRads = 0;
                 removeActivePocket(act);
                 itr.remove();
             }
@@ -391,7 +402,7 @@ public class HbmRadiationSystem {
 
                                 RadPocket ePoc = getPocket(level, entity.getOnPos().offset(0, 1, 0));
 //                                System.out.println("[Debug] Got pocket " + ePoc + " at " + entity.getOnPos().offset(0, 1, 0) + " and adding " + ePoc.radiation + " rads to " + entity.getName().getString());
-                                ContaminationUtil.contaminate(entity, ContaminationUtil.HazardType.RADIATION, ContaminationUtil.ContaminationType.CREATIVE, ePoc.radiation);
+                                ContaminationUtil.contaminate(entity, ContaminationUtil.HazardType.RADIATION, ContaminationUtil.ContaminationType.CREATIVE, ePoc.sourceRads + ePoc.radiation);
                             }
                         }
                     }
@@ -526,6 +537,7 @@ public class HbmRadiationSystem {
         //noinspection ToArrayCallWithZeroLengthArrayArgument
         subChunk.pockets = pockets.toArray(new RadPocket[pockets.size()]);
 
+        subChunk.refreshSources();
         // Finally, put the newly built sub chunk into the chunk
         st.instance.setForYLevel(ChunkStorageCompat.getWorldYFromIndex(yIndex), subChunk);
 
@@ -803,18 +815,48 @@ public class HbmRadiationSystem {
         return st;
     }
 
-    public static void incrementRad(ServerLevel level, BlockPos pos, float amount, float max) {
+    public static void addRadSource(ServerLevel level, BlockPos pos, float amount, boolean refresh) {
+
+        if(pos.getY() < -64 || pos.getY() > 319)
+            return;
+
+        if(!level.isLoaded(pos))
+            level.getChunkSource().getChunk(pos.getX()>>4, pos.getZ()>>4, ChunkStatus.FULL, true);
+
+        SubChunkRadiationStorage sc = getSubChunkStorage(level, pos);
+        sc.addSource(pos, amount);
+        if(refresh)
+            rebuildChunkPockets(sc.parentChunk.chunk, ChunkStorageCompat.getIndexFromWorldY(sc.yLevel));
+        sc.parentChunk.chunk.setUnsaved(true);
+    }
+
+    public static void removeRadSource(ServerLevel level, BlockPos pos) {
+
+        if(pos.getY() < -64 || pos.getY() > 319)
+            return;
+
+        if(!level.isLoaded(pos))
+            level.getChunkSource().getChunk(pos.getX()>>4, pos.getZ()>>4, ChunkStatus.FULL, true);
+
+        SubChunkRadiationStorage sc = getSubChunkStorage(level, pos);
+        sc.removeSource(pos);
+        rebuildChunkPockets(sc.parentChunk.chunk, ChunkStorageCompat.getIndexFromWorldY(sc.yLevel));
+        sc.parentChunk.chunk.setUnsaved(true);
+    }
+
+    public static void incrementRad(ServerLevel level, BlockPos pos, float amount) {
 
         if(pos.getY() < -64 || pos.getY() > 319 || !level.isLoaded(pos))
             return;
 
         RadPocket p = getPocket(level, pos);
-        if(p.radiation < max) {
+        if(p.radiation < Long.MAX_VALUE) {
 
             p.radiation += amount;
+            p.accumulatedRads += amount;
         }
         // Mark this pocket as active so it gets updated
-        if(amount > 0) {
+        if(p.sourceRads + amount > 0) {
 //            System.out.println(p.radiation);
             addActivePocket(p);
         }
@@ -827,6 +869,7 @@ public class HbmRadiationSystem {
 
         RadPocket p = getPocket(level, pos);
         p.radiation -= Math.max(amount, 0);
+        p.accumulatedRads -= Math.max(amount, 0);
         if(p.radiation < 0) {
 
             p.radiation = 0;
@@ -844,17 +887,19 @@ public class HbmRadiationSystem {
         }
     }
 
-    public static float getRadForCoord(Level level, BlockPos pos) {
+    public static float getRadForCoord(Level level, BlockPos pos, boolean sourceRads) {
 
         // If it's not loaded, assume there's no radiation. Makes sure to not keep a lot of chunks loaded
         if(!isSubChunkLoaded(level, pos))
             return 0;
 
+        RadPocket r = getPocket(level, pos);
+
         // If no pockets, assume no radiation
-        if (getPocket(level, pos) == null)
+        if(r == null)
             return 0;
 
-        return getPocket(level, pos).radiation;
+        return (sourceRads ? r.sourceRads : r.radiation);
     }
 
     // -----------------------------------
@@ -867,6 +912,8 @@ public class HbmRadiationSystem {
     public interface IChunkRadiation {
 
         ChunkRadiationStorage getParent();
+
+        void lazyRefresh();
 
         void setParent(ChunkRadiationStorage pParent);
 
@@ -905,6 +952,8 @@ public class HbmRadiationSystem {
         public float radiation = 0f;      // Current stored radiation value
         public float accumulatedRads = 0f;// Temporary accumulator for simultaneous spreading
 //        public BlockPos[] blocks;
+
+        public float sourceRads = 0f;
 
         /** For each of the six directions, holds indices of connected pockets, or −1 if neighbor subchunk not loaded */
         @SuppressWarnings("unchecked")
@@ -991,6 +1040,8 @@ public class HbmRadiationSystem {
         public RadPocket[] pocketsByBlock;
         public BlockPos[] blocksByPocket;
 
+        public Map<Integer, Float> sources = new HashMap<>();
+
         BlockPos subChunkPos;
 
         public SubChunkRadiationStorage(ChunkRadiationStorage parent, int yLevel, RadPocket[] pockets, RadPocket[] pocketsByBlock) {
@@ -1003,6 +1054,48 @@ public class HbmRadiationSystem {
                     parentChunk.chunk.getPos().x << 4,
                     yLevel,
                     parentChunk.chunk.getPos().z << 4);
+        }
+
+        public void addSource(BlockPos pos, float rads) {
+
+            int x = pos.getX()&15;
+            int y = pos.getY()&15;
+            int z = pos.getZ()&15;
+            this.sources.put(x*16*16+y*16+z, rads);
+            this.refreshSources();
+            parentChunk.chunk.setUnsaved(true);
+        }
+
+        public void removeSource(BlockPos pos) {
+
+            int x = pos.getX()&15;
+            int y = pos.getY()&15;
+            int z = pos.getZ()&15;
+            this.sources.remove(x*16*16+y*16+z);
+
+            RadPocket r = getPocket(pos);
+            if(r.sourceRads + r.radiation <= 0)
+                removeActivePocket(r);
+
+            this.refreshSources();
+        }
+
+        public void refreshSources() {
+
+            for(RadPocket p : this.pockets)
+                p.sourceRads = 0;
+
+            for(Map.Entry<Integer, Float> pair : this.sources.entrySet()) {
+
+                BlockPos pos = new BlockPos(pair.getKey()>>8, (pair.getKey()>>4)%16, pair.getKey()%16);
+                RadPocket p = getPocket(pos);
+                p.sourceRads += pair.getValue();
+
+                if(p.sourceRads > 0) {
+                    p.radiation = Math.max(p.radiation, p.sourceRads);
+                    addActivePocket(p);
+                }
+            }
         }
 
         public BlockPos getBlock(Integer pIndex) {
@@ -1164,6 +1257,8 @@ public class HbmRadiationSystem {
         private final IChunkRadiation instance = new Impl();
         public final SubChunkRadiationStorage[] subData = new SubChunkRadiationStorage[24];
 
+        public final boolean[] lazyRefresh = new boolean[24];
+
         public ChunkRadiationStorage(LevelChunk chunk) {
             this.chunk = chunk;
             instance.setParent(this);
@@ -1194,6 +1289,16 @@ public class HbmRadiationSystem {
             public void setParent(ChunkRadiationStorage pParent) {
 
                 parent = pParent;
+            }
+
+            @Override
+            public void lazyRefresh() {
+
+                for(int i = 0; i < 24; i++)
+                    if(lazyRefresh[i]) {
+                        RadiationEventHandlers.markChunkForRebuild(chunk.getLevel(), new BlockPos(chunk.getPos().x, ChunkStorageCompat.getWorldYFromIndex(i), chunk.getPos().z));
+                        lazyRefresh[i] = false;
+                    }
             }
 
             /**
@@ -1297,7 +1402,6 @@ public class HbmRadiationSystem {
                         pocketListNBT.add(pTag);
                     }
                     subTag.put("pockets", pocketListNBT);
-                    root.put("sub_" + i, subTag);
 
                     // Save pocketsByBlock
                     if(sc.pocketsByBlock == null)
@@ -1323,6 +1427,20 @@ public class HbmRadiationSystem {
                             subTag.putLong("bbp_" + j, b.asLong());
                         }
                     }
+
+                    // Save sources per subchunk
+                    ListTag sourcesList = new ListTag();
+                    for(Map.Entry<Integer, Float> pair : sc.sources.entrySet()) {
+
+                        CompoundTag tagPair = new CompoundTag();
+                        tagPair.putInt("index", pair.getKey());
+                        tagPair.putFloat("rads", pair.getValue());
+
+                        sourcesList.add(tagPair);
+                    }
+                    subTag.put("sources", sourcesList);
+
+                    root.put("sub_" + i, subTag);
                 }
                 return root;
             }
@@ -1381,6 +1499,15 @@ public class HbmRadiationSystem {
                                 sc.blocksByPocket[j] = pos;
                             }
                         }
+
+                        // Load sources for subchunk
+                        ListTag sourcesList = subTag.getList("sources", Tag.TAG_COMPOUND);
+                        for(int j = 0; j < sourcesList.size(); j++) {
+
+                            CompoundTag pTag = sourcesList.getCompound(j);
+                            sc.sources.put(pTag.getInt("index"), pTag.getFloat("rads"));
+                        }
+                        sc.refreshSources();
                         subData[i] = sc;
                     } else {
 
@@ -1438,6 +1565,31 @@ public class HbmRadiationSystem {
 
             // When the chunk is unloaded, also unload it from our radiation data if it exists
             ((LevelChunk) e.getChunk()).getCapability(CHUNK_RAD_CAPABILITY).ifPresent(IChunkRadiation::unload);
+        }
+
+        BlockPos lastPos = null;
+        @SubscribeEvent
+        public void onPlayerTick(TickEvent.PlayerTickEvent event) {
+            if (event.phase == TickEvent.Phase.START) return;
+            if(event.side == LogicalSide.CLIENT)
+                return;
+            Player player = event.player;
+            BlockPos currentPos = player.getOnPos().above();
+
+            if(currentPos != lastPos) {
+
+                getChunkStorage((LevelChunk)event.player.level().getChunk(currentPos)).instance.lazyRefresh();
+                lastPos = currentPos;
+            }
+        }
+
+        @SubscribeEvent
+        public static void onChunkLoad(ChunkEvent.Load e) {
+
+            if(e.getLevel().isClientSide())
+                return;
+
+            getChunkStorage((LevelChunk)(e.getChunk())).instance.lazyRefresh();
         }
 
 //        private static final LongSet processedChunks = new it.unimi.dsi.fastutil.longs.LongOpenHashSet();

@@ -28,9 +28,18 @@ public class RegisterCreativeTabs {
 
                         output.accept(RegisterItems.TITANIUM_INGOT.get());
                         output.accept(RegisterItems.BERYLLIUM_INGOT.get());
+
                         output.accept(RegisterItems.URANIUM_INGOT.get());
+                        output.accept(RegisterItems.URANIUM_233_INGOT.get());
+                        output.accept(RegisterItems.URANIUM_235_INGOT.get());
+                        output.accept(RegisterItems.URANIUM_238_INGOT.get());
+                        output.accept(RegisterItems.URANIUM_238m2_INGOT.get());
+                        output.accept(RegisterItems.URANIUM_FUEL_INGOT.get());
+
                         output.accept(RegisterItems.SULFUR.get());
                         output.accept(RegisterItems.NITER.get());
+//                        output.accept(RegisterItems.STEEL_NUGGET.get());
+                        output.accept(RegisterItems.STEEL_INGOT.get());
                         output.accept(RegisterItems.TUNGSTEN_INGOT.get());
                         output.accept(RegisterItems.ALUMINUM_INGOT.get());
                         output.accept(RegisterItems.FLUORITE.get());
@@ -40,13 +49,27 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.SCHRABIDIUM_INGOT.get());
                         output.accept(RegisterItems.AUSTRALIUM_INGOT.get());
                         output.accept(RegisterItems.COBALT_INGOT.get());
+                        output.accept(RegisterItems.DESH_INGOT.get());
                         output.accept(RegisterItems.CINNABAR.get());
                         output.accept(RegisterItems.COLTAN.get());
 
                         output.accept(RegisterItems.URANIUM_POWDER.get());
+
                         output.accept(RegisterItems.URANIUM_NUGGET.get());
+                        output.accept(RegisterItems.URANIUM_233_NUGGET.get());
+                        output.accept(RegisterItems.URANIUM_235_NUGGET.get());
+                        output.accept(RegisterItems.URANIUM_238_NUGGET.get());
+                        output.accept(RegisterItems.URANIUM_238m2_NUGGET.get());
+                        output.accept(RegisterItems.URANIUM_FUEL_NUGGET.get());
+
                         output.accept(RegisterItems.URANIUM_CRYSTAL.get());
+
                         output.accept(RegisterItems.URANIUM_BILLET.get());
+                        output.accept(RegisterItems.URANIUM_233_BILLET.get());
+                        output.accept(RegisterItems.URANIUM_235_BILLET.get());
+                        output.accept(RegisterItems.URANIUM_238_BILLET.get());
+                        output.accept(RegisterItems.URANIUM_FUEL_BILLET.get());
+
                         output.accept(RegisterItems.URANIUM_PILE_ROD.get());
 
                         output.accept(RegisterItems.RAW_TITANIUM.get());

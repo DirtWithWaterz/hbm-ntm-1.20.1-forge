@@ -2,6 +2,7 @@ package com.hbm.nucleartech.block.custom;
 
 import com.hbm.nucleartech.explosion.VeryFastRaycastedExplosion;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -45,7 +46,11 @@ public class NukeBlock extends BaseEntityBlock {
         if (pLevel.isClientSide) return;
 
         if (pLevel.hasNeighborSignal(pPos)){
-            new VeryFastRaycastedExplosion(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 48, 95, 95, 95, (byte)0, 1, 2, 1, null, 100);
+            new VeryFastRaycastedExplosion(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), 48, 95, 95, Math.round(95f*1.5f), (byte)0, 1, 2, 1, null, 95, false);
+            for(Direction d : Direction.values())
+                pLevel.removeBlock(pPos.relative(d, 1), false);
+            pLevel.removeBlock(pPos, false);
+            pLevel.removeBlockEntity(pPos);
         }
     }
 

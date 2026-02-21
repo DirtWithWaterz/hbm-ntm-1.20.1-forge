@@ -1,4 +1,9 @@
-// 1.20.1	2025-11-26T07:12:59.4418793	Tags for minecraft:item mod id hbm
+// 1.20.1	2026-02-03T13:20:51.2709676	Tags for minecraft:item mod id hbm
+2ed11408e53a0e561e24cec053fd39a0452a358a data/forge/tags/items/armors.json
+d74b1c1afa01aa382e5face97ded7ead168ba07a data/forge/tags/items/armors/boots.json
+1f3b964a5265c81c8105b6912d05808f4c5eb376 data/forge/tags/items/armors/chestplates.json
+69476e4ecfb2753086b03c0553561189e3be8399 data/forge/tags/items/armors/helmets.json
+a7c9977b4e198e6b03ebfa0b74c76bbe5acc7551 data/forge/tags/items/armors/leggings.json
 cb9b039efd1365c0c82903fc9e5751b92512d1bf data/forge/tags/items/ingots.json
 9aff6c773c207b21a57f8f32f320172c1e23b4b7 data/hbm/tags/items/biomass.json
 163ca0ef138145060f239e1f37d4257bcb9a61de data/hbm/tags/items/desh.json

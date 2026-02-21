@@ -1,12 +1,13 @@
 package com.hbm.nucleartech.block.custom;
 import com.hbm.nucleartech.hazard.HazardBlock;
+import com.hbm.nucleartech.hazard.LowProfileHazardBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.item.context.BlockPlaceContext;
 
-public class ContaminatedVariableBlock extends HazardBlock {
+public class ContaminatedVariableBlock extends LowProfileHazardBlock {
 
     // allow 0..7 (8 variants).
     public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 0, 7);

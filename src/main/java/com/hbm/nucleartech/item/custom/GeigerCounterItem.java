@@ -13,6 +13,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -124,7 +125,7 @@ public class GeigerCounterItem extends Item {
 
     public static int check(Level level, int x, int y, int z) {
 
-        return (int)Math.ceil(HbmRadiationSystem.getRadForCoord(level, new BlockPos(x,y,z)));
+        return (int)Math.ceil(HbmRadiationSystem.getRadForCoord(level, new BlockPos(x,y,z), true));
     }
 
     public static float getRad(LivingEntity pEntity) {
@@ -139,7 +140,7 @@ public class GeigerCounterItem extends Item {
         if(!pLevel.isClientSide()) {
 
             pLevel.playSound(null, pPlayer.getOnPos().offset(0,1,0), RegisterSounds.TECH_BOOP.get(), SoundSource.PLAYERS, 1f, 1f);
-            ContaminationUtil.printGeigerData(pPlayer);
+            ContaminationUtil.printGeigerData((ServerLevel)pLevel, pPlayer);
         }
 
         return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
@@ -222,16 +223,18 @@ public class GeigerCounterItem extends Item {
 //                        System.err.println("[Graphics 0] no gui.blit rad indicator with rads: " + radiation);
                     }
 
+                    double Gy = ((radPS/10000d)*100d);
+
                     // Draw the text
-                    if (radPS > 1000) {
+                    if (Gy > 1000) {
 //                        System.out.println("[Graphics 1] gui.blit rad counter with rads: " + radiation);
-                        gui.drawString(mc.font, Component.literal(">1000 RAD/s"), posX, posY - 10, 0xFF0000);
-                    } else if (radPS >= 1) {
+                        gui.drawString(mc.font, Component.literal(">1000 Gy"), posX, posY - 10, 0xFF0000);
+                    } else if (Gy >= 1) {
 //                        System.out.println("[Graphics 1] gui.blit rad counter with rads: " + radiation);
-                        gui.drawString(mc.font, Component.literal(((int) Math.round(radPS)) + " RAD/s"), posX, posY - 10, 0xFFFF00);
-                    } else if (radPS > 0) {
+                        gui.drawString(mc.font, Component.literal(((int) Math.round(Gy)) + " Gy"), posX, posY - 10, 0xFFFF00);
+                    } else if (Gy > 0) {
 //                        System.out.println("[Graphics 1] gui.blit rad counter with rads: " + radiation);
-                        gui.drawString(mc.font, Component.literal("<1 RAD/s"), posX, posY - 10, 0x00FF00);
+                        gui.drawString(mc.font, Component.literal("<1 Gy"), posX, posY - 10, 0x00FF00);
                     } else {
 //                        System.err.println("[Graphics 1] no gui.blit rad counter with rads: " + radiation);
                     }

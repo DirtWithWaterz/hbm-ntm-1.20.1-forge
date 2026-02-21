@@ -1,10 +1,9 @@
 package com.hbm.nucleartech.hazard;
 
 import com.hbm.nucleartech.Config;
-import com.hbm.nucleartech.block.RegisterBlocks;
+import com.hbm.nucleartech.handler.HbmRadiationSystem;
 import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.modules.ItemHazardModule;
-import com.hbm.nucleartech.saveddata.RadiationSavedData;
 import com.hbm.nucleartech.util.ContaminationUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,20 +14,22 @@ import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.ticks.TickPriority;
+import org.jetbrains.annotations.Nullable;
 
 public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
     ItemHazardModule module;
 
-    private double radIn = 0.0F;
-    private double rad3d = 0.0f;
-    private ExtDisplayEffect extEffect = null;
+    double radIn = 0.0F;
+    public double rad3d = 0.0f;
+    ExtDisplayEffect extEffect = null;
 
     private boolean beaconable = false;
 
@@ -80,6 +81,9 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
         switch(extEffect) {
             case RADFOG:
+
+                if(pRandom.nextInt(100) > 65)
+                    break;
 
                 double ix = pPos.getX() + 0.5f + pRandom.nextDouble() * 3 - 1.5d;
                 double iy = pPos.getY() + 0.5f + pRandom.nextDouble() * 3 - 1.5d;
@@ -180,6 +184,29 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
     }
 
     @Override
+    public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
+        super.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
+        if(pLevel.isClientSide)
+            return;
+
+//        System.out.println("rad block placed at: " + pPos + " with " + this.rad3d + " rads");
+
+        HbmRadiationSystem.addRadSource((ServerLevel)pLevel, pPos, (float)this.rad3d, true);
+        HbmRadiationSystem.incrementRad((ServerLevel)pLevel, pPos, (float)this.rad3d);
+    }
+
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
+        super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+        if(pLevel.isClientSide)
+            return;
+
+//        System.out.println("rad block removed at: " + pPos);
+
+        HbmRadiationSystem.removeRadSource((ServerLevel)pLevel, pPos);
+    }
+
+    @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         super.tick(pState, pLevel, pPos, pRandom);
 
@@ -220,14 +247,14 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         super.stepOn(pLevel, pPos, pState, pEntity);
         if(pEntity instanceof LivingEntity e)
-            this.module.applyEffects(e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
+            this.module.update(null, e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
     }
 
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         super.entityInside(pState, pLevel, pPos, pEntity);
         if(pEntity instanceof LivingEntity e)
-            this.module.applyEffects(e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
+            this.module.update(null, e, 0.5F, 0, false, InteractionHand.MAIN_HAND);
     }
 
     @Override

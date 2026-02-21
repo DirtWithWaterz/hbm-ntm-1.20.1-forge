@@ -1,6 +1,7 @@
 package com.hbm.nucleartech.block.custom;
 
 import com.hbm.nucleartech.hazard.HazardBlock;
+import com.hbm.nucleartech.hazard.LowProfileHazardBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -21,7 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-public class ContaminatedVariableFallingBlock extends HazardBlock implements Fallable {
+public class ContaminatedVariableFallingBlock extends LowProfileHazardBlock implements Fallable {
 
     // allow 0..7 (8 variants).
     public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 0, 7);
