@@ -3,6 +3,7 @@ package com.hbm.nucleartech.modules;
 import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.explosion.VeryFastRaycastedExplosion;
 import com.hbm.nucleartech.hazard.HazardItem;
+import com.hbm.nucleartech.hazard.RadiationHolder;
 import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.lib.Library;
@@ -33,17 +34,19 @@ import org.jetbrains.annotations.Nullable;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static com.hbm.nucleartech.util.ContaminationUtil.formattedBq;
+
 public class ItemHazardModule {
 
-    private static DecimalFormat df = new DecimalFormat("0.##");
+    public static DecimalFormat df = new DecimalFormat("0.##");
 
-    public double radiation; // should no longer be visible
+    public double radiation; // should no longer be visible or even needed
 
-    public double alpha;
-    public double beta;
-    public double gamma;
-    public double neutron;
-    public double xray;
+    public RadiationHolder rads;
+
+    public ContaminationRisk contaminationRisk;
+
+    public double radonGas;
 
     public double digamma;
     public int fire;
@@ -59,7 +62,6 @@ public class ItemHazardModule {
 
     public float halfLife;
 
-    public boolean isIsotope;
     public double gangue;
     public float originalMass;
 
@@ -73,11 +75,6 @@ public class ItemHazardModule {
     public boolean isRadioactive() {
 
         return this.radiation > 0;
-    }
-
-    public boolean isIsotope() {
-
-        return this.isIsotope;
     }
 
     public void addMass(float mass) {
@@ -94,9 +91,21 @@ public class ItemHazardModule {
         this.gangue = gangue;
     }
 
-    public void addRadiation(double radiation) {
+    public void addRadiation(RadiationHolder rads) {
 
-        this.radiation = radiation;
+        this.rads = rads;
+
+        this.radiation = rads.penning();
+    }
+
+    public void addContamination(ContaminationRisk risk) {
+
+        this.contaminationRisk = risk;
+    }
+
+    public void addRadonGas(double radonGas) {
+
+        this.radonGas = radonGas;
     }
 
     public void addDigamma(double digamma) {
@@ -323,17 +332,62 @@ public class ItemHazardModule {
             list.add(Component.literal("Mass: ").append(getMassFormatted(stack)).withStyle(ChatFormatting.DARK_GRAY).withStyle(ChatFormatting.ITALIC));
         }
         // Rad
-        if(this.radiation * tempMod > 0) {
+        if(this.rads != null && !this.rads.nyll) {
 
             list.add(Component.literal("§a[Radioactive]"));
-            double itemRad = radiation * tempMod;
-            list.add(Component.literal("§e" + (Library.roundDouble(getNewValue(itemRad), 3) + getSuffix(itemRad) + " RAD/s")));
+
+            if(rads.alpha > 0)
+                list.add(Component.literal("§a  -::" + "§cAlpha activity: " + formattedBq(ContaminationUtil.convertRad2Bq(rads.alpha, ContaminationUtil.radMeV.ALPHA, 1)) + "/kg"));
+            if(rads.beta > 0)
+                list.add(Component.literal("§a  -::" + "§9Beta activity: " + formattedBq(ContaminationUtil.convertRad2Bq(rads.beta, ContaminationUtil.radMeV.BETA, 1)) + "/kg"));
+            if(rads.gamma > 0)
+                list.add(Component.literal("§a  -::" + "§2Gamma activity: " + formattedBq(ContaminationUtil.convertRad2Bq(rads.gamma, ContaminationUtil.radMeV.GAMMA, 1)) + "/kg"));
+            if(rads.xray > 0)
+                list.add(Component.literal("§a  -::" + "§bX rays: " + formattedBq(ContaminationUtil.convertRad2Bq(rads.xray, ContaminationUtil.radMeV.XRAY, 1)) + "/kg"));
+            if(rads.neutron > 0)
+                list.add(Component.literal("§a  -::" + "§eNeutrons: " + df.format(ContaminationUtil.convertRad2Bq(rads.neutron, ContaminationUtil.radMeV.NEUTRON, 80)) + " ϕ"));
+
+            list.add(Component.literal("§a  -::" + "§eWeighted dose: " + ContaminationUtil.formattedSvH(ContaminationUtil.calculateWeightedDose(rads, 80))));
 
             if(stack.getCount() > 1) {
 
-                double stackRad = radiation * tempMod * stack.getCount();
-                list.add(Component.literal("§eStack: " + Library.roundDouble(getNewValue(stackRad), 3) + getSuffix(stackRad) + " RAD/s"));
+                list.add(Component.literal("§a  -::§6Stack: " + ContaminationUtil.formattedSvH(ContaminationUtil.calculateWeightedDose(rads, 80) * stack.getCount())));
             }
+        }
+        // Unstable
+        if(this.uExpRadius > 0) {
+
+            list.add(Component.literal("[Unstable]").withStyle(ChatFormatting.DARK_RED));
+            list.add(Component.literal("  -::").append(Component.translatable("trait.halflife")).append(df.format(halfLife / 1000) + "s").withStyle(ChatFormatting.RED));
+            list.add(Component.literal("  -::").append(Component.translatable("trait.decay")).append(getDecay(stack)).withStyle(ChatFormatting.RED));
+        }
+        // Contamination Risk
+        if(this.contaminationRisk != null) {
+
+            switch(this.contaminationRisk) {
+
+                case LOW -> {
+
+                    list.add(Component.literal("[").append(Component.translatable("adjective.low")).append(" ").append(Component.translatable("trait.contamination_risk")).append("]").withStyle(ChatFormatting.GREEN));
+                }
+                case MEDIUM -> {
+
+                    list.add(Component.literal("[").append(Component.translatable("adjective.medium")).append(" ").append(Component.translatable("trait.contamination_risk")).append("]").withStyle(ChatFormatting.GREEN));
+                }
+                case HIGH -> {
+
+                    list.add(Component.literal("[").append(Component.translatable("adjective.high")).append(" ").append(Component.translatable("trait.contamination_risk")).append("]").withStyle(ChatFormatting.GREEN));
+                }
+                case VERY_HIGH -> {
+
+                    list.add(Component.literal("[").append(Component.translatable("adjective.very_high")).append(" ").append(Component.translatable("trait.contamination_risk")).append("]").withStyle(ChatFormatting.GREEN));
+                }
+            }
+        }
+        // Radon Gas
+        if(this.radonGas > 0) {
+
+            list.add(Component.literal("§a[").append(Component.translatable("hazard.radon_gas")).append("]"));
         }
         // Pyro
 
@@ -365,13 +419,6 @@ public class ItemHazardModule {
 
             list.add(Component.literal("[Coal Dust]").withStyle(ChatFormatting.DARK_GRAY));
         }
-        // Unstable
-        if(this.uExpRadius > 0) {
-
-            list.add(Component.literal("[Unstable]").withStyle(ChatFormatting.DARK_RED));
-            list.add(Component.literal("  -:").append(Component.translatable("trait.halflife")).append(df.format(halfLife / 1000) + "s").withStyle(ChatFormatting.RED));
-            list.add(Component.literal("  -:").append(Component.translatable("trait.decay")).append(getDecay(stack)).withStyle(ChatFormatting.RED));
-        }
     }
 
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity item) {
@@ -397,7 +444,7 @@ public class ItemHazardModule {
             if(this.isRadioactive()) {
 
 //                System.err.println("[Debug] radiating...");
-                ContaminationUtil.radiate((ServerLevel) item.level(), item.getOnPos().getX(), item.getOnPos().getY()+1, item.getOnPos().getZ(), 32, (float)(this.radiation*0.00004D-(0.00004D*20)), item.getOnPos().offset(0, 1, 0));
+                ContaminationUtil.radiate((ServerLevel) item.level(), item.getOnPos().getX(), item.getOnPos().getY()+1, item.getOnPos().getZ(), 32, (float)(this.rads.penning()*0.00004D-(0.00004D*20)), item.getOnPos().offset(0, 1, 0));
             }
 
             if(this.isInitialized(stack)) {
@@ -412,4 +459,13 @@ public class ItemHazardModule {
 
         return false;
     }
+
+    public enum ContaminationRisk {
+
+        LOW,
+        MEDIUM,
+        HIGH,
+        VERY_HIGH
+    }
 }
+

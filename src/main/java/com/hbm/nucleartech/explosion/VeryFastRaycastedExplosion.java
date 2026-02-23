@@ -293,7 +293,7 @@ public class VeryFastRaycastedExplosion {
 
 						// Set block and mark chunk dirty
 						level.setBlock(pos, newState, 2); // Update with flags (notify neighbors, etc.)
-						HbmRadiationSystem.addRadSource(level, pos, (float)((HazardBlock)newState.getBlock()).rad3d, false);
+						HbmRadiationSystem.addRadSource(level, pos, ((HazardBlock)newState.getBlock()).rads.penning(), false);
 //						HbmRadiationSystem.incrementRad(level, pos, (float)((HazardBlock)newState.getBlock()).rad3d);
 						ChunkAccess chunk = level.getChunk(pos);
 						HbmRadiationSystem.getChunkStorage((LevelChunk)chunk).lazyRefresh[HbmRadiationSystem.ChunkStorageCompat.getIndexFromWorldY(pos.getY())] = true;

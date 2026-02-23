@@ -3,6 +3,7 @@ package com.hbm.nucleartech.block.custom;
 import com.hbm.nucleartech.block.RegisterBlocks;
 import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.hazard.LowProfileHazardBlock;
+import com.hbm.nucleartech.hazard.RadiationHolder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -33,7 +34,7 @@ public class ContaminatedVariableLayerBlock extends LowProfileHazardBlock {
     protected static final VoxelShape[] SHAPE_BY_LAYER = new VoxelShape[]{Shapes.empty(), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 2.0F, 16.0F), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 4.0F, 16.0F), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 6.0F, 16.0F), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 8.0F, 16.0F), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 10.0F, 16.0F), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 12.0F, 16.0F), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 14.0F, 16.0F), Block.box(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 16.0F)};
     public static final int HEIGHT_IMPASSABLE = 5;
 
-    public ContaminatedVariableLayerBlock(Properties properties, double rad) {
+    public ContaminatedVariableLayerBlock(Properties properties, RadiationHolder rad) {
         super(properties, rad);
         // default variant 0
         this.registerDefaultState(this.stateDefinition.any().setValue(VARIANT, 0));

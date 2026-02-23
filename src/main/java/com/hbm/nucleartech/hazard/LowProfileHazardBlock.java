@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class LowProfileHazardBlock extends HazardBlock {
 
-    public LowProfileHazardBlock(BlockBehaviour.Properties pProperties, double rad) {
+    public LowProfileHazardBlock(BlockBehaviour.Properties pProperties, RadiationHolder rad) {
         super(pProperties, rad);
     }
 

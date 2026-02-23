@@ -94,7 +94,7 @@ public final class InterceptUtil {
     public static final RegistryObject<Item> COAL_REPLACEMENT =
             VANILLA_ITEMS.register("coal", () ->
                     // instantiate your HazardItem here — copy properties you need
-                    new HazardItem(HazardItem.Type.OTHER, 12f, 0, 0, 0, 0, 0, 0, 1, new Item.Properties().stacksTo(64), false)
+                    new HazardItem(HazardItem.Type.OTHER, 12f, null, null, 0, 0, 0, 0, 0, 1, new Item.Properties().stacksTo(64))
             );
 
     public static void registerVanillaItemIntercepts(IEventBus modBus) {

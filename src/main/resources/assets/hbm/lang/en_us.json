@@ -1,7 +1,9 @@
 {
   "trait.radioactive": "Radioactive",
+  "trait.neutron_activated": "Neutron Activated",
   "trait.rad_resistance": "Radiation resistance: %s",
   "trait.toxic": "Toxicity",
+  "trait.contamination_risk": "Risk of Contamination",
   "trait.halflife":  "Half-Life: ",
   "trait.decay": "Decay: ",
 
@@ -32,6 +34,7 @@
   "hazard.particle_fine": "Particulates",
   "hazard.prot": "Protects against hazards:",
   "hazard.rad_gas": "Radioactive Gas",
+  "hazard.radon_gas": "Radon Gas",
   "hazard.sand": "Eye Irritants",
 
   "desc.applicable": "Applicable to:",

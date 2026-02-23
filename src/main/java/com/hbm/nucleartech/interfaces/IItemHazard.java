@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.interfaces;
 
+import com.hbm.nucleartech.hazard.RadiationHolder;
 import com.hbm.nucleartech.modules.ItemHazardModule;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -8,9 +9,9 @@ public interface IItemHazard {
 
     public ItemHazardModule getModule();
 
-    public default IItemHazard addRadiation(double radiation) {
+    public default IItemHazard addRadiation(double alpha, double beta, double xray, double gamma, double neutron) {
 
-        this.getModule().addRadiation(radiation);
+        this.getModule().addRadiation(new RadiationHolder(alpha, beta, xray, gamma, neutron));
         return this;
     }
 

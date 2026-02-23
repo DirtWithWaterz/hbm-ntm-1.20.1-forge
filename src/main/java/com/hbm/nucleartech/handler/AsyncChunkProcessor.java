@@ -2,6 +2,7 @@ package com.hbm.nucleartech.handler;
 
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.RegisterBlocks;
+import com.hbm.nucleartech.hazard.HazardBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
@@ -95,7 +96,7 @@ public class AsyncChunkProcessor {
                             int worldZ = (chunkZ << 4) + z;
                             BlockPos worldPos = new BlockPos(worldX, worldY, worldZ);
 
-                            if (pocket.parent.getPocket(worldPos) != pocket) continue;
+                            if (pocket.parent.getPocket(worldPos, false) != pocket) continue;
 
                             if (world.random.nextInt(100) <= 60) continue;
 
@@ -111,10 +112,12 @@ public class AsyncChunkProcessor {
                     for (BlockPos pos : blocksToUpdate) {
                         if (world.getBlockState(pos).getBlock() == net.minecraft.world.level.block.Blocks.GRASS_BLOCK) {
                             world.setBlock(pos, RegisterBlocks.DEAD_GRASS.get().defaultBlockState(), 2);
+                            HbmRadiationSystem.addRadSource(world, pos, ((HazardBlock)RegisterBlocks.DEAD_GRASS.get()).rads.penning(), false);
                             updated++;
                         }
                     }
 //                    LOGGER.info("Updated {} grass blocks to dead grass in chunk at ({}, {})", updated, chunk.getPos().x, chunk.getPos().z);
+                    HbmRadiationSystem.getSubChunkStorage(world, new BlockPos(chunkX << 4, baseY, chunkZ << 4)).refreshSources();
                 }
             } catch (Exception e) {
                 LOGGER.error("Error processing chunk at ({}, {})", chunk.getPos().x, chunk.getPos().z, e);

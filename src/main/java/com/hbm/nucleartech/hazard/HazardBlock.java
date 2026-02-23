@@ -27,7 +27,9 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
     ItemHazardModule module;
 
-    double radIn = 0.0F;
+    public RadiationHolder rads;
+
+    double radIn = 0.0f;
     public double rad3d = 0.0f;
     ExtDisplayEffect extEffect = null;
 
@@ -41,20 +43,30 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
         this.module = new ItemHazardModule();
     }
 
-    public HazardBlock(Properties pProperties, double rad) {
+    public HazardBlock(Properties pProperties, RadiationHolder radiation) {
         super(pProperties);
         this.xpRange = null;
         this.module = new ItemHazardModule();
-        this.rad3d = rad;
-        this.radIn = rad;
+
+        this.rads = radiation;
+
+        double weight = (this.rads.alpha/100d)+(this.rads.beta/100d)+(this.rads.xray)+(this.rads.gamma)+(this.rads.neutron);
+
+        this.rad3d = weight;
+        this.radIn = weight;
     }
 
-    public HazardBlock(Properties pProperties, IntProvider pXpRange, double rad) {
+    public HazardBlock(Properties pProperties, IntProvider pXpRange, RadiationHolder radiation) {
         super(pProperties);
         this.xpRange = pXpRange;
         this.module = new ItemHazardModule();
-        this.rad3d = rad;
-        this.radIn = rad;
+
+        this.rads = radiation;
+
+        double weight = (this.rads.alpha/100d)+(this.rads.beta/100d)+(this.rads.xray)+(this.rads.gamma)+(this.rads.neutron);
+
+        this.rad3d = weight;
+        this.radIn = weight;
     }
 
     public HazardBlock(Properties pProperties, IntProvider pXpRange, SoundType pSoundType){
@@ -158,9 +170,13 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
     }
 
     @Override
-    public IItemHazard addRadiation(double radiation){
-        this.getModule().addRadiation(radiation);
-        this.radIn = radiation * 0.1F;
+    public IItemHazard addRadiation(double alpha, double beta, double xray, double gamma, double neutron){
+        this.getModule().addRadiation(new RadiationHolder(alpha, beta, xray, gamma, neutron));
+
+        double weight = (alpha/100d)+(beta/100d)+(xray)+(gamma)+(neutron);
+
+
+        this.radIn = weight * 0.1F;
         return this;
     }
 
@@ -191,7 +207,7 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
 //        System.out.println("rad block placed at: " + pPos + " with " + this.rad3d + " rads");
 
-        HbmRadiationSystem.addRadSource((ServerLevel)pLevel, pPos, (float)this.rad3d, true);
+        HbmRadiationSystem.addRadSource((ServerLevel)pLevel, pPos, this.rads.penning(), true);
         HbmRadiationSystem.incrementRad((ServerLevel)pLevel, pPos, (float)this.rad3d);
     }
 
@@ -203,7 +219,7 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
 
 //        System.out.println("rad block removed at: " + pPos);
 
-        HbmRadiationSystem.removeRadSource((ServerLevel)pLevel, pPos);
+        HbmRadiationSystem.removeRadSource((ServerLevel)pLevel, pPos, true);
     }
 
     @Override
@@ -211,7 +227,7 @@ public class HazardBlock extends DropExperienceBlock implements IItemHazard {
         super.tick(pState, pLevel, pPos, pRandom);
 
         if(this.rad3d > 0){
-            ContaminationUtil.radiate(pLevel, pPos.getX()+0.5, pPos.getY()+0.5, pPos.getZ()+0.5, 32, (float)this.rad3d, 0, this.module.fire * 5000, 0, 0, pPos);
+            ContaminationUtil.radiate(pLevel, pPos.getX()+0.5, pPos.getY()+0.5, pPos.getZ()+0.5, 32, this.rads.penning(), 0, this.module.fire * 5000, 0, 0, pPos);
             pLevel.scheduleTick(pPos, this.toBlock(), this.tickRate(), TickPriority.HIGH);
         }
 //        if(this.radIn > 0){

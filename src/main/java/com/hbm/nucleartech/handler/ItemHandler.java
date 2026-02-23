@@ -2,6 +2,7 @@ package com.hbm.nucleartech.handler;
 
 import com.hbm.nucleartech.datagen.HbmItemTagGenerator;
 import com.hbm.nucleartech.hazard.HazardSystem;
+import com.hbm.nucleartech.hazard.RadiationHolder;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.BatteryItem;
 import com.hbm.nucleartech.item.custom.SelfChargingBatteryItem;

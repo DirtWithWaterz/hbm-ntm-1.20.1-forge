@@ -2,6 +2,7 @@ package com.hbm.nucleartech.handler;
 
 
 import com.hbm.nucleartech.AdvancementManager;
+import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.capability.HbmCapabilities;
 import com.hbm.nucleartech.damagesource.RegisterDamageSources;
@@ -86,33 +87,44 @@ public class HbmContaminationSystem {
 
                                     if (entity instanceof ServerPlayer player) {
 
-
-                                        double receivedRadiation = ContaminationUtil.getNoNeutronPlayerRads(player)*0.00004D-(0.00004D * 20); //RadiationConfig.neutronActivationThreshold (20Rad/s default)
-
-//                                        System.out.println("[Debug] received Radiation: " + receivedRadiation);
-
+                                        double mod = 0.00004D-(0.00004D * 20); //RadiationConfig.neutronActivationThreshold (20Rad/s default)
                                         float neutronRads = getPlayerNeutronRads(player);
 
-//                                        System.out.println("[Debug] neutron radiation: " + neutronRads);
+                                        if(Config.neutronActivation) {
 
-                                        if(neutronRads > 0) {
+                                            double receivedRadiation = ContaminationUtil.getNoNeutronPlayerRads(player)*mod;
 
-//                                            System.out.println("[Debug] neutron rads are higher than 0, contaminating...");
+    //                                        System.out.println("[Debug] received Radiation: " + receivedRadiation);
 
-                                            ContaminationUtil.contaminate(player, ContaminationUtil.HazardType.NEUTRON, ContaminationUtil.ContaminationType.CREATIVE, neutronRads * 0.05f);
+
+    //                                        System.out.println("[Debug] neutron radiation: " + neutronRads);
+
+                                            if(neutronRads > 0) {
+
+    //                                            System.out.println("[Debug] neutron rads are higher than 0, contaminating...");
+
+                                                ContaminationUtil.contaminate(player, ContaminationUtil.HazardType.NEUTRON, ContaminationUtil.ContaminationType.CREATIVE, neutronRads * 0.05f);
+                                            }
+                                            else {
+
+    //                                            System.out.println("[Debug] neutron radiation is less than or equal to 0, setting it to 0");
+
+                                                HbmCapabilities.getData(player).setValue(Type.NEUTRON, 0);
+                                            }
+                                            if(receivedRadiation > 0.0012f) {
+
+    //                                            System.out.println("[Debug] Received radiation is greater than minimum value, neutron activating players inventory...");
+
+                                                ContaminationUtil.neutronActivateInventory(player, (float)receivedRadiation, 1f);
+                                                player.containerMenu.broadcastChanges();
+                                            }
                                         }
                                         else {
 
-//                                            System.out.println("[Debug] neutron radiation is less than or equal to 0, setting it to 0");
+                                            if(neutronRads*mod > 0.0012f) {
 
-                                            HbmCapabilities.getData(player).setValue(Type.NEUTRON, 0);
-                                        }
-                                        if(receivedRadiation > 0.0012f) {
-
-//                                            System.out.println("[Debug] Received radiation is greater than minimum value, neutron activating players inventory...");
-
-                                            ContaminationUtil.neutronActivateInventory(player, (float)receivedRadiation, 1f);
-                                            player.containerMenu.broadcastChanges();
+                                                ContaminationUtil.neutronActivateInventory(player, neutronRads, 1f);
+                                            }
                                         }
 
                                         if (player.isCreative() || player.isSpectator())

@@ -36,6 +36,7 @@ import java.util.Map;
 
 import static com.hbm.nucleartech.handler.HbmRadiationSystem.RadiationEventHandlers.FRAMES;
 import static com.hbm.nucleartech.handler.HbmRadiationSystem.RadiationEventHandlers.FRAME_COUNT;
+import static com.hbm.nucleartech.util.ContaminationUtil.*;
 
 public class GeigerCounterItem extends Item {
 
@@ -223,18 +224,18 @@ public class GeigerCounterItem extends Item {
 //                        System.err.println("[Graphics 0] no gui.blit rad indicator with rads: " + radiation);
                     }
 
-                    double Gy = ((radPS/10000d)*100d);
+                    double SvH = convertRad2µSv(radPS);
 
                     // Draw the text
-                    if (Gy > 1000) {
+                    if (SvH > 1) {
 //                        System.out.println("[Graphics 1] gui.blit rad counter with rads: " + radiation);
-                        gui.drawString(mc.font, Component.literal(">1000 Gy"), posX, posY - 10, 0xFF0000);
-                    } else if (Gy >= 1) {
+                        gui.drawString(mc.font, Component.literal(">1000 mSv/h"), posX, posY - 10, 0xFF0000);
+                    } else if (SvH >= 0.001) {
 //                        System.out.println("[Graphics 1] gui.blit rad counter with rads: " + radiation);
-                        gui.drawString(mc.font, Component.literal(((int) Math.round(Gy)) + " Gy"), posX, posY - 10, 0xFFFF00);
-                    } else if (Gy > 0) {
+                        gui.drawString(mc.font, Component.literal(formattedSvH(SvH)), posX, posY - 10, 0xFFFF00);
+                    } else if (SvH > 0) {
 //                        System.out.println("[Graphics 1] gui.blit rad counter with rads: " + radiation);
-                        gui.drawString(mc.font, Component.literal("<1 Gy"), posX, posY - 10, 0x00FF00);
+                        gui.drawString(mc.font, Component.literal("<1 mSv/h"), posX, posY - 10, 0x00FF00);
                     } else {
 //                        System.err.println("[Graphics 1] no gui.blit rad counter with rads: " + radiation);
                     }

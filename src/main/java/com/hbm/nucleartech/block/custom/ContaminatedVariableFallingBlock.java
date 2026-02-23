@@ -2,6 +2,7 @@ package com.hbm.nucleartech.block.custom;
 
 import com.hbm.nucleartech.hazard.HazardBlock;
 import com.hbm.nucleartech.hazard.LowProfileHazardBlock;
+import com.hbm.nucleartech.hazard.RadiationHolder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -27,7 +28,7 @@ public class ContaminatedVariableFallingBlock extends LowProfileHazardBlock impl
     // allow 0..7 (8 variants).
     public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 0, 7);
 
-    public ContaminatedVariableFallingBlock(Properties properties, double rad) {
+    public ContaminatedVariableFallingBlock(Properties properties, RadiationHolder rad) {
         super(properties, rad);
         // default variant 0
         this.registerDefaultState(this.stateDefinition.any().setValue(VARIANT, 0));

@@ -1,5 +1,6 @@
 package com.hbm.nucleartech.util;
 
+import com.hbm.nucleartech.Config;
 import com.hbm.nucleartech.block.custom.RadResistantBlock;
 import com.hbm.nucleartech.damagesource.RegisterDamageSources;
 import com.hbm.nucleartech.handler.HazmatRegistry;
@@ -7,6 +8,7 @@ import com.hbm.nucleartech.handler.HbmRadiationSystem;
 import com.hbm.nucleartech.hazard.HazardBlockItem;
 import com.hbm.nucleartech.hazard.HazardItem;
 import com.hbm.nucleartech.hazard.HazardSystem;
+import com.hbm.nucleartech.hazard.RadiationHolder;
 import com.hbm.nucleartech.interfaces.IEntityCapabilityBase.Type;
 import com.hbm.nucleartech.capability.HbmCapabilities;
 import com.hbm.nucleartech.interfaces.IItemHazard;
@@ -39,11 +41,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.hbm.nucleartech.handler.HbmRadiationSystem.getPocket;
+import static com.hbm.nucleartech.modules.ItemHazardModule.df;
 
 public class ContaminationUtil {
 
@@ -79,20 +84,20 @@ public class ContaminationUtil {
         NONE				//not preventable
     }
 
-    public static void radiate(ServerLevel level, double x, double y, double z, double range, float rad3d, BlockPos worldPosition) {
-        radiate(level, x, y, z, range, rad3d, 0F, 0F, 0F, 0F, worldPosition);
+    public static void radiate(ServerLevel level, double x, double y, double z, double range, float rads, BlockPos worldPosition) {
+        radiate(level, x, y, z, range, rads, 0F, 0F, 0F, 0F, worldPosition);
     }
-    public static void radiate(ServerLevel level, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, BlockPos worldPosition) {
-        radiate(level, x, y, z, range, rad3d, dig3d, fire3d, 0F, 0F, worldPosition);
+    public static void radiate(ServerLevel level, double x, double y, double z, double range, float rads, float dig3d, float fire3d, BlockPos worldPosition) {
+        radiate(level, x, y, z, range, rads, dig3d, fire3d, 0F, 0F, worldPosition);
     }
-    public static void radiate(ServerLevel level, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, float blast3d, BlockPos worldPosition) {
-        radiate(level, x, y, z, range, rad3d, dig3d, fire3d, blast3d, range, worldPosition);
+    public static void radiate(ServerLevel level, double x, double y, double z, double range, float rads, float dig3d, float fire3d, float blast3d, BlockPos worldPosition) {
+        radiate(level, x, y, z, range, rads, dig3d, fire3d, blast3d, range, worldPosition);
     }
     /*
     You should really fix your radiation system. Make blocks and item entities only set rads in their rad-pocket once, or when they are called to, and then remove their rads on deletion.
      */
     @Deprecated(since = "check comment", forRemoval = true)
-    public static void radiate(ServerLevel pLevel, double x, double y, double z, double range, float rad3d, float dig3d, float fire3d, float blast3d, double blastRange, BlockPos worldPosition) {
+    public static void radiate(ServerLevel pLevel, double x, double y, double z, double range, float rads, float dig3d, float fire3d, float blast3d, double blastRange, BlockPos worldPosition) {
         if (pLevel == null) return;
 
         // Create a thread-safe copy of the entity list to prevent ConcurrentModificationException
@@ -108,7 +113,7 @@ public class ContaminationUtil {
 
         HbmRadiationSystem.RadPocket ppppppp = getPocket(pLevel, worldPosition);
 
-        RadiationSavedData.incrementRad(pLevel, worldPosition, rad3d);
+        RadiationSavedData.incrementRad(pLevel, worldPosition, rads);
 
         pockets.add(ppppppp);
 
@@ -149,9 +154,9 @@ public class ContaminationUtil {
             if(res < 1)
                 res = 1;
 
-            if(isLiving && rad3d > 0) {
+            if(isLiving && rads > 0) {
 
-                float eRads = rad3d;
+                float eRads = rads;
                 eRads /= (float)(dmgLen * dmgLen * Math.sqrt(res));
 
                 for(Vec2 vec2 : radResistantBlocks) {
@@ -202,7 +207,7 @@ public class ContaminationUtil {
                 float blastDmg = blast3d;
                 blastDmg /= (float)(dmgLen * dmgLen * res);
                 if(blastDmg > 0.025F){
-                    if(rad3d > 0)
+                    if(rads > 0)
                         e.hurt(RegisterDamageSources.NUCLEAR_BLAST, blastDmg);
                     else
                         e.hurt(RegisterDamageSources.BLAST, blastDmg);
@@ -248,12 +253,21 @@ public class ContaminationUtil {
 
                 if(stack.getItem() instanceof IItemHazard hazardItem) {
 
-                    if(hazardItem.getModule().isRadioactive())
-                        env = env + hazardItem.getModule().radiation * (double)stack.getCount();
+                    if(hazardItem.getModule().isRadioactive()) {
+
+                        env = env + hazardItem.getModule().rads.penning() * (double)stack.getCount();
+
+//                        System.err.println("[Warn] ContaminationUtil.java:258 -> alpha & beta effect not implemented because potion effect for bleeding/burns or whatever is not implemented.");
+//                        if(entity has radiation burns or whatever)
+//                            env += hazardItem.getModule().rads.alpha + hazardItem.getModule().rads.beta;
+                    }
                 }
             }
         }
         HbmRadiationSystem.RadPocket ePoc = getPocket(level, entity.getOnPos().offset(0, 1, 0));
+
+        if(ePoc.sourceRads + ePoc.radiation > 0)
+            HbmRadiationSystem.addActivePocket(ePoc);
 
         env = ePoc.sourceRads + env + (double)ePoc.radiation;
 
@@ -383,38 +397,87 @@ public class ContaminationUtil {
                 e instanceof IRadiationImmune || checkConfigEntityImmunity(e)*/;
     }
 
-    private static String formattedBq(double Bq) {
+    public static String formattedBq(double Bq) {
 
         if(Bq >= 1_000_000_000_000L)
-            return String.format("%.1f", Bq / 1_000_000_000_000L) + " TBq";
+            return df.format(Bq / 1_000_000_000_000L) + " TBq";
         else if(Bq >= 1_000_000_000)
-            return String.format("%.1f", Bq / 1_000_000_000) + " GBq";
+            return df.format(Bq / 1_000_000_000) + " GBq";
         else if(Bq >= 1_000_000)
-            return String.format("%.1f", Bq / 1_000_000) + " MBq";
+            return df.format(Bq / 1_000_000) + " MBq";
         else if(Bq >= 1_000)
-            return String.format("%.1f", Bq / 1_000) + " kBq";
+            return df.format(Bq / 1_000) + " kBq";
         else
-            return String.format("%.1f", Bq) + " Bq";
+            return df.format(Bq) + " Bq";
     }
 
-    private static String formattedSvH(double SvH) {
+    public static String formattedSvH(double SvH) {
 
         if(SvH >= 1_000_000_000_000L)
-            return String.format("%.1f", SvH / 1_000_000_000_000L) + " TSv/h";
+            return df.format(SvH / 1_000_000_000_000L) + " TSv/h";
         else if(SvH >= 1_000_000_000)
-            return String.format("%.1f", SvH / 1_000_000_000) + " GSv/h";
+            return df.format(SvH / 1_000_000_000) + " GSv/h";
         else if(SvH >= 1_000_000)
-            return String.format("%.1f", SvH / 1_000_000) + " MSv/h";
+            return df.format(SvH / 1_000_000) + " MSv/h";
         else if(SvH >= 1_000)
-            return String.format("%.1f", SvH / 1_000) + " kSv/h";
+            return df.format(SvH / 1_000) + " kSv/h";
         else if(SvH >= 1)
-            return String.format("%.1f", SvH) + " Sv/h";
+            return df.format(SvH) + " Sv/h";
         else if(SvH >= 0.001)
-            return String.format("%.1f", SvH * 1_000) + " mSv/h";
+            return df.format(SvH * 1_000) + " mSv/h";
         else if(SvH >= 0.00000_1)
-            return String.format("%.1f", SvH * 1_000_000) + " µSv/h";
+            return df.format(SvH * 1_000_000) + " µSv/h";
         else
-            return String.format("%.1f", SvH * 1_000_000_000) + " nSv/h";
+            return df.format(SvH * 1_000_000_000) + " nSv/h";
+    }
+
+    public static double convertRad2µSv(double rad) {
+
+        return (rad * 0.01 * 3600) / 1_000_000;
+    }
+
+    public static double calculateWeightedDose(RadiationHolder holder, float targetBodyMass) {
+
+        double Bq = 0d;
+
+        for(radMeV MeV : radMeV.values())
+            Bq += convertRad2Bq(holder.get(MeV), MeV, targetBodyMass);
+
+        return convertRad2µSv(Bq * 100d);
+    }
+
+    public static double convertRad2Bq(double radPs, @Nullable radMeV MeV, float targetBodyMass) {
+
+        if(MeV == null)
+            return 0;
+        return powerPerKg(radPs, targetBodyMass) / jPerDecay(MeV);
+    }
+
+    public static double jPerDecay(radMeV MeV) {
+
+        return 1.60218e-2d * switch(MeV) {
+
+            case ALPHA -> 5f;
+            case BETA, GAMMA -> 1f;
+            case XRAY -> 0.2f;
+            case NEUTRON -> 2;
+            case PENNING -> 3.2f/3f;
+        } / 4d;
+    }
+
+    public enum radMeV {
+
+        ALPHA,
+        BETA,
+        XRAY,
+        GAMMA,
+        NEUTRON,
+        PENNING
+    }
+
+    public static double powerPerKg(double radPs, float targetBodyMass) {
+
+        return radPs * 0.01f * targetBodyMass;
     }
 
     public static void printGeigerData(ServerLevel level, Player player) {
@@ -430,9 +493,9 @@ public class ContaminationUtil {
         double res = ((int)(10000D - ContaminationUtil.calculateRadiationMod(player) * 10000D)) / 100D;
         double resKoeff = ((int)(HazmatRegistry.getResistance(player) * 100D)) / 100D;
 
-        String sectionBq        = formattedBq(sectionActivity * 1_000_000);
-        String ambientSvH  = formattedSvH(((envRads + neutRads) * 0.01 * 3600) / 1_000_000);   // Sv/h
-        double playerMsv        = playerCont * 0.01 * 1000;                     // mSv
+        String sectionBq = formattedBq(convertRad2Bq(sectionActivity, radMeV.PENNING, 80.0f));
+        String ambientSvH = formattedSvH(convertRad2µSv(envRads + neutRads));   // Sv/h
+        double playerMsv = playerCont * 0.01 / 1000;                           // mSv
 
 
 
@@ -462,14 +525,14 @@ public class ContaminationUtil {
                 .withStyle(ChatFormatting.YELLOW).append(
                 Component.literal(
                         " " + sectPrefix + String.format(
-                                java.util.Locale.US,
+                                Locale.US,
                                 sectionBq))
         ));
         player.sendSystemMessage(Component.translatable("geiger.ambient_dose_rate")
                 .withStyle(ChatFormatting.YELLOW).append(
                 Component.literal(
                         " " + envPrefix + String.format(
-                                java.util.Locale.US,
+                                Locale.US,
                                 ambientSvH))
         ));
         player.sendSystemMessage(Component.translatable("geiger.accumulated_dose").append(Component.literal(" " + radPrefix + String.format("%.1f", playerMsv) + " mSv")).withStyle(ChatFormatting.YELLOW));
@@ -492,16 +555,21 @@ public class ContaminationUtil {
     }
 
     public static float getPlayerNeutronRads(Player player){
-        float radBuffer = 0F;
-        for(ItemStack slotI : player.getInventory().items){
-            radBuffer = radBuffer + getNeutronRads(slotI);
+
+        if(Config.neutronActivation) {
+
+            float radBuffer = 0F;
+            for(ItemStack slotI : player.getInventory().items){
+                radBuffer = radBuffer + getNeutronRads(slotI);
+            }
+            for(ItemStack slotA : player.getInventory().armor){
+                radBuffer = radBuffer + getNeutronRads(slotA);
+            }
+            HbmCapabilities.getData(player).setValue(Type.NEUTRON, radBuffer);
+            HbmCapabilities.getData(player).syncLivingVariables(player);
+            return radBuffer;
         }
-        for(ItemStack slotA : player.getInventory().armor){
-            radBuffer = radBuffer + getNeutronRads(slotA);
-        }
-        HbmCapabilities.getData(player).setValue(Type.NEUTRON, radBuffer);
-        HbmCapabilities.getData(player).syncLivingVariables(player);
-        return radBuffer;
+        else return (float)HbmCapabilities.getData(player).getValue(Type.NEUTRON);
     }
 
     public static boolean isRadItem(ItemStack stack){
@@ -530,12 +598,12 @@ public class ContaminationUtil {
     public static void addNeutronRadInfo(ItemStack stack, Player player, List<Component> list, TooltipFlag flagIn){
         float activationRads = getNeutronRads(stack);
         if(activationRads > 0) {
-            list.add(Component.literal("§a[" + I18nUtil.resolveKey("trait.radioactive") + "]"));
+            list.add(Component.literal("§9[" + I18nUtil.resolveKey("trait.neutron_activated") + "]"));
             float stackRad = activationRads / stack.getCount();
-            list.add(Component.literal(" §e" + Library.roundFloat((float)ItemHazardModule.getNewValue(stackRad), 3) + ItemHazardModule.getSuffix(stackRad) + " RAD/s"));
+            list.add(Component.literal("§9  -::§eNeutrons: " + Library.roundFloat((float)ItemHazardModule.getNewValue(stackRad), 3) + ItemHazardModule.getSuffix(stackRad) + " ϕ"));
 
             if(stack.getCount() > 1) {
-                list.add(Component.literal(" §eStack: " + Library.roundFloat((float)ItemHazardModule.getNewValue(activationRads), 3) + ItemHazardModule.getSuffix(activationRads) + " RAD/s"));
+                list.add(Component.literal(" §6Stack: " + Library.roundFloat((float)ItemHazardModule.getNewValue(activationRads), 3) + ItemHazardModule.getSuffix(activationRads) + " ϕ"));
             }
         }
     }
@@ -559,7 +627,7 @@ public class ContaminationUtil {
     }
 
     public static void neutronActivateItem(ItemStack stack, float rad, float decay){
-        if(stack != null && !stack.isEmpty() /*&& stack.getCount() == 1*/ && !isRadItem(stack)){
+        if(stack != null && !stack.isEmpty() && stack.getCount() == 1 && !isRadItem(stack)){
 
 //            System.out.println("[Debug] Adding NBT...");
 

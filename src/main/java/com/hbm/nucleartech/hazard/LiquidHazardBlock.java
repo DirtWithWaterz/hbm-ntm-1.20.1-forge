@@ -131,9 +131,13 @@ public class LiquidHazardBlock extends LiquidBlock implements IItemHazard {
     }
 
     @Override
-    public IItemHazard addRadiation(double radiation){
-        this.getModule().addRadiation(radiation);
-        this.radIn = radiation * 0.1F;
+    public IItemHazard addRadiation(double alpha, double beta, double xray, double gamma, double neutron){
+        this.getModule().addRadiation(new RadiationHolder(alpha, beta, xray, gamma, neutron));
+
+        double weight = (alpha/100d)+(beta/100d)+(xray)+(gamma)+(neutron);
+
+
+        this.radIn = weight * 0.1F;
         return this;
     }
 

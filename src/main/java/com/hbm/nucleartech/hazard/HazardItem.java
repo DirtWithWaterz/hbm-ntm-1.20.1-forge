@@ -3,6 +3,7 @@ package com.hbm.nucleartech.hazard;
 import com.hbm.nucleartech.datagen.HbmItemTagGenerator;
 import com.hbm.nucleartech.interfaces.IItemHazard;
 import com.hbm.nucleartech.modules.ItemHazardModule;
+import com.hbm.nucleartech.modules.ItemHazardModule.ContaminationRisk;
 import com.hbm.nucleartech.util.RegisterTags;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -21,92 +22,109 @@ public class HazardItem extends Item implements IItemHazard {
 
     protected ItemHazardModule module;
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
     }
 
-    public HazardItem(Type type, double gangue, @Nullable Float mass, double radiation, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, double gangue, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
         this.module.addGangue(gangue);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
+    }
+
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, Properties pProperties) {
+        super(pProperties);
+        this.module = new ItemHazardModule();
+        if(mass != null)
+            this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
         this.module.addToxic(toxiclvl);
     }
 
-    public HazardItem(Type type, float gangue, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, float gangue, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
         this.module.addGangue(gangue);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
         this.module.addToxic(toxiclvl);
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -114,13 +132,14 @@ public class HazardItem extends Item implements IItemHazard {
         this.module.addAsbestos(asbestos);
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -129,13 +148,14 @@ public class HazardItem extends Item implements IItemHazard {
         this.module.addCoal(coal);
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -146,13 +166,14 @@ public class HazardItem extends Item implements IItemHazard {
             this.module.addBlinding();
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -165,13 +186,14 @@ public class HazardItem extends Item implements IItemHazard {
             this.module.addHydroReactivity();
     }
 
-    public HazardItem(Type type, @Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, float explosive, Properties pProperties, boolean isIsotope) {
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, float explosive, Properties pProperties) {
         super(pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
-        this.module.isIsotope = isIsotope;
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -183,6 +205,28 @@ public class HazardItem extends Item implements IItemHazard {
         if(hydroReactive)
             this.module.addHydroReactivity();
         this.module.addExplosive(explosive);
+    }
+
+    public HazardItem(Type type, @Nullable Float mass, @Nullable RadiationHolder radiation, @Nullable ContaminationRisk contaminationRisk, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, float explosive, double radonGas, Properties pProperties) {
+        super(pProperties);
+        this.module = new ItemHazardModule();
+        if(mass != null)
+            this.module.addMass(type.equals(Type.NUGGET) ? mass / 9f : type.equals(Type.BILLET) ? mass * 1.5f : mass);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
+        this.module.addContamination(contaminationRisk);
+        this.module.addDigamma(digamma);
+        this.module.addFire(fire);
+        this.module.addCryogenic(cryogenic);
+        this.module.addToxic(toxiclvl);
+        this.module.addAsbestos(asbestos);
+        this.module.addCoal(coal);
+        if(blinding)
+            this.module.addBlinding();
+        if(hydroReactive)
+            this.module.addHydroReactivity();
+        this.module.addExplosive(explosive);
+        this.module.addRadonGas(radonGas);
     }
 
     @Override

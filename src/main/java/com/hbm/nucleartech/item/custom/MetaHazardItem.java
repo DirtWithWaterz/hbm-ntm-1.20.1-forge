@@ -1,23 +1,26 @@
-package com.hbm.nucleartech.block.custom;
+package com.hbm.nucleartech.item.custom;
 
 import com.hbm.nucleartech.hazard.HazardItem;
+import com.hbm.nucleartech.hazard.RadiationHolder;
+import com.hbm.nucleartech.modules.ItemHazardModule;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 public class MetaHazardItem extends HazardItem {
 
-    public MetaHazardItem(float halfLife, int explosionSize, Type type, float mass, double radiation, Properties pProperties) {
-        super(type, mass, radiation, pProperties, true);
+    public MetaHazardItem(float halfLife, int explosionSize, Type type, float mass, RadiationHolder radiation, @Nullable ItemHazardModule.ContaminationRisk risk, Properties pProperties) {
+        super(type, mass, radiation, risk, pProperties);
 
         this.module.halfLife = halfLife * 1000; // half-life should be given in seconds and then converted to milliseconds here
         this.module.uExpRadius = explosionSize;
     }
 
-    public MetaHazardItem(float halfLife, int explosionSize, Type type, float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, float explosive, Properties pProperties) {
-        super(type, mass, radiation, digamma, fire, cryogenic, toxiclvl, asbestos, coal, blinding, hydroReactive, explosive, pProperties, true);
+    public MetaHazardItem(float halfLife, int explosionSize, Type type, float mass, RadiationHolder radiation, @Nullable ItemHazardModule.ContaminationRisk risk, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, float explosive, Properties pProperties) {
+        super(type, mass, radiation, risk, digamma, fire, cryogenic, toxiclvl, asbestos, coal, blinding, hydroReactive, explosive, pProperties);
 
         this.module.halfLife = halfLife * 1000;
         this.module.uExpRadius = explosionSize;

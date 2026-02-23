@@ -56,9 +56,15 @@ public class Config
             .comment("How many moles for each ingot")
             .defineInRange("molesPerIngotConstant", 10, 1, 100);
 
-    private static final ForgeConfigSpec.BooleanValue EXTRA_RADIATE_FUNCTIONS = BUILDER
-            .comment("Whether to make radioactive blocks and item entities cast rays to the player allowing cooler radiation (can probably get very laggy)")
-            .define("extraRadiateFunctions", true);
+//    private static final ForgeConfigSpec.BooleanValue EXTRA_RADIATE_FUNCTIONS = BUILDER
+//            .comment("Whether to make radioactive blocks and item entities cast rays to the player allowing cooler radiation (can probably get very laggy)")
+//            .define("extraRadiateFunctions", true);
+
+    private static final ForgeConfigSpec.BooleanValue NEUTRON_ACTIVATION = BUILDER
+            .comment("Whether to make radioactive blocks and items neutron activate the players inventory (can get very laggy and is distinct from items with the neutron radiation classification, which will do this anyway)")
+            .define("neutronActivation", false);
+
+
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
 
@@ -67,12 +73,13 @@ public class Config
     public static String magicNumberIntroduction;
     public static Set<Item> items;
     public static int concurrentChunkThreads;
-    public static int hazardBlockTickSpeed;
-    public static int neutronParticleSpawnSpeed;
+    public static int hazardBlockTickSpeed = 20;
+    public static int neutronParticleSpawnSpeed = 20;
 
-    public static int ingotsPerBlockConstant;
-    public static int molesPerIngotConstant;
-    public static boolean extraRadiateFunctions;
+    public static int ingotsPerBlockConstant = 4374;
+    public static int molesPerIngotConstant = 10;
+//    public static boolean extraRadiateFunctions;
+    public static boolean neutronActivation;
 
     private static boolean validateItemName(final Object obj)
     {
@@ -99,7 +106,8 @@ public class Config
         ingotsPerBlockConstant = BI93_IB_CONSTANT.get();
         molesPerIngotConstant = MOLES_CONSTANT.get();
 
-        extraRadiateFunctions = EXTRA_RADIATE_FUNCTIONS.get();
+//        extraRadiateFunctions = EXTRA_RADIATE_FUNCTIONS.get();
+        neutronActivation = NEUTRON_ACTIVATION.get();
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()

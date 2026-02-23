@@ -3,10 +3,7 @@ package com.hbm.nucleartech.block;
 import com.hbm.nucleartech.HBM;
 import com.hbm.nucleartech.block.custom.*;
 import com.hbm.nucleartech.fluid.RegisterFluids;
-import com.hbm.nucleartech.hazard.HazardBlock;
-import com.hbm.nucleartech.hazard.HazardBlockItem;
-import com.hbm.nucleartech.hazard.LiquidHazardBlock;
-import com.hbm.nucleartech.hazard.LowProfileHazardBlock;
+import com.hbm.nucleartech.hazard.*;
 import com.hbm.nucleartech.item.RegisterItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -32,10 +29,10 @@ public class RegisterBlocks {
 
     public static final List<RegistryObject<? extends Block>> HAZARD_BLOCKS = new ArrayList<>();
 
-    public static final RegistryObject<Block> WASTE_BLOCK = registerHazardBlock(null, 4500, "waste_block",
+    public static final RegistryObject<Block> WASTE_BLOCK = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 4500f), "waste_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .strength(5.0f, 4.0f),
-                    4500
+                    new RadiationHolder(0, 0, 0 ,0, 4500f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> TITANIUM_BLOCK = registerBlock("titanium_block",
@@ -43,10 +40,10 @@ public class RegisterBlocks {
                     .strength(5.0f, 4.0f)
             ));
 
-    public static final RegistryObject<Block> URANIUM_BLOCK = registerHazardBlock(238f, 3.5, "uranium_block",
+    public static final RegistryObject<Block> URANIUM_BLOCK = registerHazardBlock(238f, new RadiationHolder(3.5f, 0, 0, 0, 0), "uranium_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK)
                     .strength(5.0f, 4.0f),
-                    3.5
+                    new RadiationHolder(3.5f, 0, 0, 0, 0)
             ));
 
     public static final RegistryObject<Block> BORON_BLOCK = registerBlock("boron_block",
@@ -123,8 +120,8 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> ARMOR_MODIFICATION_TABLE = BLOCKS.register("armor_modification_table",
             () -> new ArmorModificationTableBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
-    public static final RegistryObject<Block> DEAD_GRASS = registerHazardBlock(null, 1.0f, "dead_grass",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK), 1.0f).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
+    public static final RegistryObject<Block> DEAD_GRASS = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 1.0f), "dead_grass",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK), new RadiationHolder(0, 0, 0, 0, 1.0f)).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> BURNER_PRESS = BLOCKS.register("burner_press",
             () -> new BurnerPressBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
@@ -243,18 +240,18 @@ public class RegisterBlocks {
     public static final RegistryObject<Block> DEEPSLATE_ASBESTOS_ORE = registerBlock("deepslate_asbestos_ore",
             () -> new AsbestosBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)));
 
-    public static final RegistryObject<Block> SCHRABIDIUM_ORE = registerHazardBlock(null, 15, "schrabidium_ore",
+    public static final RegistryObject<Block> SCHRABIDIUM_ORE = registerHazardBlock(null, new RadiationHolder(15.0f, 0, 0, 0, 0), "schrabidium_ore",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE)
                     .strength(5.0f, 4.0f),
                     UniformInt.of(2, 4),
-                    15
+                    new RadiationHolder(15.0f, 0, 0, 0, 0)
             ));
 
-    public static final RegistryObject<Block> DEEPSLATE_SCHRABIDIUM_ORE = registerHazardBlock(null, 15, "deepslate_schrabidium_ore",
+    public static final RegistryObject<Block> DEEPSLATE_SCHRABIDIUM_ORE = registerHazardBlock(null, new RadiationHolder(15.0f, 0, 0, 0, 0), "deepslate_schrabidium_ore",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)
                     .strength(8.0f, 3.0f),
                     UniformInt.of(2, 5),
-                    15
+                    new RadiationHolder(15.0f, 0, 0, 0, 0)
             ));
 
     public static final RegistryObject<Block> RARE_EARTH_ORE = registerBlock("rare_earth_ore",
@@ -345,14 +342,14 @@ public class RegisterBlocks {
                     .strength(3.0f, 2.0f)
             ));
 
-    public static final RegistryObject<Block> SCHRABIDIUM_BLOCK = registerHazardBlock(312f, 135.00, "schrabidium_block",
+    public static final RegistryObject<Block> SCHRABIDIUM_BLOCK = registerHazardBlock(312f, new RadiationHolder(135.0f, 0, 0, 0, 0), "schrabidium_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK),
-                    135.00
+                    new RadiationHolder(135.0f, 0, 0, 0, 0)
             ));
 
-    public static final RegistryObject<Block> RAW_SCHRABIDIUM_BLOCK = registerHazardBlock(312f, 13.50, "raw_schrabidium_block",
+    public static final RegistryObject<Block> RAW_SCHRABIDIUM_BLOCK = registerHazardBlock(312f, new RadiationHolder(13.5f, 0, 0, 0, 0), "raw_schrabidium_block",
             () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK),
-                    13.50
+                    new RadiationHolder(13.5f, 0, 0, 0, 0)
             ));
 
     public static final RegistryObject<Block> AUSTRALIUM_BLOCK = registerBlock("australium_block",
@@ -620,171 +617,171 @@ public class RegisterBlocks {
                     .strength(5.0f, 3.0f)
             ));
 
-    public static final RegistryObject<Block> SLAKED_SELLAFITE = registerHazardBlock(null, 2.5f, "slaked_sellafite",
+    public static final RegistryObject<Block> SLAKED_SELLAFITE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 2.5f), "slaked_sellafite",
             () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(3.0f, 2.0f), 2.5f
+                    .strength(3.0f, 2.0f), new RadiationHolder(0, 0, 0, 0, 2.5f)
             ));
 
-    public static final RegistryObject<Block> SELLAFITE = registerHazardBlock(null, 5.0f, "sellafite",
+    public static final RegistryObject<Block> SELLAFITE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "sellafite",
             () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(3.0f, 2.0f), 5.0f
+                    .strength(3.0f, 2.0f), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ));
 
-    public static final RegistryObject<Block> HOT_SELLAFITE = registerHazardBlock(null, 10.0f, "hot_sellafite",
+    public static final RegistryObject<Block> HOT_SELLAFITE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 10.0f), "hot_sellafite",
             () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(3.0f, 2.0f), 10.0f
+                    .strength(3.0f, 2.0f), new RadiationHolder(0, 0, 0, 0, 10.0f)
             ));
 
-    public static final RegistryObject<Block> BOILING_SELLAFITE = registerHazardBlock(null, 20.0f, "boiling_sellafite",
+    public static final RegistryObject<Block> BOILING_SELLAFITE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 20.0f), "boiling_sellafite",
             () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(3.0f, 2.0f), 20.0f
+                    .strength(3.0f, 2.0f), new RadiationHolder(0, 0, 0, 0, 20.0f)
             ));
 
-    public static final RegistryObject<Block> BLAZING_SELLAFITE = registerHazardBlock(null, 40.0f, 1, "blazing_sellafite",
+    public static final RegistryObject<Block> BLAZING_SELLAFITE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 40.0f), 1, "blazing_sellafite",
             () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(3.0f, 2.0f), 40.0f
+                    .strength(3.0f, 2.0f), new RadiationHolder(0, 0, 0, 0, 40.0f)
             ));
 
-    public static final RegistryObject<Block> INFERNAL_SELLAFITE = registerHazardBlock(null, 80.0f, 2, "infernal_sellafite",
+    public static final RegistryObject<Block> INFERNAL_SELLAFITE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 80.0f), 2, "infernal_sellafite",
             () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(3.0f, 2.0f), 80.0f
+                    .strength(3.0f, 2.0f), new RadiationHolder(0, 0, 0, 0, 80.0f)
             ));
 
-    public static final RegistryObject<Block> SELLAFITE_CORIUM = registerHazardBlock(null, 2000.0f, 5, "sellafite_corium",
+    public static final RegistryObject<Block> SELLAFITE_CORIUM = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 2000.0f), 5, "sellafite_corium",
             () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
-                    .strength(3.0f, 2.0f), 2000.0f
+                    .strength(3.0f, 2.0f), new RadiationHolder(0, 0, 0, 0, 2000.0f)
             ));
 
-    public static final RegistryObject<Block> TRINITITE_ORE = registerHazardBlock(null, 25.0f, "trinitite_ore",
-            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND), 25.0f
+    public static final RegistryObject<Block> TRINITITE_ORE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 25.0f, 0), "trinitite_ore",
+            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND), new RadiationHolder(0, 0, 0, 25.0f, 0)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> RED_TRINITITE_ORE = registerHazardBlock(null, 25.0f, "red_trinitite_ore",
-            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.RED_SAND), 25.0f
+    public static final RegistryObject<Block> RED_TRINITITE_ORE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 25.0f, 0), "red_trinitite_ore",
+            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.RED_SAND), new RadiationHolder(0, 0, 0, 25.0f, 0)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> TRINITITE_BLOCK = registerHazardBlock(null, 25.0f*9, "trinitite_block",
-            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK), 25.0f*9
+    public static final RegistryObject<Block> TRINITITE_BLOCK = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 25.0f*9, 0), "trinitite_block",
+            () -> new HazardBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK), new RadiationHolder(0, 0, 0, 25.0f*9, 0)
             ));
 
-    public static final RegistryObject<Block> SCORCHED_URANIUM_ORE = registerHazardBlock(null, 0.5f, "scorched_uranium_ore",
-            () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(RegisterBlocks.URANIUM_ORE.get()), 0.5f
+    public static final RegistryObject<Block> SCORCHED_URANIUM_ORE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 0.5f), "scorched_uranium_ore",
+            () -> new LowProfileHazardBlock(BlockBehaviour.Properties.copy(RegisterBlocks.URANIUM_ORE.get()), new RadiationHolder(0, 0, 0, 0, 0.5f)
             ));
 
-    public static final RegistryObject<Block> CONTAMINATED_ICE = registerHazardBlock(null, 20.0f, "contaminated_ice",
-            () -> new ContaminatedIceBlock(BlockBehaviour.Properties.copy(Blocks.ICE).noOcclusion(), 20.0f
+    public static final RegistryObject<Block> CONTAMINATED_ICE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 20.0f), "contaminated_ice",
+            () -> new ContaminatedIceBlock(BlockBehaviour.Properties.copy(Blocks.ICE).noOcclusion(), new RadiationHolder(0, 0, 0, 0, 20.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_DIRT = registerHazardBlock(null, 1.0f, "contaminated_dirt",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.DIRT), 1.0f
+    public static final RegistryObject<Block> CONTAMINATED_DIRT = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 1.0f), "contaminated_dirt",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.DIRT), new RadiationHolder(0, 0, 0, 0, 1.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_GRAVEL = registerHazardBlock(null, 2.5f, "contaminated_gravel",
-            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.GRAVEL), 2.5f
+    public static final RegistryObject<Block> CONTAMINATED_GRAVEL = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 2.5f), "contaminated_gravel",
+            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.GRAVEL), new RadiationHolder(0, 0, 0, 0, 2.5f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_SANDSTONE = registerHazardBlock(null, 2.5f, "contaminated_sandstone",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE), 2.5f
+    public static final RegistryObject<Block> CONTAMINATED_SANDSTONE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 2.5f), "contaminated_sandstone",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SANDSTONE), new RadiationHolder(0, 0, 0, 0, 2.5f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_RED_SANDSTONE = registerHazardBlock(null, 2.5f, "contaminated_red_sandstone",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.RED_SANDSTONE), 2.5f
+    public static final RegistryObject<Block> CONTAMINATED_RED_SANDSTONE = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 2.5f), "contaminated_red_sandstone",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.RED_SANDSTONE), new RadiationHolder(0, 0, 0, 0, 2.5f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_SAND = registerHazardBlock(null, 5.0f, "contaminated_sand",
-            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_SAND = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_sand",
+            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.SAND), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_RED_SAND = registerHazardBlock(null, 5.0f, "contaminated_red_sand",
-            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.RED_SAND), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_RED_SAND = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_red_sand",
+            () -> new ContaminatedVariableFallingBlock(BlockBehaviour.Properties.copy(Blocks.RED_SAND), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_SNOW_BLOCK = registerHazardBlock(null, 10.0f, "contaminated_snow_block",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), 10.0f
+    public static final RegistryObject<Block> CONTAMINATED_SNOW_BLOCK = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 10.0f), "contaminated_snow_block",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), new RadiationHolder(0, 0, 0, 0, 10.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_SNOW = registerHazardBlock(null, 1.0f, "contaminated_snow",
-            () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), 1.0f
+    public static final RegistryObject<Block> CONTAMINATED_SNOW = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 1.0f), "contaminated_snow",
+            () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), new RadiationHolder(0, 0, 0, 0, 1.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> FALLOUT_BLOCK = registerHazardBlock(null, 100.0f, "fallout_block",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), 100.0f
+    public static final RegistryObject<Block> FALLOUT_BLOCK = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 100.0f), "fallout_block",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.SNOW_BLOCK), new RadiationHolder(0, 0, 0, 0, 100.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> FALLOUT = registerHazardBlock(null, 20.0f, "fallout",
-            () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), 20.0f
+    public static final RegistryObject<Block> FALLOUT = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 20.0f), "fallout",
+            () -> new ContaminatedVariableLayerBlock(BlockBehaviour.Properties.copy(Blocks.SNOW), new RadiationHolder(0, 0, 0, 0, 20.0f)
             ));
 
-    public static final RegistryObject<Block> CONTAMINATED_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_WHITE_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_white_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_WHITE_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_white_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_LIGHT_GRAY_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_light_gray_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_LIGHT_GRAY_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_light_gray_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_GRAY_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_GRAY_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_gray_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_GRAY_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_gray_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GRAY_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_BLACK_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_black_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_BLACK_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_black_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLACK_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_BROWN_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_brown_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_BROWN_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_brown_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_RED_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_red_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_RED_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_red_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.RED_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_ORANGE_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_orange_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_ORANGE_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_orange_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.ORANGE_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_YELLOW_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_yellow_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_YELLOW_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_yellow_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.YELLOW_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_LIME_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_lime_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIME_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_LIME_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_lime_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIME_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_GREEN_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_green_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_GREEN_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_green_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.GREEN_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_CYAN_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_cyan_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_CYAN_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_cyan_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.CYAN_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_LIGHT_BLUE_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_light_blue_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_LIGHT_BLUE_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_light_blue_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.LIGHT_BLUE_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_BLUE_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_blue_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_BLUE_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_blue_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.BLUE_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_PURPLE_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_purple_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_PURPLE_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_purple_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PURPLE_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_MAGENTA_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_magenta_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_MAGENTA_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_magenta_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_PINK_TERRACOTTA = registerHazardBlock(null, 5.0f, "contaminated_pink_terracotta",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PINK_TERRACOTTA), 5.0f
+    public static final RegistryObject<Block> CONTAMINATED_PINK_TERRACOTTA = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 5.0f), "contaminated_pink_terracotta",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.PINK_TERRACOTTA), new RadiationHolder(0, 0, 0, 0, 5.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
-    public static final RegistryObject<Block> CONTAMINATED_MYCELIUM = registerHazardBlock(null, 4.0f, "contaminated_mycelium",
-            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MYCELIUM), 4.0f
+    public static final RegistryObject<Block> CONTAMINATED_MYCELIUM = registerHazardBlock(null, new RadiationHolder(0, 0, 0, 0, 4.0f), "contaminated_mycelium",
+            () -> new ContaminatedVariableBlock(BlockBehaviour.Properties.copy(Blocks.MYCELIUM), new RadiationHolder(0, 0, 0, 0, 4.0f)
             ).setDisplayEffect(HazardBlock.ExtDisplayEffect.RADFOG));
 
     public static final RegistryObject<Block> CONTAMINATED_WATER = BLOCKS.register("contaminated_water",
@@ -839,7 +836,7 @@ public class RegisterBlocks {
         return RegisterItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    private static <T extends Block>RegistryObject<T> registerHazardBlock(@Nullable Float mass, double radiation, String name, Supplier<T> block) {
+    private static <T extends Block>RegistryObject<T> registerHazardBlock(@Nullable Float mass, RadiationHolder radiation, String name, Supplier<T> block) {
 
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerHazardBlockItem(mass, radiation, name, toReturn);
@@ -849,7 +846,7 @@ public class RegisterBlocks {
         return toReturn;
     }
 
-    private static <T extends Block>RegistryObject<T> registerHazardBlock(@Nullable Float mass, double radiation, int fire, String name, Supplier<T> block) {
+    private static <T extends Block>RegistryObject<T> registerHazardBlock(@Nullable Float mass, RadiationHolder radiation, int fire, String name, Supplier<T> block) {
 
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerHazardBlockItem(mass, radiation, fire, name, toReturn);
@@ -869,19 +866,19 @@ public class RegisterBlocks {
         return toReturn;
     }
 
-    private static <T extends Block>RegistryObject<Item> registerHazardBlockItem(@Nullable Float mass, double radiation, String name, RegistryObject<T> block) {
+    private static <T extends Block>RegistryObject<Item> registerHazardBlockItem(@Nullable Float mass, RadiationHolder radiation, String name, RegistryObject<T> block) {
 
         return RegisterItems.ITEMS.register(name, () -> new HazardBlockItem(mass, radiation, block.get(), new Item.Properties()));
     }
 
-    private static <T extends Block>RegistryObject<Item> registerHazardBlockItem(@Nullable Float mass, double radiation, int fire, String name, RegistryObject<T> block) {
+    private static <T extends Block>RegistryObject<Item> registerHazardBlockItem(@Nullable Float mass, RadiationHolder radiation, int fire, String name, RegistryObject<T> block) {
 
         return RegisterItems.ITEMS.register(name, () -> new HazardBlockItem(mass, radiation, 0, fire, block.get(), new Item.Properties()));
     }
 
     private static <T extends Block>RegistryObject<Item> registerAsbestosBlockItem(int asbestos, String name, RegistryObject<T> block) {
 
-        return RegisterItems.ITEMS.register(name, () -> new HazardBlockItem(null, 0, 0, 0, 0, 0, asbestos, block.get(), new Item.Properties()));
+        return RegisterItems.ITEMS.register(name, () -> new HazardBlockItem(null, null, 0, 0, 0, 0, asbestos, block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {

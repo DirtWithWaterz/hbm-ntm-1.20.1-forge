@@ -20,62 +20,68 @@ public class HazardBlockItem extends BlockItem implements IItemHazard {
 
     ItemHazardModule module;
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, int cryogenic, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, int cryogenic, int toxiclvl, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
         this.module.addToxic(toxiclvl);
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -83,12 +89,13 @@ public class HazardBlockItem extends BlockItem implements IItemHazard {
         this.module.addAsbestos(asbestos);
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -97,12 +104,13 @@ public class HazardBlockItem extends BlockItem implements IItemHazard {
         this.module.addCoal(coal);
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -113,12 +121,13 @@ public class HazardBlockItem extends BlockItem implements IItemHazard {
             this.module.addBlinding();
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
@@ -131,12 +140,13 @@ public class HazardBlockItem extends BlockItem implements IItemHazard {
             this.module.addHydroReactivity();
     }
 
-    public HazardBlockItem(@Nullable Float mass, double radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, float explosive, Block block, Properties pProperties) {
+    public HazardBlockItem(@Nullable Float mass, @Nullable RadiationHolder radiation, double digamma, int fire, int cryogenic, int toxiclvl, int asbestos, int coal, boolean blinding, boolean hydroReactive, float explosive, Block block, Properties pProperties) {
         super(block, pProperties);
         this.module = new ItemHazardModule();
         if(mass != null)
             this.module.addMass(mass*9);
-        this.module.addRadiation(radiation);
+        if(radiation != null)
+            this.module.addRadiation(new RadiationHolder(radiation.alpha, radiation.beta, radiation.xray, radiation.gamma, radiation.neutron));
         this.module.addDigamma(digamma);
         this.module.addFire(fire);
         this.module.addCryogenic(cryogenic);
