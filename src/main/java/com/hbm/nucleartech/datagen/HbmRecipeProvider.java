@@ -230,7 +230,7 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.URANIUM_NUGGET.get())
                         + "_from_" + getItemName(RegisterItems.URANIUM_BILLET.get()));
 //============================================tools==============================================================
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.DESH_BLADE.get())//HAND_DRILL_DESH
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.HAND_DRILL_DESH.get())
                 .pattern("D  ")
                 .pattern("DSS")
                 .pattern("  S")
@@ -240,7 +240,7 @@ public class HbmRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer, HBM.MOD_ID + ":" + getItemName(RegisterItems.DESH_INGOT.get()) + "_from_"
                         + getItemName(RegisterItems.DESH_INGOT.get()) + "_and_"+getItemName(Items.STICK));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.STEEL_BLADE.get())//HAND_DRILL_STEEL
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RegisterItems.HAND_DRILL_STEEL.get())
                 .pattern("D  ")
                 .pattern("DSS")
                 .pattern("  S")

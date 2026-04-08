@@ -80,7 +80,7 @@ public class HbmItemModelProvider extends ItemModelProvider {
         simpleItem(RegisterItems.RADIUM_PILE_ROD);
         simpleItem(RegisterItems.URANIUM_PILE_ROD);
 
-        simpleItem(RegisterItems.HAND_DRILL);
+        simpleItem(RegisterItems.HAND_DRILL_STEEL);
         simpleItem(RegisterItems.SCREWDRIVER);
 
         simpleItem(RegisterItems.BIOMASS);

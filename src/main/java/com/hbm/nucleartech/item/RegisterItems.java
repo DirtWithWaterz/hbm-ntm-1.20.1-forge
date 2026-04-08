@@ -84,16 +84,87 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> RAW_BERYLLIUM = ITEMS.register("raw_beryllium",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BERYLLIUM_POWDER = ITEMS.register("beryllium_powder",
+            () -> new Item(new Item.Properties()));
     //========================================copper==============================================================
     public static final RegistryObject<Item> COPPER_POWDER = ITEMS.register("copper_powder",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> COPPER_POWDER_TINY = ITEMS.register("tiny_copper_powder",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> DENSE_COPPER_WIRE = ITEMS.register("dense_copper_wire",
             () -> new Item(new Item.Properties()));
     //========================================desh==============================================================
     public static final RegistryObject<Item> DESH_INGOT = ITEMS.register("desh_ingot",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DESH_POWDER = ITEMS.register("desh_powder",
+            () -> new Item(new Item.Properties()));
+    //========================================dust===============================================================
+    public static final RegistryObject<Item> DUST = ITEMS.register("dust", () -> new Item(new Item.Properties()));
+
+
+    public static final RegistryObject<Item> DIRTY_LIGHT_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> WASHED_LIGHT_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> LIGHT_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> IMPURE_LIGHT_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> PURE_LIGHT_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> PURIFIED_LIGHT_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
+
+
+    public static final RegistryObject<Item> HEAVY_DIRTY_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_WASHED_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_IMPURE_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_PURE_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_PURIFIED_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
+
+
+    public static final RegistryObject<Item> ACTINIDE_DIRTY_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ACTINIDE_WASHED_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ACTINIDE_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ACTINIDE_IMPURE_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ACTINIDE_PURE_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ACTINIDE_PURIFIED_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
+
+
+    public static final RegistryObject<Item> NON_METAL_DIRTY_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NON_METAL_WASHED_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NON_METAL_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NON_METAL_IMPURE_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NON_METAL_PURE_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> NON_METAL_PURIFIED_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
+
     //========================================steel==============================================================
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> STEEL_POWDER = ITEMS.register("steel_powder",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> STEEL_POWDER_TINY = ITEMS.register("tiny_steel_powder",
             () -> new Item(new Item.Properties()));
     //========================================titanium==============================================================
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
@@ -104,13 +175,26 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> TITANIUM_POWDER = ITEMS.register("titanium_powder",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TITANIUM_POWDER_TINY = ITEMS.register("tiny_titanium_powder",
+            () -> new Item(new Item.Properties()));
     //========================================iron==============================================================
     public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> DENSE_IRON_WIRE = ITEMS.register("iron_dense_wire",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_POWDER_TINY = ITEMS.register("tiny_iron_powder",
             () -> new Item(new Item.Properties()));
     //========================================gold==============================================================
     public static final RegistryObject<Item> GOLD_POWDER = ITEMS.register("gold_powder",
             () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> DENSE_GOLD_WIRE = ITEMS.register("dense_gold_wire",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLD_POWDER_TINY = ITEMS.register("tiny_gold_powder",
             () -> new Item(new Item.Properties()));
     //========================================uranium==============================================================
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot",
@@ -123,6 +207,16 @@ public class RegisterItems {
             () -> new HazardItem(Type.OTHER, 238f, new RadiationHolder(0.25f, 0, 0, 0, 0), new Item.Properties()));
     public static final RegistryObject<Item> URANIUM_FUEL_INGOT = ITEMS.register("uranium_fuel_ingot",
             () -> new HazardItem(Type.OTHER, 237f, new RadiationHolder(0.5f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> URANIUM_233_POWDER= ITEMS.register("uranium_233_powder",
+            () -> new HazardItem(Type.OTHER, 233f, new RadiationHolder(5f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> URANIUM_235_POWDER= ITEMS.register("uranium_235_powder",
+            () -> new HazardItem(Type.OTHER, 235f, new RadiationHolder(1f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> URANIUM_238_POWDER= ITEMS.register("uranium_238_powder",
+            () -> new HazardItem(Type.OTHER, 238f, new RadiationHolder(0.25f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> URANIUM_FUEL_POWDER = ITEMS.register("uranium_fuel_powder",
+            () -> new HazardItem(Type.OTHER, 237f, new RadiationHolder(0.5f, 0, 0, 0, 0), new Item.Properties()));
+
+
     public static final RegistryObject<Item> URANIUM_238m2_INGOT = ITEMS.register("uranium_238m2_ingot",
             () -> new MetaHazardItem(1, 360, Type.OTHER, 238f, new RadiationHolder(0, 0, 0, 125f, 100f), ContaminationRisk.VERY_HIGH, new Item.Properties()));
 
@@ -142,6 +236,16 @@ public class RegisterItems {
             () -> new HazardItem(Type.NUGGET, 238f, new RadiationHolder(0.025f, 0, 0, 0, 0), new Item.Properties()));
     public static final RegistryObject<Item> URANIUM_FUEL_NUGGET = ITEMS.register("uranium_fuel_nugget",
             () -> new HazardItem(Type.NUGGET, 237f, new RadiationHolder(0.05f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> TINY_URANIUM_POWDER = ITEMS.register("uranium_nugget",
+            () -> new HazardItem(Type.NUGGET, 238f, new RadiationHolder(0.035f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> TINY_URANIUM_233_POWDER = ITEMS.register("tiny_uranium_233_powder",
+            () -> new HazardItem(Type.NUGGET, 233f, new RadiationHolder(0.5f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> TINY_URANIUM_235_POWDER = ITEMS.register("tiny_uranium_235_powder",
+            () -> new HazardItem(Type.NUGGET, 235f, new RadiationHolder(0.1f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> TINY_URANIUM_238_POWDER = ITEMS.register("tiny_uranium_238_powder",
+            () -> new HazardItem(Type.NUGGET, 238f, new RadiationHolder(0.025f, 0, 0, 0, 0), new Item.Properties()));
+    public static final RegistryObject<Item> TINY_URANIUM_FUEL_POWDER = ITEMS.register("tiny_uranium_fuel_nugget", () -> new HazardItem(Type.NUGGET, 237f, new RadiationHolder(0.05f, 0, 0, 0, 0), new Item.Properties()));
+
     public static final RegistryObject<Item> URANIUM_238m2_NUGGET = ITEMS.register("uranium_238m2_nugget",
             () -> new MetaHazardItem(1, 360/9, Type.NUGGET, 238f, new RadiationHolder(0, 0, 0, 125f/9, 100f/9), ContaminationRisk.HIGH, new Item.Properties()));
 
@@ -163,6 +267,12 @@ public class RegisterItems {
     public static final RegistryObject<Item> RADIUM_INGOT = ITEMS.register("radium_ingot",
             () -> new HazardItem(Type.OTHER, 226f, new RadiationHolder(7.5f, 0, 0, 0.25f, 0), null, 0, 0, 0, 0, 0, 0, false, true, 0, 5.0, new Item.Properties()));
 
+    public static final RegistryObject<Item> RADIUM_POWDER = ITEMS.register("radium_poowder",
+            () -> new HazardItem(Type.OTHER, 226f, new RadiationHolder(7.5f, 0, 0, 0.25f, 0), null, 0, 0, 0, 0, 0, 0, false, true, 0, 5.0, new Item.Properties()));
+
+    public static final RegistryObject<Item> TINY_RADIUM_POWDER = ITEMS.register("tiny_radium_powder",
+            () -> new HazardItem(Type.OTHER, 226f, new RadiationHolder(7.5f, 0, 0, 0.25f, 0), null, 0, 0, 0, 0, 0, 0, false, true, 0, 5.0, new Item.Properties()));
+
     //=========================================thorium==============================================================
     public static final RegistryObject<Item> THORIUM_SHALE = ITEMS.register("thorium_shale",
             () -> new HazardItem(Type.OTHER, 42, 232f, new RadiationHolder(0.01f, 0, 0, 0, 0), ContaminationRisk.LOW, new Item.Properties()));
@@ -175,6 +285,9 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> THORIUM_INGOT = ITEMS.register("thorium_ingot",
             () -> new HazardItem(Type.OTHER, 232f, new RadiationHolder(0.1f, 0, 0, 0, 0), new Item.Properties()));
+
+    public static final RegistryObject<Item> TINY_THORIUM_POWDER = ITEMS.register("tiny_thorium_powder",
+            () -> new HazardItem(Type.OTHER, 232f, new RadiationHolder(0.3f, 0, 0, 0, 0), ContaminationRisk.HIGH, new Item.Properties()));
 
     //=========================================plutonium==============================================================
     //=========================================piles==============================================================
@@ -190,9 +303,11 @@ public class RegisterItems {
     public static final RegistryObject<Item> BORON_PILE_ROD = ITEMS.register("boron_pile_rod",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> BERYLLIUM_PILE_ROD = ITEMS.register("beryllium_pile_rod",
+            () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> DESH_BLADE = ITEMS.register("desh_blade",
-            () -> new BladeItem(new Item.Properties().stacksTo(1), 9));
+
+
     //=========================================sulfur==============================================================
     public static final RegistryObject<Item> SULFUR = ITEMS.register("sulfur",
             () -> new Item(new Item.Properties()));
@@ -284,6 +399,9 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> SCHRABIDIUM_BLADE = ITEMS.register("schrabidium_blade",
             () -> new BladeItem(new Item.Properties().durability(4096), 8));
+
+    public static final RegistryObject<Item> DESH_BLADE = ITEMS.register("desh_blade",
+            () -> new BladeItem(new Item.Properties().stacksTo(1), 9));
 
 //    ====================================== CELLS ======================================
 
@@ -508,7 +626,10 @@ public class RegisterItems {
             () -> new HazmatGreyItem(new Item.Properties(), HbmArmorMaterials.HAZMAT, ArmorModHandler.boots_only));
     //    ========================================tools=========================================
 
-    public static final RegistryObject<Item> HAND_DRILL = ITEMS.register("hand_drill",
+    public static final RegistryObject<Item> HAND_DRILL_DESH = ITEMS.register("hand_drill_desh",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HAND_DRILL_STEEL = ITEMS.register("hand_drill_steel",
             () -> new Item(new Item.Properties().durability(100)));
 
     public static final RegistryObject<Item> SCREWDRIVER = ITEMS.register("screwdriver",
