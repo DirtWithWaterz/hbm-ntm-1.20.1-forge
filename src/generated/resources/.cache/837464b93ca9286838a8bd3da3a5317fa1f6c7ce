@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-17T07:24:56.654042	Item Models: hbm
+// 1.20.1	2026-04-08T11:36:38.9102997	Item Models: hbm
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell.json
 bd7b87363ab0102d308fa4b879edd0b8d9410084 assets/hbm/models/item/advanced_12_cell_full.json
 64abf1e32cb32cf7837426de07dfb4113355815f assets/hbm/models/item/advanced_4_cell.json
@@ -53,7 +53,7 @@ eea13222f39181f2b394466001eba9194be1c854 assets/hbm/models/item/gold_powder.json
 e3fcaafe0e83eba06263be9b889074883b43e594 assets/hbm/models/item/gold_sc_battery.json
 4d923486dd8dfabb2c442b584b4c13d5ad27c2d3 assets/hbm/models/item/gold_wire.json
 45354f49bcb8caa1453f7fb2a47a092e1c4af91e assets/hbm/models/item/graphite_ingot.json
-ebd75d2ffee0a4f8b1d0b5a0f108c37ac089f134 assets/hbm/models/item/hand_drill.json
+dc668b98516452d38a3ab0697aa979522ac44dac assets/hbm/models/item/hand_drill_steel.json
 dee381047bb7477655cb3eabc4acbc281dd2aec9 assets/hbm/models/item/hazmat_boots.json
 b64233ed0fc67a1ee21adc142be911804d267c4c assets/hbm/models/item/hazmat_boots_grey.json
 888c6a57051dbf40cf5b4d75aafd3a7ea6f8f808 assets/hbm/models/item/hazmat_boots_red.json

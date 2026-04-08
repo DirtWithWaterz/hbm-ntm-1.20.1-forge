@@ -106,56 +106,56 @@ public class RegisterItems {
     public static final RegistryObject<Item> DUST = ITEMS.register("dust", () -> new Item(new Item.Properties()));
 
 
-    public static final RegistryObject<Item> DIRTY_LIGHT_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DIRTY_LIGHT_MINERAL_DUST = ITEMS.register("dirty_light_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> WASHED_LIGHT_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WASHED_LIGHT_MINERAL_DUST = ITEMS.register("washed_light_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> LIGHT_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIGHT_MINERAL_DUST = ITEMS.register("light_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> IMPURE_LIGHT_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> IMPURE_LIGHT_MINERAL_DUST = ITEMS.register("impure_light_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> PURE_LIGHT_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PURE_LIGHT_MINERAL_DUST = ITEMS.register("pure_light_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> PURIFIED_LIGHT_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
-
-
-    public static final RegistryObject<Item> HEAVY_DIRTY_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> HEAVY_WASHED_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> HEAVY_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> HEAVY_IMPURE_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> HEAVY_PURE_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> HEAVY_PURIFIED_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PURIFIED_LIGHT_MINERAL_DUST = ITEMS.register("purified_light_mineral_dust", () -> new Item(new Item.Properties()));
 
 
-    public static final RegistryObject<Item> ACTINIDE_DIRTY_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HEAVY_DIRTY_MINERAL_DUST = ITEMS.register("dirty_heavy_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ACTINIDE_WASHED_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HEAVY_WASHED_MINERAL_DUST = ITEMS.register("washed_heavy_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ACTINIDE_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HEAVY_MINERAL_DUST = ITEMS.register("heavy_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_IMPURE_MINERAL_DUST = ITEMS.register("impure_heavy_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_PURE_MINERAL_DUST = ITEMS.register("pure_heavy_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> HEAVY_PURIFIED_MINERAL_DUST = ITEMS.register("purified_heavy_mineral_dust", () -> new Item(new Item.Properties()));
+
+
+    public static final RegistryObject<Item> ACTINIDE_DIRTY_MINERAL_DUST = ITEMS.register("dirty_actinide_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ACTINIDE_WASHED_MINERAL_DUST = ITEMS.register("washed_actinide_mineral_dust", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ACTINIDE_MINERAL_DUST = ITEMS.register("actinide_mineral_dust", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> ACTINIDE_IMPURE_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> ACTINIDE_PURE_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> ACTINIDE_PURIFIED_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ACTINIDE_PURIFIED_MINERAL_DUST = ITEMS.register("purified_actinide_mineral_dust", () -> new Item(new Item.Properties()));
 
 
     public static final RegistryObject<Item> NON_METAL_DIRTY_MINERAL_DUST = ITEMS.register("dirty_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> NON_METAL_WASHED_MINERAL_DUST = ITEMS.register("washed_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NON_METAL_WASHED_MINERAL_DUST = ITEMS.register("washed_non_metal_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> NON_METAL_MINERAL_DUST = ITEMS.register("mineral_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NON_METAL_MINERAL_DUST = ITEMS.register("mineral_non_metal_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> NON_METAL_IMPURE_MINERAL_DUST = ITEMS.register("impure_mineral_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NON_METAL_IMPURE_MINERAL_DUST = ITEMS.register("impure_non_metal_mineral_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> NON_METAL_PURE_MINERAL_DUST = ITEMS.register("pure_mineral_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NON_METAL_PURE_MINERAL_DUST = ITEMS.register("pure_non_metal_dust", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> NON_METAL_PURIFIED_MINERAL_DUST = ITEMS.register("desh_powder", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> NON_METAL_PURIFIED_MINERAL_DUST = ITEMS.register("purified_non_metal_powder", () -> new Item(new Item.Properties()));
 
     //========================================steel==============================================================
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
@@ -236,7 +236,7 @@ public class RegisterItems {
             () -> new HazardItem(Type.NUGGET, 238f, new RadiationHolder(0.025f, 0, 0, 0, 0), new Item.Properties()));
     public static final RegistryObject<Item> URANIUM_FUEL_NUGGET = ITEMS.register("uranium_fuel_nugget",
             () -> new HazardItem(Type.NUGGET, 237f, new RadiationHolder(0.05f, 0, 0, 0, 0), new Item.Properties()));
-    public static final RegistryObject<Item> TINY_URANIUM_POWDER = ITEMS.register("uranium_nugget",
+    public static final RegistryObject<Item> TINY_URANIUM_POWDER = ITEMS.register("tiny_uranium_powder",
             () -> new HazardItem(Type.NUGGET, 238f, new RadiationHolder(0.035f, 0, 0, 0, 0), new Item.Properties()));
     public static final RegistryObject<Item> TINY_URANIUM_233_POWDER = ITEMS.register("tiny_uranium_233_powder",
             () -> new HazardItem(Type.NUGGET, 233f, new RadiationHolder(0.5f, 0, 0, 0, 0), new Item.Properties()));

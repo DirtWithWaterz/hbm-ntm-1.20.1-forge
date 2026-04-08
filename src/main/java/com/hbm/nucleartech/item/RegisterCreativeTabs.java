@@ -239,7 +239,9 @@ public class RegisterCreativeTabs {
                         output.accept(RegisterItems.INFINITE_FUSION_CORE.get());
 
                         output.accept(RegisterItems.SCREWDRIVER.get());
-                        output.accept(RegisterItems.HAND_DRILL.get());
+                        output.accept(RegisterItems.HAND_DRILL_STEEL.get());
+                        output.accept(RegisterItems.HAND_DRILL_DESH.get());
+
                     })
                     .build());
 

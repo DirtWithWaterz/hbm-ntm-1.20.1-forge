@@ -119,7 +119,7 @@ public class GraphiteBlock extends BaseEntityBlock {
 //                    System.out.println("[Debug] it is undrilled.");
 
 
-                    if(stack.is(RegisterItems.HAND_DRILL.get())) {
+                    if(stack.is(RegisterItems.HAND_DRILL_STEEL.get())) {
 
 //                        System.out.println("[Debug] drilling...");
 
@@ -159,7 +159,7 @@ public class GraphiteBlock extends BaseEntityBlock {
                         return InteractionResult.FAIL;
                 case 1:
 
-                    if(stack.is(RegisterItems.HAND_DRILL.get())) {
+                    if(stack.is(RegisterItems.HAND_DRILL_STEEL.get())) {
 
                         String heatPrefix = "";
 
