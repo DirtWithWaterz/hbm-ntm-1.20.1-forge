@@ -12,6 +12,7 @@ import com.hbm.nucleartech.network.packet.ClientboundSpawnRadioactiveDustParticl
 import com.hbm.nucleartech.util.ContaminationUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntArrayTag;
 import net.minecraft.nbt.ListTag;
@@ -384,6 +385,31 @@ public class HbmRadiationSystem {
         //System.err.println("Rads took too long: " + (System.currentTimeMillis() - time));
     }
 
+    public static void applyAccumulatedDecay() {
+
+        List<RadPocket> itrActiveCheck = new ArrayList<>(getActivePockets());
+        Iterator<RadPocket> itr = itrActiveCheck.iterator();
+        while(itr.hasNext()) {
+
+            RadPocket act = itr.next();
+
+            // Decay only the transient part (accumulatedRads)
+            act.accumulatedRads *= 0.7F;
+            act.accumulatedRads -= 0.5F;
+
+
+            // FINAL RADIATION = permanent source + current transient
+            act.radiation = act.sourceRads + act.accumulatedRads;
+
+            if(act.radiation <= 0) {
+                act.radiation = 0;
+                act.accumulatedRads = 0;
+                removeActivePocket(act);
+                itr.remove();
+            }
+        }
+    }
+
     public static void updateEntities(ServerLevel level) {
 
         if(level != null && !level.isClientSide /* && GeneralConfig.enableRads */ ) {
@@ -422,7 +448,7 @@ public class HbmRadiationSystem {
      * @param chunk - the chunk to rebuild
      * @param yIndex - the Y index of the sub chunk to rebuild
      */
-    private static void rebuildChunkPockets(LevelChunk chunk, int yIndex) {
+    protected static void rebuildChunkPockets(LevelChunk chunk, int yIndex) {
 
         BlockPos subChunkPos = new BlockPos(
                 chunk.getPos().x << 4,
@@ -1131,7 +1157,7 @@ public class HbmRadiationSystem {
 
 //                System.out.println("\n=============================" + "\n[Debug] unpacked position: " + pos + "\n[Debug] unpacked rads: " + p.sourceRads + "\n=============================\n");
 
-                if(p.sourceRads > 0) {
+                if(p.sourceRads + p.radiation > 0) {
                     p.radiation = Math.max(p.radiation, p.sourceRads);
                     addActivePocket(p);
                 }
@@ -1830,7 +1856,8 @@ public class HbmRadiationSystem {
 
                     for(ServerLevel level : e.getServer().getAllLevels()) {
 
-                        updateRadiation(level);
+//                        updateRadiation(level);
+                        AsyncRadiationProcessor.tick(level);
                         updateEntities(level);
                         if(level.random.nextInt(1000000) == 0)
                             GeigerCounterItem.jmp = true;

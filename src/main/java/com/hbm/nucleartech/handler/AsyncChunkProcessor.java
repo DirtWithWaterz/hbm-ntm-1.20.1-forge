@@ -22,7 +22,7 @@ public class AsyncChunkProcessor {
     }
     
     private static final ThreadFactory threadFactory = r -> {
-        Thread t = new Thread(r, "Radiation Chunk Processor");
+        Thread t = new Thread(r, "Async Chunk Processor");
         t.setDaemon(true);
         t.setUncaughtExceptionHandler((thread, throwable) -> {
             System.err.println("Uncaught exception in " + thread.getName() + ": " + throwable.getMessage());

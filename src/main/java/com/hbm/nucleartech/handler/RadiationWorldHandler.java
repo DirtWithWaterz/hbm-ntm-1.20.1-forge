@@ -95,5 +95,6 @@ public class RadiationWorldHandler {
 
     public static void shutdown() {
         AsyncChunkProcessor.shutdown();
+        AsyncRadiationProcessor.shutdown();
     }
 }

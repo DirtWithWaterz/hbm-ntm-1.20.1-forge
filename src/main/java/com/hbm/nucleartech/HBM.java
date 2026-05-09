@@ -9,6 +9,7 @@ import com.hbm.nucleartech.entity.client.NuclearCreeperRenderer;
 import com.hbm.nucleartech.fluid.RegisterFluids;
 import com.hbm.nucleartech.handler.HazmatRegistry;
 import com.hbm.nucleartech.handler.HbmContaminationSystem;
+import com.hbm.nucleartech.handler.RadiationWorldHandler;
 import com.hbm.nucleartech.item.RegisterCreativeTabs;
 import com.hbm.nucleartech.item.RegisterItems;
 import com.hbm.nucleartech.item.custom.GeigerCounterItem;
@@ -37,6 +38,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -156,6 +158,12 @@ public class HBM
 
         AdvancementManager.init(event.getServer());
         HbmContaminationSystem.init(event.getServer());
+    }
+
+    @SubscribeEvent
+    public void onServerStopping(ServerStoppingEvent event) {
+
+        RadiationWorldHandler.shutdown();
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
