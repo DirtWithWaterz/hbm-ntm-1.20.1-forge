@@ -187,6 +187,9 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> IRON_POWDER_TINY = ITEMS.register("tiny_iron_powder",
             () -> new Item(new Item.Properties()));
+    //========================================kevlar============================================================
+    public static final RegistryObject<Item> KEVLAR= ITEMS.register("kevlar",
+            () -> new Item(new Item.Properties()));
     //========================================gold==============================================================
     public static final RegistryObject<Item> GOLD_POWDER = ITEMS.register("gold_powder",
             () -> new Item(new Item.Properties()));
