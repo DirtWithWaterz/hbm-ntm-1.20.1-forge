@@ -60,7 +60,7 @@ public class ClearSectionListPack {
             int z = VeryFastRaycastedExplosion.z(l);
             LevelChunk chunk = world.getChunk(x, z);
             LevelChunkSection section = chunk.getSection(VeryFastRaycastedExplosion.y(l));
-            VeryFastRaycastedExplosion.setAll(((MixinData<BlockState>)(Object)section.states.data).getPalette(), ((MixinData<BlockState>)(Object)section.states.data).getStorage());
+            //VeryFastRaycastedExplosion.setAll(((MixinData<BlockState>)(Object)section.states.data).getPalette(), ((MixinData<BlockState>)(Object)section.states.data).getStorage());
             long longID = VeryFastRaycastedExplosion.asLong(x, y + minSec, z);
             DataLayer layer = block_map.get(longID);
             if (layer == null) {

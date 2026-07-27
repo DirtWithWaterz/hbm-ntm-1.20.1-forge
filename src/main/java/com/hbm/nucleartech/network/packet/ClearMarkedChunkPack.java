@@ -7,6 +7,7 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientChunkCache;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.SimpleBitStorage;
 import net.minecraft.world.level.LightLayer;
@@ -32,82 +33,141 @@ public class ClearMarkedChunkPack {
         buffer.writeBytes(this.buff);
     }
 
-    private void removeMarked(ClientLevel world) {
-        long chunkIndex = this.buff.readLong();
-        ClientChunkCache cache = world.getChunkSource();
-        int minSec = world.getMinSection();
+    private void removeMarked(ClientLevel level) {
+        ClientChunkCache cache = level.getChunkSource();
+        int chunkLongOffset = 0;
+        int blockX, blockY, blockZ, cellIndex, $$1, $$2, index, chunkX, sectionY, chunkZ, sectionOffset, airId, realBlockLongOffset, maxSingle;
+        long $$3, maskedAirId, chunkIndex, longID;
+        byte[] skyData = new byte[0];
+        byte[] blockData = new byte[0];
+        long[] rawData;
+        LevelChunkSection[] sections;
+        LevelChunkSection section;
+        DataLayer skyLayer, blockLayer;
+        SimpleBitStorage bitstorage;
+        VeryFastRaycastedExplosion.MagicEntry storage;
+        chunkIndex = buff.readLong();
+        int minSec = level.getMinSection();
         LevelLightEngine lightEngine = cache.getLightEngine();
-        LightEngine<?, ?> block_engine = (LightEngine<?, ?>)lightEngine.getLayerListener(LightLayer.SKY);
-        Long2ObjectOpenHashMap<DataLayer> block_map = block_engine.storage.visibleSectionData.map;
-        long[] markerBits = new long[this.buff.readInt()];
-
+        LightEngine<?, ?> skyEngine = lightEngine.getLayerListener(LightLayer.SKY) instanceof LightEngine<?, ?> engine ? engine : null;
+        Long2ObjectOpenHashMap<DataLayer> skyMap = skyEngine != null ? skyEngine.storage.visibleSectionData.map : null;
+        LightEngine<?, ?> blockEngine = lightEngine.getLayerListener(LightLayer.BLOCK) instanceof LightEngine<?, ?> engine ? engine : null;
+        Long2ObjectOpenHashMap<DataLayer> blockMap = blockEngine != null ? blockEngine.storage.visibleSectionData.map : null;
+        long[] markerBits = new long[buff.readInt()];
+        Minecraft minecraft = Minecraft.getInstance();
+        LevelRenderer renderer = minecraft.levelRenderer;
         for (int m = 0; m < markerBits.length; m++) {
-            markerBits[m] = this.buff.readLong();
+            markerBits[m] = buff.readLong();
         }
-
-        int chunkX = (int)chunkIndex;
-        int chunkZ = (int)(chunkIndex >> 32);
+        short[] markedBlocksInSec = new short[buff.readInt()];
+        for (int m = 0; m < markedBlocksInSec.length; m++) {
+            markedBlocksInSec[m] = buff.readShort();
+        }
+        int xx = buff.readInt();
+        int yy = buff.readInt();
+        int zz = buff.readInt();
+        int radiusx = buff.readInt();
+        int radiusy = buff.readInt();
+        VeryFastRaycastedExplosion.Shape shape = VeryFastRaycastedExplosion.Shape.values()[buff.readShort()];
+        chunkX = (int) chunkIndex;
+        chunkZ = (int) (chunkIndex >> 32L);
+        int basedx = (chunkX << 4) - xx;
+        int basedz = (chunkZ << 4) - zz;
+        int basedy;
+        BlockState[] block = new BlockState[2];
         LevelChunk chunk = cache.getChunkNow(chunkX, chunkZ);
         if (chunk != null) {
-            LevelChunkSection[] sections = chunk.getSections();
-            long longID = VeryFastRaycastedExplosion.asLong(chunkX, minSec, chunkZ);
-
+            sections = chunk.getSections();
+            longID = VeryFastRaycastedExplosion.asLong(chunkX, minSec, chunkZ);
+            LevelChunkSection lastSec = null;
             for (int sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
-                LevelChunkSection section = sections[sectionIndex];
-                int blockLongOffset = 0;
+                section = sections[sectionIndex];
                 if (!section.hasOnlyAir()) {
-                    int sectionOffset = sectionIndex << 6;
-
-                    for (int i = sectionOffset; i < 64 && markerBits[i] == 0L; i++) {
-                        blockLongOffset++;
+                    sectionOffset = chunkLongOffset + (sectionIndex << 6);
+                    if (markedBlocksInSec[sectionOffset>>6] == 0) {
+                        continue;
                     }
-
-                    if (blockLongOffset != 64) {
-                        int sectionY = minSec + sectionIndex;
-                        longID = VeryFastRaycastedExplosion.asLongY(longID, (long)sectionY);
-                        int air_id = ((MixinData<BlockState>)(Object)section.states.data).getPalette().idFor(VeryFastRaycastedExplosion.AirState);
-                        SimpleBitStorage bitstorage = (SimpleBitStorage)((MixinData<BlockState>)(Object)section.states.data).getStorage();
-                        VeryFastRaycastedExplosion.MagicEntry magicEntry = VeryFastRaycastedExplosion.other_magic[bitstorage.getBits()];
-                        long maskedAirId = (long)air_id & magicEntry.mask;
-                        DataLayer layer = (DataLayer)block_map.get(longID);
-                        if (layer == null) {
-                            layer = new DataLayer(0);
-                            block_map.put(longID, layer);
-                        }
-
-                        byte[] blockData = layer.getData();
-                        long[] rawData = bitstorage.getRaw();
-                        int realBlockLongOffset = sectionOffset + blockLongOffset;
-
-                        for (int bigLong = blockLongOffset; bigLong < 64; bigLong++) {
-                            if (markerBits[realBlockLongOffset] != 0L) {
-                                int maxSingle = (bigLong << 6) + 64;
-
-                                for (int blockIndex = bigLong << 6; blockIndex < maxSingle; blockIndex++) {
-                                    if ((markerBits[realBlockLongOffset] & 1L << (blockIndex & 63)) != 0L) {
-                                        int x = blockIndex & 15;
-                                        int y = blockIndex >> 4 & 15;
-                                        int z = blockIndex >> 8;
-                                        int rindex = (y << 4 | z) << 4 | x;
-                                        int e = (int)((long)rindex * magicEntry.divideMulLong + magicEntry.divideAddLong >> 32 >> magicEntry.divideShift);
-                                        int k = (rindex - e * magicEntry.valuesPerLong) * magicEntry.bits;
-                                        long j = rawData[e];
-                                        rawData[e] = j & ~(magicEntry.mask << k) | maskedAirId << k;
-                                        int index = y << 8 | z << 4 | x;
-                                        blockData[index >> 1] = (byte)(blockData[index >> 1] | 15 << 4 * (index & 1));
+                    sectionY = minSec + sectionIndex;
+                    longID = VeryFastRaycastedExplosion.asLongY(longID, sectionY);
+                    basedy = (sectionY << 4) - yy;
+                    if (markedBlocksInSec[sectionOffset>>6] < 4096) {
+                        airId = section.states.data.palette.idFor(VeryFastRaycastedExplosion.AirState);
+                        if (!(section.states.data.storage instanceof net.minecraft.util.ZeroBitStorage)) {
+                            bitstorage = (SimpleBitStorage) section.states.data.storage;
+                            storage = VeryFastRaycastedExplosion.storage[bitstorage.getBits()];
+                            maskedAirId = airId & storage.mask;
+                            if (skyMap != null) {
+                                skyLayer = skyMap.get(longID);
+                                if (skyLayer == null) {
+                                    skyLayer = new DataLayer(0);
+                                    skyMap.put(longID, skyLayer);
+                                }
+                                skyData = skyLayer.getData();
+                            }
+                            if (blockMap != null) {
+                                blockLayer = blockMap.get(longID);
+                                if (blockLayer == null) {
+                                    blockLayer = new DataLayer(0);
+                                    blockMap.put(longID, blockLayer);
+                                }
+                                blockData = blockLayer.getData();
+                            }
+                            rawData = bitstorage.getRaw();
+                            realBlockLongOffset = sectionOffset;
+                            for (int bigLong = 0; bigLong < 64; bigLong++) {
+                                if (markerBits[realBlockLongOffset] != 0L) {
+                                    maxSingle = (bigLong << 6) + 64;
+                                    for (int blockIndex = bigLong << 6; blockIndex < maxSingle; blockIndex++) {
+                                        if ((markerBits[realBlockLongOffset] & 1L << (blockIndex & 63)) != 0L) {
+                                            blockX = blockIndex & 0xF;
+                                            blockY = blockIndex >> 4 & 0xF;
+                                            blockZ = blockIndex >> 8;
+                                            cellIndex = (blockY << 4 | blockZ) << 4 | blockX;
+                                            $$1 = (int) (cellIndex * storage.divideMulLong + storage.divideAddLong >> 32L >> storage.divideShift);
+                                            $$2 = (cellIndex - $$1 * storage.valuesPerLong) * storage.bits;
+                                            $$3 = rawData[$$1];
+                                            rawData[$$1] = $$3 & (~(storage.mask << $$2)) | maskedAirId << $$2;
+                                            index = blockY << 8 | blockZ << 4 | blockX;
+                                            if (skyMap != null) skyData[index >> 1] = (byte) (skyData[index >> 1] | 15 << 4 * (index & 1)); //set sky light
+                                            if (blockMap != null) blockData[index >> 1] = (byte) 0; //set block light
+                                        }
                                     }
                                 }
+                                realBlockLongOffset++;
                             }
 
-                            realBlockLongOffset++;
+                        }
+                    } else {
+                        VeryFastRaycastedExplosion.clearSectionWhole(section, -1);
+                        if (skyMap != null) {
+                            skyLayer = skyMap.get(longID); //set sky light
+                            if (skyLayer == null) {
+                                skyLayer = new DataLayer(15);
+                                skyMap.put(longID, skyLayer);
+                            } else {
+                                skyLayer.fill(15);
+                            }
+                        }
+                        if (blockMap != null) {
+                            blockLayer = blockMap.get(longID); //set block light
+                            if (blockLayer == null) {
+                                blockLayer = new DataLayer(0);
+                                blockMap.put(longID, blockLayer);
+                            } else {
+                                blockLayer.fill(0);
+                            }
                         }
                     }
+                    renderer.setSectionDirtyWithNeighbors(chunkX, sectionY, chunkZ);
                 }
+                lastSec = section;
             }
-
             chunk.setUnsaved(true);
         }
+
     }
+
+
 
     private void Clear() {
         Minecraft minecraft = Minecraft.getInstance();

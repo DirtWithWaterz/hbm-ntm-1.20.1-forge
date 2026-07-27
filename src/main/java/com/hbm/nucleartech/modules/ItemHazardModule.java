@@ -289,7 +289,7 @@ public class ItemHazardModule {
             player.getInventory().removeItem(stack);
         if(source instanceof ItemEntity item)
             item.remove(RemovalReason.DISCARDED);
-        new VeryFastRaycastedExplosion(source.level(), source.getX(), source.getY(), source.getZ(), Math.round(this.uExpRadius / 3f), this.uExpRadius, this.uExpRadius, Math.round(this.uExpRadius*1.5f), (byte)0, 1, 2, 1, null, this.uExpRadius, true);
+        new VeryFastRaycastedExplosion(source.level(), source.getX(), source.getY(), source.getZ(), Math.round(this.uExpRadius / 3f), this.uExpRadius, this.uExpRadius, Math.round(this.uExpRadius*1.5f), VeryFastRaycastedExplosion.Shape.SPHERE, 1, 2, 1, null, this.uExpRadius);
     }
 
     public static double getNewValue(double radiation) {

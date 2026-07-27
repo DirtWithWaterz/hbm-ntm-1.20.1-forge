@@ -2,92 +2,108 @@ package com.hbm.nucleartech.explosion;
 
 import java.util.TreeSet;
 
-import com.sun.jna.platform.win32.COM.EnumMoniker;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.FriendlyByteBuf;
 
-public class BlockMarker extends FastBitSet {
-    private final long[] affectedChunks;
-    //public final long[] affectedSections;
-    public TreeSet<Long> affectedSections;//= new ArrayList<Long>();
-    private int chunksUsed = 0;
-    //private int numofsections;
-    //private final int blocksPerChunk = 24 * 4096;
+public class BlockMarker {
+    protected long[] blocks;
+    protected short[] markedBitsInSec;
+    private final int size;
+    private final long[] markedChunks;
+    public TreeSet<Long> markedSections;
+    private int numOfMarkedChunks = 0;
+    private int lastIndex;
+    private long lastChunkLong = -1;
+    private final int longsPerChunk;
 
-    // max chunks, we want no resizing coz its slow...
-    public BlockMarker(int max_expected_chunks, int numofsections) {
-        super(max_expected_chunks * numofsections * 4096);
-        affectedChunks = new long[max_expected_chunks];
-        affectedSections = new TreeSet<>();
-        longs_per_chunk = numofsections * 64;
+    public BlockMarker(int maxChunks, int sectionsPerChunk) {
+        longsPerChunk = sectionsPerChunk * 64;
+        size = maxChunks * sectionsPerChunk * 4096;
+        blocks = new long[(size + 63) / 64];
+        markedBitsInSec = new short[maxChunks * sectionsPerChunk]; // how many blocks are marked in a section, if 4096 mark whole section
+        markedChunks = new long[maxChunks];
+        markedSections = new TreeSet<>();
     }
 
-    public FriendlyByteBuf writeChunk(ByteBuf byteBuf, long chunkLong, int chunkIndex) {
-        byteBuf.writeLong(chunkLong);
-        int maxChunkBits=(chunkIndex+1)*longs_per_chunk;
-        byteBuf.writeInt(longs_per_chunk);
-        for (int i = chunkIndex*longs_per_chunk; i < maxChunkBits; i++) {
-            byteBuf.writeLong(bits[i]);
+    public int size() { return size; }
+
+    public void setBit(int arrayIndex,int bitIndex) {
+        if ((blocks[arrayIndex] & 1L << bitIndex) == 0) {
+            blocks[arrayIndex] |= (1L << bitIndex);
+            ++markedBitsInSec[arrayIndex>>6];
         }
+    }
+
+    public int get(int arrayIndex,int bitIndex) { return (blocks[arrayIndex] & (1L << bitIndex)) != 0 ? 1 : 0; }
+
+    public int get(int index) {
+        int arrayIndex = index >>> 6;
+        int bitIndex = index & 63;
+        return (blocks[arrayIndex] & (1L << bitIndex)) != 0 ? 1 : 0;
+    }
+
+    public int getIndex(int x, int y, int z) {
+        int index = x + (y << 4) + (z << 8);
+        if (index < 0) throw new IndexOutOfBoundsException("Index invalid. " + index);
+        return index;
+    }
+
+    public long[] getBlocks(){ return this.blocks; }
+
+    public FriendlyByteBuf writeChunk(ByteBuf byteBuf, long chunkLong, int index, int x, int y, int z, int radiusx, int radiusy, short shape) {
+        byteBuf.writeLong(chunkLong);
+        int maxChunkBits=(index+1)* longsPerChunk;
+        byteBuf.writeInt(longsPerChunk);
+        for (int i = index* longsPerChunk; i < maxChunkBits; i++) {
+            byteBuf.writeLong(blocks[i]);
+        }
+        byteBuf.writeInt(longsPerChunk >>6);
+        for (int i = index* longsPerChunk >>6; i < maxChunkBits>>6; i++) {
+            byteBuf.writeShort(markedBitsInSec[i]);
+        }
+        byteBuf.writeInt(x);
+        byteBuf.writeInt(y);
+        byteBuf.writeInt(z);
+        byteBuf.writeInt(radiusx);
+        byteBuf.writeInt(radiusy);
+        byteBuf.writeShort(shape);
         return new FriendlyByteBuf(byteBuf);
     }
 
-    public long[] getAffectedChunks() {
-        return this.affectedChunks;
-    }
+    public long[] getMarkedChunks() { return this.markedChunks; }
 
-    public int getUsedChunks() {
-        return this.chunksUsed;
-    }
+    public int getNumOfMarkedChunks() { return this.numOfMarkedChunks; }
 
-    // as long for x and z (no y)
-    private long asLong(int x, int z) {
-        return (long) x & 4294967295L | ((long) z & 4294967295L) << 32;
-    }
+    private long toLong(int x, int z) { return (long) x & 4294967295L | ((long) z & 4294967295L) << 32; }
 
-    // get index, add if not there
     private int getChunkIndex(long curChunkLong) {
-        for (int i = 0; i < chunksUsed; i++) {
-            if (affectedChunks[i] == curChunkLong) {
+        for (int i = 0; i < numOfMarkedChunks; i++) {
+            if (markedChunks[i] == curChunkLong) {
                 return i;
             }
         }
-        int t_index = chunksUsed;
-        affectedChunks[chunksUsed] = curChunkLong;
-        chunksUsed++;
-        return t_index;
+        lastIndex = numOfMarkedChunks;
+        markedChunks[numOfMarkedChunks] = curChunkLong;
+        numOfMarkedChunks++;
+        return lastIndex;
     }
 
-    //private long m; //perma predefined long
-    private int t_index;//perma predefined int
-
-    // may be faster in some occasions
-    private long lastChunkLong = -1;
-    //private int blocks = 0;
-
-    private final int longs_per_chunk;
-    private int index; // per define perma value
-
-    public void markBlock(long curChunkLong, int sectionIndex, int x, int y, int z) {
+    public void markBlock(long curChunkLong, int sectionIndex, int sx, int sy, int sz) {
         if (curChunkLong != lastChunkLong) {
-            t_index = getChunkIndex(curChunkLong);
+            lastIndex = getChunkIndex(curChunkLong);
             lastChunkLong = curChunkLong;
         }
-        this.index = getIndex(x, y, z); // 0-4096 index, >>6 to get longs & 63 to get "leftovers"
-        setBit(((t_index * longs_per_chunk)) + (sectionIndex << 6) + (this.index >> 6), this.index & 63);
+        int index = getIndex(sx, sy, sz); // 0-4096 index in section
+        setBit((lastIndex * longsPerChunk) + (sectionIndex << 6) + (index >> 6), index & 63);
     }
 
-    //from local block pos
-    public void markBlock(int chunkX, int chunkZ, int sectionIndex, int x, int y, int z) {
-        markBlock(asLong(chunkX, chunkZ), sectionIndex, x, y, z);
+    public void markBlock(int cx, int cz, int sectionIndex, int sx, int sy, int sz) {
+        markBlock(toLong(cx, cz), sectionIndex, sx, sy, sz);
     }
 
-    public boolean markSection(long id){
-        return affectedSections.add(id);
-    }
-    public boolean hasSec(long id){
-        return affectedSections.contains(id);
-    }
+    public boolean markSection(long id){ return markedSections.add(id); }
+
+    public boolean hasSection(long id){ return markedSections.contains(id); }
 
 
 }
